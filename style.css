@@ -262,9 +262,13 @@ span {
     background-color: #15202B;
     box-sizing: border-box; /* Include padding in width and height */
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
-
+.container::-webkit-scrollbar {
+    display: none;
+}
 i.logo {
     color: #c0c4df;
 }
