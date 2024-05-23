@@ -133,8 +133,8 @@ body {
 }
 
 .three-item img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 60%;
+    max-height: 60%;
 }
 
 
@@ -191,10 +191,11 @@ body {
 }
 
 .black-box-container img{
-    width: 100%; /* or any custom size */
-    height: 100%;
+    width: 40%; /* or any custom size */
+    height: 40%;
     padding: 0;
-    opacity: 0.8;
+    margin: auto;
+    animation: mine 3s linear infinite;
 }
 
 .menu-container {
@@ -459,5 +460,11 @@ to {
 @keyframes float {
     0% { transform: translate(0, 0px); }
     50% { transform: translate(0, 5px); }
+    100% { transform: translate(0, -0px); }    
+}
+
+@keyframes mine {
+    0% { transform: translate(0, 0px); }
+    50% { transform: rotate(35deg); }
     100% { transform: translate(0, -0px); }    
 }
