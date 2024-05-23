@@ -91,13 +91,12 @@ body {
     display: flex;
     flex-direction: row;
     gap: 10%;
-    margin-top: 5%;
+    margin-top: 10%;
     justify-content: center;
     align-self: center;
     align-items: center;
     align-content: center;
     overflow: hidden;
-
 }
 
 .three-container {
@@ -127,7 +126,7 @@ body {
     align-items: center;
     border: medium solid #98FFAF;
     width: 26vw;
-    height: 10vh;
+    height: 12vh;
     border-radius: 30px;
     text-align: center;
     margin: auto;
@@ -161,7 +160,7 @@ body {
     align-items: center;
     align-content: center;
     color: white;
-    margin-top: 3%;
+    margin-top: 5%;
     font-family: 'unbounded';
     font-size: 22px;
 }
@@ -201,7 +200,7 @@ body {
 .menu-container {
     display: flex;
     flex-direction: row;
-    margin-top: 5%;
+    margin-top: 10%;
     background-color: #15202B;
     border-radius: 20px;
     align-items: center;
@@ -455,6 +454,6 @@ to {
 
 @keyframes float {
     0% { transform: translate(0, 0px); }
-    50% { transform: translate(0, 2px); }
+    50% { transform: translate(0, 6px); }
     100% { transform: translate(0, -0px); }    
 }
