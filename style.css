@@ -187,14 +187,14 @@ body {
     background-color: #0f161e;
     width: 40vw;
     height: 20vh;
-    border-radius: 10px;
-   
+    border-radius: 20px;
 }
 
 .black-box-container img{
     width: 100%; /* or any custom size */
     height: 100%;
     padding: 0;
+    opacity: 0.8;
 }
 
 .menu-container {
@@ -262,7 +262,7 @@ span {
     background-color: #15202B;
     box-sizing: border-box; /* Include padding in width and height */
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
