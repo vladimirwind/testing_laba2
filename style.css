@@ -61,7 +61,7 @@ body {
     justify-content: center;
     color: white;
     font-family: 'unbounded';
-    font-size: 35px;
+    font-size: 36px;
     letter-spacing: 7%; 
     gap: 10px;
 }
@@ -164,7 +164,7 @@ body {
     color: white;
     margin: 5% auto;
     font-family: 'unbounded';
-    font-size: 22px;
+    font-size: 15px;
 }
 
 .floatingarrow {
@@ -194,14 +194,14 @@ body {
 }
 
 .black-box-container img{
-    width: 50%; /* or any custom size */
-    height: 50%;
+    width: 55%; /* or any custom size */
+    height: 55%;
     padding: 0;
-    margin: auto;
+    margin: 10% auto;
 }
 
-.black-box-container p{
-    margin-top: 5%;
+.black-box-container text{
+    margin: 7% auto;
 }
 
 .menu-container {
@@ -233,8 +233,8 @@ body {
 }
 
 .menu-btn img {
-    width: 60%;
-    height: 60%;
+    width: 50%;
+    height: 50%;
     display: flex;
 }
 
