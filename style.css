@@ -192,11 +192,10 @@ body {
 }
 
 .black-box-container img{
-    width: 40%; /* or any custom size */
-    height: 40%;
+    width: 45%; /* or any custom size */
+    height: 45%;
     padding: 0;
     margin: auto;
-    animation: mine 3s linear infinite;
 }
 
 .menu-container {
@@ -229,8 +228,8 @@ body {
 }
 
 .menu-btn img {
-    width: 80%;
-    height: 80%;
+    width: 75%;
+    height: 75%;
     display: flex;
 }
 
