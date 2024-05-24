@@ -41,7 +41,7 @@ body {
 .gemsee-container {
     display: flex;
     flex-direction: row;
-    margin-top: 5%;
+    margin-top: 2%;
     align-self: center;
     align-items: center;
     text-align: center;
@@ -92,7 +92,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 10%;
-    margin-top: 5%;
+    margin-top: 3%;
     justify-content: center;
     align-self: center;
     align-items: center;
@@ -117,8 +117,8 @@ body {
     display: flex;
     flex-direction: column;
     color: white;
-    font-family: 'coco-R';
-    font-size: 10px;
+    font-family: 'coco-B';
+    font-size: 11px;
 }
 
 .three-item {
@@ -150,6 +150,8 @@ body {
     align-content: center;
     color: white;
     margin: 5% auto;
+    font-family: 'coco-R';
+    font-size: 17px;
 }
 
 .textandimage1 {
@@ -197,7 +199,7 @@ body {
     width: 55%; /* or any custom size */
     height: 55%;
     padding: 0;
-    margin: 10% auto;
+    margin: 5% auto;
 }
 
 .black-box-container text{
