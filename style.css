@@ -35,13 +35,12 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
 }
 
 .gemsee-container {
     display: flex;
     flex-direction: row;
-    margin-top: 2%;
+    margin-top: 3%;
     align-self: center;
     align-items: center;
     text-align: center;
@@ -70,7 +69,7 @@ body {
 .league-container {
     display: flex;
     flex-direction: row;
-    margin: 5% auto;
+    margin: 7% auto;
     align-self: center;
     align-items: center;
     text-align: center;
@@ -164,7 +163,7 @@ body {
     align-items: center;
     align-content: center;
     color: white;
-    margin: 5% auto;
+    margin: 7% auto;
     font-family: 'unbounded';
     font-size: 15px;
 }
@@ -467,11 +466,5 @@ to {
 @keyframes float {
     0% { transform: translate(0, 0px); }
     50% { transform: translate(0, 5px); }
-    100% { transform: translate(0, -0px); }    
-}
-
-@keyframes mine {
-    0% { transform: translate(0, 0px); }
-    50% { transform: rotate(35deg); }
     100% { transform: translate(0, -0px); }    
 }
