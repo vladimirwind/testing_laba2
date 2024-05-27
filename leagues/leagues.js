@@ -5,11 +5,5 @@ document.addEventListener('DOMContentLoaded', function() {
         tg.WebApp.expand();
         
     };
-    const leagueTrigger = document.getElementById('leagueBtn');
-    leagueTrigger.addEventListener('click', function() {
-            
-        window.location.href = './leagues/1.' + 'html';
-            
-    });
-   
+
 });

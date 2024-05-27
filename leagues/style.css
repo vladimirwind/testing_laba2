@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+@font-face {
+    font-family: unbounded;
+    src: url(./fonts/unbounded.woff);
+}
+
+@font-face {
+    font-family: coco-R;
+    src: url(./fonts/CocoGothic-Regular.woff);
+}
+
+@font-face {
+    font-family: coco-L;
+    src: url(./fonts/CocoGothic-Light.woff);
+}
+
+@font-face {
+    font-family: coco-B;
+    src: url(./fonts/CocoGothic-Bold.woff);
+}
+
+@font-face {
+    font-family: coco-H;
+    src: url(./fonts/CocoGothic-Heavy.woff);
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #15202B;
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container {
+    display: block;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    /* background: linear-gradient(to right, #202140, #2D2E48); */
+    background-color: #15202B;
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.new_container {
+    padding: 5% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.three_items {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    align-items: center;
+    padding: 0 0;
+    gap: 40%;
+}
+
+.three_items img {
+    filter: drop-shadow(0 0 10.75rem rgba(255, 255, 255, 0.7));
+}
+
+.league_type {
+    font-family: 'unbounded';
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 5%;
+}
+
+ul li {
+    width: 100%;
+    margin: 5% 0;
+    padding: 0;
+}
+
+ul {
+    width: 100%;
+    gap: 5%;
+    padding: 0;
+    margin: 0;
+}
+
+.ullicontainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 15px;
+    background: #0F161E;
+    align-items: center;
+    justify-content: start;
+    color:white;
+    font-size: 50px;
+    font-family: 'coco-L';
+    padding: 5%;
+    gap: 5%;
+}
+
+.nameandbalance {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.minedbalance {
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+    font-family: 'unbounded';
+    font-size: 50px;
+    color: #98FFAF;
+    align-items: center;
+    justify-content: start;
+}
+
+.size_container {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width:15%
+}
+
+.percent_text {
+    width:100%;
+    color: white;
+    font-family: 'unbounded';
+    font-size: 50px;
+    font-weight: 100;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 3% 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    padding: 3px;
+    border-radius: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+.progress-bar-fill {
+    display: block;
+    height: 22px;
+    background-color: #98FFAF;
+    border-radius: 20px;
+    transition: width 500ms ease-in-out;
+}
