@@ -75,7 +75,7 @@ body {
 }
 
 .three_items img {
-    filter: drop-shadow(0 0 55px rgba(255, 255, 255, 0.8));
+    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.7));
 }
 
 .league_type {
