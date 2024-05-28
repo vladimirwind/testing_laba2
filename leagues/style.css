@@ -2,27 +2,27 @@
 
 @font-face {
     font-family: unbounded;
-    src: url(./fonts/unbounded.woff);
+    src: url(../fonts/unbounded.woff);
 }
 
 @font-face {
     font-family: coco-R;
-    src: url(./fonts/CocoGothic-Regular.woff);
+    src: url(../fonts/CocoGothic-Regular.woff);
 }
 
 @font-face {
     font-family: coco-L;
-    src: url(./fonts/CocoGothic-Light.woff);
+    src: url(../fonts/CocoGothic-Light.woff);
 }
 
 @font-face {
     font-family: coco-B;
-    src: url(./fonts/CocoGothic-Bold.woff);
+    src: url(../fonts/CocoGothic-Bold.woff);
 }
 
 @font-face {
     font-family: coco-H;
-    src: url(./fonts/CocoGothic-Heavy.woff);
+    src: url(../fonts/CocoGothic-Heavy.woff);
 }
 
 body {
@@ -80,13 +80,14 @@ body {
 
 .league_type {
     font-family: 'unbounded';
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
     text-align: center;
     align-items: center;
     justify-content: center;
     color: white;
     margin-top: 8%;
+    letter-spacing: 1px;
 }
 
 ul li {
@@ -145,7 +146,7 @@ ul {
     width:100%;
     color: white;
     font-family: 'unbounded';
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 100;
     letter-spacing: 7%;
     align-items: center;
