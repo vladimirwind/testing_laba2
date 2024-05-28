@@ -78,15 +78,16 @@ body {
     filter: drop-shadow(0 0 55px rgba(255, 255, 255, 0.6));
 }
 
-.mywrap {
-    filter: drop-shadow(#000000 15px 15px 15px);
+.mywrap {   
+    filter: drop-shadow(#000000 12px 12px 12px);
     width: 80%
 }
 
 .mywrap img{
-    width: 55%;
-    height: 55%;
+    width: 65%;
+    height: 65%;
 }
+
 .league_type {
     font-family: 'unbounded';
     font-size: 24px;
@@ -134,7 +135,7 @@ ul {
     font-family: 'coco-L';
     font-size: 20px;
     margin-left: 2%;
-   
+    width: 45%;
 }
 
 .minedbalance {
@@ -144,10 +145,13 @@ ul {
     font-family: 'coco-L';
     font-size: 20px;
     color: #98FFAF;
-    align-items: center;
-    text-align: center;
-    align-self: center;
     justify-content: start;
+    letter-spacing: 0.01rem;
+}
+
+.minedbalance img {
+    width: 15%;
+    height: 15%;
 }
 
 .size_container {
@@ -188,3 +192,13 @@ ul {
     border-radius: 20px;
     transition: width 500ms ease-in-out;
 }
+
+.progress-bar-fill2 {
+    display: block;
+    height: 22px;
+    background-color: #5b6467;
+    background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
+    border-radius: 20px;
+    transition: width 500ms ease-in-out;
+}
+

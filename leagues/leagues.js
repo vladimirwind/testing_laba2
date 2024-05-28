@@ -5,5 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tg.WebApp.expand();
         
     };
-
+    document.getElementById('rightArrow').onclick = function() {
+        window.location.href = '2.html';
+    }
 });
