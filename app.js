@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tg.WebApp.expand();
         
     };
+    sessionStorage.setItem('leaguePage', 1)
     const leagueTrigger = document.getElementById('leagueBtn');
     leagueTrigger.addEventListener('click', function() {
             

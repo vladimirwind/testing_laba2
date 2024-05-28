@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
     };
     document.getElementById('rightArrow').onclick = function() {
-        window.location.href = '2.html';
+        let num = sessionStorage.getItem('leaguePage')
+        if (num < 3) {
+            sessionStorage.setItem('leaguePage', num + 1)
+            window.location.href = str(num + 1) + '.html';
+        }
+    }
+
+    document.getElementById('leftArrow').onclick = function() {
+        let num1 = sessionStorage.getItem('leaguePage')
+        if (num1 > 1) {
+            sessionStorage.setItem('leaguePage', num1 - 1)
+            window.location.href = str(num1 - 1) + '.html';
+        }
     }
 });
