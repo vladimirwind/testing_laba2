@@ -135,7 +135,7 @@ ul {
     font-family: 'coco-L';
     font-size: 20px;
     margin-left: 2%;
-    width: 45%;
+    width: 100%;
 }
 
 .minedbalance {
@@ -150,8 +150,8 @@ ul {
 }
 
 .minedbalance img {
-    width: 15%;
-    height: 15%;
+    width: 10%;
+    height: 10%;
 }
 
 .size_container {
