@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @font-face {
     font-family: unbounded;
     src: url(../fonts/unbounded.woff);
@@ -26,7 +25,7 @@
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Roboto Mono", monospace;
     background-color: #15202B;
     overflow: hidden;
     -webkit-touch-callout: none;
@@ -143,11 +142,10 @@ ul {
     display: flex;
     flex-direction: row;
     gap: 4%;
-    font-family: 'coco-L';
+    font-family: "Roboto Mono", monospace;
     font-size: 21px;    
     color: #98FFAF;
     justify-content: start;
-    letter-spacing: 0.01rem;
 }
 
 .minedbalance img {
