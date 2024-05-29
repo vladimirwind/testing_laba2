@@ -146,16 +146,11 @@ ul {
     font-size: 21px;    
     color: #98FFAF;
     justify-content: start;
-    max-height: 20px;
 }
 
 .minedbalance img {
-    width: 20px;
-    height: 20px;
-    position: relative;
-    align-items: bottom;
-    align-self: bottom;
-    vertical-align: bottom;
+    width: 10%;
+    height: 10%;
 }
 
 .minedbalance text {
