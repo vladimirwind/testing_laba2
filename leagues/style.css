@@ -151,6 +151,8 @@ ul {
 .minedbalance img {
     width: 10%;
     height: 10%;
+    vertical-align: middle;
+    align-self: center;
 }
 
 .minedbalance text {
