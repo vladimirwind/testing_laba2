@@ -26,28 +26,29 @@
             <div class="league_type">
                 <text>Silver league</text>
             </div>
-            <div class="percent_text">
-                <text>Mined: </br>0 / 5000</text>
+            <div class="percent_text" id="usersStatMined" style="display: none">
+                <text>Mined:</br></text>
+                <text id="totalMined">0 / 5000</text>
             </div>
-            <div class="progress-bar">
+            <div class="progress-bar" id="usersStatBar" style="display: none">
                 <span class="progress-bar-fill2" style="width: 0%;" id="progressBar"></span>
             </div>
             <ul>
-                <!-- <li>
-                    <div class="ullicontainer" style="outline: #98FFAF solid thin;">
+                <li>
+                    <div class="ullicontainer" style="outline: #98FFAF solid thin; display: none;" id="usrProfile">
                         <div class="size_container">
-                            <text>12241</text>
+                            <text id="usersPlace">2024</text>
                         </div>
                         <img src="../images/silver_avatar.png" width="13%" height="13%"></img>
                         <div class="nameandbalance" >
-                            <text>Your Profile</text>
+                            <text id="usersName">Your Profile</text>
                             <div class="minedbalance">
                                 <img src="../images/coin.svg"></img>
-                                <text>123456789</text>
+                                <text id="usersMined">0</text>
                             </div>
                         </div>
                     </div>
-                </li> -->
+                </li>
                 <li>
                     <div class="ullicontainer">
                         <div class="size_container">
