@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const earnTrigger = document.getElementById('earner');
-    leagueTrigger.addEventListener('click', function() {
+    earnTrigger.addEventListener('click', function() {
             
         window.location.href = './earn-page/earn.' + 'html';
             
