@@ -12,5 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = './leagues/1.' + 'html';
             
     });
+
+    const earnTrigger = document.getElementById('earner');
+    leagueTrigger.addEventListener('click', function() {
+            
+        window.location.href = './earn-page/earn.' + 'html';
+            
+    });
    
 });
