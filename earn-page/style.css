@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@font-face {
+    font-family: unbounded;
+    src: url(../fonts/unbounded.woff);
+}
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #15202B;
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container {
+    display: block;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    /* background: linear-gradient(to right, #202140, #2D2E48); */
+    background-color: #15202B;
+
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.threeItems {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    gap: 3%;
+    margin-top: 20%;
+    justify-content: center;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.menuItem {
+    border-radius: 5px;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    width: 50%;
+    height: 5vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 0;
+    font-family: 'unbounded';
+}
+
+.menuItem span {
+    color: white;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.taskList {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+    max-height: 40vh;
+    gap: 2%;
+}
+
+.taskListItem {
+    display: flex;
+    flex-direction: row;
+    background-color: #0f161e;
+    width: 100%;
+    height: 5vh;
+    border-radius: 5px;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    margin-top: 5%;
+    align-items: center;
+    gap: 5%;
+}
+
+.taskListItem span {
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+}
+
+.taskListItem img {
+    margin-left: auto;
+    margin-right: 5%;
+    width: 20%;
+}
+
+.taskImage {
+    display: flex;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 5px;
+    height: 100%;
+    width: 20%;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+}
+
+.taskImage img {
+    width: 45%;
+    padding: 0 0;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    margin: 0 0;
+}
+
+.greenLine {
+    margin: auto;
+    border: thin solid #98FFAF;
+    width: 50%;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+}

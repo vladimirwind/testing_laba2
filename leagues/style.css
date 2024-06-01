@@ -42,6 +42,7 @@ body {
     height: 100vh; /* adjust height percentage as needed */
     /* background: linear-gradient(to right, #202140, #2D2E48); */
     background-color: #15202B;
+
     box-sizing: border-box; /* Include padding in width and height */
     overflow-x: hidden;
     overflow-y: auto;
@@ -73,12 +74,8 @@ body {
     padding: 0 0;
 }
 
-.three_items img {
-    filter: drop-shadow(0 0 55px rgba(255, 255, 255, 0.6));
-}
-
 .mywrap {   
-    filter: drop-shadow(#000000 12px 12px 12px);
+    filter: drop-shadow(#000000dd 0px 14px 9px);
     width: 80%
 }
 
