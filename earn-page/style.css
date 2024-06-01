@@ -72,7 +72,7 @@ body {
     gap: 2%;
     padding-left: 1%;
     padding-right: 1%;
-    max-height: 40vh;
+    max-height: 50vh;
     gap: 2%;
 }
 
@@ -81,10 +81,10 @@ body {
     flex-direction: row;
     background-color: #0f161e;
     width: 100%;
-    height: 5vh;
+    height: 10vh;
     border-radius: 5px;
-    padding-top: 8%;
-    padding-bottom: 8%;
+    padding-top: 10%;
+    padding-bottom: 10%;
     margin-top: 5%;
     align-items: center;
     gap: 5%;
@@ -110,9 +110,9 @@ body {
     outline-color: #98FFAF;
     border-radius: 5px;
     height: 100%;
-    width: 20%;
-    padding-top: 8%;
-    padding-bottom: 8%;
+    width: 25%;
+    padding-top: 10%;
+    padding-bottom: 10%;
     align-items: center;
     justify-content: center;
     align-self: center;
@@ -120,7 +120,7 @@ body {
 }
 
 .taskImage img {
-    width: 45%;
+    width: 60%;
     padding: 0 0;
     align-items: center;
     justify-content: center;
@@ -132,7 +132,7 @@ body {
 .greenLine {
     margin: auto;
     border: thin solid #98FFAF;
-    width: 50%;
+    width: 60%;
     align-items: center;
     align-self: center;
     justify-content: center;
