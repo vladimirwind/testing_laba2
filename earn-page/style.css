@@ -56,6 +56,7 @@ body {
     align-items: center;
     margin: 5% 0;
     font-family: 'unbounded';
+    box-shadow: inset #2A4864 0px 0px 40px -9px; 
 }
 
 .menuItem span {
