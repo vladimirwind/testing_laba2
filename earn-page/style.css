@@ -105,9 +105,9 @@ body {
 
 .taskImage {
     display: flex;
-    outline-style: solid;
+    /* outline-style: solid;
     outline-width: thin;
-    outline-color: #98FFAF;
+    outline-color: #98FFAF; */
     border-radius: 5px;
     height: 100%;
     width: 25%;
@@ -137,4 +137,24 @@ body {
     align-self: center;
     justify-content: center;
     text-align: center;
+}
+
+.dscrpt {
+    display: flex;
+     /* Align content along Y-axis */
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+}
+  
+.coinAmount {
+    display: flex;
+    flex-direction: row;
+   /* Align content along Y-axis */
+    color: white;
+    padding-right: 50%;
+}
+
+.coinAmount img {
+    width: 35%;
 }
