@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var frensPopUP1 = document.getElementById('frens1Container');
     var mainContainer = document.getElementById('mainContainer');
-    sessionStorage.setItem('earnInfo', `{"task_1": false, "task_2": false, "task_3": false, "task_21": false}`);
+    sessionStorage.setItem('earnInfo', `{"task_1": true, "task_2": false, "task_3": false, "task_21": false}`);
     frensPopUP1.style.display = 'none';
     var earnData = sessionStorage.getItem('earnInfo');
 

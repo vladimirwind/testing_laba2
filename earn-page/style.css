@@ -154,6 +154,8 @@ body {
    /* Align content along Y-axis */
     color: white;
     padding-right: 50%;
+    height: 40%;
+    width: 100%;
 }
 
 .coinAmount img {
