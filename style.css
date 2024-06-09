@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @font-face {
     font-family: unbounded;
     src: url(./fonts/unbounded.woff);
@@ -209,7 +209,7 @@ body {
 .menu-container {
     display: flex;
     flex-direction: row;
-    margin-top: 10%;
+    margin-bottom: 1%;
     background-color: #15202B;
     border-radius: 20px;
     align-items: center;
@@ -217,6 +217,7 @@ body {
     overflow: hidden;
     text-align: center;
     width: 100%;
+    background-image: #15202B;
 }
 
 .menu-btn {
@@ -408,4 +409,346 @@ to {
     0% { transform: translate(0, 0px); }
     50% { transform: translate(0, 5px); }
     100% { transform: translate(0, -0px); }    
+}
+
+.containerFrens {
+    display: none;
+    flex-direction: column;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    /* background: linear-gradient(to right, #202140, #2D2E48); */
+    background-color: #15202B;
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.frensEarned {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    text-align: center;
+    gap: 15px;
+}
+
+.frensEarned span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    font-weight: 600;
+}
+
+.gemseeAmnt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    text-align: center;
+    gap: 6%
+}
+
+.gemseeAmnt span {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    text-align: center;
+}
+
+.gemseeAmnt img {
+    margin:auto;
+    width: 20px;
+}
+
+.btnWrapper {
+    margin-top: 5%;
+}
+
+.inviteBtn {
+    width: 70%;
+    text-align: center;
+    justify-content: center;
+    background-color: #98FFAF;
+    border-radius: 5px;
+    height: 5vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.inviteBtn span {
+    color: #15202B;
+    font-family: 'unbounded';
+    font-size: 19px;
+    font-weight: 700;
+    margin: auto;
+}
+
+.descriptionWrapper {
+    margin-top: 5%;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 85%
+}
+
+.description span {
+    align-items: center;
+    margin: auto;
+    color: white;
+    font-family: 'unbounded';
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.descriptionSWrapper {
+    margin-top: 2%;
+}
+
+.descriptionS {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 75%
+}
+
+.descriptionS span {
+    align-items: center;
+    margin: auto;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.shieldsWrapper {
+    margin-top: 4%;
+    width: 85%;
+    margin: auto;
+}
+
+.shields {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 7%;
+}
+
+.oneshield {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.oneshield img {
+    width: 60%;
+    margin: auto;
+}
+
+.gemseeAmnt2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    text-align: center;
+    align-self: center;
+    gap: 6%
+}
+
+.gemseeAmnt2 span {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    text-align: center;
+}
+
+.gemseeAmnt2 img {
+    margin:auto;
+    width: 12px;
+}
+
+.lineWrapper {
+    margin-top: 8%;
+}
+
+.greenLine {
+    margin: auto;
+    border: thin solid #98FFAF;
+    width: 40%;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.twoTopsWrapper {
+    width: 85%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.twoTops {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.topsBtn {
+    display: flex;
+    width: 40%;
+    height: 5vh;
+    box-shadow: inset #2A4864 0px 0px 40px -9px;
+    border-radius: 5px;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.topsBtn span{
+    margin: auto;
+    font-family: 'unbounded';
+    font-size: 12px;
+    vertical-align: middle;
+    align-self: center;
+    text-align: center;
+}
+
+.topHeaderWrapper {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+}
+.topHeaderWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.topHeader {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #0f161e;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    align-items: center;
+}
+
+.topHeader span {
+    margin: 0;
+}
+
+.topHeaderImage1 {
+    display: flex;
+    width: 20%;
+    height: 35px;
+}
+
+.topHeaderImage1 img {
+    width: 25px;
+    margin:auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.topHeaderImage1 span {
+    margin: auto;
+    font-family: 'unbounded';
+    font-size: 15px;
+    text-align: center;
+}
+
+.textwithimage{
+    display: flex;
+    flex-direction: column;
+    margin-left: 6%;
+}
+
+.frensCount {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.frensCount img {
+    width: 25px;
+}
+
+.frensCount span {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+}
+
+.profilePhoto {
+    display: flex;
+    width: 12%;
+}
+
+.profilePhoto img {
+    width: 100%;
+    margin: auto;
+}
+
+.shieldRightWr {
+    display: flex;
+    width: 15%;
+    margin-left: auto;
+    padding-right: 15px;
+}
+
+.shieldRight {
+    align-items: right;
+    display: flex;
+    width: 100%;
+    margin: auto;
+}
+
+.shieldRight img {
+    width: 100%;
+    margin: auto;
 }

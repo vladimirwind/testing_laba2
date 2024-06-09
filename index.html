@@ -104,7 +104,7 @@
             </div>
         </div>
         <div class="menu-container">
-            <div class="menu-btn">
+            <div class="menu-btn" id="frensBtn">
                 <img src="./images/Frens_Hotbar.png"></img>
                 <p>FRENS</p>
             </div>
@@ -120,8 +120,216 @@
                 <img src="./images/Earn_Hotbar.png"></img>
                 <p>EARN</p>
             </div>
+        </div>
     </div>
 
+    <div class="containerFrens" id="frensContainer">
+        <div class="frensEarned">
+            <span>0 FRENS</span>
+            <div class="gemseeAmnt">
+                <img src="./images/coin.svg"></img>
+                <span>100000000</span>
+            </div>
+        </div>
+        <div class="btnWrapper">
+            <div class="inviteBtn">
+                <span>INVITE FRENS</span>
+            </div>
+        </div>
+        <div class="descriptionWrapper">
+            <div class="description">
+                <span>Invite your frens and get bonuses!</span>
+            </div>
+        </div>
+        <div class="descriptionSWrapper">
+            <div class="descriptionS">
+                <span>You will get 1000 coins for every invited fren!</span>
+                </br>
+            </div>
+            <div class="descriptionS">
+                <span>Every league achivied by your referral will earn you some coins:</span>
+                </br>
+            </div>
+        </div>
+        <div class="shieldsWrapper">
+            <div class="shields">
+                <div class="oneshield">
+                    <img src="./images/Silver_League.png"></img>
+                    <div class="gemseeAmnt2">
+                        <img src="./images/coin.svg"></img>
+                        <span>2500</span>
+                    </div>
+                </div>
+                <div class="oneshield">
+                    <img src="./images/Golden_League.png"></img>
+                    <div class="gemseeAmnt2">
+                        <img src="./images/coin.svg"></img>
+                        <span>15000</span>
+                    </div>
+                </div> 
+                <div class="oneshield">
+                    <img src="./images/Diamond_League.png"></img>
+                    <div class="gemseeAmnt2">
+                        <img src="./images/coin.svg"></img>
+                        <span>50000</span>
+                    </div>
+                </div> 
+                <div class="oneshield">
+                    <img src="./images/Mythic_League.png"></img>
+                    <div class="gemseeAmnt2">
+                        <img src="./images/coin.svg"></img>
+                        <span>100000</span>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div class="lineWrapper">
+            <div class="greenLine"></div>
+        </div>
+        <div class="twoTopsWrapper">
+            <div class="twoTops">
+                <div class="topsBtn" id="topFrensBtn"><span>TOP FRENS</span></div>
+                <div class="topsBtn" id="topRefsBtn"><span>LEADERBOARD</span></div>
+            </div>
+        </div>
+        </br>
+        <div class="topHeaderWrapper" id = "frensTOP">
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <img src="./images/1st.svg"></img>
+                </div>
+                <span id = "topFrensName_1">FRENS</span>
+                <div class="shieldRightWr">
+                    <div class="shieldRight">
+                        <img src="./images/Bronze_League.png" id="FrenLeague_1"></img>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <img src="./images/2nd.svg"></img>
+                </div>
+                <span id = "topFrensName_2">HERE WE GO AGAIN</span>
+                <div class="shieldRightWr">
+                    <div class="shieldRight">
+                        <img src="./images/Bronze_League.png" id="FrenLeague_2"></img>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <img src="./images/3rd.svg"></img>
+                </div>
+                <span id = "topFrensName_3">HERE WE GO AGAIN</span>
+                <div class="shieldRightWr">
+                    <div class="shieldRight">
+                        <img src="./images/Bronze_League.png" id="FrenLeague_3"></img>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <span>4</span>
+                </div>
+                <span id = "topFrensName_4">HERE WE GO AGAIN</span>
+                <div class="shieldRightWr">
+                    <div class="shieldRight">
+                        <img src="./images/Bronze_League.png" id="FrenLeague_4"></img>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <span>5</span>
+                </div>
+                <span id = "topFrensName_5">HERE WE PLACE A TEXT</span>
+                <div class="shieldRightWr">
+                    <div class="shieldRight">
+                        <img src="./images/Bronze_League.png" id="FrenLeague_5"></img>
+                    </div>
+                </div>
+            </div>
+            </br>
+        </div>
+        <div class="topHeaderWrapper" id = "refsTOP">
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <img src="./images/1st.svg"></img>
+                </div>
+                <div class="profilePhoto">
+                    <img src="./images/4el.png"></img>
+                </div>
+                <div class="textwithimage">
+                    <span id="topReffererName_1">Henka BTW</span>
+                    <div class="frensCount">
+                        <img src="./images/Frens_Hotbar.png"></img>
+                        <span id="topReffererNumber_1">3000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <img src="./images/2nd.svg"></img>
+                </div>
+                <div class="profilePhoto">
+                    <img src="./images/4el.png"></img>
+                </div>
+                <div class="textwithimage">
+                    <span id="topReffererName_2">Henka BTWASGGSAGAG</span>
+                    <div class="frensCount">
+                        <img src="./images/Frens_Hotbar.png"></img>
+                        <span id="topReffererNumber_2">300</span>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <img src="./images/3rd.svg"></img>
+                </div>
+                <div class="profilePhoto">
+                    <img src="./images/4el.png"></img>
+                </div>
+                <div class="textwithimage">
+                    <span id="topReffererName_3">Henk</span>
+                    <div class="frensCount">
+                        <img src="./images/Frens_Hotbar.png"></img>
+                        <span id="topReffererNumber_3">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <span>4</span>
+                </div>
+                <div class="profilePhoto">
+                    <img src="./images/4el.png"></img>
+                </div>
+                <div class="textwithimage">
+                    <span id="topReffererName_4">Henka aaaa</span>
+                    <div class="frensCount">
+                        <img src="./images/Frens_Hotbar.png"></img>
+                        <span id="topReffererNumber_4">3000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="topHeader">
+                <div class="topHeaderImage1">
+                    <span>5</span>
+                </div>
+                <div class="profilePhoto">
+                    <img src="./images/4el.png"></img>
+                </div>
+                <div class="textwithimage">
+                    <span id="topReffererName_5">Henka BTW</span>
+                    <div class="frensCount">
+                        <img src="./images/Frens_Hotbar.png"></img>
+                        <span id="topReffererNumber_5">3000</span>
+                    </div>
+                </div>
+            </div>
+            </br>
+        </div>
+    </div>
         <!-- <div class="mt-3 d-flex flex-column rounded-border grey-color py-2 px-3">
             <span class="account-label">Gemsee balance</span>
             <span class="balance">
