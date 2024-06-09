@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
         BackButton.show();
         BackButton.onClick(function() {
             BackButton.hide();
+            frensTOP.style.display = 'flex';
+            refsTOP.style.display = 'none';
             document.getElementById('frensContainer').style.display = 'none';
             document.getElementById('mainContainer').style.display = 'block';
         });
