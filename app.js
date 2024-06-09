@@ -23,12 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
         let topFrensInfo = someData["refs_arr"];
         let topRefsInfo = someData["tops_arr"];
         let BackButton = tg.WebApp.BackButton;
+        
         BackButton.show();
-        BackButton.onclick = function() {
+        BackButton.onClick(function() {
             BackButton.hide();
             document.getElementById('frensContainer').style.display = 'none';
             document.getElementById('mainContainer').style.display = 'flex';
-        }
+        });
+
         for (let ij = 0; ij < topFrensInfo.length; ij++) {
             let docStrName =  `topFrensName_${ij+1}`
             // let docStrNumber =  `topReffererNumber_${ij+1}`
