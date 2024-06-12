@@ -90,8 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
         BackButton.onClick(function() {
             boostPickaxe.style.display = 'none';
             boostBrew.style.display = 'none';
+            boostRobot.style.display = 'none';
             BoostMinePopUp.style.display = 'none';
             BoostBrewPopUp.style.display = 'none';
+            BoostRobotPopUp.style.display = 'none';
 
             document.getElementById('boostsContainer').style.display = 'none';
             document.getElementById('mainContainer').style.display = 'block';
