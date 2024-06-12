@@ -34,6 +34,44 @@
             </div>
         </div>
     </div> -->
+    <div class="popUPwindow" id="popUPBoostMine">
+        <div class="topRightX" id="X_BoosterMine">
+            <img src="./images/xCross.svg"></img>
+        </div>
+        <div class="robotImg">
+            <img src="./images/pickaxe_icon.svg"></img>
+        </div>
+        <div class="headerSpan">
+            <span>Pickaxe Boost</span>
+        </div>
+        <div class="boostText">
+            <span>You will earn coins two times faster</br>for 30 mins</span>
+        </div>
+        <div class="boostBtnsWr">
+            <div class="boostBtns" id="claim_BoosterMine">
+                <span>CLAIM</span>
+            </div>
+        </div>
+    </div>
+    <div class="popUPwindow" id="popUPBoostBrew">
+        <div class="topRightX" id="X_BoosterBrew">
+            <img src="./images/xCross.svg"></img>
+        </div>
+        <div class="robotImg">
+            <img src="./images/pot_icon.svg"></img>
+        </div>
+        <div class="headerSpan">
+            <span>Pickaxe Boost</span>
+        </div>
+        <div class="boostText">
+            <span>You will earn coins two times faster</br>for 30 mins</span>
+        </div>
+        <div class="boostBtnsWr">
+            <div class="boostBtns" id="claim_BoosterBrew">
+                <span>CLAIM</span>
+            </div>
+        </div>
+    </div>
     <div class="container" id="mainContainer">
         <div class="gemsee-container">
             <img src="./images/G-Logo.svg" width="20" height="20"> emsee Balance</img>
@@ -57,7 +95,7 @@
         <div class="me-container">
             <div class="main-item-container">
                 <div class="textandimage">
-                    <img src="./images/essence.svg" width="20" height="20"> Essence</img>
+                    <img src="./images/essence.svg" width="20" height="20"> EssenceX3</img>
                     <div class="floatingarrow">
                         <img src="./images/arrow.svg" width="15" height="15"></img>
                     </div>
@@ -108,7 +146,7 @@
                 <img src="./images/Frens_Hotbar.png"></img>
                 <p>FRENS</p>
             </div>
-            <div class="menu-btn">
+            <div class="menu-btn" id="boostsBtn">
                 <img src="./images/Rocket_Hotbar.png"></img>
                 <p>BOOSTS</p>
             </div>
@@ -122,7 +160,6 @@
             </div>
         </div>
     </div>
-
     <div class="containerFrens" id="frensContainer">
         <div class="frensEarned">
             <span>0 FRENS</span>
@@ -330,66 +367,95 @@
             </br>
         </div>
     </div>
-        <!-- <div class="mt-3 d-flex flex-column rounded-border grey-color py-2 px-3">
-            <span class="account-label">Gemsee balance</span>
-            <span class="balance">
-                <img src="./images/gem.png" width="30" height="30">
-                <p id="blnc">0</p>
-            </span>
+    <div class="containerBoosts" id="boostsContainer">
+        <div class="boostsEarned">
+            <div class="gemseeAmnt_boosts">
+                <img src="./images/coin.svg"></img>
+                <span>1234567</span>
+            </div>
+            <span>Your Balance</span>
         </div>
-
-        <div class="mt-2 d-flex flex-row justify-content-between rounded-border plain-color px-3 py-4" id="popup-essence">
-            <div class="d-flex flex-column">
-                <span class="currency-name">Essence</span>
-                <span class="currency-value"><img src="./images/drop.png" width="22" height="22"></span>
-            </div>
-            <div class="d-flex flex-column align-items-end">
-                <span id="esnc">🧪 0</span>
-                <span id="esncprcnt" style="color:#f5f4f1;">⚗️ 0 | 0%</span>
+        
+        <div class="boostsOutlineWr">
+            <div class="boostsOutline">
+                <span>BOOSTS</span>
+                <div class="boostsItemWr">
+                    <div class="boostsItem" id="boostPickaxe">
+                        <div class="boostsItemLeft">
+                            <img src="./images/pickaxe_icon.svg"></img>
+                        </div>
+                        <div class="boosts2Text">
+                            <span>Turbo Pickaxe</span>
+                            <text>3 / 3</text>
+                        </div>
+                        <div class="boostsItemRight">
+                            <img src="./images/USE_btn.svg"></img>
+                        </div>
+                    </div>
+                    <div class="boostsItem" id="boostBrew">
+                        <div class="boostsItemLeft">
+                            <img src="./images/potion_icon.svg"></img>
+                        </div>
+                        <div class="boosts2Text">
+                            <span>Turbo Brew</span>
+                            <text>3 / 3</text>
+                        </div>
+                        <div class="boostsItemRight">
+                            <img src="./images/USE_btn.svg"></img>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="mt-2 d-flex flex-row justify-content-between rounded-border plain-color px-3 py-4" id="popup-miner">
-            <div class="d-flex flex-column">
-                <span class="currency-name">Mining</span>
-                <span class="currency-value"><img src="./images/pickaxe.png" width="20" height="20"></span>
-            </div>
-            <div class="d-flex flex-column align-items-end">
-                <span id="mnglft">⌛ 0 mins</span>
-                <span style="color:#f5f4f1;">left</span>
+        <div class="boostsOutlineWr">
+            <div class="boostsOutline2">
+                <span>UPGRADES</span>
+                <div class="boostsItemWr">
+                    <div class="boostsItem">
+                        <div class="boostsItemLeft">
+                            <img src="./images/mine_icon.svg"></img>
+                        </div>
+                        <div class="boosts2Text2">
+                            <span>Mine</span>
+                            <div class="textAndCoin">
+                                <img src="./images/coin.svg"></img>
+                                <span>25000</span>
+                            </div>
+                        </div>
+                        <div class="boostsItemRight2">
+                            <img src="./images/GET_BTN.svg"></img>
+                        </div>
+                    </div>
+                    <div class="boostsItem">
+                        <div class="boostsItemLeft">
+                            <img src="./images/pot_icon.svg"></img>
+                        </div>
+                        <div class="boosts2Text2">
+                            <span>Cauldron</span>
+                            <div class="textAndCoin">
+                                <img src="./images/coin.svg"></img>
+                                <span>25000</span>
+                            </div>
+                        </div>
+                        <div class="boostsItemRight2">
+                            <img src="./images/GET_BTN.svg"></img>
+                        </div>
+                    </div>
+                    <div class="boostsItem">
+                        <div class="boostsItemLeft">
+                            <img src="./images/robot_icon.svg"></img>
+                        </div>
+                        <div class="boosts2Text2">
+                            <span>Robot</span>
+                            <text>Free</text>
+                        </div>
+                        <div class="boostsItemRight2">
+                            <img src="./images/GET_BTN.svg"></img>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="mt-2 d-flex flex-row justify-content-between rounded-border plain-color px-3 py-4">
-            <div class="d-flex flex-column">
-                <span class="currency-name">Kingdoms</span>
-                <span class="currency-value"><img src="./images/castle.png" width="20" height="20"></span>
-            </div>
-            <div class="d-flex flex-column align-items-end ">
-                <span>🏰 Coming soon</span>
-                <span style="color:#f5f4f1;">Coming soon</span>
-            </div>
-        </div>
-
-        <div class="mt-2 d-flex flex-row justify-content-between rounded-border plain-color px-3 py-4">
-            <div class = "button-container">
-                <a href="#" class="menu-btn" id="frens-btn">
-                    <i class="fas fa-handshake"></i>Frens
-                </a>
-                <span class="vertical-line"></span>
-                <a href="#" class="menu-btn" id="boosts-btn">
-                    <i class="fas fa-rocket"></i>Boosts
-                </a>
-                <span class="vertical-line"></span>
-                <a href="#" class="menu-btn" style="opacity: 0.5;">
-                    <i class="fas fa-gamepad" style="opacity: 0.5;"></i>Games 
-                </a>
-                <span class="vertical-line"></span>
-                <a href="#" class="menu-btn" id="earn-btn">
-                    <i class="fas fa-gem"></i>Earn
-                </a>
-            </div>
-        </div> -->
     </div>
 </body>
 

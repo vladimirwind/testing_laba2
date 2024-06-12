@@ -96,7 +96,7 @@ body {
     align-self: center;
     align-items: center;
     align-content: center;
-    overflow: hidden;
+    
 }
 
 .three-container {
@@ -142,7 +142,7 @@ body {
 .textandimage {
     display: flex;
     flex-direction: row;
-    gap: 10%;
+    gap: 15%;
     text-align: center;
     justify-content: center;
     align-self: center;
@@ -193,6 +193,9 @@ body {
     height: 20vh;
     border-radius: 20px;
     font-size: small;
+    /* outline-style: solid;
+    outline-width: medium;
+    outline-color: #98FFAF; */
 }
 
 .black-box-container img{
@@ -751,4 +754,327 @@ to {
 .shieldRight img {
     width: 100%;
     margin: auto;
+}
+
+.containerBoosts {
+    display: none;
+    flex-direction: column;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    /* background: linear-gradient(to right, #202140, #2D2E48); */
+    background-color: #15202B;
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.containerBoosts::-webkit-scrollbar {
+    display: none;
+}
+
+.boostsEarned {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    text-align: center;
+    gap: 15px;
+}
+
+.boostsEarned span {
+    color: #98FFAF;
+    font-family: 'unbounded';
+    font-size: 18px;
+}
+
+.gemseeAmnt_boosts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    text-align: center;
+    gap: 6%
+}
+
+.gemseeAmnt_boosts span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    text-align: center;
+}
+
+.gemseeAmnt_boosts img {
+    margin:auto;
+    width: 40px;
+}
+
+.boostsOutlineWr {
+    margin-top: 10%;
+    display: flex;
+}
+
+.boostsOutline {
+    display: flex;
+    flex-direction: column;
+    outline-style: solid;
+    outline-width: thin;
+    width: 85%;
+    outline-color: #98FFAF;
+    height: 28vh;
+    border-radius: 18px;
+    margin: auto;
+    align-items: center;
+}
+
+.boostsOutline span {
+    color: #98FFAF;
+    font-family: 'unbounded';
+    font-size: 18px;
+    margin-top: 5%;
+}
+
+.boostsItemWr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3vh;    
+    width: 94%;
+    gap: 2vh;
+}
+
+.boostsItem {
+    width: 100%;
+    height: 7vh;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background-color: #0f161e;
+    justify-content: start;
+}
+
+.boostsItemLeft {
+    width: 15%;
+    margin-left: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.boostsItemLeft img {
+    width: 90%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.boosts2Text {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 5%;
+    overflow: hidden;
+}
+
+.boosts2Text span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+.boosts2Text text {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+.boostsItemRight {
+    width: 18%;
+    margin-left: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.boostsItemRight img {
+    width: 100%;
+}
+
+.boostsOutline2 {
+    display: flex;
+    flex-direction: column;
+    outline-style: solid;
+    outline-width: thin;
+    width: 85%;
+    outline-color: #98FFAF;
+    height: 36vh;
+    border-radius: 10px;
+    margin: auto;
+    align-items: center;
+    color:white;    
+}
+
+.boostsOutline2 span {
+    color: #98FFAF;
+    font-family: 'unbounded';
+    font-size: 18px;
+    margin-top: 5%;
+}
+
+.boostsItemRight2 {
+    width: 24%;
+    margin-left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.boostsItemRight2 img {
+    width: 100%;
+}
+
+.boosts2Text2 span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+.boosts2Text2 text {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+
+.boosts2Text2 {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 5%;
+    overflow: hidden;
+}
+
+.textAndCoin {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: left; /* Added to center the child elements vertically */
+    justify-content: start;
+    width: 2vh;
+    gap: 8px;
+}
+
+.textAndCoin span {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    margin:auto;
+}
+
+.textAndCoin img {
+    width: 100%;
+}
+
+.popUPwindow {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 70vh;
+    padding: 0 0;
+    margin-top: 40vh;
+    background-color: #0f161e;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    z-index: 100;
+}
+
+.robotImg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.robotImg img {
+    width: 20%;
+    margin: auto;
+    align-self: center;
+}
+
+
+.topRightX {
+    display: flex;
+    margin-left: 82%;
+    width: 100%;
+    align-items: center;
+
+}
+
+.topRightX img {
+    width: 7%;
+    margin-top: 8%;
+}
+
+.headerSpan {
+    margin-top: 3%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.headerSpan span {
+    font-family: 'unbounded';
+    font-size: 18px;
+    color: white;
+}
+
+.boostText {
+    margin-top: 3%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.boostText span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    color: white;
+}
+
+.boostBtnsWr {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    margin-top: 15%;
+}
+
+.boostBtns {
+    display: flex;
+    margin:auto;
+    width: 30%;
+    height: 6vh;
+    border-radius: 5px;
+    background-color: #98FFAF;
+    text-align: center;
+}
+
+.boostBtns span {
+    font-family: 'unbounded';
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f161e;
+    margin:auto;
 }

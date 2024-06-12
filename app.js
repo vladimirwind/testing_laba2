@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
             BackButton.hide();
             frensTOP.style.display = 'flex';
             refsTOP.style.display = 'none';
+            refsMenu.style.boxShadow = "none";
+            frensMenu.style.boxShadow = "inset #2A4864 0px 0px 40px -9px";
             document.getElementById('frensContainer').style.display = 'none';
             document.getElementById('mainContainer').style.display = 'block';
         });
@@ -67,6 +69,111 @@ document.addEventListener('DOMContentLoaded', function() {
             frensMenu.style.boxShadow = "inset #2A4864 0px 0px 40px -9px";
         }
     };
+
+    document.getElementById('boostsBtn').onclick = function() {
+        let BoostMinePopUp = document.getElementById('popUPBoostMine');
+        let BoostBrewPopUp = document.getElementById('popUPBoostBrew');
+
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('boostsContainer').style.display = 'flex';
+
+        let boostPickaxe = document.getElementById('boostPickaxe');
+        let boostBrew = document.getElementById('boostBrew');
+        
+        function Show_Boost_Pickaxe() {
+            boostBrew.removeEventListener("click", Show_Boost_Brew);
+
+            let claimBtn = document.getElementById('claim_BoosterMine')
+            let XClose = document.getElementById('X_BoosterMine');
+            XClose.onclick = function() { 
+                boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
+                BoostMinePopUp.style.display = 'none';
+
+                boostBrew.addEventListener("click", Show_Boost_Brew);
+            };
+            boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
+            BoostMinePopUp.style.display = 'flex';
+            // var date = new Date();
+            // date.setMinutes(date.getMinutes()+20);
+            // localStorage.setItem('expireMine', date)
+            // localStorage.setItem('expireMine', new Date().setMinutes(new Date().getMinutes()+5));
+            let currentDate = Date.parse(new Date());
+            let lastDate = parseInt(localStorage.getItem('expireMine'));
+            
+            if ((currentDate > lastDate) && (lastDate != undefined && lastDate != null && !isNaN(lastDate)))
+            {
+                claimBtn.style.opacity = '1';
+                claimBtn.onclick = function() {
+                    BoostMinePopUp.style.display = 'none';
+                    document.getElementById('mainContainer').style.display = 'block';
+                    document.getElementById('boostsContainer').style.display = 'none';
+                    let expirationTime = new Date().getTime() + (1 * 60 * 1000);
+                    localStorage.setItem('expireMine', expirationTime);
+                    claimBtn.style.opacity = '0.5';
+                };
+            } else if (lastDate === undefined || lastDate === null || isNaN(lastDate)) {
+                claimBtn.onclick = function() {
+                    BoostMinePopUp.style.display = 'none';
+                    document.getElementById('mainContainer').style.display = 'block';
+                    document.getElementById('boostsContainer').style.display = 'none';
+                    let expirationTime = new Date().getTime() + (1 * 60 * 1000);
+                    localStorage.setItem('expireMine', expirationTime);
+                    claimBtn.style.opacity = '0.5';
+                }; 
+            } else if ((currentDate < lastDate) && (lastDate != undefined && lastDate != null && !isNaN(lastDate))) {
+                claimBtn.style.opacity = '0.5';
+                claimBtn.onclick = function() {
+                }; 
+            }
+        };
+
+        function Show_Boost_Brew() {
+            boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
+
+            let claimBtn = document.getElementById('claim_BoosterBrew')
+            let XClose = document.getElementById('X_BoosterBrew');
+            XClose.onclick = function() { 
+                boostBrew.addEventListener("click", Show_Boost_Brew);
+                BoostBrewPopUp.style.display = 'none';
+
+                boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
+            };
+            boostBrew.removeEventListener("click", Show_Boost_Brew);
+            BoostBrewPopUp.style.display = 'flex';
+
+            let currentDate = Date.parse(new Date());
+            let lastDate = parseInt(localStorage.getItem('expireBrew'));
+            
+            if ((currentDate > lastDate) && (lastDate != undefined && lastDate != null && !isNaN(lastDate)))
+            {
+                claimBtn.style.opacity = '1';
+                claimBtn.onclick = function() {
+                    BoostBrewPopUp.style.display = 'none';
+                    document.getElementById('mainContainer').style.display = 'block';
+                    document.getElementById('boostsContainer').style.display = 'none';
+                    let expirationTime = new Date().getTime() + (1 * 60 * 1000);
+                    localStorage.setItem('expireBrew', expirationTime);
+                    claimBtn.style.opacity = '0.5';
+                };
+            } else if (lastDate === undefined || lastDate === null || isNaN(lastDate)) {
+                claimBtn.onclick = function() {
+                    BoostBrewPopUp.style.display = 'none';
+                    document.getElementById('mainContainer').style.display = 'block';
+                    document.getElementById('boostsContainer').style.display = 'none';
+                    let expirationTime = new Date().getTime() + (1 * 60 * 1000);
+                    localStorage.setItem('expireBrew', expirationTime);
+                    claimBtn.style.opacity = '0.5';
+                }; 
+            } else if ((currentDate < lastDate) && (lastDate != undefined && lastDate != null && !isNaN(lastDate))) {
+                claimBtn.style.opacity = '0.5';
+                claimBtn.onclick = function() {
+                }; 
+            }
+        };
+
+        boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
+        boostBrew.addEventListener("click", Show_Boost_Brew);
+    }
 
     sessionStorage.setItem('leaguePage', 1)
     const leagueTrigger = document.getElementById('leagueBtn');
