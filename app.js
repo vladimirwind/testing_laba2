@@ -88,9 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         BackButton.show();
         BackButton.onClick(function() {
-            boostPickaxe.style.display = 'none';
-            boostBrew.style.display = 'none';
-            boostRobot.style.display = 'none';
             BoostMinePopUp.style.display = 'none';
             BoostBrewPopUp.style.display = 'none';
             BoostRobotPopUp.style.display = 'none';
