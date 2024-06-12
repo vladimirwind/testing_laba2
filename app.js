@@ -73,15 +73,33 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('boostsBtn').onclick = function() {
         let BoostMinePopUp = document.getElementById('popUPBoostMine');
         let BoostBrewPopUp = document.getElementById('popUPBoostBrew');
+        let BoostRobotPopUp = document.getElementById('popUPBoostRobot');
+
 
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('boostsContainer').style.display = 'flex';
 
         let boostPickaxe = document.getElementById('boostPickaxe');
         let boostBrew = document.getElementById('boostBrew');
+        let boostRobot = document.getElementById('boostRobot');
+
+
+        let BackButton = tg.WebApp.BackButton;
+
+        BackButton.show();
+        BackButton.onClick(function() {
+            boostPickaxe.style.display = 'none';
+            boostBrew.style.display = 'none';
+            BoostMinePopUp.style.display = 'none';
+            BoostBrewPopUp.style.display = 'none';
+
+            document.getElementById('boostsContainer').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+        });
         
         function Show_Boost_Pickaxe() {
             boostBrew.removeEventListener("click", Show_Boost_Brew);
+            boostRobot.removeEventListener("click", Show_Boost_Robot);
 
             let claimBtn = document.getElementById('claim_BoosterMine')
             let XClose = document.getElementById('X_BoosterMine');
@@ -90,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 BoostMinePopUp.style.display = 'none';
 
                 boostBrew.addEventListener("click", Show_Boost_Brew);
+                boostRobot.addEventListener("click", Show_Boost_Robot);
             };
             boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
             BoostMinePopUp.style.display = 'flex';
@@ -129,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function Show_Boost_Brew() {
             boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
+            boostRobot.removeEventListener("click", Show_Boost_Robot);
 
             let claimBtn = document.getElementById('claim_BoosterBrew')
             let XClose = document.getElementById('X_BoosterBrew');
@@ -137,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 BoostBrewPopUp.style.display = 'none';
 
                 boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
+                boostRobot.addEventListener("click", Show_Boost_Robot);
             };
             boostBrew.removeEventListener("click", Show_Boost_Brew);
             BoostBrewPopUp.style.display = 'flex';
@@ -171,8 +192,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
+        function Show_Boost_Robot() {
+            boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
+            boostBrew.removeEventListener("click", Show_Boost_Brew);
+
+            let claimBtn = document.getElementById('claim_BoosterRobot')
+            let XClose = document.getElementById('X_BoosterRobot');
+            XClose.onclick = function() { 
+                boostRobot.addEventListener("click", Show_Boost_Robot);
+                BoostRobotPopUp.style.display = 'none';
+
+                boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
+                boostBrew.addEventListener("click", Show_Boost_Brew);
+            };
+            boostRobot.removeEventListener("click", Show_Boost_Brew);
+            BoostRobotPopUp.style.display = 'flex';
+
+        };
+
         boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
         boostBrew.addEventListener("click", Show_Boost_Brew);
+        boostRobot.addEventListener("click", Show_Boost_Robot);
     }
 
     sessionStorage.setItem('leaguePage', 1)
