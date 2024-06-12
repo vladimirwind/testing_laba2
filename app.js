@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             document.getElementById('boostsContainer').style.display = 'none';
             document.getElementById('mainContainer').style.display = 'block';
+            BackButton.hide();
         });
         
         function Show_Boost_Pickaxe() {
@@ -195,7 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
             boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
             boostBrew.removeEventListener("click", Show_Boost_Brew);
 
-            let claimBtn = document.getElementById('claim_BoosterRobot')
+            let claimBtn = document.getElementById('claim_BoosterRobot');
+            let newsBtn = document.getElementById('news_btn');
             let XClose = document.getElementById('X_BoosterRobot');
             XClose.onclick = function() { 
                 boostRobot.addEventListener("click", Show_Boost_Robot);
@@ -206,7 +208,9 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             boostRobot.removeEventListener("click", Show_Boost_Brew);
             BoostRobotPopUp.style.display = 'flex';
-
+            newsBtn.onclick = function() {
+                window.location.href = 'https://t.me/gemseee'
+            }
         };
 
         boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
