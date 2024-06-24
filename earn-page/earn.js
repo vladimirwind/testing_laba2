@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     var frensPopUP1 = document.getElementById('frens1Container');
+    var frensPopUP2 = document.getElementById('frens2Container');
+
     var mainContainer = document.getElementById('mainContainer');
     sessionStorage.setItem('earnInfo', `{"task_1": true, "task_2": false, "task_3": false, "task_21": false}`);
     frensPopUP1.style.display = 'none';
@@ -21,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var frensTasks = document.getElementById('frensTasks');
     frensTasks.style.display = 'none';
     var frens1 = document.getElementById('frens1');
+    var frens2 = document.getElementById('frens2');
+
 
     const rotate = (image, degrees) => {
         image.style.transform = `rotate(${+degrees}deg)`;
@@ -103,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
     async function setFrensPage(result) {
         let obj = JSON.parse(result)
         let flag21 = obj["task_21"];
+        let flag22 = obj["task_22"];
+
         if (flag21 !== undefined && flag21 !== null && flag21) {
             frens1.style.opacity = '0.5';
             frens1.removeEventListener("click", funcFrens1);
@@ -113,6 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
             img.style.height = '5vh';
             img.style.marginRight = "5vh";
             frens1.replaceChild(img, oldImg);
+        }
+
+        if (flag22 !== undefined && flag22 !== null && flag22) {
+            frens2.style.opacity = '0.5';
+            frens2.removeEventListener("click", funcFrens2);
+            let oldImg = document.getElementById('earn22');
+            oldImg.src = "../images/V_Mark.svg";
         }
     }
     
@@ -141,8 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
     async function funcXCross() {
         xCross.removeEventListener("click", funcXCross);
         frensPopUP1.style.display = 'none';
+        frensPopUP2.style.display = 'none';
         mainContainer.style.display = 'block';
-
     };
 
     async function funcFrens1() {
@@ -213,6 +226,32 @@ document.addEventListener('DOMContentLoaded', function() {
         link1.addEventListener("click", Link1)
         link2.addEventListener("click", Link2)
         link3.addEventListener("click", Link3)
+    }
+
+    async function funcFrens2() {
+        mainContainer.style.display = 'none';
+        frensPopUP2.style.display = 'flex';
+        let xCross22 = document.getElementById('xCross22');
+        xCross22.addEventListener("click", funcXCross)
+        let link1 = document.getElementById('taskLink22_1');
+
+        async function Link22_1() {
+            setTimeout(() => {
+                fetchCore('22').then(myRes => {
+                    if (myRes != undefined && myRes.code === 200) {
+                        link1.style.opacity = '0.5';
+                        let obj1 = JSON.parse(earnData);
+                        obj1["task_22"] = true;
+                        const myJSON1 = JSON.stringify(obj1);
+                        sessionStorage.setItem('earnInfo', myJSON1)
+                    } else {
+                        window.location.href = 'https://t.me/Web3profits';
+                    }
+                }
+                );
+            }, 300);
+        }
+        link1.addEventListener("click", Link22_1)
     }
 
     async function funcCore1() {
@@ -442,6 +481,8 @@ document.addEventListener('DOMContentLoaded', function() {
     core3.addEventListener("click", funcCore3);
 
     frens1.addEventListener("click", funcFrens1);
+    frens2.addEventListener("click", funcFrens2);
+
     var xCross = document.getElementById('xCross');
     setCorePage(earnData)
     setFrensPage(earnData)

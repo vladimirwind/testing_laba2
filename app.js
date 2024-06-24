@@ -10,12 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('frensInfo', `{"num_of_refs": 3, "total": 6000, "refs_arr": [{"full_name": "Muhhamad R","league": "br"},{"full_name": "Muhhamad B","league": "sr"},{"full_name": "Muhhamad Z","league": "gd"}], "tops_arr": [{"full_name": "iducky","num": 1232131},{"full_name": "liot","num": 1220},{"full_name": "liot2","num": 120},{"full_name": "liot3","num": 10},{"full_name": "liot4","num": 0}]}`);
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('frensContainer').style.display = 'flex';
+        
         let refsTOP = document.getElementById('refsTOP');
         let frensTOP = document.getElementById('frensTOP');
 
         refsTOP.style.display = 'none';
         let refsMenu = document.getElementById('topRefsBtn');
         let frensMenu = document.getElementById('topFrensBtn');
+        let invtMe = document.getElementById('inviteMe');
+        invtMe.onclick = function() {
+            document.getElementById('mainContainer').style.display = 'block';
+            document.getElementById('frensContainer').style.display = 'none';
+        };
         refsMenu.style.boxShadow = 'none';
 
         let someData = JSON.parse(sessionStorage.getItem('frensInfo'));
@@ -199,14 +205,13 @@ document.addEventListener('DOMContentLoaded', function() {
             let claimBtn = document.getElementById('claim_BoosterRobot');
             let newsBtn = document.getElementById('news_btn');
             let XClose = document.getElementById('X_BoosterRobot');
-            XClose.onclick = function() { 
-                boostRobot.addEventListener("click", Show_Boost_Robot);
+            XClose.onclick = function() {
                 BoostRobotPopUp.style.display = 'none';
+                boostRobot.addEventListener("click", Show_Boost_Robot);
 
                 boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
                 boostBrew.addEventListener("click", Show_Boost_Brew);
             };
-            boostRobot.removeEventListener("click", Show_Boost_Brew);
             BoostRobotPopUp.style.display = 'flex';
             newsBtn.onclick = function() {
                 window.location.href = 'https://t.me/gemseee'
@@ -218,6 +223,14 @@ document.addEventListener('DOMContentLoaded', function() {
         boostRobot.addEventListener("click", Show_Boost_Robot);
     }
 
+    const essenceTrigger = document.getElementById('popup-essence');
+    
+    essenceTrigger.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('essenceContainer').style.display = 'flex';
+        
+    };
+
     sessionStorage.setItem('leaguePage', 1)
     const leagueTrigger = document.getElementById('leagueBtn');
     leagueTrigger.addEventListener('click', function() {
@@ -228,9 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const earnTrigger = document.getElementById('earner');
     earnTrigger.addEventListener('click', function() {
-            
-        window.location.href = './earn-page/earn.' + 'html';
-            
+        window.location.href = './earn-page/earn.' + 'html';   
     });
    
 });

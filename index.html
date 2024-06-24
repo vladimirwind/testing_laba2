@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
     <script src="app.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
 </head>
 
 <body>
@@ -34,6 +38,52 @@
             </div>
         </div>
     </div> -->
+    <div class="containerEssence" id="essenceContainer">
+        <div class="infoBannerWr">
+            
+            <div class="infoBanner">
+                <div class="infoBannerItemWr">
+                    <div class="infoBannerItem">
+                        <img src="./images/coin.svg"></img>
+                        <span>Level: 1</span>
+                    </div>
+                </div>
+                
+                <div class="infoBannerItemWr">
+                    <div class="infoBannerItem">
+                        <img src="./images/coin.svg"></img>
+                        <span>1 per minute</span>
+                    </div>
+                </div>
+
+                <div class="infoBannerItemWr">
+                    <div class="infoBannerItem">
+                        <img src="./images/coin.svg"></img>
+                        <span>Time left: 50 mins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="islandItemWr">
+            <div class="islandItem">
+                <img src="./images/forestPot.png"></img>
+            </div>
+        </div>
+        <div class="islandDescWr">
+            <div class="islandDesc">
+                <img src="./images/essence.svg"></img>
+                <span>0 / 120</span>
+            </div>
+        </div>
+        <div class="progress-barIsland">
+            <span class="progress-barIsland-fill" style="width: 55%;"></span>
+        </div>
+        <div class="islandBtnWr">
+            <div class="islandBtn">
+                <span>START</span>
+            </div>
+        </div>
+    </div>
     <div class="popUPwindow" id="popUPBoostMine">
         <div class="topRightX" id="X_BoosterMine">
             <img src="./images/xCross.svg"></img>
@@ -76,9 +126,10 @@
         <div class="topRightX" id="X_BoosterRobot">
             <img src="./images/xCross.svg"></img>
         </div>
-        <div class="robotImg2">
-            <img src="./images/RobatSflask.png"></img>
+        <div class="robotImg">
+            <img src="./images/pot_icon.svg" alt="abc"></img>
         </div>
+        
         <div class="headerSpan">
             <span>Robot</span>
         </div>
@@ -123,7 +174,7 @@
                     </div>
                 </div>
              
-                <div class="black-box-container">
+                <div class="black-box-container" id = "popup-essence">
                         <text>100% ⏱️ 24 min. left</text>
                         <img src="./images/cauldron.svg" width="100" height="100"></img>
                 </div>
@@ -191,7 +242,7 @@
             </div>
         </div>
         <div class="btnWrapper">
-            <div class="inviteBtn">
+            <div class="inviteBtn" id ='inviteMe'>
                 <span>INVITE FRENS</span>
             </div>
         </div>
