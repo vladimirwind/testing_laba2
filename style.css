@@ -1170,7 +1170,8 @@ to {
     align-items: center;
     text-align: center;
     align-self: center;
-    overflow: hidden;   
+    overflow: hidden;
+    padding-bottom: 14px;
 }
 
 .islandItem {
