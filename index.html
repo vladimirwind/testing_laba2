@@ -45,21 +45,21 @@
                 <div class="infoBannerItemWr">
                     <div class="infoBannerItem">
                         <img src="./images/lvlup-2.svg"></img>
-                        <span>Level: 1</span>
+                        <span id="essenceLVL">Level: 1</span>
                     </div>
                 </div>
                 
                 <div class="infoBannerItemWr">
                     <div class="infoBannerItem">
                         <img src="./images/coin.svg"></img>
-                        <span>1 per minute</span>
+                        <span id="essence1Min">1 per minute</span>
                     </div>
                 </div>
 
                 <div class="infoBannerItemWr">
                     <div class="infoBannerItem">
                         <img src="./images/timeleft.svg"></img>
-                        <span>Time left: 50 mins</span>
+                        <span id="essenceTimeLeft">Time left: 50 mins</span>
                     </div>
                 </div>
             </div>
@@ -72,15 +72,15 @@
         <div class="islandDescWr">
             <div class="islandDesc">
                 <img src="./images/essence.svg"></img>
-                <span>0 / 120</span>
+                <span id="essenceToFull">0 / 120</span>
             </div>
         </div>
         <div class="progress-barIsland">
-            <span class="progress-barIsland-fill" style="width: 55%;"></span>
+            <span class="progress-barIsland-fill" style="width: 55%;" id="essenceProgress"></span>
         </div>
-        <div class="islandBtnWr">
+        <div class="islandBtnWr" id="startEssence">
             <div class="islandBtn">
-                <span>START</span>
+                <span>COLLECT</span>
             </div>
         </div>
     </div>
@@ -91,21 +91,21 @@
                 <div class="infoBannerItemWr">
                     <div class="infoBannerItem">
                         <img src="./images/lvlup-2.svg"></img>
-                        <span>Level: 1</span>
+                        <span id="mineLVL">Level: 1</span>
                     </div>
                 </div>
                 
                 <div class="infoBannerItemWr">
                     <div class="infoBannerItem">
                         <img src="./images/coin.svg"></img>
-                        <span>1 per minute</span>
+                        <span id="mine1Min">1 per minute</span>
                     </div>
                 </div>
 
                 <div class="infoBannerItemWr">
                     <div class="infoBannerItem">
                         <img src="./images/timeleft.svg"></img>
-                        <span>Time left: 50 mins</span>
+                        <span id="mineTimeLeft">Time left: 50 mins</span>
                     </div>
                 </div>
             </div>
@@ -115,10 +115,13 @@
                 <img src="./images/forestMine.png"></img>
             </div>
         </div>
-        <div class="progress-barIsland">
-            <span class="progress-barIsland-fill" style="width: 55%;"></span>
+        <div class="islandDescWr">
+            <div class="islandDesc">
+                <img src="./images/essence.svg"></img>
+                <span id="essenceToStart">240 to start</span>
+            </div>
         </div>
-        <div class="islandBtnWr">
+        <div class="islandBtnWr" id="startMine">
             <div class="islandBtn">
                 <span>START</span>
             </div>

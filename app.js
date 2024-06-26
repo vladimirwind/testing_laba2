@@ -224,32 +224,161 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const essenceTrigger = document.getElementById('popup-essence');
-    const essenceMine = document.getElementById('popup-mine');
-    
-    essenceTrigger.onclick = function() {
-        let BackButton = tg.WebApp.BackButton;
-        BackButton.show();
-        BackButton.onClick(function() {
-            BackButton.hide();
-            document.getElementById('essenceContainer').style.display = 'none';
-            document.getElementById('mainContainer').style.display = 'block';
-        });
+    const mineTrigger = document.getElementById('popup-mine');
 
-        document.getElementById('mainContainer').style.display = 'none';
-        document.getElementById('essenceContainer').style.display = 'flex';
+    async function getEssence() {
+        try {
+            let res3 = await fetch('https://jsonplaceholder.typicode.com/posts'  /*baza + `/essence/level`*/, {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            // 'Authorization': tknBearer
+            },
+        });
+        if (!res3.ok) {
+            throw new Error(`Error! status: ${res3.status}`);
+        }
+        let myEssenceRes = await res3.json();
+        return myEssenceRes;
+        } catch (err) {
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
+        };
     };
 
-    essenceMine.onclick = function() {
-        let BackButton = tg.WebApp.BackButton;
-        BackButton.show();
-        BackButton.onClick(function() {
-            BackButton.hide();
-            document.getElementById('mineContainer').style.display = 'none';
-            document.getElementById('mainContainer').style.display = 'block';
+    async function getMiner() {
+        try {
+            let res3 = await fetch('https://jsonplaceholder.typicode.com/posts'  /*baza + `/essence/level`*/, {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            // 'Authorization': tknBearer
+            },
         });
+        if (!res3.ok) {
+            throw new Error(`Error! status: ${res3.status}`);
+        }
+        let myEssenceRes = await res3.json();
+        return myEssenceRes;
+        } catch (err) {
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
+        };
+    };
 
-        document.getElementById('mainContainer').style.display = 'none';
-        document.getElementById('mineContainer').style.display = 'flex';
+    
+    essenceTrigger.onclick = function() {
+        getEssence().then(myEssenceRes => {
+            if (true) {
+                let esncData = myEssenceRes.data;
+
+                esncData = JSON.parse(`{"level":2, "currentEssence":239, "maxEssence":240, "boost":true}`)
+
+                let BackButton = tg.WebApp.BackButton;
+                BackButton.show();
+                BackButton.onClick(function() {
+                    BackButton.hide();
+                    document.getElementById('essenceContainer').style.display = 'none';
+                    document.getElementById('mainContainer').style.display = 'block';
+                });
+
+                document.getElementById('mainContainer').style.display = 'none';
+                document.getElementById('essenceContainer').style.display = 'flex';
+
+                let startBtn = document.getElementById('startEssence');
+
+                if (esncData["currentEssence"] >= esncData["maxEssence"]) {
+                    startBtn.onclick = function() {
+                        BackButton.hide();
+                        document.getElementById('essenceContainer').style.display = 'none';
+                        document.getElementById('mainContainer').style.display = 'block';
+                    }
+    
+                } else {
+                    startBtn.onclick = function(){};
+                    startBtn.style.opacity = '0.5';
+                }
+               
+                function SetUp() {
+                    document.getElementById('essenceLVL').textContent = `Level: ${esncData["level"]}`;
+                    if (esncData["boost"] === true) {
+                        document.getElementById('essence1Min').textContent = `${esncData["level"] * 2} per minute (x2)`;
+                    } else {
+                        document.getElementById('essence1Min').textContent = `${esncData["level"]} per minute`;
+                    }
+                    
+                    document.getElementById('essenceTimeLeft').textContent = `Time left: ${esncData["maxEssence"] - esncData["currentEssence"]}`;
+
+                    document.getElementById('essenceToFull').textContent = `${esncData["currentEssence"]} / ${esncData["maxEssence"]}`;
+
+                    let devider = esncData["currentEssence"]/esncData["maxEssence"];
+                    let num = Math.floor(devider * 100);
+                    if (num >= 100) {
+                        num = 100
+                    } else if (num <= 0) {
+                        num = 0
+                    }
+
+                    document.getElementById('essenceProgress').style.width = `${num}%`;
+                    
+                }
+
+                SetUp()
+            };
+        });
+    };
+
+    mineTrigger.onclick = function() {
+        getMiner().then(myMinerRes => {
+            if (true) {
+                let minerData = myMinerRes.data;
+                minerData = JSON.parse(`{"level":1, "boost":false, "time_left": 0, "need_essence": 240, "total_essence": 240}`)
+
+                let BackButton = tg.WebApp.BackButton;
+                BackButton.show();
+                BackButton.onClick(function() {
+                    BackButton.hide();
+                    document.getElementById('mineContainer').style.display = 'none';
+                    document.getElementById('mainContainer').style.display = 'block';
+                });
+
+                document.getElementById('mainContainer').style.display = 'none';
+                document.getElementById('mineContainer').style.display = 'flex';
+
+                let startBtn = document.getElementById('startMine');
+
+                if ((minerData["total_essence"] >= minerData["need_essence"]) && (minerData["time_left"] <= 0)) {
+                    startBtn.onclick = function() {
+                        BackButton.hide();
+                        document.getElementById('mineContainer').style.display = 'none';
+                        document.getElementById('mainContainer').style.display = 'block';
+                    }
+                } else {
+                    startBtn.onclick = function(){};
+                    startBtn.style.opacity = '0.5';
+                }
+
+                function SetUp() {
+                    document.getElementById('mineLVL').textContent = `Level: ${minerData["level"]}`;
+
+                    if (minerData["boost"] === true) {
+                        document.getElementById('mine1Min').textContent = `${minerData["level"] * 2} per minute (x2)`;
+                    } else {
+                        document.getElementById('mine1Min').textContent = `${minerData["level"]} per minute`;
+                    }
+
+                    document.getElementById('mineTimeLeft').textContent = `Time left: ${minerData["time_left"]}`;
+
+                    document.getElementById('essenceToStart').textContent = `${minerData["need_essence"]} to start`;
+                }
+
+                SetUp()
+            };
+        });
     };
 
     sessionStorage.setItem('leaguePage', 1)
