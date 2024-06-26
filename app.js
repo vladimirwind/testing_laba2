@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
                 } else {
                     startBtn.onclick = function(){};
-                    startBtn.style.opacity = '0.5';
+                    startBtn.style.opacity = '0.5'; 
                 }
                
                 function SetUp() {
