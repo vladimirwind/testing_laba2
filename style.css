@@ -1246,7 +1246,7 @@ to {
     display: block;
     height: 12px;
     background-color: #98FFAF;
-    background-image: linear-gradient(315deg, #98FFAF 0%, #98FFAF 74%);
+    background-image: #98FFAF;
     border-radius: 20px;
     transition: width 500ms ease-in-out;
 }
