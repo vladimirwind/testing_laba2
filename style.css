@@ -1124,6 +1124,25 @@ to {
     display: none;
 }
 
+.containerMine {
+    display: none;
+    flex-direction: column;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    background-color: #15202B;
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.containerMine::-webkit-scrollbar {
+    display: none;
+}
+
 .infoBannerWr {
     padding: 5%;
     margin-top: 3%;

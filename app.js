@@ -224,11 +224,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const essenceTrigger = document.getElementById('popup-essence');
+    const essenceMine = document.getElementById('popup-mine');
     
     essenceTrigger.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('essenceContainer').style.display = 'flex';
-        
+    };
+
+    essenceMine.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('mineContainer').style.display = 'flex';
     };
 
     sessionStorage.setItem('leaguePage', 1)
