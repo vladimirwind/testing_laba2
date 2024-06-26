@@ -227,11 +227,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const essenceMine = document.getElementById('popup-mine');
     
     essenceTrigger.onclick = function() {
+        let BackButton = tg.WebApp.BackButton;
+        BackButton.show();
+        BackButton.onClick(function() {
+            BackButton.hide();
+            document.getElementById('essenceContainer').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+        });
+
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('essenceContainer').style.display = 'flex';
     };
 
     essenceMine.onclick = function() {
+        let BackButton = tg.WebApp.BackButton;
+        BackButton.show();
+        BackButton.onClick(function() {
+            BackButton.hide();
+            document.getElementById('mineContainer').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+        });
+
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('mineContainer').style.display = 'flex';
     };
