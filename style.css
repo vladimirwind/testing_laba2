@@ -1181,7 +1181,7 @@ to {
     justify-content: center;
     text-align: center;
     align-self: center;
-    filter: drop-shadow(0 0 1rem rgba(197,234,255, 0.3));
+    filter: drop-shadow(0 0 0.7rem rgba(197,234,255, 0.3));
 }
 
 .islandItem img {
@@ -1259,7 +1259,7 @@ to {
 }
 
 .islandBtn {
-    margin-top: 5%;
+    margin-top: 6%;
     display: flex;
     border-radius: 10px;
     background-color: #98FFAF;
