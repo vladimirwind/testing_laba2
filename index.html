@@ -50,8 +50,8 @@
                 </div>
                 
                 <div class="infoBannerItemWr">
-                    <div class="infoBannerItem">
-                        <img src="./images/coin.svg"></img>
+                    <div class="infoBannerItem2">
+                        <img src="./images/essence2.svg"></img>
                         <span id="essence1Min">1 per minute</span>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
         </div>
         <div class="islandItemWr">
             <div class="islandItem">
-                <img src="./images/forestMine.png"></img>
+                <img src="./images/forestMine.png" id="mineIsland"></img>
             </div>
         </div>
         <div class="islandDescWr">
@@ -124,6 +124,70 @@
         <div class="islandBtnWr" id="startMine">
             <div class="islandBtn">
                 <span>START</span>
+            </div>
+        </div>
+    </div>
+    <div class="popUPwindow" id="popUPBuyMine">
+        <div class="topRightX" id="X_BuyMine">
+            <img src="./images/xCross.svg"></img>
+        </div>
+        <div class="robotImg">
+            <img src="./images/mine_icon.svg"></img>
+        </div>
+        <div class="headerSpan">
+            <span>Upgrade Mine</span>
+        </div>
+        <div class="buyItemWr">
+            <div class="buyItem">
+                <img src="./images/coin.svg"></img>
+                <span>1 coin/min</span>
+                <span>•</span>
+                <img src="./images/coin.svg"></img>
+                <span>2 coins/min</span>
+            </div>
+            <div class="buyItem">
+                <img src="./images/timeleft.svg"></img>
+                <span>120 mins</span>
+                <span>•</span>
+                <img src="./images/timeleft.svg"></img>
+                <span>240 mins</span>
+            </div>
+        </div>
+        <div class="boostBtnsWr">
+            <div class="boostBtns" id="claim_BoosterMine">
+                <span>UPGRADE</span>
+            </div>
+        </div>
+    </div>
+    <div class="popUPwindow" id="popUPBuyPot">
+        <div class="topRightX" id="X_BuyPot">
+            <img src="./images/xCross.svg"></img>
+        </div>
+        <div class="robotImg">
+            <img src="./images/pot_icon.svg"></img>
+        </div>
+        <div class="headerSpan">
+            <span>Upgrade Cauldron</span>
+        </div>
+        <div class="buyItemWr">
+            <div class="buyItem">
+                <img src="./images/essence.svg"></img>
+                <span id="essenceAmntBefore">1 essence/min</span>
+                <span>•</span>
+                <img src="./images/essence.svg"></img>
+                <span id="essenceAmntAfter">2 essence/min</span>
+            </div>
+            <div class="buyItem">
+                <img src="./images/timeleft.svg"></img>
+                <span id="essenceMinBefore">120 mins</span>
+                <span>•</span>
+                <img src="./images/timeleft.svg"></img>
+                <span id="essenceMinAfter">240 mins</span>
+            </div>
+        </div>
+        <div class="boostBtnsWr">
+            <div class="boostBtns" id="claim_BoosterMine">
+                <span>UPGRADE</span>
             </div>
         </div>
     </div>
@@ -527,7 +591,7 @@
             <div class="boostsOutline2">
                 <span>UPGRADES</span>
                 <div class="boostsItemWr">
-                    <div class="boostsItem">
+                    <div class="boostsItem" id="buyMine">
                         <div class="boostsItemLeft">
                             <img src="./images/mine_icon.svg"></img>
                         </div>
@@ -542,7 +606,7 @@
                             <img src="./images/GET_BTN.svg"></img>
                         </div>
                     </div>
-                    <div class="boostsItem">
+                    <div class="boostsItem" id="buyPot">
                         <div class="boostsItemLeft">
                             <img src="./images/pot_icon.svg"></img>
                         </div>

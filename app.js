@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let BoostMinePopUp = document.getElementById('popUPBoostMine');
         let BoostBrewPopUp = document.getElementById('popUPBoostBrew');
         let BoostRobotPopUp = document.getElementById('popUPBoostRobot');
-
+        let BuyMinePopUp = document.getElementById('popUPBuyMine');
+        let BuyPotPopUp = document.getElementById('popUPBuyPot');
 
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('boostsContainer').style.display = 'flex';
@@ -88,7 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let boostPickaxe = document.getElementById('boostPickaxe');
         let boostBrew = document.getElementById('boostBrew');
         let boostRobot = document.getElementById('boostRobot');
-
+        let buyMine = document.getElementById('buyMine');
+        let buyPot = document.getElementById('buyPot');
 
         let BackButton = tg.WebApp.BackButton;
 
@@ -218,9 +220,58 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
+        function Show_Buy_Mine() {
+            boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
+            boostBrew.removeEventListener("click", Show_Boost_Brew);
+            boostRobot.removeEventListener("click", Show_Boost_Robot);
+
+            BuyMinePopUp.style.display = 'flex';
+            let XClose = document.getElementById('X_BuyMine');
+            XClose.onclick = function() {
+                BuyMinePopUp.style.display = 'none';
+
+                boostRobot.addEventListener("click", Show_Boost_Robot);
+                boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
+                boostBrew.addEventListener("click", Show_Boost_Brew);
+            };
+        }
+
+        function Show_Buy_Pot() {
+            boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
+            boostBrew.removeEventListener("click", Show_Boost_Brew);
+            boostRobot.removeEventListener("click", Show_Boost_Robot);
+            buyMine.removeEventListener("click", Show_Buy_Mine);
+
+            let someData = JSON.parse('{"cauldron_level":2, "mine_level": 2}');
+
+            BuyPotPopUp.style.display = 'flex';
+
+            let XClose = document.getElementById('X_BuyPot');
+            XClose.onclick = function() {
+                BuyPotPopUp.style.display = 'none';
+
+                boostRobot.addEventListener("click", Show_Boost_Robot);
+                boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
+                boostBrew.addEventListener("click", Show_Boost_Brew);
+                buyMine.addEventListener("click", Show_Buy_Mine);
+            };
+
+            function SetUp() {
+                let cauldron_level = someData['cauldron_level'];
+                document.getElementById('essenceAmntBefore').textContent = `${cauldron_level} essence/min`;
+                document.getElementById('essenceAmntAfter').textContent = `${cauldron_level + 1} essence/min`;
+
+                document.getElementById('essenceMinBefore').textContent = `${120*cauldron_level} mins`;
+                document.getElementById('essenceMinAfter').textContent = `${120*(cauldron_level+1)} mins`;
+            }
+            SetUp();
+        }
+
         boostPickaxe.addEventListener("click", Show_Boost_Pickaxe);
         boostBrew.addEventListener("click", Show_Boost_Brew);
         boostRobot.addEventListener("click", Show_Boost_Robot);
+        buyMine.addEventListener("click", Show_Buy_Mine);
+        buyPot.addEventListener("click", Show_Buy_Pot);
     }
 
     const essenceTrigger = document.getElementById('popup-essence');
@@ -354,8 +405,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if ((minerData["total_essence"] >= minerData["need_essence"]) && (minerData["time_left"] <= 0)) {
                     startBtn.onclick = function() {
                         BackButton.hide();
-                        document.getElementById('mineContainer').style.display = 'none';
-                        document.getElementById('mainContainer').style.display = 'block';
+                        // document.getElementById('mineContainer').style.display = 'none';
+                        // document.getElementById('mainContainer').style.display = 'block';
+                        let islandImg = document.getElementById('mineIsland');
+                        islandImg.src = './images/desertPot.png'
                     }
                 } else {
                     startBtn.onclick = function(){};
