@@ -76,6 +76,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    document.getElementById('gamesBtn').onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('gamesContainer').style.display = 'flex';
+        
+        let gamesOutline = document.getElementById('gamesOutline');
+        let chestGame = document.getElementById('chestGame');
+        let headerText = document.getElementById('gamesHeader');
+        let chestBG = document.getElementById('chestBG');
+        let chestMenu = document.getElementById('chestMenu');
+
+        let goldenChestMenu = document.getElementById('goldenChestMenu');
+        let goldenChestIMG = document.getElementById('goldenChestIMG');
+
+        chestGame.onclick = function() {
+            gamesOutline.style.display = 'none';
+            headerText.textContent = `Lucky Chest`;
+            chestMenu.style.display = 'flex';
+            chestBG.style.display = 'flex';
+        };
+        
+        goldenChestMenu.onclick = function() {
+            goldenChestIMG.src = './images/goldenChestOpened.png';
+        }
+    }
+
     document.getElementById('boostsBtn').onclick = function() {
         let BoostMinePopUp = document.getElementById('popUPBoostMine');
         let BoostBrewPopUp = document.getElementById('popUPBoostBrew');
@@ -276,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const essenceTrigger = document.getElementById('popup-essence');
     const mineTrigger = document.getElementById('popup-mine');
+    
 
     async function getEssence() {
         try {

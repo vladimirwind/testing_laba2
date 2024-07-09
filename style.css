@@ -1347,3 +1347,290 @@ to {
     
     align-self: center;
 }
+
+.containerGames {
+    display: none;
+    flex-direction: column;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    background-color: #15202B;
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.containerGames::-webkit-scrollbar {
+    display: none;
+}
+
+.gamesBannerWr {
+    margin-top: 5%;
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+
+.gamesBanner {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+}
+
+
+.gamesBanner span {
+    color: #98FFAF;
+    font-family: 'unbounded';
+    font-size: 30px;
+    align-self: center;
+}
+
+.gamesOutlineWr {
+    margin-top: 5%;
+    display: flex;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.gamesOutline {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 100%;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    height: 70vh;
+    border-radius: 8px;
+}
+
+.oneGameWr {
+    display: flex;
+    width: 90%;
+    margin-top: 5%;
+    align-self: center;
+}
+
+.oneGame {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: #0f161e;
+    height: auto;
+    border-radius: 8px;
+    justify-content: space-around;
+}
+
+.oneGameLogo {
+    width: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin: auto;
+}
+
+.oneGameLogo img {
+    width: 60%;
+    margin-left: 15%;
+}
+
+.oneGameDesc {
+    width: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    margin: auto;
+}
+
+.oneGameDesc span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 18px;
+}
+
+.oneGameBtn {
+    width: auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    align-self: center;
+}
+
+.oneGameBtn img {
+    width: 60%;
+    margin-left: 25%;
+}
+
+.chestBGWr {
+    display: none;
+    width: 100%;
+    margin-top: 5%;
+    align-self: center;
+}
+
+.chestBG {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-color: #0f161e;
+}
+
+.twoChestBtnsWr {
+    display: none;
+    width: 90%;
+    margin-top: 7%;
+    align-self: center;
+    justify-content: center;
+}
+
+.twoChestBtns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+    align-self: center;
+    gap: 5%;
+}
+
+.twoChest {
+    display: flex;
+    width: 45%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 5px;
+    margin: auto;
+    box-shadow: inset #2A4864 0px 0px 40px -9px; 
+}
+
+.twoChest span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 15px;
+    margin: auto;
+}
+
+.prizePoolWr {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-top: 5%;
+    align-self: center;
+    justify-content: center;
+}
+
+.prizePool {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    margin: auto;
+    height: auto;
+    border-radius: 8px;
+}
+
+.prizePool span {
+    color: #98FFAF;
+    font-family: 'unbounded';
+    font-size: 22px;
+    align-self: center;
+    margin-top: 3%;
+}
+
+.prizeRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.prizePoolItem {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    margin: auto;
+    gap: 10%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    justify-content: center;
+    align-items: center;
+}
+
+.prizePoolItem span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    align-self: center;
+    vertical-align: middle;
+    padding-bottom: 5%;
+}
+
+.prizePoolItem img {
+    width: 22%
+}
+
+.prizePoolItem2 {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    margin: auto;
+    gap: 10%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    justify-content: center;
+    align-items: center;
+}
+
+.prizePoolItem2 span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    align-self: center;
+    vertical-align: middle;
+    padding-bottom: 5%;
+}
+
+.prizePoolItem2 img {
+    width: 18%
+}
+
+.mainChestWr {
+    display: flex;
+    margin: auto;
+    width: 70%;
+    height: auto;
+}
+
+.mainChest {
+    display: flex;
+    margin-top: 30%;
+}
+
+.mainChest img {
+    width: 70%;
+    margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
