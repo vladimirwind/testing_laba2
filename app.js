@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('frensInfo', `{"num_of_refs": 3, "total": 6000, "refs_arr": [{"full_name": "Muhhamad R","league": "br"},{"full_name": "Muhhamad B","league": "sr"},{"full_name": "Muhhamad Z","league": "gd"}], "tops_arr": [{"full_name": "iducky","num": 1232131},{"full_name": "liot","num": 1220},{"full_name": "liot2","num": 120},{"full_name": "liot3","num": 10},{"full_name": "liot4","num": 0}]}`);
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('frensContainer').style.display = 'flex';
-        
         let refsTOP = document.getElementById('refsTOP');
         let frensTOP = document.getElementById('frensTOP');
 
@@ -95,9 +94,14 @@ document.addEventListener('DOMContentLoaded', function() {
             chestMenu.style.display = 'flex';
             chestBG.style.display = 'flex';
         };
-        
+        const AdController = window.Adsgram.init({ blockId: "785", debug: true});
         goldenChestMenu.onclick = function() {
-            goldenChestIMG.src = './images/goldenChestOpened.png';
+            goldenChestIMG.src = './images/Chest-G-Opened.png';
+            AdController.show().then((result) => {
+                goldenChestIMG.src = './images/Chest-G-Closed.png';
+            }).catch((result) => {
+                goldenChestIMG.src = './images/Chest-G-Opened.png';
+            })
         }
     }
 
