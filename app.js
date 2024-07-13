@@ -87,6 +87,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let goldenChestMenu = document.getElementById('goldenChestMenu');
         let goldenChestIMG = document.getElementById('goldenChestIMG');
+        let goldenChestClass = document.getElementById('goldenChestClass');
+
+        let goldenPopUP = document.getElementById('popUPGoldenChest');
+        let goldenOpenBtn = document.getElementById('openGoldenChest');
+        let goldenGetBtn = document.getElementById('getGoldenChest');
+
+        goldenOpenBtn.onclick = function() {
+            goldenChestClass.className = 'mainChest2';
+            goldenOpenBtn.style.display = 'none';
+            goldenGetBtn.style.display = 'none';
+
+            setTimeout(function() {
+                goldenChestClass.className = 'mainChest';
+                goldenChestIMG.src = './images/Chest-G-Opened.png'; 
+                goldenPopUP.style.display = 'flex';
+                goldenOpenBtn.style.display = 'flex';
+                goldenGetBtn.style.display = 'flex';}
+            ,1000);
+        };
 
         chestGame.onclick = function() {
             gamesOutline.style.display = 'none';
@@ -95,8 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             chestBG.style.display = 'flex';
         };
         const AdController = window.Adsgram.init({ blockId: "785", debug: true});
-        goldenChestMenu.onclick = function() {
-            goldenChestIMG.src = './images/Chest-G-Opened.png';
+        goldenGetBtn.onclick = function() {
             AdController.show().then((result) => {
                 goldenChestIMG.src = './images/Chest-G-Closed.png';
             }).catch((result) => {

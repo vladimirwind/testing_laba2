@@ -1353,7 +1353,7 @@ to {
     flex-direction: column;
     width: 100vw; /* adjust width percentage as needed */
     height: 100vh; /* adjust height percentage as needed */
-    background-color: #15202B;
+    background-color: #0F161E;
     box-sizing: border-box; /* Include padding in width and height */
     overflow-x: hidden;
     overflow-y: auto;
@@ -1412,6 +1412,7 @@ to {
     outline-color: #98FFAF;
     height: 70vh;
     border-radius: 8px;
+    background-color: #15202B;
 }
 
 .oneGameWr {
@@ -1534,13 +1535,37 @@ to {
     outline-color: #98FFAF;
     border-radius: 5px;
     margin: auto;
+    background-color: #98FFAF;
 }
 
 .twoChest2 span {
-    color: white;
+    color: #0F161E;
     font-family: 'unbounded';
-    font-size: 15px;
+    font-weight: bold;
+    font-size: 20px;
     margin: auto;
+    vertical-align: middle;
+}
+
+.twoChest3 {
+    display: flex;
+    width: 45%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.twoChest3 span {
+    color: #98FFAF;
+    font-family: 'unbounded';
+    font-weight: bold;
+    font-size: 20px;
+    margin: auto;
+    vertical-align: middle;
 }
 
 .twoChest span {
@@ -1672,21 +1697,40 @@ to {
 .mainChest {
     display: flex;
     margin-top: 2%;
+    animation: tilt-shaking 3s infinite;
+}
+
+.mainChest2 {
+    display: flex;
+    margin-top: 2%;
 }
 
 .mainChest img {
     width: 70%;
     margin: auto;
-    animation: tilt-shaking 0.35s infinite;
+}
+
+.mainChest2 img {
+    width: 70%;
+    margin: auto;
+    animation: tilt-shaking 0.18s infinite;
 }
 
 @keyframes tilt-shaking {   
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(1deg); }
-    50% { transform: rotate(0eg); }
-    75% { transform: rotate(-1deg); }
-    100% { transform: rotate(0deg); }
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(5px, 5px) rotate(2deg); }
+    50% { transform: translate(0, 0) rotate(0eg); }
+    75% { transform: translate(-5px, 5px) rotate(-2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
 }
+
+@keyframes slow-shaking {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(0eg); }
+    75% { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg); }
+  }
 
 
 .keyAmntWr {
@@ -1718,6 +1762,35 @@ to {
    transform: rotate(-50deg);
 }
 
+.popUPwindowChest {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+    padding: 0 0;
+    margin-top: 60vh;
+    background-color: rgba(21, 32, 43, .8);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    z-index: 100;
+}
+
+.prizeImg {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 5%;
+}
+
+.prizeImg img {
+    width: 10%;
+    margin: auto;
+    align-self: center;
+}
 
 
 
