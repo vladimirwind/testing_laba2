@@ -83,15 +83,33 @@ document.addEventListener('DOMContentLoaded', function() {
         let chestGame = document.getElementById('chestGame');
         let headerText = document.getElementById('gamesHeader');
         let chestBG = document.getElementById('chestBG');
+        let chestBG2 = document.getElementById('chestBG2');
         let chestMenu = document.getElementById('chestMenu');
 
         let goldenChestMenu = document.getElementById('goldenChestMenu');
+        let mythicChestMenu = document.getElementById('mythicChestMenu');
+
         let goldenChestIMG = document.getElementById('goldenChestIMG');
         let goldenChestClass = document.getElementById('goldenChestClass');
 
         let goldenPopUP = document.getElementById('popUPGoldenChest');
+        let mythicPopUP = document.getElementById('popUPMythicChest');
         let goldenOpenBtn = document.getElementById('openGoldenChest');
         let goldenGetBtn = document.getElementById('getGoldenChest');
+        let mythicGetBtn = document.getElementById('getMythicChest');
+
+        chestBG2.style.display = 'none';
+        mythicChestMenu.style.boxShadow = 'none';
+
+        mythicGetBtn.onclick = function() {
+            mythicPopUP.style.display = 'flex';
+        }
+
+        mythicChestMenu.onclick = function() {
+            goldenChestMenu.style.boxShadow = 'none';
+            chestBG.style.display = 'none';
+            chestBG2.style.display = 'flex';
+        }
 
         goldenOpenBtn.onclick = function() {
             goldenChestClass.className = 'mainChest2';

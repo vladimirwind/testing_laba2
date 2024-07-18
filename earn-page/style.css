@@ -15,7 +15,7 @@ body {
     user-select: none;
 }
 
-.container {
+.containerTasks {
     display: block;
     width: 100vw; /* adjust width percentage as needed */
     height: 100vh; /* adjust height percentage as needed */
@@ -28,7 +28,7 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
-.container::-webkit-scrollbar {
+.containerTasks::-webkit-scrollbar {
     display: none;
 }
 
@@ -130,7 +130,7 @@ body {
     margin: 0 0;
 }
 
-.greenLine {
+.greenLineEnd {
     margin: auto;
     border: thin solid #98FFAF;
     width: 60%;
