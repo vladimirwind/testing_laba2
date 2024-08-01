@@ -1860,6 +1860,119 @@ to {
     vertical-align: middle;
 }
 
+.containerKingdoms {
+    display: none;
+    flex-direction: column;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    background-color: #15202B;
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.containerKingdoms::-webkit-scrollbar {
+    display: none;
+}
+
+.boxWr {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-top: 5%;
+}
+  
+.boxK {
+    outline-style: solid;
+    outline-width: thin;
+    border-radius: 5px;
+    outline-color: #98FFAF;
+    height: auto;
+}
+
+.boxInside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    height: 90%;
+}
+
+.boxMain {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+}
+
+.boxMain span {
+    color: #98FFAF;
+    font-family: 'unbounded';
+    font-size: 12px;
+}
+
+.boxImageTxt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    margin-bottom: 5%;
+}
+
+.boxImageTxt span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.boxImageTxt img { 
+    width: 18%;
+}
+
+.castleImgWr {
+    margin-top: 20%;
+    justify-content: center;
+    align-items: center;
+}
+
+.castleImg {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.castleImg img {
+    width: 85%;
+}
+
+.popUPwindowKingdom {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 70vh;
+    padding: 0 0;
+    margin-top: 40vh;
+    background-color: #0f161e;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    z-index: 101;
+}
+
 
 
 

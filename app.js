@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
@@ -5,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         tg.WebApp.expand();
         
     };
-    
+       
     document.getElementById('frensBtn').onclick = function() {
         sessionStorage.setItem('frensInfo', `{"num_of_refs": 3, "total": 6000, "refs_arr": [{"full_name": "Muhhamad R","league": "br"},{"full_name": "Muhhamad B","league": "sr"},{"full_name": "Muhhamad Z","league": "gd"}], "tops_arr": [{"full_name": "iducky","num": 1232131},{"full_name": "liot","num": 1220},{"full_name": "liot2","num": 120},{"full_name": "liot3","num": 10},{"full_name": "liot4","num": 0}]}`);
         document.getElementById('mainContainer').style.display = 'none';
@@ -341,7 +342,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const essenceTrigger = document.getElementById('popup-essence');
     const mineTrigger = document.getElementById('popup-mine');
-    
+    const kingdomsTrigger = document.getElementById('kingdomsBtn');
+
+    kingdomsTrigger.onclick = function() {
+        document.getElementById('kingdomsContainer').style.display = 'flex';
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+        });
+        let BackButton = tg.WebApp.BackButton;
+        BackButton.show();
+        BackButton.onClick(function() {
+            BackButton.hide();
+            document.getElementById('kingdomsContainer').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+        });
+        
+    };
 
     async function getEssence() {
         try {
