@@ -1930,7 +1930,6 @@ to {
 
 .boxImageTxt span {
     color: white;
-    font-family: 'unbounded';
     font-size: 15px;
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
@@ -1959,21 +1958,166 @@ to {
     width: 85%;
 }
 
+.cardsBtnWr {
+    display: flex;  
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    margin-top: 8%;
+    align-self: center;
+}
+
+.cardsBtn {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    border-radius: 10px;
+    background-color: #98FFAF;
+    width: 90%;
+}
+
+.cardsBtn span {
+    color: #15202B;
+    font-family: 'unbounded';
+    font-size: auto;
+}
+
 .popUPwindowKingdom {
     display: none;
     flex-direction: column;
     position: absolute;
     width: 100vw;
-    height: 70vh;
+    height: 280vh;
     padding: 0 0;
-    margin-top: 40vh;
+    margin-top: 20vh;
     background-color: #0f161e;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     z-index: 101;
 }
 
+.cardWr {
+    display: grid;
+    grid-gap: 5%;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 5%;
+}
 
+.cardItem {
+    display: flex;
+    flex-direction: column;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 16px;
+    gap: 3%;
+    overflow: hidden;
+    height: auto;
+}
 
+.cardItem img {
+    width: 100%;
+}
 
+.cardItem span {
+    color:  #98FFAF;
+    font-size: 18px;
+    font-family: "unbounded";
+    align-self: center;
+    letter-spacing: 1px;
+}
 
+.cardBtnsWr {
+    display: grid;
+    grid-gap: 3%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 8%;
+}
+
+.cardBtns {
+    display: flex;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardBtns span {
+    color:  #98FFAF;
+    font-size: 14px;
+    font-family: "unbounded";
+    align-self: center;
+}
+
+.cardInfo {
+    display: flex
+}
+
+.cardImageTxtWr {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+.cardImageTxt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+    margin-bottom: 5%;
+}
+
+.cardImageTxt span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+}
+
+.cardImageTxt img { 
+    width: 27%;
+}
+
+.cardBuy {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    gap: 5px;
+    margin-top: 5%;
+    width: 70%;
+    border-radius: 10px 10px 0px 0px;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.cardBuy span { 
+    color:  #98FFAF;
+    font-size: 14px;
+    font-family: "unbounded";
+    align-self: center;
+}
+
+.cardBuy img { 
+    width: 20%;
+}

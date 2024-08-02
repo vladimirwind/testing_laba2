@@ -345,20 +345,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const kingdomsTrigger = document.getElementById('kingdomsBtn');
 
     kingdomsTrigger.onclick = function() {
+        cardsBtn = document.getElementById('btnCards');
+        popUpCards = document.getElementById('popUPKingdomsCards');
         document.getElementById('kingdomsContainer').style.display = 'flex';
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 },
-        });
-        let BackButton = tg.WebApp.BackButton;
-        BackButton.show();
-        BackButton.onClick(function() {
-            BackButton.hide();
-            document.getElementById('kingdomsContainer').style.display = 'none';
-            document.getElementById('mainContainer').style.display = 'block';
-        });
-        
+        // let BackButton = tg.WebApp.BackButton;
+        // BackButton.show();
+        // BackButton.onClick(function() {
+        //     BackButton.hide();
+        //     document.getElementById('kingdomsContainer').style.display = 'none';
+        //     document.getElementById('mainContainer').style.display = 'block';
+        // });
+
+        cardsBtn.onclick = function() {
+            popUpCards.style.display = 'flex';
+        }
     };
 
     async function getEssence() {
