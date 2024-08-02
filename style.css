@@ -2008,6 +2008,7 @@ to {
     padding-left: 5%;
     padding-right: 5%;
     margin-top: 5%;
+    height: auto;
 }
 
 .cardItem {
@@ -2017,8 +2018,7 @@ to {
     outline-width: thin;
     outline-color: #98FFAF;
     border-radius: 16px;
-    gap: 3%;
-    overflow: hidden;
+    gap: 5px;
     height: auto;
 }
 
@@ -2031,6 +2031,7 @@ to {
     font-size: 18px;
     font-family: "unbounded";
     align-self: center;
+    margin-top: 2%;
     letter-spacing: 1px;
 }
 
@@ -2079,7 +2080,7 @@ to {
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 5px;
+    gap: 6px;
     margin-bottom: 5%;
 }
 
@@ -2093,6 +2094,11 @@ to {
     width: 27%;
 }
 
+.cardBuyWr {
+    display: inline-block;
+    align-self: flex-end;
+}
+
 .cardBuy {
     display: flex;
     flex-direction: row;
@@ -2101,23 +2107,23 @@ to {
     text-align: center;
     align-self: center;
     gap: 5px;
-    margin-top: 5%;
     width: 70%;
     border-radius: 10px 10px 0px 0px;
     outline-style: solid;
     outline-width: thin;
     outline-color: #98FFAF;
+    margin: auto;
     padding-top: 3%;
     padding-bottom: 3%;
 }
 
 .cardBuy span { 
     color:  #98FFAF;
-    font-size: 14px;
     font-family: "unbounded";
+    font-size: 15px;
     align-self: center;
 }
 
 .cardBuy img { 
-    width: 20%;
+    width: 15%;
 }
