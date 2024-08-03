@@ -184,6 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 boostBrew.addEventListener("click", Show_Boost_Brew);
                 boostRobot.addEventListener("click", Show_Boost_Robot);
             };
+            
             boostPickaxe.removeEventListener("click", Show_Boost_Pickaxe);
             BoostMinePopUp.style.display = 'flex';
             // var date = new Date();

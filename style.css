@@ -1869,12 +1869,6 @@ to {
     box-sizing: border-box; /* Include padding in width and height */
     overflow-x: hidden;
     overflow-y: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-.containerKingdoms::-webkit-scrollbar {
-    display: none;
 }
 
 .boxWr {
@@ -1992,14 +1986,13 @@ to {
     flex-direction: column;
     position: absolute;
     width: 100vw;
-    height: 1380vh;
+    height: 1000px;
     padding: 0 0;
     margin-top: 20vh;
     background-color: #0f161e;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
     z-index: 101;
-    overflow-y: scroll;
 }
 
 .cardWr {
@@ -2009,8 +2002,6 @@ to {
     padding-left: 5%;
     padding-right: 5%;
     margin-top: 5%;
-    height: auto;
-    overflow-y: scroll;
 }
 
 .cardItem {
@@ -2132,4 +2123,14 @@ to {
 
 .cardBuy img { 
     width: 16%;
+}
+
+.allCards {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 10px;
+    width: 100%;
+    height: 50vh;
+    overflow: scroll;
 }
