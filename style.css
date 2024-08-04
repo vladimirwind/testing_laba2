@@ -2088,7 +2088,7 @@ to {
 }
 
 .cardImageTxt img { 
-    width: 20%;
+    width: 15%;
 }
 
 .cardBuyWr {
@@ -2117,12 +2117,12 @@ to {
 .cardBuy span { 
     color:  #98FFAF;
     font-family: "unbounded";
-    font-size: 13px;
+    font-size: 10px;
     align-self: center;
 }
 
 .cardBuy img { 
-    width: 16%;
+    width: 20%;
 }
 
 .allCards {
