@@ -1998,7 +1998,7 @@ to {
 .cardWr {
     display: grid;
     grid-gap: 5%;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     padding-left: 5%;
     padding-right: 5%;
     margin-top: 5%;
