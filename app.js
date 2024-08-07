@@ -349,6 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cardsBtn = document.getElementById('btnCards');
         popUpCards = document.getElementById('popUPKingdomsCards');
         document.getElementById('kingdomsContainer').style.display = 'flex';
+        cardQueen = document.getElementById('cardQueen');
         // let BackButton = tg.WebApp.BackButton;
         // BackButton.show();
         // BackButton.onClick(function() {
@@ -360,6 +361,12 @@ document.addEventListener('DOMContentLoaded', function() {
         cardsBtn.onclick = function() {
             popUpCards.style.display = 'flex';
         }
+        
+        cardQueen.onclick = function() {
+            document.getElementById('allCards').style.display = 'none';
+            document.getElementById('cardUpgrade').style.display = 'flex';
+            document.getElementById('cardsMenu').style.display = 'none';
+        };
     };
 
     async function getEssence() {

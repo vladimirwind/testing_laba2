@@ -2084,11 +2084,11 @@ to {
 .cardImageTxt span {
     color: white;
     font-family: "Open Sans", sans-serif;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .cardImageTxt img { 
-    width: 15%;
+    width: 17%;
 }
 
 .cardBuyWr {
@@ -2186,4 +2186,76 @@ to {
     font-weight: bold;
     align-self: center;
     letter-spacing: 1px;
+}
+
+.cardUpgradeWr {
+    display: none;
+    width: 90%;
+    margin-top: 3%;
+    align-self: center;
+}
+
+.cardUpgrade {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 3%;
+    margin: auto;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardUpgrade img {
+    width: 30%;
+    align-self: center;
+}
+
+.upgradeInfoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 25%;
+    align-self: center;
+    margin-top: 5%;
+}
+
+.upgradeCardBtn {
+    width: 80%;
+    background-color: #98FFAF;
+    border-radius: 5px;
+    align-self: center;
+    margin-top: 3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.upgradeCardBtn span {
+    color:  #0f161e;
+    font-size: 16px;
+    font-family: "unbounded";
+    letter-spacing: 1px;
+    align-self: center;
+    margin: auto;
+}
+
+.boxImageTxt2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    margin-top: 10%;
+}
+
+.boxImageTxt2 span {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 18px;
+}
+
+.boxImageTxt2 img { 
+    width: 12%;
 }
