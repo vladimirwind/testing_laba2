@@ -453,10 +453,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         let setUpUpgrade = function(type) {
-            window.onbeforeunload = function(event)
-            {
+
+            var isOnIOS = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
+            var eventName = isOnIOS ? "pagehide" : "beforeunload";
+            window.addEventListener(eventName, function (event) {
                 sessionStorage.removeItem('card_queen_timer');
-            };
+            })
             upgradeWindow.style.display = 'flex';
             let cardName = type.charAt(0).toUpperCase() + type.slice(1)
             upgradeCardName.textContent = cardName;
