@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Function to update the countdown
             function updateCountdown() {
                 let now = new Date();
-                let remainingTime = deadline - now; // Calculate remaining time in milliseconds
+                let remainingTime = new Date(deadline) - now; // Calculate remaining time in milliseconds
 
                 if (remainingTime <= 0) {
                     localStorage.removeItem('card_queen_timer');
@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let nowCheck = new Date(Date.now());
 
-            if (nowCheck < deadline) {
+            if (nowCheck < new Date(deadline)) {
                 // Update the countdown every second
                 var countdownInterval = setInterval(updateCountdown, 1000);
 
@@ -453,6 +453,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         let setUpUpgrade = function(type) {
+            window.onbeforeunload = function(event)
+            {
+                sessionStorage.removeItem('card_queen_timer');
+            };
             upgradeWindow.style.display = 'flex';
             let cardName = type.charAt(0).toUpperCase() + type.slice(1)
             upgradeCardName.textContent = cardName;
