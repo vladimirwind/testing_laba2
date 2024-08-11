@@ -2048,6 +2048,7 @@ to {
     text-align: center;
     align-items: center;
     justify-content: center;
+    box-shadow: inset #2A4864 0px 0px 40px -9px; 
 }
 
 .cardBtns span {
@@ -2258,4 +2259,17 @@ to {
 
 .boxImageTxt2 img { 
     width: 12%;
+}
+
+.topRightX2 {
+    display: none;
+    margin-left: 82%;
+    width: 100%;
+    align-items: center;
+
+}
+
+.topRightX2 img {
+    width: 7%;
+    margin-top: 8%;
 }
