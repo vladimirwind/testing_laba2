@@ -346,6 +346,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const kingdomsTrigger = document.getElementById('kingdomsBtn');
 
     kingdomsTrigger.onclick = function() {
+
+        var isOnIOS = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
+        var eventName = isOnIOS ? "pagehide" : "beforeunload";
+        window.addEventListener(eventName, function (event) {
+            sessionStorage.removeItem('card_queen_timer');
+        })
+
         cardsBtn = document.getElementById('btnCards');
         popUpCards = document.getElementById('popUPKingdomsCards');
         document.getElementById('kingdomsContainer').style.display = 'flex';
@@ -388,24 +395,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        let setClock = function() {
-            // Set the deadline to 5 minutes from now
-            let deadline = new Date(Date.now() + 2 * 60 * 1000);
-            let checkDeadline = localStorage.getItem('card_queen_deadline');
+        let setClock = function(type) {
+            let base = `card_${type}_`
+            // Set the deadline to 15 minutes from now
+            let deadline = new Date(Date.now() + 15 * 60 * 1000);
+            let checkDeadline = localStorage.getItem(base + 'deadline');
             if (checkDeadline === undefined || checkDeadline === null || checkDeadline === "") {
-                localStorage.setItem('card_queen_deadline', deadline);  
+                localStorage.setItem(base + 'deadline', deadline);  
             } else {
-                deadline = localStorage.getItem('card_queen_deadline');  
+                deadline = localStorage.getItem(base + 'deadline');  
             }
             // Function to update the countdown
             function updateCountdown() {
+                document.getElementById('cardBuyImg_' + type).src = './images/lock.svg'
                 let now = new Date();
                 let remainingTime = new Date(deadline) - now; // Calculate remaining time in milliseconds
 
                 if (remainingTime <= 0) {
-                    localStorage.removeItem('card_queen_timer');
-                    localStorage.removeItem('card_queen_deadline');
-                    sessionStorage.removeItem('card_queen_timer');
+                    localStorage.removeItem(base + 'timer');
+                    localStorage.removeItem(base + 'deadline');
+                    sessionStorage.removeItem(base + 'timer');
                     clearInterval(countdownInterval);
                     console.log("Time's up!");
                     return;
@@ -418,9 +427,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Format minutes and seconds to always show two digits
                 let formattedMinutes = String(minutes).padStart(2, '0');
                 let formattedSeconds = String(seconds).padStart(2, '0');
-                localStorage.setItem('card_queen_timer',`${formattedMinutes} : ${formattedSeconds}`)
+                localStorage.setItem(base + 'timer',`${formattedMinutes}:${formattedSeconds}`)
                 // Display the countdown
-                upgradeCardPrice.textContent = localStorage.getItem('card_queen_timer');
+                document.getElementById('cardBuyAmnt_' + type).textContent = localStorage.getItem(base + 'timer');
             }
 
             let nowCheck = new Date(Date.now());
@@ -433,9 +442,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 updateCountdown();
             } else {
                 upgradeCardPrice.textContent = `HELLO`;
-                localStorage.removeItem('card_queen_timer');
-                localStorage.removeItem('card_queen_deadline');
-                sessionStorage.removeItem('card_queen_timer');
+                localStorage.removeItem(base + 'timer');
+                localStorage.removeItem(base + 'deadline');
+                sessionStorage.removeItem(base + 'timer');
             }
         }
 
@@ -454,11 +463,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let setUpUpgrade = function(type) {
 
-            var isOnIOS = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
-            var eventName = isOnIOS ? "pagehide" : "beforeunload";
-            window.addEventListener(eventName, function (event) {
-                sessionStorage.removeItem('card_queen_timer');
-            })
             upgradeWindow.style.display = 'flex';
             let cardName = type.charAt(0).toUpperCase() + type.slice(1)
             upgradeCardName.textContent = cardName;
@@ -466,29 +470,39 @@ document.addEventListener('DOMContentLoaded', function() {
             let numValue = getValues('green', 9);
             upgradeCardIncome.textContent = `+${compressValues(numValue)}`;
 
-            let checker = localStorage.getItem('card_queen_timer');
+            let buyUPbtn = document.getElementById('buyUpgradeCardBtn');
 
-            // значит что таймер УЖЕ установлен
-            if (checker !== undefined && checker !== null && checker !== "") {
-                // Проверяю, что юзер в прошлой сессии
-                let checkSession = sessionStorage.getItem('card_queen_timer');
-                if (checkSession === undefined || checkSession === null || checkSession === "") {
-                    // значит он в новой сессии (перезашел), надо заного установить часы, else = они уже работают
-                    sessionStorage.setItem('card_queen_timer', '1');
-                    setClock();
-                };
+            buyUPbtn.onclick = function() {
                 
-            } else {  // значит что таймер НЕ установлен
-                localStorage.setItem('card_queen_timer', '02:00');
-                sessionStorage.setItem('card_queen_timer', '1');
-                setClock();
+                document.getElementById('allCards').style.display = 'flex';
+                upgradeWindow.style.display = 'none';
+                document.getElementById('cardsMenu').style.display = 'grid';
+                document.getElementById('X_Cards2').style.display = 'none';
+                document.getElementById('X_Cards').style.display = 'flex';
+
+                let checker = localStorage.getItem(`card_${type}_timer`);
+                // значит что таймер УЖЕ установлен
+                if (checker !== undefined && checker !== null && checker !== "") {
+                    // Проверяю, что юзер в прошлой сессии
+                    let checkSession = sessionStorage.getItem(`card_${type}_timer`);
+                    if (checkSession === undefined || checkSession === null || checkSession === "") {
+                        // значит он в новой сессии (перезашел), надо заного установить часы, else = они уже работают
+                        sessionStorage.setItem(`card_${type}_timer`, '1');
+                        setClock(type);
+                    };
+                    
+                } else {  // значит что таймер НЕ установлен
+                    localStorage.setItem(`card_${type}_timer`, '15:00');
+                    sessionStorage.setItem(`card_${type}_timer`, '1');
+                    setClock(type);
+                }
             }
         };
 
-        cardQueen.onclick = function() {
+        let setUpCard = function(type) {
             let x2 = document.getElementById('X_Cards2');
             document.getElementById('allCards').style.display = 'none';
-            setUpUpgrade('queen');
+            setUpUpgrade(type);
             document.getElementById('cardsMenu').style.display = 'none';
             document.getElementById('X_Cards').style.display = 'none';
             x2.style.display = 'flex';
@@ -501,20 +515,12 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         };
 
+        cardQueen.onclick = function() {
+            setUpCard('queen');
+        };
+
         cardKing.onclick = function() {
-            let x2 = document.getElementById('X_Cards2');
-            document.getElementById('allCards').style.display = 'none';
-            setUpUpgrade('king');
-            document.getElementById('cardsMenu').style.display = 'none';
-            document.getElementById('X_Cards').style.display = 'none';
-            x2.style.display = 'flex';
-            x2.onclick = function() {
-                document.getElementById('allCards').style.display = 'flex';
-                upgradeWindow.style.display = 'none';
-                document.getElementById('cardsMenu').style.display = 'grid';
-                x2.style.display = 'none';
-                document.getElementById('X_Cards').style.display = 'flex';
-            };
+            setUpCard('king');
         };
     };
 
