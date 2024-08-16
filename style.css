@@ -2048,7 +2048,7 @@ to {
     text-align: center;
     align-items: center;
     justify-content: center;
-    box-shadow: inset #2A4864 0px 0px 40px -9px; 
+    /* box-shadow: inset #2A4864 0px 0px 40px -9px;  */
 }
 
 .cardBtns span {
@@ -2138,7 +2138,7 @@ to {
 }
 
 .allCards {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-self: flex-end;
     gap: 20px;
@@ -2154,6 +2154,7 @@ to {
     width: 90%;
     gap: 5%;
     margin: auto;
+    overflow: hidden;
 }
 
 .levelPH {
@@ -2175,9 +2176,8 @@ to {
 
 .cardName span {
     color:  #98FFAF;
-    font-size: 16px;
+    font-size: 12px;
     font-family: "unbounded";
-    letter-spacing: 1px;
 }
 
 .levelPH span {

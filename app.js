@@ -366,15 +366,65 @@ document.addEventListener('DOMContentLoaded', function() {
         //     document.getElementById('mainContainer').style.display = 'block';
         // });
 
+        let menuEmpire = document.getElementById('menuEmpire');
+        let menuArmy = document.getElementById('menuArmy');
+        let menuMagic = document.getElementById('menuMagic');
+        let menuSpecial = document.getElementById('menuSpecial');
+
         let upgradeWindow = document.getElementById('cardUpgrade');
         let upgradeCardName = document.getElementById('upgradeCardName');
         let upgradeCardImg = document.getElementById('upgradeCardImg');
         let upgradeCardIncome = document.getElementById('upgradeCardIncome');
         let upgradeCardPrice = document.getElementById('upgradeCardPrice');
 
+        let allCardsEmpire = document.getElementById('allCardsEmpire');
+        let allCardsArmy = document.getElementById('allCardsArmy');
+        let allCardsMagic = document.getElementById('allCardsMagic');
+
+        allCardsEmpire.style.display = 'flex';
+
         cardsBtn.onclick = function() {
             popUpCards.style.display = 'flex';
         }
+
+        menuEmpire.style.boxShadow = 'inset #2A4864 0px 0px 40px -9px';
+
+        menuEmpire.onclick = function() {
+            menuEmpire.style.boxShadow = 'inset #2A4864 0px 0px 40px -9px';
+            menuArmy.style.boxShadow = 'none'
+            menuMagic.style.boxShadow = 'none'
+            menuSpecial.style.boxShadow = 'none'
+
+            allCardsMagic.style.display = 'none';
+            allCardsArmy.style.display = 'none';
+            allCardsEmpire.style.display = 'flex';
+        };
+
+        menuArmy.onclick = function() {
+            menuArmy.style.boxShadow = 'inset #2A4864 0px 0px 40px -9px';
+            menuMagic.style.boxShadow = 'none'
+            menuSpecial.style.boxShadow = 'none'
+            menuEmpire.style.boxShadow = 'none'
+
+            allCardsArmy.style.display = 'flex';
+            allCardsEmpire.style.display = 'none';
+            allCardsMagic.style.display = 'none';
+        };
+
+        menuMagic.onclick = function() {
+            menuMagic.style.boxShadow = 'inset #2A4864 0px 0px 40px -9px'
+            menuSpecial.style.boxShadow = 'none'
+            menuEmpire.style.boxShadow = 'none'
+            menuArmy.style.boxShadow = 'none'
+
+            allCardsEmpire.style.display = 'none';
+            allCardsArmy.style.display = 'none';
+            allCardsMagic.style.display = 'flex';
+        };
+
+        menuSpecial.onclick = function() {
+
+        };
 
         let getValues = function(type, level) {
             let green = new Map();
@@ -501,13 +551,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let setUpCard = function(type) {
             let x2 = document.getElementById('X_Cards2');
-            document.getElementById('allCards').style.display = 'none';
+            document.getElementById('allCards' + 'Empire').style.display = 'none';
             setUpUpgrade(type);
             document.getElementById('cardsMenu').style.display = 'none';
             document.getElementById('X_Cards').style.display = 'none';
             x2.style.display = 'flex';
             x2.onclick = function() {
-                document.getElementById('allCards').style.display = 'flex';
+                document.getElementById('allCards' + 'Empire').style.display = 'flex';
                 upgradeWindow.style.display = 'none';
                 document.getElementById('cardsMenu').style.display = 'grid';
                 x2.style.display = 'none';

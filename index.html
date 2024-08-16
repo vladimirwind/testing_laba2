@@ -48,24 +48,24 @@
             <img src="./images/xCross.svg"></img>
         </div>
         <div class="cardBtnsWr" id = "cardsMenu">
-            <div class="cardBtns">
-                <span>Army</span>
-            </div>
-            <div class="cardBtns">
-                <span>Magic</span>
-            </div>
-            <div class="cardBtns">
+            <div class="cardBtns" id="menuEmpire">
                 <span>Empire</span> 
             </div>
-            <div class="cardBtns">
+            <div class="cardBtns" id="menuMagic">
+                <span>Magic</span>
+            </div>
+            <div class="cardBtns" id="menuArmy">
+                <span>Army</span>
+            </div>
+            <div class="cardBtns" id="menuSpecial">
                 <span>Special</span>
             </div>
         </div>
         </br>
-        <div class="allCards" id="allCards">
+        <div class="allCards" id="allCardsEmpire">
             <div class="cardWr">
                 <div class="cardItem" id = "cardQueen">
-                    <img src="./images/9.png"></img>
+                    <img src="./images/card_queen.png"></img>
                     <div class="levelNameWr">
                         <div class="cardName">
                             <span>Queen</span>
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="cardItem" id = "cardKing">
-                    <img src="./images/7.png"></img>
+                    <img src="./images/card_king.png"></img>
                     <div class="levelNameWr">
                         <div class="cardName">
                             <span>King</span>
@@ -123,10 +123,100 @@
                     </div>
                 </div>
                 <div class="cardItem">
-                    <img src="./images/9.png"></img>
+                    <img src="./images/card_princess.png"></img>
                     <div class="levelNameWr">
                         <div class="cardName">
-                            <span>Queen</span>
+                            <span>Princess</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/lock.svg"></img>
+                            </div>
+                            <span>3 frens</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="cardWr">
+                <div class="cardItem">
+                    <img src="./images/card_prince.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Prince</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/lock.svg"></img>
+                            </div>
+                            <span>15 : 00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardItem">
+                    <img src="./images/card_trader.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Trader</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/lock.svg"></img>
+                            </div>
+                            <span>15 : 00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardItem">
+                    <img src="./images/card_worker.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Worker</span>
                         </div>
                         <div class="levelPH">
                             <span>1</span>
@@ -152,12 +242,168 @@
                     </div>
                 </div>
             </div>
+
+            </br>
+        </div>
+        <div class="allCards" id="allCardsMagic">
+            <div class="cardWr">
+                <div class="cardItem" id = "cardQueen">
+                    <img src="./images/card_dragon.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Dragon</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/essence.svg" id="cardBuyImg_queen"></img>
+                            </div>
+                            <span id="cardBuyAmnt_queen">61212</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardItem" id = "cardKing">
+                    <img src="./images/card_wizard.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Wizard</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/essence.svg"></img>
+                            </div>
+                            <span>61212</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardItem">
+                    <img src="./images/card_witch.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Witch</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/lock.svg"></img>
+                            </div>
+                            <span>3 frens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </br>
+        </div>
+        <div class="allCards" id="allCardsArmy">
+            <div class="cardWr">
+                <div class="cardItem" id = "cardQueen">
+                    <img src="./images/card_soldier.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Soldier</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/essence.svg" id="cardBuyImg_queen"></img>
+                            </div>
+                            <span id="cardBuyAmnt_queen">61212</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardItem" id = "cardKing">
+                    <img src="./images/card_knight.png"></img>
+                    <div class="levelNameWr">
+                        <div class="cardName">
+                            <span>Knight</span>
+                        </div>
+                        <div class="levelPH">
+                            <span>1</span>
+                        </div>
+                    </div>
+                    <div class="cardImageTxtWr">
+                        <div class="cardImageTxt">
+                            <img src="./images/castle_power.svg"></img>
+                            <span>14.2k</span>
+                        </div>
+                        <div class="cardImageTxt">
+                            <img src="./images/coin.svg"></img>
+                            <span>43.2k</span>
+                        </div>
+                    </div>
+                    <div class="cardBuyWr">
+                        <div class="cardBuy">
+                            <div class="cardBuyBlock">
+                                <img src="./images/essence.svg"></img>
+                            </div>
+                            <span>61212</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </br>
         </div>
         <div class="cardUpgradeWr" id="cardUpgrade">
             <div class="cardUpgrade">
-                <img src="./images/9.png" id="upgradeCardImg"></img>
-                <div class="cardName">
+                <img src="./images/card_queen.png" id="upgradeCardImg"></img>
+                <div class="boxImageTxt2">
                     <span id = "upgradeCardName">Queen</span>
                 </div>
                 <div class="upgradeInfoBox">
