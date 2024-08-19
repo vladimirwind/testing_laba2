@@ -358,6 +358,16 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('kingdomsContainer').style.display = 'flex';
         let cardQueen = document.getElementById('cardQueen');
         let cardKing = document.getElementById('cardKing');
+        let cardPrince = document.getElementById('cardPrince');
+        let cardPrincess = document.getElementById('cardPrincess');
+        let cardTrader = document.getElementById('cardTrader');
+        let cardWorker = document.getElementById('cardWorker');
+        let cardDragon = document.getElementById('cardDragon');
+        let cardWitch = document.getElementById('cardWitch');
+        let cardWizard = document.getElementById('cardWizard');
+        let cardSoldier = document.getElementById('cardSoldier');
+        let cardKnight = document.getElementById('cardKnight');
+
         // let BackButton = tg.WebApp.BackButton;
         // BackButton.show();
         // BackButton.onClick(function() {
@@ -549,15 +559,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        let setUpCard = function(type) {
+        let setUpCard = function(type, menuType) {
             let x2 = document.getElementById('X_Cards2');
-            document.getElementById('allCards' + 'Empire').style.display = 'none';
+            document.getElementById('allCards' + menuType).style.display = 'none';
             setUpUpgrade(type);
             document.getElementById('cardsMenu').style.display = 'none';
             document.getElementById('X_Cards').style.display = 'none';
             x2.style.display = 'flex';
             x2.onclick = function() {
-                document.getElementById('allCards' + 'Empire').style.display = 'flex';
+                document.getElementById('allCards' + menuType).style.display = 'flex';
                 upgradeWindow.style.display = 'none';
                 document.getElementById('cardsMenu').style.display = 'grid';
                 x2.style.display = 'none';
@@ -566,12 +576,49 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         cardQueen.onclick = function() {
-            setUpCard('queen');
+            setUpCard('queen', 'Empire');
         };
 
         cardKing.onclick = function() {
-            setUpCard('king');
+            setUpCard('king', 'Empire');
         };
+
+        cardWorker.onclick = function() {
+            setUpCard('worker', 'Empire');
+        };
+
+        cardTrader.onclick = function() {
+            setUpCard('trader', 'Empire');
+        };
+
+        cardPrince.onclick = function() {
+            setUpCard('prince', 'Empire');
+        };
+
+        cardPrincess.onclick = function() {
+            setUpCard('princess', 'Empire');
+        };
+
+        cardWizard.onclick = function() {
+            setUpCard('wizard', 'Magic');
+        };
+
+        cardWitch.onclick = function() {
+            setUpCard('witch', 'Magic');
+        };
+
+        cardDragon.onclick = function() {
+            setUpCard('dragon', 'Magic');
+        };
+
+        cardSoldier.onclick = function() {
+            setUpCard('soldier', 'Army');
+        };
+
+        cardKnight.onclick = function() {
+            setUpCard('knight', 'Army');
+        };
+
     };
 
     async function getEssence() {
