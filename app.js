@@ -450,9 +450,74 @@ document.addEventListener('DOMContentLoaded', function() {
             green.set(9, [250,34887]);
             green.set(10, [290,1131308]);
 
+            let yellow = new Map();
+            yellow.set(0, [0,0]);
+            yellow.set(1, [150,1000]);
+            yellow.set(2, [180,1850]);
+            yellow.set(3, [216,3423]);
+            yellow.set(4, [259,6333]);
+            yellow.set(5, [311,11716]);
+            yellow.set(6, [373,21675]);
+            yellow.set(7, [448,40099]);
+            yellow.set(8, [538,74183]);
+            yellow.set(9, [646,137239]);
+            yellow.set(10, [775,253892]);
+
+            let orange = new Map();
+            orange.set(0, [0,0]);
+            orange.set(1, [320,1000]);
+            orange.set(2, [368,2120]);
+            orange.set(3, [423,4494]);
+            orange.set(4, [486,9527]);
+            orange.set(5, [559,20197]);
+            orange.set(6, [643,42818]);
+            orange.set(7, [739,90774]);
+            orange.set(8, [850,192441]);
+            orange.set(9, [978,407975]);
+            orange.set(10, [1125,864907]);
+
+            let red = new Map();
+            red.set(0, [0,0]);
+            red.set(1, [500,2000]);
+            red.set(2, [600,4800]);
+            red.set(3, [720,11520]);
+            red.set(4, [864,27648]);
+            red.set(5, [1037,66355]);
+            red.set(6, [1244,159252]);
+            red.set(7, [1493,382205]);
+            red.set(8, [1792,917292]);
+            red.set(9, [2150,1501501]);
+            red.set(10, [2580,2283602]);
+
             if (type === "green") {
                 return (green.get(level + 1)[1]) - (green.get(level)[1])
             }
+        };
+        
+        let checkTimer = function(type) {
+            let checker = localStorage.getItem(`card_${type}_timer`);
+            // значит что таймер УЖЕ установлен
+            if (checker !== undefined && checker !== null && checker !== "") {
+                // Проверяю, что юзер в прошлой сессии
+                let checkSession = sessionStorage.getItem(`card_${type}_timer`);
+                if (checkSession === undefined || checkSession === null || checkSession === "") {
+                    // значит он в новой сессии (перезашел), надо заного установить часы, else = они уже работают
+                    sessionStorage.setItem(`card_${type}_timer`, '1');
+                    setClock(type);
+                } else {
+                    setClock(type);
+                };
+                
+            } else {  // значит что таймер НЕ установлен
+                localStorage.setItem(`card_${type}_timer`, '15:00');
+                sessionStorage.setItem(`card_${type}_timer`, '1');
+                setClock(type);
+            }
+        };
+
+        let setUpTimers = function() {
+            checkTimer('queen');
+            checkTimer('king');
         };
 
         let setClock = function(type) {
@@ -476,14 +541,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     localStorage.removeItem(base + 'deadline');
                     sessionStorage.removeItem(base + 'timer');
                     clearInterval(countdownInterval);
-                    console.log("Time's up!");
+                   
+                    
+
                     return;
                 }
 
                 // Calculate minutes and seconds
                 let minutes = Math.floor((remainingTime / 1000 / 60) % 60);
                 let seconds = Math.floor((remainingTime / 1000) % 60);
-
+                
                 // Format minutes and seconds to always show two digits
                 let formattedMinutes = String(minutes).padStart(2, '0');
                 let formattedSeconds = String(seconds).padStart(2, '0');
@@ -501,7 +568,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Initial call to display the countdown immediately
                 updateCountdown();
             } else {
-                upgradeCardPrice.textContent = `HELLO`;
+                // upgradeCardPrice.textContent = `HELLO`;
                 localStorage.removeItem(base + 'timer');
                 localStorage.removeItem(base + 'deadline');
                 sessionStorage.removeItem(base + 'timer');
@@ -521,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        let setUpUpgrade = function(type) {
+        let setUpUpgrade = function(type, menuType) {
 
             upgradeWindow.style.display = 'flex';
             let cardName = type.charAt(0).toUpperCase() + type.slice(1)
@@ -534,12 +601,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             buyUPbtn.onclick = function() {
                 
-                document.getElementById('allCards').style.display = 'flex';
+                document.getElementById('allCards' + menuType).style.display = 'flex';
                 upgradeWindow.style.display = 'none';
                 document.getElementById('cardsMenu').style.display = 'grid';
                 document.getElementById('X_Cards2').style.display = 'none';
                 document.getElementById('X_Cards').style.display = 'flex';
-
+                
                 let checker = localStorage.getItem(`card_${type}_timer`);
                 // значит что таймер УЖЕ установлен
                 if (checker !== undefined && checker !== null && checker !== "") {
@@ -562,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let setUpCard = function(type, menuType) {
             let x2 = document.getElementById('X_Cards2');
             document.getElementById('allCards' + menuType).style.display = 'none';
-            setUpUpgrade(type);
+            setUpUpgrade(type, menuType);
             document.getElementById('cardsMenu').style.display = 'none';
             document.getElementById('X_Cards').style.display = 'none';
             x2.style.display = 'flex';
@@ -618,6 +685,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cardKnight.onclick = function() {
             setUpCard('knight', 'Army');
         };
+
+        setUpTimers();
 
     };
 
