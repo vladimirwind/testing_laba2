@@ -575,6 +575,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem(base + 'timer',`${formattedMinutes}:${formattedSeconds}`)
                 // Display the countdown
                 document.getElementById('cardBuyAmnt_' + type).textContent = localStorage.getItem(base + 'timer');
+                // Change photo
+                document.getElementById(`card_${type}_logo`).src = `./images/cards/card_${type}_locked.png`;
             }
 
             let nowCheck = new Date(Date.now());
