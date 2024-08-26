@@ -494,7 +494,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
-        let checkTimer = function(type) {
+        let checkTimer = async function(type) {
+
+            let base = `card_${type}_`
+            let checkDeadline = localStorage.getItem(base + 'deadline');
+            let deadline = Date.now();
+
+            if (deadline === null || deadline === undefined) {
+                localStorage.removeItem(base + 'deadline');
+                sessionStorage.removeItem(base + 'deadline');
+                return;
+            }
+
+            if (new Date(checkDeadline) < deadline) {
+                localStorage.removeItem(base + 'deadline');
+                sessionStorage.removeItem(base + 'deadline');
+                return;
+            }
+
             let checker = localStorage.getItem(`card_${type}_timer`);
             // значит что таймер УЖЕ установлен
             if (checker !== undefined && checker !== null && checker !== "") {
@@ -509,7 +526,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 };
                 
             } else {  // значит что таймер НЕ установлен
-                localStorage.setItem(`card_${type}_timer`, '15:00');
+                localStorage.setItem(`card_${type}_timer`, '5:00');
                 sessionStorage.setItem(`card_${type}_timer`, '1');
                 setClock(type);
             }
@@ -518,12 +535,13 @@ document.addEventListener('DOMContentLoaded', function() {
         let setUpTimers = function() {
             checkTimer('queen');
             checkTimer('king');
+            checkTimer('trader');
         };
 
         let setClock = function(type) {
             let base = `card_${type}_`
             // Set the deadline to 15 minutes from now
-            let deadline = new Date(Date.now() + 15 * 60 * 1000);
+            let deadline = new Date(Date.now() + 5 * 60 * 1000);
             let checkDeadline = localStorage.getItem(base + 'deadline');
             if (checkDeadline === undefined || checkDeadline === null || checkDeadline === "") {
                 localStorage.setItem(base + 'deadline', deadline);  
