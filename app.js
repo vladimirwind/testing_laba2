@@ -536,6 +536,14 @@ document.addEventListener('DOMContentLoaded', function() {
             checkTimer('queen');
             checkTimer('king');
             checkTimer('trader');
+            checkTimer('prince');
+            checkTimer('princess');
+            checkTimer('worker');
+            checkTimer('dragon');
+            checkTimer('wizard');
+            checkTimer('witch');
+            checkTimer('soldier');
+            checkTimer('knight');
         };
 
         let setClock = function(type) {
