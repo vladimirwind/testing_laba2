@@ -577,6 +577,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('cardBuyAmnt_' + type).textContent = localStorage.getItem(base + 'timer');
                 // Change photo
                 document.getElementById(`card_${type}_logo`).src = `./images/cards/card_${type}_locked.png`;
+
+                let cardName = type.charAt(0).toUpperCase() + type.slice(1)
+
+                document.getElementById(`card${cardName}`).onclick = function(){};
             }
 
             let nowCheck = new Date(Date.now());
