@@ -347,6 +347,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     kingdomsTrigger.onclick = function() {
 
+        sessionStorage.setItem('cardsInfo', '{"friends":1,"card_king":2,"card_queen":2,"card_prince":2,"card_princess":2,"card_dragon":2,"card_wizard":5,"card_witch":2,"card_soldier":3,"card_knight":2,"card_worker":4,"card_trader":2}');
+
         var isOnIOS = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
         var eventName = isOnIOS ? "pagehide" : "beforeunload";
         window.addEventListener(eventName, function (event) {
@@ -436,61 +438,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
         };
 
+        let green = new Map();
+        green.set(0, [0,0]);
+        green.set(1, [50,500]);
+        green.set(2, [60,850]);
+        green.set(3, [70,1445]);
+        green.set(4, [90,2457]);
+        green.set(5, [110,4177]);
+        green.set(6, [130,7101]);
+        green.set(7, [170,12072]);
+        green.set(8, [210,20522]);
+        green.set(9, [250,34887]);
+        green.set(10, [290,1131308]);
+
+        let yellow = new Map();
+        yellow.set(0, [0,0]);
+        yellow.set(1, [150,1000]);
+        yellow.set(2, [180,1850]);
+        yellow.set(3, [216,3423]);
+        yellow.set(4, [259,6333]);
+        yellow.set(5, [311,11716]);
+        yellow.set(6, [373,21675]);
+        yellow.set(7, [448,40099]);
+        yellow.set(8, [538,74183]);
+        yellow.set(9, [646,137239]);
+        yellow.set(10, [775,253892]);
+
+        let orange = new Map();
+        orange.set(0, [0,0]);
+        orange.set(1, [320,1000]);
+        orange.set(2, [368,2120]);
+        orange.set(3, [423,4494]);
+        orange.set(4, [486,9527]);
+        orange.set(5, [559,20197]);
+        orange.set(6, [643,42818]);
+        orange.set(7, [739,90774]);
+        orange.set(8, [850,192441]);
+        orange.set(9, [978,407975]);
+        orange.set(10, [1125,864907]);
+
+        let red = new Map();
+        red.set(0, [0,0]);
+        red.set(1, [500,2000]);
+        red.set(2, [600,4800]);
+        red.set(3, [720,11520]);
+        red.set(4, [864,27648]);
+        red.set(5, [1037,66355]);
+        red.set(6, [1244,159252]);
+        red.set(7, [1493,382205]);
+        red.set(8, [1792,917292]);
+        red.set(9, [2150,1501501]);
+        red.set(10, [2580,2283602]);
+
         let getValues = function(type, level) {
-            let green = new Map();
-            green.set(0, [0,0]);
-            green.set(1, [50,500]);
-            green.set(2, [60,850]);
-            green.set(3, [70,1445]);
-            green.set(4, [90,2457]);
-            green.set(5, [110,4177]);
-            green.set(6, [130,7101]);
-            green.set(7, [170,12072]);
-            green.set(8, [210,20522]);
-            green.set(9, [250,34887]);
-            green.set(10, [290,1131308]);
-
-            let yellow = new Map();
-            yellow.set(0, [0,0]);
-            yellow.set(1, [150,1000]);
-            yellow.set(2, [180,1850]);
-            yellow.set(3, [216,3423]);
-            yellow.set(4, [259,6333]);
-            yellow.set(5, [311,11716]);
-            yellow.set(6, [373,21675]);
-            yellow.set(7, [448,40099]);
-            yellow.set(8, [538,74183]);
-            yellow.set(9, [646,137239]);
-            yellow.set(10, [775,253892]);
-
-            let orange = new Map();
-            orange.set(0, [0,0]);
-            orange.set(1, [320,1000]);
-            orange.set(2, [368,2120]);
-            orange.set(3, [423,4494]);
-            orange.set(4, [486,9527]);
-            orange.set(5, [559,20197]);
-            orange.set(6, [643,42818]);
-            orange.set(7, [739,90774]);
-            orange.set(8, [850,192441]);
-            orange.set(9, [978,407975]);
-            orange.set(10, [1125,864907]);
-
-            let red = new Map();
-            red.set(0, [0,0]);
-            red.set(1, [500,2000]);
-            red.set(2, [600,4800]);
-            red.set(3, [720,11520]);
-            red.set(4, [864,27648]);
-            red.set(5, [1037,66355]);
-            red.set(6, [1244,159252]);
-            red.set(7, [1493,382205]);
-            red.set(8, [1792,917292]);
-            red.set(9, [2150,1501501]);
-            red.set(10, [2580,2283602]);
 
             if (type === "green") {
                 return (green.get(level + 1)[1]) - (green.get(level)[1])
+            } else if (type === "red") {
+                return (red.get(level + 1)[1]) - (red.get(level)[1])
+            } else if (type === "orange") {
+                return (orange.get(level + 1)[1]) - (orange.get(level)[1])
+            } else if (type === "yellow") {
+                return (yellow.get(level + 1)[1]) - (yellow.get(level)[1])
             }
         };
         
@@ -531,6 +540,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 setClock(type);
             }
         };
+
+        const cardsGreen = ['princess', 'wizard'];
+        const cardsRed = ['trader', 'soldier'];
+        const cardsYellow = ['king', 'knight', 'dragon', 'witch'];
+        const cardsOrange = ['queen', 'prince', 'worker'];
+
+        let setUpCardData = async function(type, myJSON) {
+            if (cardsGreen.includes(type)) {
+                let tmpLvl = myJSON[`card_${type}`];
+                let tmpArr = green.get(tmpLvl);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+            } else if (cardsRed.includes(type)) {
+                let tmpLvl = myJSON[`card_${type}`];
+                let tmpArr = red.get(tmpLvl);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+            } else if (cardsOrange.includes(type)) {
+                let tmpLvl = myJSON[`card_${type}`];
+                let tmpArr = orange.get(tmpLvl);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+            } else if (cardsYellow.includes(type)) {
+                let tmpLvl = myJSON[`card_${type}`];
+                let tmpArr = yellow.get(tmpLvl);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+            }
+
+        };
+
+        let setUpInformation = function() {
+            let cardsInfoString = sessionStorage.getItem('cardsInfo');
+            let cardsInfoJSON = JSON.parse(cardsInfoString);
+
+            setUpCardData('queen', cardsInfoJSON);
+            setUpCardData('king', cardsInfoJSON);
+            setUpCardData('trader', cardsInfoJSON);
+            setUpCardData('prince', cardsInfoJSON);
+            setUpCardData('princess', cardsInfoJSON);
+            setUpCardData('worker', cardsInfoJSON);
+            setUpCardData('dragon', cardsInfoJSON);
+            setUpCardData('wizard', cardsInfoJSON);
+            setUpCardData('witch', cardsInfoJSON);
+            setUpCardData('soldier', cardsInfoJSON);
+            setUpCardData('knight', cardsInfoJSON);
+
+            setTimeout(function() {setUpTimers()}, 300);
+        }
 
         let setUpTimers = function() {
             checkTimer('queen');
@@ -656,7 +714,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('cardsMenu').style.display = 'grid';
                     document.getElementById('X_Cards2').style.display = 'none';
                     document.getElementById('X_Cards').style.display = 'flex';
-                }, 200);
+                }, 500);
             }
         };
 
@@ -720,7 +778,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setUpCard('knight', 'Army');
         };
 
-        setUpTimers();
+        setUpInformation();
 
     };
 
