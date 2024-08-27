@@ -650,11 +650,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     setClock(type);
                 }
 
-                document.getElementById('allCards' + menuType).style.display = 'flex';
-                upgradeWindow.style.display = 'none';
-                document.getElementById('cardsMenu').style.display = 'grid';
-                document.getElementById('X_Cards2').style.display = 'none';
-                document.getElementById('X_Cards').style.display = 'flex';
+                setTimeout(function() {
+                    document.getElementById('allCards' + menuType).style.display = 'flex';
+                    upgradeWindow.style.display = 'none';
+                    document.getElementById('cardsMenu').style.display = 'grid';
+                    document.getElementById('X_Cards2').style.display = 'none';
+                    document.getElementById('X_Cards').style.display = 'flex';
+                }, 200);
             }
         };
 
