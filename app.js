@@ -633,12 +633,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             buyUPbtn.onclick = function() {
                 
-                document.getElementById('allCards' + menuType).style.display = 'flex';
-                upgradeWindow.style.display = 'none';
-                document.getElementById('cardsMenu').style.display = 'grid';
-                document.getElementById('X_Cards2').style.display = 'none';
-                document.getElementById('X_Cards').style.display = 'flex';
-                
                 let checker = localStorage.getItem(`card_${type}_timer`);
                 // значит что таймер УЖЕ установлен
                 if (checker !== undefined && checker !== null && checker !== "") {
@@ -655,6 +649,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     sessionStorage.setItem(`card_${type}_timer`, '1');
                     setClock(type);
                 }
+
+                document.getElementById('allCards' + menuType).style.display = 'flex';
+                upgradeWindow.style.display = 'none';
+                document.getElementById('cardsMenu').style.display = 'grid';
+                document.getElementById('X_Cards2').style.display = 'none';
+                document.getElementById('X_Cards').style.display = 'flex';
             }
         };
 
