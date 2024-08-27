@@ -2079,17 +2079,21 @@ to {
     gap: 6px;
     margin: auto;
     align-self: center;
-    margin-top: 1%;
 }
 
 .cardImageTxt span {
     color: white;
     font-family: "Open Sans", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
+    vertical-align: middle;
+    align-self: center;
 }
 
 .cardImageTxt img { 
-    width: 17%;
+    width: 18%;
+    vertical-align: middle;
+    align-self: center;
+    margin-top: 2%;
 }
 
 .cardBuyWr {

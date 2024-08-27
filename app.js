@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     kingdomsTrigger.onclick = function() {
 
-        sessionStorage.setItem('cardsInfo', '{"friends":1,"card_king":2,"card_queen":2,"card_prince":2,"card_princess":2,"card_dragon":2,"card_wizard":5,"card_witch":2,"card_soldier":3,"card_knight":2,"card_worker":4,"card_trader":2}');
+        sessionStorage.setItem('cardsInfo', '{"friends":1,"card_king":2,"card_queen":0,"card_prince":2,"card_princess":2,"card_dragon":2,"card_wizard":5,"card_witch":2,"card_soldier":3,"card_knight":2,"card_worker":4,"card_trader":2}');
 
         var isOnIOS = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
         var eventName = isOnIOS ? "pagehide" : "beforeunload";
@@ -387,6 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let upgradeCardName = document.getElementById('upgradeCardName');
         let upgradeCardImg = document.getElementById('upgradeCardImg');
         let upgradeCardIncome = document.getElementById('upgradeCardIncome');
+        let upgradeCardPower = document.getElementById('upgradeCardPower');
         let upgradeCardPrice = document.getElementById('upgradeCardPrice');
 
         let allCardsEmpire = document.getElementById('allCardsEmpire');
@@ -493,13 +494,13 @@ document.addEventListener('DOMContentLoaded', function() {
         let getValues = function(type, level) {
 
             if (type === "green") {
-                return (green.get(level + 1)[1]) - (green.get(level)[1])
+                return (green.get(level + 1)[0]) - (green.get(level)[0])
             } else if (type === "red") {
-                return (red.get(level + 1)[1]) - (red.get(level)[1])
+                return (red.get(level + 1)[0]) - (red.get(level)[0])
             } else if (type === "orange") {
-                return (orange.get(level + 1)[1]) - (orange.get(level)[1])
+                return (orange.get(level + 1)[0]) - (orange.get(level)[0])
             } else if (type === "yellow") {
-                return (yellow.get(level + 1)[1]) - (yellow.get(level)[1])
+                return (yellow.get(level + 1)[0]) - (yellow.get(level)[0])
             }
         };
         
@@ -549,24 +550,48 @@ document.addEventListener('DOMContentLoaded', function() {
         let setUpCardData = async function(type, myJSON) {
             if (cardsGreen.includes(type)) {
                 let tmpLvl = myJSON[`card_${type}`];
-                let tmpArr = green.get(tmpLvl);
-                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                let tmpArr = green.get(tmpLvl + 1);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${compressValues(tmpArr[1])}`;
                 document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+                
+                let tmpArr2 = green.get(tmpLvl);
+                let tmpIncome = tmpArr2[0];
+                let tmpPower = tmpIncome * 3;
+                document.getElementById(`card_${type}_power`).textContent = `${compressValues(tmpPower)}`;
+                document.getElementById(`card_${type}_income`).textContent = `${compressValues(tmpIncome)}`;
             } else if (cardsRed.includes(type)) {
                 let tmpLvl = myJSON[`card_${type}`];
-                let tmpArr = red.get(tmpLvl);
-                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                let tmpArr = red.get(tmpLvl + 1);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${compressValues(tmpArr[1])}`;
                 document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+                
+                let tmpArr2 = red.get(tmpLvl);
+                let tmpIncome = tmpArr2[0];
+                let tmpPower = tmpIncome * 3;
+                document.getElementById(`card_${type}_power`).textContent = `${compressValues(tmpPower)}`;
+                document.getElementById(`card_${type}_income`).textContent = `${compressValues(tmpIncome)}`;
             } else if (cardsOrange.includes(type)) {
                 let tmpLvl = myJSON[`card_${type}`];
-                let tmpArr = orange.get(tmpLvl);
-                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                let tmpArr = orange.get(tmpLvl + 1);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${compressValues(tmpArr[1])}`;
                 document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+                
+                let tmpArr2 = orange.get(tmpLvl);
+                let tmpIncome = tmpArr2[0];
+                let tmpPower = tmpIncome * 3;
+                document.getElementById(`card_${type}_power`).textContent = `${compressValues(tmpPower)}`;
+                document.getElementById(`card_${type}_income`).textContent = `${compressValues(tmpIncome)}`;
             } else if (cardsYellow.includes(type)) {
                 let tmpLvl = myJSON[`card_${type}`];
-                let tmpArr = yellow.get(tmpLvl);
-                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${tmpArr[1]}`;
+                let tmpArr = yellow.get(tmpLvl + 1);
+                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${compressValues(tmpArr[1])}`;
                 document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
+                
+                let tmpArr2 = yellow.get(tmpLvl);
+                let tmpIncome = tmpArr2[0];
+                let tmpPower = tmpIncome * 3;
+                document.getElementById(`card_${type}_power`).textContent = `${compressValues(tmpPower)}`;
+                document.getElementById(`card_${type}_income`).textContent = `${compressValues(tmpIncome)}`;
             }
 
         };
@@ -680,12 +705,43 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let setUpUpgrade = function(type, menuType) {
 
+            let cardsInfoString = sessionStorage.getItem('cardsInfo');
+            let cardsInfoJSON = JSON.parse(cardsInfoString);
+
             upgradeWindow.style.display = 'flex';
             let cardName = type.charAt(0).toUpperCase() + type.slice(1)
             upgradeCardName.textContent = cardName;
             upgradeCardImg.src = `./images/card_${type}.png`;
-            let numValue = getValues('green', 9);
+
+            let numValue = 0;
+            let numPrice = 0;
+
+            let mock = `card_${type}`;
+
+
+            if (cardsGreen.includes(type)) {
+                numValue = getValues('green', cardsInfoJSON[mock]);
+                tmpPrice = green.get(cardsInfoJSON[mock] + 1);
+                numPrice = tmpPrice[1];
+            } else if (cardsRed.includes(type)) {
+                numValue = getValues('red', cardsInfoJSON[mock]);
+                tmpPrice = red.get(cardsInfoJSON[mock] + 1);
+                numPrice = tmpPrice[1];
+            } else if (cardsYellow.includes(type)) {
+                numValue = getValues('yellow', cardsInfoJSON[mock]);
+                tmpPrice = yellow.get(cardsInfoJSON[mock] + 1);
+                numPrice = tmpPrice[1];
+            } else if (cardsOrange.includes(type)) {
+                numValue = getValues('orange', cardsInfoJSON[mock]);
+                tmpPrice = orange.get(cardsInfoJSON[mock] + 1);
+                numPrice = tmpPrice[1];
+            }
+            
             upgradeCardIncome.textContent = `+${compressValues(numValue)}`;
+
+            upgradeCardPower.textContent = `+${compressValues(numValue * 3)}`;
+
+            upgradeCardPrice.textContent = `${numPrice}`;
 
             let buyUPbtn = document.getElementById('buyUpgradeCardBtn');
 
