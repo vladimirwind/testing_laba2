@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     kingdomsTrigger.onclick = function() {
 
-        sessionStorage.setItem('cardsInfo', '{"friends":1,"card_king":0,"card_queen":0,"card_prince":2,"card_princess":2,"card_dragon":2,"card_wizard":0,"card_witch":0,"card_soldier":0,"card_knight":2,"card_worker":4,"card_trader":2}');
+        sessionStorage.setItem('cardsInfo', '{"friends":5,"power":12454,"income":132212,"card_king":0,"card_queen":0,"card_prince":2,"card_princess":2,"card_dragon":2,"card_wizard":0,"card_witch":0,"card_soldier":0,"card_knight":2,"card_worker":4,"card_trader":2}');
 
         var isOnIOS = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
         var eventName = isOnIOS ? "pagehide" : "beforeunload";
@@ -393,12 +393,20 @@ document.addEventListener('DOMContentLoaded', function() {
         let allCardsEmpire = document.getElementById('allCardsEmpire');
         let allCardsArmy = document.getElementById('allCardsArmy');
         let allCardsMagic = document.getElementById('allCardsMagic');
+        let allCardsSpecial = document.getElementById('allCardsSpecial');
+
 
         allCardsEmpire.style.display = 'flex';
 
         cardsBtn.onclick = function() {
             popUpCards.style.display = 'flex';
-        }
+        };
+
+        let xPopUpBtn = document.getElementById('X_Cards');
+
+        xPopUpBtn.onclick = function() {
+            popUpCards.style.display = 'none';
+        };
 
         menuEmpire.style.boxShadow = 'inset #2A4864 0px 0px 40px -9px';
 
@@ -410,6 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             allCardsMagic.style.display = 'none';
             allCardsArmy.style.display = 'none';
+            allCardsSpecial.style.display = 'none';
             allCardsEmpire.style.display = 'flex';
         };
 
@@ -421,6 +430,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             allCardsArmy.style.display = 'flex';
             allCardsEmpire.style.display = 'none';
+            allCardsSpecial.style.display = 'none';
             allCardsMagic.style.display = 'none';
         };
 
@@ -432,11 +442,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
             allCardsEmpire.style.display = 'none';
             allCardsArmy.style.display = 'none';
+            allCardsSpecial.style.display = 'none';
             allCardsMagic.style.display = 'flex';
         };
 
         menuSpecial.onclick = function() {
+            menuSpecial.style.boxShadow = 'inset #2A4864 0px 0px 40px -9px'
+            menuMagic.style.boxShadow = 'none'
+            menuEmpire.style.boxShadow = 'none'
+            menuArmy.style.boxShadow = 'none'
 
+            allCardsEmpire.style.display = 'none';
+            allCardsArmy.style.display = 'none';
+            allCardsMagic.style.display = 'none';
+            allCardsSpecial.style.display = 'flex';
         };
 
         let green = new Map();
@@ -556,10 +575,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 let flag2 = (myJSON["friends"] < 5 && type === 'wizard')
                 
                 if (flag1 && type === 'princess') {
+                    cardPrincess.onclick = function() {};
+                    document.getElementById(`cardBuyImg_${type}`).src = `./images/lock.svg`;
                     document.getElementById(`cardBuyAmnt_${type}`).textContent = `3 frens`;
                 };
 
                 if (flag2 && type === 'wizard') {
+                    cardWizard.onclick = function() {};
+                    document.getElementById(`cardBuyImg_${type}`).src = `./images/lock.svg`;
                     document.getElementById(`cardBuyAmnt_${type}`).textContent = `5 frens`;
                 };
 
@@ -611,9 +634,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         };
 
+        setUpTopMenu = async function(JSONdata) {
+            let powerHolder = document.getElementById("topMenuPower");
+            let incomeHolder = document.getElementById("topMenuIncome");
+
+            powerHolder.textContent = `${compressValues(JSONdata["power"])}`;
+            incomeHolder.textContent = `${compressValues(JSONdata["income"])}`;
+        };
+
         let setUpInformation = function() {
             let cardsInfoString = sessionStorage.getItem('cardsInfo');
             let cardsInfoJSON = JSON.parse(cardsInfoString);
+
+            setUpTopMenu(cardsInfoJSON);
 
             setUpCardData('queen', cardsInfoJSON);
             setUpCardData('king', cardsInfoJSON);
@@ -737,6 +770,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (menuType !== 'Empire') {
                 cardBuyImage.src = "./images/coin.svg";
+            } else {
+                cardBuyImage.src = "./images/essence.svg";
             };
 
 
