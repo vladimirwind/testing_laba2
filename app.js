@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     kingdomsTrigger.onclick = function() {
 
-        sessionStorage.setItem('cardsInfo', '{"friends":1,"card_king":2,"card_queen":0,"card_prince":2,"card_princess":2,"card_dragon":2,"card_wizard":5,"card_witch":2,"card_soldier":3,"card_knight":2,"card_worker":4,"card_trader":2}');
+        sessionStorage.setItem('cardsInfo', '{"friends":1,"card_king":0,"card_queen":0,"card_prince":2,"card_princess":2,"card_dragon":2,"card_wizard":0,"card_witch":0,"card_soldier":0,"card_knight":2,"card_worker":4,"card_trader":2}');
 
         var isOnIOS = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
         var eventName = isOnIOS ? "pagehide" : "beforeunload";
@@ -551,7 +551,22 @@ document.addEventListener('DOMContentLoaded', function() {
             if (cardsGreen.includes(type)) {
                 let tmpLvl = myJSON[`card_${type}`];
                 let tmpArr = green.get(tmpLvl + 1);
-                document.getElementById(`cardBuyAmnt_${type}`).textContent = `${compressValues(tmpArr[1])}`;
+
+                let flag1 = (myJSON["friends"] < 3 && type === 'princess')
+                let flag2 = (myJSON["friends"] < 5 && type === 'wizard')
+                
+                if (flag1 && type === 'princess') {
+                    document.getElementById(`cardBuyAmnt_${type}`).textContent = `3 frens`;
+                };
+
+                if (flag2 && type === 'wizard') {
+                    document.getElementById(`cardBuyAmnt_${type}`).textContent = `5 frens`;
+                };
+
+                if (!flag1 && !flag2) {
+                    document.getElementById(`cardBuyAmnt_${type}`).textContent = `${compressValues(tmpArr[1])}`;
+                }
+               
                 document.getElementById(`card_${type}_level`).textContent = `${myJSON[`card_${type}`]}`;
                 
                 let tmpArr2 = green.get(tmpLvl);
@@ -718,6 +733,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let mock = `card_${type}`;
 
+            let cardBuyImage = document.getElementById('upgradeCardImage');
+
+            if (menuType !== 'Empire') {
+                cardBuyImage.src = "./images/coin.svg";
+            };
+
 
             if (cardsGreen.includes(type)) {
                 numValue = getValues('green', cardsInfoJSON[mock]);
@@ -736,6 +757,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 tmpPrice = orange.get(cardsInfoJSON[mock] + 1);
                 numPrice = tmpPrice[1];
             }
+
+
             
             upgradeCardIncome.textContent = `+${compressValues(numValue)}`;
 

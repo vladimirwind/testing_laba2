@@ -2112,7 +2112,6 @@ to {
     justify-content: center;
     text-align: center;
     align-self: center;
-    gap: 1px;
     width: 100%;
     border-radius: 0px 0px 10px 10px;
     outline-style: solid;
@@ -2127,7 +2126,8 @@ to {
     color:  #98FFAF;
     font-family: "unbounded";
     font-size: 13px;
-    align-self: center;
+    align-self: flex-start;
+    margin-top: 3%;
 }
 
 .cardBuyBlock {
