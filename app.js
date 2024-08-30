@@ -364,8 +364,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
             
         let processCards = function() {
-            cardsBtn = document.getElementById('btnCards');
-            popUpCards = document.getElementById('popUPKingdomsCards');
+
+            let cardsBtn = document.getElementById('btnCards');
+            let popUpCards = document.getElementById('popUPKingdomsCards');
             document.getElementById('kingdomsContainer').style.display = 'flex';
             let cardQueen = document.getElementById('cardQueen');
             let cardKing = document.getElementById('cardKing');
@@ -378,14 +379,6 @@ document.addEventListener('DOMContentLoaded', function() {
             let cardWizard = document.getElementById('cardWizard');
             let cardSoldier = document.getElementById('cardSoldier');
             let cardKnight = document.getElementById('cardKnight');
-
-            // let BackButton = tg.WebApp.BackButton;
-            // BackButton.show();
-            // BackButton.onClick(function() {
-            //     BackButton.hide();
-            //     document.getElementById('kingdomsContainer').style.display = 'none';
-            //     document.getElementById('mainContainer').style.display = 'block';
-            // });
 
             let menuEmpire = document.getElementById('menuEmpire');
             let menuArmy = document.getElementById('menuArmy');
@@ -404,6 +397,15 @@ document.addEventListener('DOMContentLoaded', function() {
             let allCardsMagic = document.getElementById('allCardsMagic');
             let allCardsSpecial = document.getElementById('allCardsSpecial');
 
+            let BackButton = tg.WebApp.BackButton;
+            BackButton.show();
+            BackButton.onClick(function() {
+                BackButton.hide();
+                popUpCards.style.display = 'none';
+                upgradeWindow.style.display = 'none';
+                document.getElementById('kingdomsContainer').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'block';
+            });
 
             allCardsEmpire.style.display = 'flex';
 
@@ -416,6 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
             xPopUpBtn.onclick = function() {
                 popUpCards.style.display = 'none';
             };
+
 
             menuEmpire.style.boxShadow = 'inset #2A4864 0px 0px 40px -9px';
 
