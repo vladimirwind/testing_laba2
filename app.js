@@ -404,6 +404,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 popUpCards.style.display = 'none';
                 upgradeWindow.style.display = 'none';
                 document.getElementById('cardsMenu').style.display = 'grid';
+                menuArmy.style.boxShadow = 'none';
+                menuMagic.style.boxShadow = 'none';
+                menuSpecial.style.boxShadow = 'none';
                 document.getElementById('kingdomsContainer').style.display = 'none';
                 document.getElementById('mainContainer').style.display = 'block';
             });
