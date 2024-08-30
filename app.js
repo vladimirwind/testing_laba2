@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     };
                     
                 } else {  // значит что таймер НЕ установлен
-                    localStorage.setItem(`card_${type}_timer`, '5:00');
+                    localStorage.setItem(`card_${type}_timer`, '15:00');
                     sessionStorage.setItem(`card_${type}_timer`, '1');
                     setClock(type);
                 }
@@ -794,7 +794,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let setClock = function(type) {
                 let base = `card_${type}_`
                 // Set the deadline to 15 minutes from now
-                let deadline = new Date(Date.now() + 5 * 60 * 1000);
+                let deadline = new Date(Date.now() + 15 * 60 * 1000);
                 let checkDeadline = localStorage.getItem(base + 'deadline');
                 if (checkDeadline === undefined || checkDeadline === null || checkDeadline === "") {
                     localStorage.setItem(base + 'deadline', deadline);  
@@ -813,8 +813,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         sessionStorage.removeItem(base + 'timer');
                         clearInterval(countdownInterval);
                        
-                        
-    
                         return;
                     }
     
