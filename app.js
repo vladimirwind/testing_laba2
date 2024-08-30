@@ -403,6 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 BackButton.hide();
                 popUpCards.style.display = 'none';
                 upgradeWindow.style.display = 'none';
+                document.getElementById('cardsMenu').style.display = 'grid';
                 document.getElementById('kingdomsContainer').style.display = 'none';
                 document.getElementById('mainContainer').style.display = 'block';
             });
