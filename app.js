@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
         tg.WebApp.expand();
         
     };
+
+    let popUPIncome = document.getElementById('popUPIncome');
+    popUPIncome.style.display = 'flex';
+    xIncome = document.getElementById('X_Income');
+    xIncome.onclick = function() {popUPIncome.style.display = 'none';};
        
     document.getElementById('frensBtn').onclick = function() {
         sessionStorage.setItem('frensInfo', `{"num_of_refs": 3, "total": 6000, "refs_arr": [{"full_name": "Muhhamad R","league": "br"},{"full_name": "Muhhamad B","league": "sr"},{"full_name": "Muhhamad Z","league": "gd"}], "tops_arr": [{"full_name": "iducky","num": 1232131},{"full_name": "liot","num": 1220},{"full_name": "liot2","num": 120},{"full_name": "liot3","num": 10},{"full_name": "liot4","num": 0}]}`);
