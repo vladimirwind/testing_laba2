@@ -479,10 +479,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((difference % (1000 * 60)) / 1000);
-            
+
+                let formattedHours = String(hours).padStart(2, '0');
+                let formattedMinutes = String(minutes).padStart(2, '0');
+                let formattedSeconds = String(seconds).padStart(2, '0');
                 // Update the countdown display
                 document.getElementById('comboCountDown').textContent = 
-                    `New combo in ${hours}:${minutes}:${seconds}`;
+                    `New combo in ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
             
                 // If the countdown is finished, reset it to the next day
                 if (difference < 0) {
