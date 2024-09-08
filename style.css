@@ -2005,6 +2005,20 @@ to {
     z-index: 101;
 }
 
+.popUPwindowDaily {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 1000px;
+    padding: 0 0;
+    margin-top: 10vh;
+    background-color: #0f161e;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    z-index: 101;
+}
+
 .cardWr {
     display: grid;
     grid-gap: 5%;
@@ -2287,3 +2301,151 @@ to {
     width: 7%;
     margin-top: 8%;
 }
+
+.wheelBGWr {
+    display: none;
+    margin: auto;
+    width: 90%;
+    height: auto;
+}
+
+.wheelBG {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.wheelBG img {
+    width: 100%;
+}
+
+.popUPwindowDaily {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100vw;
+    height: 1000px;
+    padding: 0 0;
+    margin-top: 10vh;
+    background-color: #0f161e;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    z-index: 101;
+}
+
+.comboNameWr {
+    display: flex;
+    width: 90%;
+    margin-top: 1%;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.comboName {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.comboName span {
+    color:  white;
+    font-size: 24px;
+    font-family: "unbounded";
+    letter-spacing: 1px;
+    align-self: center;
+    margin: auto;
+}
+
+.comboDescWr {
+    display: flex;
+    width: 90%;
+    margin-top: 1%;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.comboDesc {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.comboDesc span {
+    color:  white;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    align-self: center;
+    margin: auto;
+}
+
+.threeComboPictures {
+    display: grid;
+    grid-gap: 15px;
+    padding-left: 3%;
+    padding-right: 3%;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2%;
+    width: 90%;
+    align-self: center;
+}
+
+.threeComboItem {
+    display: flex;
+    flex-direction: column;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.threeComboItem img {
+    align-self: center;
+    height: auto;
+    max-width: 100%; /* Ensure images don't exceed their container */
+}
+
+.fourComboPictures {
+    display: grid;
+    grid-gap: 5px;
+    padding-left: 3%;
+    padding-right: 3%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 5%;
+    width: 90%;
+    align-self: center;
+}
+
+.fourComboItem {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.fourComboItem img {
+    align-self: center;
+    height: auto;
+    max-width: 100%; /* Ensure images don't exceed their container */
+}
+
+.dailyBtnsWr {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    gap: 20px;
+}
+

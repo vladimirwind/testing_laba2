@@ -87,8 +87,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let gamesOutline = document.getElementById('gamesOutline');
         let chestGame = document.getElementById('chestGame');
+        let wheelGame = document.getElementById('wheelGame');
         let headerText = document.getElementById('gamesHeader');
         let chestBG = document.getElementById('chestBG');
+        let wheelBG = document.getElementById('wheelBG');
         let chestBG2 = document.getElementById('chestBG2');
         let chestMenu = document.getElementById('chestMenu');
 
@@ -137,6 +139,54 @@ document.addEventListener('DOMContentLoaded', function() {
             chestMenu.style.display = 'flex';
             chestBG.style.display = 'flex';
         };
+
+        let wheelIMG = document.getElementById('wheelIMG');
+        let spinWheelBtn = document.getElementById('spinWheelBtn');
+
+        let smoothSpin = function() {
+            function getRandomNumber(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        
+            let randomNumber = getRandomNumber(-10, 10);
+           
+            let totalRotations = 1080 + 180 + randomNumber; // Total degrees to spin
+            let duration = 3000; // Total duration of the spin in milliseconds
+            let frames = 1000; // Number of frames for the animation
+            let interval = duration / frames; // Time between each frame
+
+            // Spin the wheels
+            for (let i = 0; i <= frames; i++) {
+                setTimeout(function() {
+
+                    let currentRotation = (totalRotations * (i / frames)) % 360; // Calculate current rotation
+                  
+                    wheelIMG.style.transform = `rotate(${currentRotation}deg)`; // Apply the rotation
+              
+                }, i * interval);
+            }
+        };
+        
+        wheelGame.onclick = function() {
+            gamesOutline.style.display = 'none';
+            headerText.textContent = `Lucky Wheel`;
+            wheelBG.style.display = 'flex';
+            spinWheelBtn.onclick = function() {
+                
+                spinWheelBtn.style.display = 'none';
+
+                wheelIMG.style.transform = `rotate(${0}deg)`;
+
+                setTimeout(function() {
+                    smoothSpin();
+                }, 1000);
+
+                setTimeout(function() {
+                    spinWheelBtn.style.display = 'flex';
+                }, 5100);
+            };
+        };
+
         const AdController = window.Adsgram.init({ blockId: "785", debug: true});
         goldenGetBtn.onclick = function() {
             AdController.show().then((result) => {
@@ -402,6 +452,51 @@ document.addEventListener('DOMContentLoaded', function() {
             let allCardsMagic = document.getElementById('allCardsMagic');
             let allCardsSpecial = document.getElementById('allCardsSpecial');
 
+            //added
+            let dailyBtn = document.getElementById('dailyComboBtn');
+            let dailyWindow = document.getElementById('popUPDailyCombo');
+            let closeDaily = document.getElementById('X_Daily');
+
+            dailyBtn.onclick = function() {
+                dailyWindow.style.display = 'flex';
+                closeDaily.onclick = function() {
+                    dailyWindow.style.display = 'none';
+                };
+            };
+
+            function updateDailyCountdown() {
+                let now = new Date();
+                // Get the current date in UTC
+                let utcDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1));
+                
+                // Set the target time to 00:00 UTC of the next day
+                let targetDate = new Date(utcDate.setUTCHours(0, 0, 0, 0));
+                
+                // Calculate the difference in milliseconds
+                let difference = targetDate - now;
+            
+                // Calculate days, hours, minutes, and seconds
+                let hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+                // Update the countdown display
+                document.getElementById('comboCountDown').textContent = 
+                    `New combo in ${hours}:${minutes}:${seconds}`;
+            
+                // If the countdown is finished, reset it to the next day
+                if (difference < 0) {
+                    clearInterval(timer);
+                    updateDailyCountdown(); // Reset immediately
+                }
+            }
+            
+            // Update the countdown every second
+            let timer = setInterval(updateDailyCountdown, 1000);
+            
+            // Initial call to display the countdown immediately
+            updateDailyCountdown();
+        
             let BackButton = tg.WebApp.BackButton;
             BackButton.show();
             BackButton.onClick(function() {
@@ -412,6 +507,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 menuArmy.style.boxShadow = 'none';
                 menuMagic.style.boxShadow = 'none';
                 menuSpecial.style.boxShadow = 'none';
+                dailyWindow.style.display = 'none';
                 document.getElementById('kingdomsContainer').style.display = 'none';
                 document.getElementById('mainContainer').style.display = 'block';
             });
