@@ -456,6 +456,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let dailyBtn = document.getElementById('dailyComboBtn');
             let dailyWindow = document.getElementById('popUPDailyCombo');
             let closeDaily = document.getElementById('X_Daily');
+            let checkComboBtn = document.getElementById('checkComboBtn');
+
+            checkComboBtn.onclick = function() {
+                tg.WebApp.showAlert('Come back tomorrow!');
+            };
 
             dailyBtn.onclick = function() {
                 dailyWindow.style.display = 'flex';
