@@ -544,17 +544,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         title  : 'Popup title',
                         message: 'You can find a daily combo here:',
                         buttons: [
-                            {id: 'X', type: 'default', text: 'check'},
-                            {id: 'Vladlen TON', type: 'default', text: 'check'},
+                            {id: 'X', type: 'default', text: 'X / Twitter'},
+                            {id: 'Vladlen TON', type: 'default', text: 'Vladlen TON'},
                             {type: 'cancel'},
                         ]
                     }, function (buttonId) {
                         if (buttonId === 'X') {
-                            tg.WebApp.openLink('https://twitter.com/gemseeton');
-                        } else if (buttonId === 'Gemsee Community') {
-                            tg.WebApp.openLink('https://t.me/gemsee_chat');
+                            window.location.href = 'https://twitter.com/gemseeton';
                         } else if (buttonId === 'Vladlen TON') {
-                            tg.WebApp.openLink('https://t.me/gemseee');
+                            window.location.href = 'https://t.me/vladlenton';
                         };
                     });
                 };
