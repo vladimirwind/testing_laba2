@@ -486,6 +486,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     thirdCombo.src = path;
                 }
             };
+
+            let infoDailyBtn = document.getElementById('infoDailyBtn');
             
             dailyBtn.onclick = function() {
                 dailyWindow.style.display = 'flex';
@@ -535,6 +537,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 thirdCombo.onclick = function() {
                     thirdCombo.src = `./images/combo_green.png`;
+                };
+
+                infoDailyBtn.onclick = function() {
+                    tg.WebApp.showPopup({
+                        title  : 'Popup title',
+                        message: 'You can find a daily combo here:',
+                        buttons: [
+                            {id: 'Gemsee Community', type: 'default', text: 'check'},
+                            {id: 'X', type: 'default', text: 'check'},
+                            {id: 'Vladlen TON', type: 'default', text: 'check'},
+                            {type: 'cancel'},
+                        ]
+                    }, function (buttonId) {
+                        if (buttonId === 'X') {
+                            tg.WebApp.openLink('https://twitter.com/gemseeton');
+                        } else if (buttonId === 'Gemsee Community') {
+                            tg.WebApp.openLink('https://t.me/gemsee_chat');
+                        } else if (buttonId === 'Vladlen TON') {
+                            tg.WebApp.openLink('https://t.me/gemseee');
+                        };
+                    });
                 };
             };
 
