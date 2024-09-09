@@ -544,7 +544,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         title  : 'Popup title',
                         message: 'You can find a daily combo here:',
                         buttons: [
-                            {id: 'Gemsee Community', type: 'default', text: 'check'},
                             {id: 'X', type: 'default', text: 'check'},
                             {id: 'Vladlen TON', type: 'default', text: 'check'},
                             {type: 'cancel'},
