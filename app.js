@@ -491,6 +491,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             dailyBtn.onclick = function() {
                 dailyWindow.style.display = 'flex';
+                upgradeWindow.style.display = 'none';
                 closeDaily.onclick = function() {
                     dailyWindow.style.display = 'none';
                 };
@@ -1070,6 +1071,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let cardsInfoJSON = JSON.parse(cardsInfoString);
     
                 upgradeWindow.style.display = 'flex';
+                dailyWindow.style.display = 'none';
                 let cardName = type.charAt(0).toUpperCase() + type.slice(1)
                 upgradeCardName.textContent = cardName;
                 upgradeCardImg.src = `./images/card_${type}.png`;
