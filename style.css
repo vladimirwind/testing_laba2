@@ -2403,9 +2403,9 @@ to {
 .threeComboItem {
     display: flex;
     flex-direction: column;
-    outline-style: solid;
+    /* outline-style: solid;
     outline-width: thin;
-    outline-color: #98FFAF;
+    outline-color: #98FFAF; */
     border-radius: 10px;
     gap: 5px;
 }

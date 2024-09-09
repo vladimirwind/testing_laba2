@@ -462,10 +462,79 @@ document.addEventListener('DOMContentLoaded', function() {
                 tg.WebApp.showAlert('Come back tomorrow!');
             };
 
+            let queenDaily = document.getElementById('queenDaily');
+            let kingDaily = document.getElementById('kingDaily');
+            let princeDaily = document.getElementById('princeDaily');
+            let princessDaily = document.getElementById('princessDaily');
+            let wizardDaily = document.getElementById('wizardDaily');
+            let witchDaily = document.getElementById('witchDaily');
+            let soldierDaily = document.getElementById('soldierDaily');
+            let knightDaily = document.getElementById('knightDaily');
+
+            let firstCombo = document.getElementById('1Combo');
+            let secondCombo = document.getElementById('2Combo');
+            let thirdCombo = document.getElementById('3Combo');
+
+            let placeCard = function(type) {
+                let path = `./images/cards/card_${type}.png`;
+                let defaultPath = `/images/combo_green.png`;
+                if (firstCombo.src.endsWith(defaultPath)) {
+                    firstCombo.src = path;
+                } else if (secondCombo.src.endsWith(defaultPath)) {
+                    secondCombo.src = path;
+                } else if (thirdCombo.src.endsWith(defaultPath)) {
+                    thirdCombo.src = path;
+                }
+            };
+            
             dailyBtn.onclick = function() {
                 dailyWindow.style.display = 'flex';
                 closeDaily.onclick = function() {
                     dailyWindow.style.display = 'none';
+                };
+
+                kingDaily.onclick = function() {
+                    placeCard('king');
+                }
+
+                queenDaily.onclick = function() {
+                    placeCard('queen');
+                }
+
+                princeDaily.onclick = function() {
+                    placeCard('prince');
+                }
+
+                princessDaily.onclick = function() {
+                    placeCard('princess');
+                }
+
+                wizardDaily.onclick = function() {
+                    placeCard('wizard');
+                }
+
+                witchDaily.onclick = function() {
+                    placeCard('witch');
+                }
+
+                soldierDaily.onclick = function() {
+                    placeCard('soldier');
+                }
+
+                knightDaily.onclick = function() {
+                    placeCard('knight');
+                }
+
+                firstCombo.onclick = function() {
+                    firstCombo.src = `./images/combo_green.png`;
+                };
+
+                secondCombo.onclick = function() {
+                    secondCombo.src = `./images/combo_green.png`;
+                };
+
+                thirdCombo.onclick = function() {
+                    thirdCombo.src = `./images/combo_green.png`;
                 };
             };
 
