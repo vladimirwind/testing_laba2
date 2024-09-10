@@ -475,8 +475,20 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             checkComboBtn.onclick = function() {
+                let fieldCount = Object.keys(reqBody).length;
+                if (fieldCount < 3) {
+                    tg.WebApp.showAlert('Choose 3 different cards!');
+                    return
+                };
+                
+                if ((reqBody.first === reqBody.second) || (reqBody.first === reqBody.third) ||
+                (reqBody.second === reqBody.third)) {
+                    tg.WebApp.showAlert('Choose 3 different cards!');
+                    return
+                };
+
                 if (true) {
-                    let response = '{"first": true, "second": true,"third": false}'
+                    let response = '{"first": true, "second": true, "third": false}'
                     let respJSON = JSON.parse(response);
                     if (respJSON["first"]) {
                         firstCombo.style.outlineStyle = 'solid';
