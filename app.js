@@ -458,10 +458,6 @@ document.addEventListener('DOMContentLoaded', function() {
             let closeDaily = document.getElementById('X_Daily');
             let checkComboBtn = document.getElementById('checkComboBtn');
 
-            checkComboBtn.onclick = function() {
-                tg.WebApp.showAlert('Come back tomorrow!');
-            };
-
             let queenDaily = document.getElementById('queenDaily');
             let kingDaily = document.getElementById('kingDaily');
             let princeDaily = document.getElementById('princeDaily');
@@ -475,23 +471,73 @@ document.addEventListener('DOMContentLoaded', function() {
             let secondCombo = document.getElementById('2Combo');
             let thirdCombo = document.getElementById('3Combo');
 
+            let reqBody = {
+            };
+
+            checkComboBtn.onclick = function() {
+                if (true) {
+                    let response = '{"first": true, "second": true,"third": false}'
+                    let respJSON = JSON.parse(response);
+                    if (respJSON["first"]) {
+                        firstCombo.style.outlineStyle = 'solid';
+                        firstCombo.style.outlineColor = '#98FFAF';
+                        firstCombo.style.outlineWidth = 'medium';
+                        firstCombo.style.borderRadius = '12px';
+                    } else {
+                        firstCombo.style.outlineStyle = 'solid';
+                        firstCombo.style.outlineColor = 'red';
+                        firstCombo.style.outlineWidth = 'medium';
+                        firstCombo.style.borderRadius = '12px';
+                    };
+                    if (respJSON["second"]) {
+                        secondCombo.style.outlineStyle = 'solid';
+                        secondCombo.style.outlineColor = '#98FFAF';
+                        secondCombo.style.outlineWidth = 'medium';
+                        secondCombo.style.borderRadius = '12px';
+                    } else {
+                        secondCombo.style.outlineStyle = 'solid';
+                        secondCombo.style.outlineColor = 'red';
+                        secondCombo.style.outlineWidth = 'medium';
+                        secondCombo.style.borderRadius = '12px';
+                    };
+                    if (respJSON["third"]) {
+                        thirdCombo.style.outlineStyle = 'solid';
+                        thirdCombo.style.outlineColor = '#98FFAF';
+                        thirdCombo.style.outlineWidth = 'medium';
+                        thirdCombo.style.borderRadius = '12px';
+                    } else {
+                        thirdCombo.style.outlineStyle = 'solid';
+                        thirdCombo.style.outlineColor = 'red';
+                        thirdCombo.style.outlineWidth = 'medium';
+                        thirdCombo.style.borderRadius = '12px';
+                    };
+                } else {
+                    tg.WebApp.showAlert('Come back tomorrow!');
+                }
+            };
+
             let placeCard = function(type) {
                 let path = `./images/cards/card_${type}.png`;
                 let defaultPath = `/images/combo_green.png`;
                 if (firstCombo.src.endsWith(defaultPath)) {
+                    reqBody.first = `card_${type}`;
                     firstCombo.src = path;
                 } else if (secondCombo.src.endsWith(defaultPath)) {
+                    reqBody.second = `card_${type}`;
                     secondCombo.src = path;
                 } else if (thirdCombo.src.endsWith(defaultPath)) {
+                    reqBody.third = `card_${type}`;
                     thirdCombo.src = path;
                 }
+                console.log(reqBody);
             };
+
 
             let infoDailyBtn = document.getElementById('infoDailyBtn');
             
             dailyBtn.onclick = function() {
                 dailyWindow.style.display = 'flex';
-                upgradeWindow.style.display = 'none';
+                popUpCards.style.display = 'none';
                 closeDaily.onclick = function() {
                     dailyWindow.style.display = 'none';
                 };
@@ -530,14 +576,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 firstCombo.onclick = function() {
                     firstCombo.src = `./images/combo_green.png`;
+                    firstCombo.style.outline = 'none';
                 };
 
                 secondCombo.onclick = function() {
                     secondCombo.src = `./images/combo_green.png`;
+                    secondCombo.style.outline = 'none';
                 };
 
                 thirdCombo.onclick = function() {
                     thirdCombo.src = `./images/combo_green.png`;
+                    thirdCombo.style.outline = 'none';
                 };
 
                 infoDailyBtn.onclick = function() {
