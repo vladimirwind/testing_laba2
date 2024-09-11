@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
         tg.WebApp.ready();
         tg.WebApp.expand();
-        tg.WebApp.showAlert(`${tg.WebApp.initData.start_param}`);
+        tg.WebApp.showAlert(`${tg.WebApp.initData}`);
     };
 
     let popUPIncome = document.getElementById('popUPIncome');
