@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
         tg.WebApp.ready();
         tg.WebApp.expand();
-        
+        tg.WebApp.showAlert(`${tg.WebApp.initData.start_param}`);
     };
 
     let popUPIncome = document.getElementById('popUPIncome');
@@ -475,6 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             checkComboBtn.onclick = function() {
+                
                 let fieldCount = Object.keys(reqBody).length;
                 if (fieldCount < 3) {
                     tg.WebApp.showAlert('Choose 3 different cards!');
