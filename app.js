@@ -4,10 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
         tg.WebApp.ready();
         tg.WebApp.expand();
-        tg.WebApp.showAlert(`${tg.WebApp.initDataUnsafe.start_param}`);
-        setTimeout(function() {
-            tg.WebApp.showAlert(`${tg.WebApp.initData.start_param}`);
-        }, 11000);
+        console.log(`${tg.WebApp.initDataUnsafe}`);
     };
 
     let popUPIncome = document.getElementById('popUPIncome');
