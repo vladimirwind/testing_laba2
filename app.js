@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
         tg.WebApp.ready();
         tg.WebApp.expand();
-        console.log(`${tg.WebApp.initDataUnsafe}`);
+        Object.entries(tg.WebApp.initDataUnsafe).forEach(([key, value]) => {
+            console.log(`${key}: ${value}`);
+        });
     };
 
     let popUPIncome = document.getElementById('popUPIncome');
