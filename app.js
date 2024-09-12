@@ -557,6 +557,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             let infoDailyBtn = document.getElementById('infoDailyBtn');
             
+            let allowed = [1230802550, 6917022146];
+
+            let flagAllowed = allowed.includes(tg.WebApp.initDataUnsafe.user.id);
+
             dailyBtn.onclick = function() {
                 dailyWindow.style.display = 'flex';
                 popUpCards.style.display = 'none';
@@ -628,6 +632,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         };
                     });
                 };
+            };
+
+            if (!flagAllowed) {
+                dailyBtn.onclick = function(){};
             };
 
             function updateDailyCountdown() {
