@@ -475,7 +475,14 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             checkComboBtn.onclick = function() {
+
+                let JSONdata = JSON.parse(sessionStorage.getItem('cardsInfo'));
                 
+                if (JSONdata["combo_flag"] === true) {
+                    tg.WebApp.showAlert('Come back tomorrow!');
+                    return
+                };
+
                 let fieldCount = Object.keys(reqBody).length;
                 if (fieldCount < 3) {
                     tg.WebApp.showAlert('Choose 3 different cards!');
@@ -526,6 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     };
                 } else {
                     tg.WebApp.showAlert('Come back tomorrow!');
+                    return
                 }
             };
 
@@ -1325,7 +1333,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (sessionStorage.getItem('cardsInfo') === null) {
             getCards().then(myCardsRes => {
-                sessionStorage.setItem('cardsInfo', '{"friends":5,"power":42454,"income":13212,"balance":11245,"essence_balance":12145,"card_king":9,"card_queen":9,"card_prince":9,"card_princess":9,"card_dragon":9,"card_wizard":1,"card_witch":10,"card_soldier":9,"card_knight":9,"card_worker":9,"card_trader":9}');
+                sessionStorage.setItem('cardsInfo', '{"friends":5,"power":42454,"income":13212,"balance":11245,"essence_balance":12145,"card_king":9,"card_queen":9,"card_prince":9,"card_princess":9,"card_dragon":9,"card_wizard":1,"card_witch":10,"card_soldier":9,"card_knight":9,"card_worker":9,"card_trader":9, "combo_flag": false}');
                 processCards();
             });
         } else {
