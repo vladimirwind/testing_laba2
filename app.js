@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
            
             let totalRotations = 1080 + 135 + randomNumber; // Total degrees to spin
             let duration = 3000; // Total duration of the spin in milliseconds
-            let frames = 100; // Number of frames for the animation
+            let frames = 1000; // Number of frames for the animation
             let interval = duration / frames; // Time between each frame
 
             // Spin the wheels
