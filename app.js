@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let wheelIMG = document.getElementById('wheelIMG');
         let spinWheelBtn = document.getElementById('spinWheelBtn');
 
-        let smoothSpin = function() {
+        let smoothSpin = async function() {
             function getRandomNumber(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;
             }
@@ -172,9 +172,8 @@ document.addEventListener('DOMContentLoaded', function() {
             gamesOutline.style.display = 'none';
             headerText.textContent = `Lucky Wheel`;
             wheelBG.style.display = 'flex';
-            spinWheelBtn.onclick = function() {
-                
-                spinWheelBtn.style.display = 'none';
+
+            let spinner = async function() {
 
                 wheelIMG.style.transform = `rotate(${0}deg)`;
 
@@ -182,10 +181,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     smoothSpin();
                 }, 1000);
 
-                setTimeout(function() {
-                    spinWheelBtn.style.display = 'flex';
-                }, 5100);
             };
+
+            spinWheelBtn.onclick = spinner;
         };
 
         const AdController = window.Adsgram.init({ blockId: "785", debug: true});
