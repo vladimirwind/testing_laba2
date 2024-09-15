@@ -144,16 +144,17 @@ document.addEventListener('DOMContentLoaded', function() {
         let wheelIMG = document.getElementById('wheelIMG');
         let spinWheelBtn = document.getElementById('spinWheelBtn');
 
-        let smoothSpin = async function() {
-            function getRandomNumber(min, max) {
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            }
+        let getRandomNumber = function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+        let smoothSpin = function() {
         
             let randomNumber = getRandomNumber(-10, 10);
            
             let totalRotations = 1080 + 135 + randomNumber; // Total degrees to spin
             let duration = 3000; // Total duration of the spin in milliseconds
-            let frames = 1000; // Number of frames for the animation
+            let frames = 100; // Number of frames for the animation
             let interval = duration / frames; // Time between each frame
 
             // Spin the wheels
@@ -167,23 +168,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, i * interval);
             }
         };
-        
+
+        let spinnerWr = function() {
+
+            spinWheelBtn.style.display = 'none';
+
+            wheelIMG.style.transform = `rotate(${0}deg)`;
+
+            setTimeout(function() {
+                smoothSpin();
+            }, 1000);
+
+            setTimeout(function() {
+                spinWheelBtn.style.display = 'flex';
+            }, 3500);
+
+        };
+
+        spinWheelBtn.addEventListener("click", spinnerWr);
+
         wheelGame.onclick = function() {
             gamesOutline.style.display = 'none';
             headerText.textContent = `Lucky Wheel`;
             wheelBG.style.display = 'flex';
-
-            let spinner = async function() {
-
-                wheelIMG.style.transform = `rotate(${0}deg)`;
-
-                setTimeout(function() {
-                    smoothSpin();
-                }, 1000);
-
-            };
-
-            spinWheelBtn.onclick = spinner;
         };
 
         const AdController = window.Adsgram.init({ blockId: "785", debug: true});
