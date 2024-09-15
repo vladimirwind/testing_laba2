@@ -168,26 +168,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, i * interval);
             }
         };
+        let ISspinning = false;
 
         let spinnerWr = function() {
-
-            spinWheelBtn.style.display = 'none';
-
-            setTimeout(function() {
-                wheelIMG.style.transform = `rotate(${0}deg)`;
-            }, 400);
-
+            if (ISspinning) return; // Prevent spinning if already in progress
+        
+            ISspinning = true; // Set spinning flag to true
+          
+            // Reset rotation before spinning
+            wheelIMG.style.transition = 'none'; // Disable transition for reset
+            wheelIMG.style.transform = `rotate(0deg)`;
+        
+            // Allow some time for the reset before starting the spin
             setTimeout(function() {
                 smoothSpin();
             }, 1000);
-
+        
+            // Re-enable button after spin is complete
             setTimeout(function() {
-                spinWheelBtn.style.display = 'flex';
-            }, 4500);
-
+                ISspinning = false; // Reset spinning flag
+            }, 4000); // Adjust this time as needed based on spin duration
         };
-
-        spinWheelBtn.addEventListener("click", spinnerWr);
+        
+        // Add event listener to the button
+        wheelIMG.addEventListener("click", spinnerWr);
 
         wheelGame.onclick = function() {
             gamesOutline.style.display = 'none';
