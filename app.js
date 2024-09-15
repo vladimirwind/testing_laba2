@@ -173,7 +173,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             spinWheelBtn.style.display = 'none';
 
-            wheelIMG.style.transform = `rotate(${0}deg)`;
+            setTimeout(function() {
+                wheelIMG.style.transform = `rotate(${0}deg)`;
+            }, 400);
 
             setTimeout(function() {
                 smoothSpin();
@@ -181,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(function() {
                 spinWheelBtn.style.display = 'flex';
-            }, 3500);
+            }, 4500);
 
         };
 
