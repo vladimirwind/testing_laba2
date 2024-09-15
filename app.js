@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             let randomNumber = getRandomNumber(-10, 10);
            
-            let totalRotations = 1080 + 180 + randomNumber; // Total degrees to spin
+            let totalRotations = 1080 + 135 + randomNumber; // Total degrees to spin
             let duration = 3000; // Total duration of the spin in milliseconds
             let frames = 1000; // Number of frames for the animation
             let interval = duration / frames; // Time between each frame
@@ -559,7 +559,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             let allowed = [1230802550, 6917022146];
 
-            let flagAllowed = allowed.includes(tg.WebApp.initDataUnsafe.user.id);
+            if (tg.WebApp.initData !== undefined && tg.WebApp.initData !== null && tg.WebApp.initData !== "") {
+                var flagAllowed = allowed.includes(tg.WebApp.initDataUnsafe.user.id);
+            };
 
             dailyBtn.onclick = function() {
                 dailyWindow.style.display = 'flex';

@@ -2302,26 +2302,6 @@ to {
     margin-top: 8%;
 }
 
-.wheelBGWr {
-    display: none;
-    margin: auto;
-    width: 90%;
-    height: auto;
-}
-
-.wheelBG {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10%;
-    height: auto;
-    align-items: center;
-    justify-content: center;
-}
-
-.wheelBG img {
-    width: 100%;
-}
-
 .popUPwindowDaily {
     display: none;
     flex-direction: column;
@@ -2479,4 +2459,42 @@ to {
 
 .boxImageTxtDaily img { 
     width: 15%;
+}
+
+.wheelBGWr {
+    display: none;
+    margin-top: 10%;
+    align-self: center;
+    width: 98%;
+    height: auto;
+}
+
+.wheelBG {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.wheelBG img {
+    width: 100%;
+}
+
+.WOFarrow {
+    display: flex; /* Keep this for centering */
+    position: relative; /* Relative positioning for child elements */
+    width: 100%; /* Ensure it takes full width for centering */
+    height: auto; /* Allow height to adjust automatically */
+}
+
+.WOFarrow img {
+    position: absolute; /* Positioning it absolutely */
+    top: 0; /* Align to the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    width: 8%; /* Set desired width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 10011; /* Ensure it's on top of other elements */
 }
