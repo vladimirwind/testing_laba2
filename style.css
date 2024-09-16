@@ -2461,8 +2461,20 @@ to {
     width: 15%;
 }
 
+.DailyTriesWr {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 90%;
+    gap: 1%;
+    margin-top: 1%;
+    align-self: center;
+    overflow: hidden;
+}
+
 .wheelBGWr {
     display: none;
+    flex-direction: column;
     margin-top: 10%;
     align-self: center;
     width: 98%;
@@ -2497,4 +2509,97 @@ to {
     width: 8%; /* Set desired width */
     height: auto; /* Maintain aspect ratio */
     z-index: 10011; /* Ensure it's on top of other elements */
+}
+
+.WOFmenuWr {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-top: 1%;
+}
+
+.boxMainDaily {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+}
+
+.boxMainDaily span {
+    color: white;
+    font-family: "unbounded";
+    font-weight: bold;
+    font-size: 13px;
+    align-self: center;
+}
+
+.boxDaily {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 5%;
+    padding-bottom: 2%;
+}
+
+.boxDaily span {
+    font-weight: normal;
+    color: white;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.boxDaily img { 
+    width: 20%;
+}
+
+.bottomWOFWr {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-bottom: 5%;
+    align-items: flex-end;
+}
+
+.bottomWOF {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    gap: 2%;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 5px;
+    height: 8vh;
+}
+
+.bottomWOFIn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center;
+    height: 85%;
+}
+
+.bottomWOFIn img {
+    width: 25%;
+    align-self: center; /* Center the image */
+    margin: auto;
+}
+
+.bottomWOFIn span {
+    color: #98FFAF;
+    font-family: "Open Sans", sans-serif;
+    font-size: 15px;
+    margin-top: auto;
 }
