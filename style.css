@@ -2532,11 +2532,10 @@ to {
 
 .boxMainDaily span {
     color: white;
-    font-family: "unbounded";
+    font-family: "Open Sans", sans-serif;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 16px;
     align-self: center;
-    letter-spacing: 1px;
 }
 
 .boxDaily {
