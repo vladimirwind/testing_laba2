@@ -2575,9 +2575,7 @@ to {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     gap: 2%;
-    outline-style: solid;
-    outline-width: thin;
-    outline-color: #98FFAF;
+    background-color: #98FFAF;
     border-radius: 5px;
     height: 9vh;
 }
@@ -2592,14 +2590,15 @@ to {
 }
 
 .bottomWOFIn img {
-    width: 25%;
+    width: 45%;
     align-self: center; /* Center the image */
     margin: auto;
 }
 
 .bottomWOFIn span {
-    color: #98FFAF;
+    color: #0f161e;
     font-family: "Open Sans", sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     margin-top: auto;
+    font-weight: bold;
 }
