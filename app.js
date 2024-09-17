@@ -142,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         let wheelIMG = document.getElementById('wheelIMG');
-        let spinWheelBtn = document.getElementById('spinWheelBtn');
 
         let getRandomNumber = function (min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -150,9 +149,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let smoothSpin = function() {
         
-            let randomNumber = getRandomNumber(-10, 10);
+            let randomNumber = getRandomNumber(-15, 15);
            
-            let totalRotations = 1080 + 0 + randomNumber; // Total degrees to spin
+            let totalRotations = 1080 + 90 + randomNumber; // Total degrees to spin
             let duration = 3000; // Total duration of the spin in milliseconds
             let frames = 1000; // Number of frames for the animation
             let interval = duration / frames; // Time between each frame
@@ -187,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Re-enable button after spin is complete
             setTimeout(function() {
                 ISspinning = false; // Reset spinning flag
-            }, 4000); // Adjust this time as needed based on spin duration
+            }, 5000); // Adjust this time as needed based on spin duration
         };
         
         // Add event listener to the button
