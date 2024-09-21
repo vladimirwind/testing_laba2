@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
         buttonRootId: 'ton-connect'
     });
 
