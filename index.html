@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js?1"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <script src="app.js"></script>
     <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
     <meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0" />
@@ -17,7 +18,6 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
-    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 </head>
 
 <body>
@@ -595,7 +595,17 @@
     </div>
     <div class="containerSettings" id="containerSettings">
         <div class="walletBoxWr">
-            <div class="walletBox" id="ton-connect">
+            <div class="walletBox">
+                <div id="ton-connect"></div>
+                <script>
+                    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+                        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
+                        buttonRootId: 'ton-connect'
+                    });
+                    tonConnectUI.uiOptions = {
+                    language: 'ru',
+                    };
+                </script>
                 <span>CONNECT ME</span>
             </div>
         </div>

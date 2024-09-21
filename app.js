@@ -8,17 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(JSON.stringify(tg.WebApp.initDataUnsafe, null, 2)); 
     };
 
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
-        buttonRootId: 'ton-connect'
-    });
-
-    async function connectToWallet() {
-        const connectedWallet = await tonConnectUI.connectWallet();
-        // Do something with connectedWallet if needed
-        console.log(connectedWallet);
-    }
-
 
     let settingsBtn = document.getElementById("settingsBtn");
     settingsBtn.onclick = function() {

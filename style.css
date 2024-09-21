@@ -2633,7 +2633,7 @@ to {
     height: 100vh; /* adjust height percentage as needed */
     background-color: #15202B;
     box-sizing: border-box; /* Include padding in width and height */
-    overflow-x: hidden;
+    overflow-x: scroll;
     overflow-y: scroll;
 }
 
