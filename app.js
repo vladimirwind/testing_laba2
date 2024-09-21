@@ -8,6 +8,30 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(JSON.stringify(tg.WebApp.initDataUnsafe, null, 2)); 
     };
 
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://<YOUR_APP_URL>/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+
+    async function connectToWallet() {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        // Do something with connectedWallet if needed
+        console.log(connectedWallet);
+    }
+
+
+    let settingsBtn = document.getElementById("settingsBtn");
+    settingsBtn.onclick = function() {
+        document.getElementById("containerSettings").style.display = 'flex';
+        let tonCnct = document.getElementById('ton-connect');
+        tonCnct.onlick = function() {
+            // Call the function
+            connectToWallet().catch(error => {
+                console.error("Error connecting to wallet:", error);
+            });
+        };
+    };
+    
     let popUPIncome = document.getElementById('popUPIncome');
     popUPIncome.style.display = 'flex';
     xIncome = document.getElementById('X_Income');
@@ -149,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let smoothSpin = function() {
         
-            let randomNumber = getRandomNumber(-15, 15);
+            let randomNumber = getRandomNumber(-14, 14);
            
             let totalRotations = 1080 + 90 + randomNumber; // Total degrees to spin
             let duration = 3000; // Total duration of the spin in milliseconds
@@ -196,6 +220,39 @@ document.addEventListener('DOMContentLoaded', function() {
             gamesOutline.style.display = 'none';
             headerText.textContent = `Lucky Wheel`;
             wheelBG.style.display = 'flex';
+
+            let wheelData = {
+                "winners": [
+                    "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi", 
+                    "Ivan" 
+                     // Add more items up to 100
+                ]
+            };
+            
+            // Get the span and button elements
+            let winnersText = document.getElementById("winnersText");
+          
+            
+            let index = 0;
+           
+            // Function to change the text content of the span
+            function changeWinner() {
+                // Add fall class to trigger animation
+                winnersText.classList.add('fall');
+            
+                // Wait for the animation to complete
+                setTimeout(() => {
+                    // Change text after animation starts
+                    winnersText.textContent = `${wheelData.winners[index]} just won 0.01 TON`;
+                    
+                    // Remove fall class to reset for next animation
+                    winnersText.classList.remove('fall');
+                    
+                    index = (index + 1) % wheelData.winners.length; // Loop back to 0 after reaching the end
+                }, 1000); // Match this duration with the CSS transition duration
+            }
+
+            setInterval(changeWinner, 5000);
         };
 
         const AdController = window.Adsgram.init({ blockId: "785", debug: true});

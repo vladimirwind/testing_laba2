@@ -17,6 +17,7 @@
     <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 </head>
 
 <body>
@@ -592,6 +593,13 @@
             </div>
         </div>
     </div>
+    <div class="containerSettings" id="containerSettings">
+        <div class="walletBoxWr">
+            <div class="walletBox" id="ton-connect">
+                <span>CONNECT ME</span>
+            </div>
+        </div>
+    </div>
     <div class="containerGames" id="gamesContainer">
         <div class="gamesBannerWr">
             <div class="gamesBanner">
@@ -738,6 +746,9 @@
                     <img src="./images/WOFarrow.svg" id="WOFarrow" alt="WOF Arrow">
                 </div>
                 <img src="./images/wheel.png" id="wheelIMG" alt="Wheel">
+            </div>
+            <div class="winnersWr">
+                <span id = "winnersText">Jacky*** just won 0.01 TON</span>
             </div>
             </br>
             <div class="bottomWOFWr">
@@ -1097,7 +1108,7 @@
                     <img src="./images/pass.svg"></img>
                 </div>
             </div>
-            <div class="textandthreeitem">
+            <div class="textandthreeitem" id="settingsBtn">
                 <text>SETTINGS</text>
                 <div class="three-item">
                     <img src="./images/wallet.svg"></img>

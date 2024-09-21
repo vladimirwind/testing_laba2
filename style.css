@@ -2602,3 +2602,56 @@ to {
     margin-top: auto;
     font-weight: bold;
 }
+
+.winnersWr {
+    display: flex;
+    width: 90%;
+    overflow: hidden;
+    height: auto;
+    margin-top: 1%;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.winnersWr span {
+    color: #bfbfbf;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Animation transition */
+}
+
+.fall {
+    transform: translateY(30px); /* Adjust how far down it falls */
+    opacity: 0; /* Fade out effect */
+}
+
+.containerSettings {
+    display: none;
+    flex-direction: column;
+    width: 100vw; /* adjust width percentage as needed */
+    height: 100vh; /* adjust height percentage as needed */
+    background-color: #15202B;
+    box-sizing: border-box; /* Include padding in width and height */
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.walletBoxWr {
+    display: flex;
+    width: 90%;
+    height: auto;
+    margin-top: 5%;
+    align-self: center;
+}
+
+.walletBox {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    margin: auto;
+    align-self: center;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+}
