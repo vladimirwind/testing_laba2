@@ -1,27 +1,32 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
+
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
+        buttonRootId: 'ton-connects'
+    });
+
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
         tg.WebApp.ready();
         tg.WebApp.expand();
 
         console.log(JSON.stringify(tg.WebApp.initDataUnsafe, null, 2)); 
+
+        tonConnectUI.uiOptions = {
+            language: tg.WebApp.initDataUnsafe.language_code,
+        };
     };
+    
 
     let settingsBtn = document.getElementById("settingsBtn");
     settingsBtn.onclick = function() {
         document.getElementById("containerSettings").style.display = 'flex';
-        let tonCnct = document.getElementById('ton-connect');
-        tonCnct.onlick = function() {
-            // Call the function
-            connectToWallet().catch(error => {
-                console.error("Error connecting to wallet:", error);
-            });
-        };
     };
     
     let popUPIncome = document.getElementById('popUPIncome');
     popUPIncome.style.display = 'flex';
-    xIncome = document.getElementById('X_Income');
+    let xIncome = document.getElementById('X_Income');
     xIncome.onclick = function() {popUPIncome.style.display = 'none';};
        
     document.getElementById('frensBtn').onclick = function() {
