@@ -16,12 +16,17 @@ document.addEventListener('DOMContentLoaded', function() {
         tonConnectUI.uiOptions = {
             language: tg.WebApp.initDataUnsafe.language_code,
         };
+        
     };
     
 
     let settingsBtn = document.getElementById("settingsBtn");
     settingsBtn.onclick = function() {
         document.getElementById("containerSettings").style.display = 'flex';
+        let walletBtn = document.getElementById("walletBtn");
+        walletBtn.onclick = function() {
+            document.getElementById("popUPWallet").style.display = 'flex';
+        };
     };
     
     let popUPIncome = document.getElementById('popUPIncome');
