@@ -16,9 +16,32 @@ document.addEventListener('DOMContentLoaded', function() {
     menuBtn3.style.boxShadow = "none";
     
     var coreTasks =  document.getElementById('coreTasks');
-    var core1 = document.getElementById('core1');
-    var core2 = document.getElementById('core2');
-    var core3 = document.getElementById('core3');
+    var loadingText = document.getElementById('loadingText');
+
+    var coreX = document.getElementById('coreX');
+    coreX.onclick = function() {
+
+        const dots = '...';
+        let checkBtn = document.getElementById('checkPartnerId');
+        let count = 0;
+    
+        const interval = setInterval(() => {
+            loadingText.style.color = '#98FFAF';
+            count = (count + 1) % 3; // Cycle through 0 to 2
+            const dotSpan = `${dots.substring(0, count + 1)}`;
+
+            loadingText.textContent = `Checking ${dotSpan}`;
+            coreX.style.filter = 'drop-shadow(0px 3px 2px #98FFAF)';
+        }, 300);
+    
+        // Optionally, stop the animation after some time (e.g., after 5 seconds)
+        setTimeout(function() {
+            checkBtn.src = '../images/claimBTNsq.svg';
+            loadingText.textContent = `Take reward`;
+            clearInterval(interval)
+        }, 5000);
+
+    };
 
     var frensTasks = document.getElementById('frensTasks');
     frensTasks.style.display = 'none';
@@ -61,39 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let flag3 = obj["task_3"];
         // let flag4 = obj["task_4"];
         // let flag5 = obj["task_5"];
-        if (flag1 !== undefined && flag1 !== null && flag1) {
-            core1.style.opacity = '0.5';
-            core1.removeEventListener("click", funcCore1);
-            let img = document.createElement("IMG");
-            img.src = "../images/V_Mark.svg";
-            let oldImg = document.getElementById('join1');
-            img.style.width = '5vw';
-            img.style.height = '5vh';
-            img.style.marginRight = "5vh";
-            document.getElementById('core1').replaceChild(img, oldImg);
-        }
-        if (flag2 !== undefined && flag2 !== null && flag2) {
-            core2.style.opacity = '0.5';
-            core2.removeEventListener("click", funcCore2);
-            let img = document.createElement("IMG");
-            img.src = "../images/V_Mark.svg";
-            let oldImg = document.getElementById('get2');
-            img.style.width = '5vw';
-            img.style.height = '5vh';
-            img.style.marginRight = "5vh";
-            document.getElementById('core2').replaceChild(img, oldImg);
-        }
-        if (flag3 !== undefined && flag3 !== null && flag3) {
-            core3.style.opacity = '0.5';
-            core3.removeEventListener("click", funcCore3);
-            let img = document.createElement("IMG");
-            img.src = "../images/V_Mark.svg";
-            let oldImg = document.getElementById('join3');
-            img.style.width = '5vw';
-            img.style.height = '5vh';
-            img.style.marginRight = "5vh";
-            document.getElementById('core3').replaceChild(img, oldImg);
-        }
         // if (flag4 !== undefined && flag4 !== null && flag4) {
         //     core4.style.opacity = '0.5';
         //     core4.removeEventListener("click", funcCore4);
@@ -475,10 +465,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, 1000)
     };
-
-    core1.addEventListener("click", funcCore1);
-    core2.addEventListener("click", funcCore2);
-    core3.addEventListener("click", funcCore3);
 
     frens1.addEventListener("click", funcFrens1);
     frens2.addEventListener("click", funcFrens2);

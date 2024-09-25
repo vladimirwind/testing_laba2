@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
     };
     
-
     let settingsBtn = document.getElementById("settingsBtn");
     settingsBtn.onclick = function() {
         document.getElementById("containerSettings").style.display = 'flex';

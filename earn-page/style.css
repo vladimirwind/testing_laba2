@@ -82,52 +82,130 @@ body {
     flex-direction: row;
     background-color: #0f161e;
     width: 100%;
-    height: 10vh;
+    height: 15vh;
     border-radius: 5px;
-    padding-top: 10%;
-    padding-bottom: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     margin-top: 5%;
-    align-items: center;
-    gap: 5%;
-}
-
-.taskListItem span {
-    color: white;
-    font-size: 20px;
-    font-weight: 400;
-    display: flex;
-}
-
-.taskListItem img {
-    margin-left: auto;
-    margin-right: 5%;
-    width: 20%;
-}
-
-.taskImage {
-    display: flex;
-    /* outline-style: solid;
-    outline-width: thin;
-    outline-color: #98FFAF; */
-    border-radius: 5px;
-    height: 100%;
-    width: 25%;
-    padding-top: 10%;
-    padding-bottom: 10%;
-    align-items: center;
-    justify-content: center;
+    justify-content: start;
     align-self: center;
-    text-align: center;
+    overflow: hidden;
 }
 
-.taskImage img {
+.taskListItemTextsWr {
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
     width: 60%;
-    padding: 0 0;
+    align-items: start;
+    justify-content: start;
+    margin-left: 3%;
+}
+
+.taskListItemTextsHeader {
+    display: flex;
+    width: 100%;
+}
+
+.taskListItemTextsHeader span {
+    font-family: "Open Sans", sans-serif;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.taskListItemTextsCoins {
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+}
+
+.taskListItemTextsCoins span {
+    font-family: "Open Sans", sans-serif;
+    color:#98FFAF;
+    font-weight: bold;
+}
+
+.taskListItemTextsCoins img {
+    width: 10%;
+}
+
+.taskListItemTextsReward {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.taskListItemTextsReward span {
+    font-family: "Open Sans", sans-serif;
+    color: gray;
+}
+
+.dotLoading {
+    display: inline-block; 
+    animation: fallDot 1s infinite;
+    color:#98FFAF;
+    font-size: large;
+    padding-left: 5%;
+    gap: 5px;
+}
+
+@keyframes fallDot {
+    0% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(5px); /* Adjust for fall distance */
+        opacity: 0;
+    }
+}
+
+.taskListImageWr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 15%;
+    margin-left: 2%;
+}
+
+.taskListImage {
+    display: flex;
     align-items: center;
     justify-content: center;
     align-self: center;
-    text-align: center;
-    margin: 0 0;
+}
+
+.taskListImage img {
+    width: 100%;
+    align-self: center;
+    margin: auto;
+}
+
+
+.taskListImageRightWr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: 20%;
+    margin-right: 1%;
+}
+
+.taskListImageRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.taskListImageRight img {
+    width: 100%;
+    align-self: center;
+    margin: auto;
 }
 
 .greenLineEnd {
