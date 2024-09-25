@@ -14,8 +14,131 @@ document.addEventListener('DOMContentLoaded', function() {
 
     menuBtn2.style.boxShadow = "none";
     menuBtn3.style.boxShadow = "none";
-    
+
+    const AllPartners = new Map();
+    AllPartners.set(29, 
+        ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+        "Tap My Ass",
+        "3000",
+        "bot"]);
+    AllPartners.set(28, 
+        ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+        "Tap My Dick",
+        "3000",
+        "bot"]);
+
+    AllPartners.set(27, 
+        ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+        "Tap My Penios",
+        "3000",
+        "bot"]);
+
     var coreTasks =  document.getElementById('coreTasks');
+
+    let appendTasks = function(number, header, reward, type) {
+        // Create the taskListItem div
+        let taskListItem = document.createElement('div');
+        taskListItem.className = 'taskListItem';
+        taskListItem.id = `partnerTask_${number}`;
+
+        // Create the taskListImageWr div
+        let taskListImageWr = document.createElement('div');
+        taskListImageWr.className = 'taskListImageWr';
+
+        // Create the taskListImage div
+        let taskListImage = document.createElement('div');
+        taskListImage.className = 'taskListImage';
+
+        // Create the img element for the task image
+        let taskImage = document.createElement('img');
+        if (type==='bot') {
+            taskImage.src = '../images/TELEGA_2.svg';
+        } else {
+            taskImage.src = '../images/TELEGA_2.svg';
+        }
+
+        // Append img to taskListImage
+        taskListImage.appendChild(taskImage);
+        // Append taskListImage to taskListImageWr
+        taskListImageWr.appendChild(taskListImage);
+        
+        // Create the taskListItemTextsWr div
+        let taskListItemTextsWr = document.createElement('div');
+        taskListItemTextsWr.className = 'taskListItemTextsWr';
+
+        // Create the header section
+        let taskListItemTextsHeader = document.createElement('div');
+        taskListItemTextsHeader.className = 'taskListItemTextsHeader';
+        
+        let headerSpan = document.createElement('span');
+        headerSpan.textContent = header;
+        
+        taskListItemTextsHeader.appendChild(headerSpan);
+        
+        // Create the reward section
+        let taskListItemTextsReward = document.createElement('div');
+        taskListItemTextsReward.className = 'taskListItemTextsReward';
+        
+        let rewardSpan = document.createElement('span');
+        rewardSpan.id = `loadingText_${number}`;
+        rewardSpan.textContent = 'Your reward';
+        
+        taskListItemTextsReward.appendChild(rewardSpan);
+        
+        // Create the coins section
+        let taskListItemTextsCoins = document.createElement('div');
+        taskListItemTextsCoins.className = 'taskListItemTextsCoins';
+        
+        let coinImage = document.createElement('img');
+        coinImage.src = '../images/coin.svg';
+        
+        let coinsSpan = document.createElement('span');
+        coinsSpan.textContent = reward;
+        
+        taskListItemTextsCoins.appendChild(coinImage);
+        taskListItemTextsCoins.appendChild(coinsSpan);
+
+        // Append all text sections to taskListItemTextsWr
+        taskListItemTextsWr.appendChild(taskListItemTextsHeader);
+        taskListItemTextsWr.appendChild(taskListItemTextsReward);
+        taskListItemTextsWr.appendChild(taskListItemTextsCoins);
+
+        // Create the taskListImageRightWr div
+        let taskListImageRightWr = document.createElement('div');
+        taskListImageRightWr.className = 'taskListImageRightWr';
+
+        // Create the taskListImageRight div
+        let taskListImageRight = document.createElement('div');
+        taskListImageRight.className = 'taskListImageRight';
+
+        // Create the img element for the check button
+        let checkButtonImage = document.createElement('img');
+        checkButtonImage.src = '../images/checkBTNsq.svg';
+        checkButtonImage.id = `buttonPartner_${number}`;
+
+        // Append img to taskListImageRight
+        taskListImageRight.appendChild(checkButtonImage);
+        
+        // Append taskListImageRight to taskListImageRightWr
+        taskListImageRightWr.appendChild(taskListImageRight);
+
+        // Append all parts to the main task list item
+        taskListItem.appendChild(taskListImageWr);
+        taskListItem.appendChild(taskListItemTextsWr);
+        taskListItem.appendChild(taskListImageRightWr);
+
+        // Finally, append the complete task list item to frensTasks
+        let frensTasksDiv = document.getElementById('coreTasks');
+        frensTasksDiv.appendChild(taskListItem);
+    };
+
+    AllPartners.forEach (function(value, key) {
+        appendTasks(key, value[1],value[2],value[3])
+    })
+
+    let frensTasksDiv = document.getElementById('coreTasks');
+    let brr = document.createElement('br');
+    frensTasksDiv.appendChild(brr);
 
     var floatingCoins = function(containerId) {
 
@@ -49,7 +172,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let processPartnerTask = function(number, link) {
 
         let taskBody = document.getElementById(`partnerTask_${number}`);
-        taskBody.onclick = function() {};
+        taskBody.onclick = function() {
+            window.location.href = link;
+        };
         let loadingText = document.getElementById(`loadingText_${number}`);
         let dots = '...';
         let checkBtn = document.getElementById(`buttonPartner_${number}`);
@@ -68,26 +193,30 @@ document.addEventListener('DOMContentLoaded', function() {
         // Optionally, stop the animation after some time (e.g., after 5 seconds)
         setTimeout(function() {
             checkBtn.src = '../images/claimBTNsq.svg';
-            loadingText.textContent = `Take reward`;
+            loadingText.textContent = `Claim reward`;
             clearInterval(intervalX)
             taskBody.onclick = function() {
                 loadingText.textContent = `Try again`;
                 loadingText.style.color = 'red';
                 taskBody.onclick = function() {
 
+                    //bad
                     processPartnerTask(number, link); 
-
+                    //good
                     floatingCoins('mainContainer')
+
+                    taskBody.style.display = 'none';
                 };
             };
-        }, 5000);
+        }, 3000);
     };
 
     for (let i = 1; i < 100; i++) {
         let taskElement = document.getElementById(`partnerTask_${i}`);
         if (taskElement) {
             taskElement.onclick = function() {
-                processPartnerTask(i, 'https://example.com');
+                processPartnerTask(i, AllPartners.get(i)[0]);
+                console.log(AllPartners.get(i)[0])
             };
         }
     }

@@ -84,8 +84,6 @@ body {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    padding-top: 2%;
-    padding-bottom: 2%;
     margin-top: 5%;
     justify-content: start;
     align-self: center;
@@ -118,6 +116,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 3%;
+    margin-top: 1%;
 }
 
 .taskListItemTextsCoins span {
