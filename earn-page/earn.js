@@ -16,32 +16,79 @@ document.addEventListener('DOMContentLoaded', function() {
     menuBtn3.style.boxShadow = "none";
     
     var coreTasks =  document.getElementById('coreTasks');
-    var loadingText = document.getElementById('loadingText');
 
-    var coreX = document.getElementById('coreX');
-    coreX.onclick = function() {
+    let processPartnerTask = function(number, link) {
 
-        const dots = '...';
-        let checkBtn = document.getElementById('checkPartnerId');
+        let taskBody = document.getElementById(`partnerTask_${number}`);
+        taskBody.onclick = function() {};
+        let loadingText = document.getElementById(`loadingText_${number}`);
+        let dots = '...';
+        let checkBtn = document.getElementById(`buttonPartner_${number}`);
         let count = 0;
+
+        checkBtn.src = '../images/checkBTNsq.svg';
     
-        const interval = setInterval(() => {
+        let intervalX = setInterval(() => {
             loadingText.style.color = '#98FFAF';
             count = (count + 1) % 3; // Cycle through 0 to 2
-            const dotSpan = `${dots.substring(0, count + 1)}`;
+            let dotSpan = `${dots.substring(0, count + 1)}`;
 
             loadingText.textContent = `Checking ${dotSpan}`;
-            coreX.style.filter = 'drop-shadow(0px 10px 10px #98FFAF)';
         }, 300);
     
         // Optionally, stop the animation after some time (e.g., after 5 seconds)
         setTimeout(function() {
             checkBtn.src = '../images/claimBTNsq.svg';
             loadingText.textContent = `Take reward`;
-            clearInterval(interval)
-        }, 5000);
+            clearInterval(intervalX)
+            taskBody.onclick = function() {
+                loadingText.textContent = `Try again`;
+                loadingText.style.color = 'red';
+                taskBody.onclick = function() {
 
+                    processPartnerTask(number, link); 
+
+                    let curContainer = document.getElementById('mainContainer');
+                    
+                    for (let i = 0; i < 50; i++) {
+                        setTimeout(function() {
+                            createCoin(curContainer);
+                        }, 10 * i);
+                    }
+            
+                    function createCoin(container) {
+                        let coin = document.createElement('div');
+                        coin.className = 'coin';
+                    
+                        // Set random position
+                        let randomX = Math.random() * (window.innerWidth - 50);
+                        let randomY = Math.random() * (window.innerHeight - 50);
+                        coin.style.left = `${randomX}px`;
+                        coin.style.top = `${randomY}px`;
+                        // Append coin to container
+                       
+                        container.appendChild(coin);
+         
+                        
+                    
+                        // Remove coin after animation ends
+                        coin.addEventListener('animationend', () => {
+                            coin.remove();
+                        });
+                    }
+                };
+            };
+        }, 5000);
     };
+
+    for (let i = 1; i < 100; i++) {
+        let taskElement = document.getElementById(`partnerTask_${i}`);
+        if (taskElement) {
+            taskElement.onclick = function() {
+                processPartnerTask(i, 'https://example.com');
+            };
+        }
+    }
 
     var frensTasks = document.getElementById('frensTasks');
     frensTasks.style.display = 'none';

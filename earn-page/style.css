@@ -89,17 +89,17 @@ body {
     margin-top: 5%;
     justify-content: start;
     align-self: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .taskListItemTextsWr {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: auto;
     height: auto;
     align-items: start;
     justify-content: start;
-    margin-left: 3%;
+    margin-left: 5%;
 }
 
 .taskListItemTextsHeader {
@@ -110,7 +110,7 @@ body {
 .taskListItemTextsHeader span {
     font-family: "Open Sans", sans-serif;
     color: #FFF;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .taskListItemTextsCoins {
@@ -122,11 +122,11 @@ body {
 .taskListItemTextsCoins span {
     font-family: "Open Sans", sans-serif;
     color:#98FFAF;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .taskListItemTextsCoins img {
-    width: 8%;
+    width: 9%;
 }
 
 .taskListItemTextsReward {
@@ -137,30 +137,8 @@ body {
 
 .taskListItemTextsReward span {
     font-family: "Open Sans", sans-serif;
-    color: gray;
-}
-
-.dotLoading {
-    display: inline-block; 
-    animation: fallDot 1s infinite;
-    color:#98FFAF;
-    font-size: large;
-    padding-left: 5%;
-    gap: 5px;
-}
-
-@keyframes fallDot {
-    0% {
-        transform: translateY(-10px);
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateY(5px); /* Adjust for fall distance */
-        opacity: 0;
-    }
+    color: #bfbfbf;
+    font-weight: 200;
 }
 
 .taskListImageWr {
@@ -185,13 +163,12 @@ body {
     margin: auto;
 }
 
-
 .taskListImageRightWr {
     display: flex;
     align-items: center;
     justify-content: center;
     height: auto;
-    width: 20%;
+    width: auto;
     margin-right: 1%;
 }
 
@@ -203,7 +180,7 @@ body {
 }
 
 .taskListImageRight img {
-    width: 100%;
+    width: 70%;
     align-self: center;
     margin: auto;
 }
@@ -368,4 +345,26 @@ body {
 .adTaskimg1 img{
     width: 100%;
     margin: auto;
+}
+
+.coin {
+    position: absolute;
+    width: 50px; /* Adjust size of the coin */
+    height: 50px; /* Adjust size of the coin */
+    background-image: url('../images/coin.svg'); /* Replace with your coin image URL */
+    background-size: cover;
+    opacity: 1;
+    animation: coinsFloat 2s forwards; /* Animation to float upwards */
+    z-index: 1115125;
+}
+
+@keyframes coinsFloat {
+    0% {
+        transform: translate(0, 0);;
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50vw, -100vh); /* Move off-screen */
+        opacity: 0;
+    }
 }
