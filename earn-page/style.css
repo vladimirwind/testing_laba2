@@ -111,6 +111,7 @@ body {
     font-family: "Open Sans", sans-serif;
     color: #FFF;
     font-weight: 600;
+    font-size: 13px;
 }
 
 .taskListItemTextsCoins {
@@ -139,6 +140,7 @@ body {
     font-family: "Open Sans", sans-serif;
     color: #bfbfbf;
     font-weight: 200;
+    font-size: 12px;
 }
 
 .taskListImageWr {
@@ -347,7 +349,7 @@ body {
     margin: auto;
 }
 
-.coin {
+.coinDiv {
     position: absolute;
     width: 50px; /* Adjust size of the coin */
     height: 50px; /* Adjust size of the coin */

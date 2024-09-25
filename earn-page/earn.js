@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
                     function createCoin(container) {
                         let coin = document.createElement('div');
-                        coin.className = 'coin';
+                        coin.className = 'coinDiv';
                     
                         // Set random position
                         let randomX = Math.random() * (window.innerWidth - 50);
