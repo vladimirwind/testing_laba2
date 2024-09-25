@@ -98,7 +98,7 @@ body {
     width: auto;
     height: auto;
     align-items: start;
-    justify-content: start;
+    justify-content: space-around;
     margin-left: 5%;
 }
 
@@ -171,8 +171,8 @@ body {
     align-items: center;
     justify-content: center;
     height: auto;
-    width: 20%;
-    margin-right: 1%;
+    width: 25%;
+    margin-right: 3%;
 }
 
 .taskListImageRight {
