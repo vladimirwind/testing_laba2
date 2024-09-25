@@ -17,6 +17,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
     var coreTasks =  document.getElementById('coreTasks');
 
+    var floatingCoins = function(containerId) {
+
+        let curContainer = document.getElementById(containerId);
+        for (let i = 0; i < 50; i++) {
+            setTimeout(function() {
+                createCoin(curContainer);
+            }, 10 * i);
+        }
+
+        function createCoin(curContainer) {
+            let coin = document.createElement('div');
+            coin.className = 'coinDiv';
+        
+            // Set random position
+            let randomX = Math.random() * (window.innerWidth - 50);
+            let randomY = Math.random() * (window.innerHeight - 50);
+            coin.style.left = `${randomX}px`;
+            coin.style.top = `${randomY}px`;
+            // Append coin to container
+           
+            curContainer.appendChild(coin);
+
+            // Remove coin after animation ends
+            coin.addEventListener('animationend', () => {
+                coin.remove();
+            });
+        }
+    }
+
     let processPartnerTask = function(number, link) {
 
         let taskBody = document.getElementById(`partnerTask_${number}`);
@@ -48,34 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     processPartnerTask(number, link); 
 
-                    let curContainer = document.getElementById('mainContainer');
-                    
-                    for (let i = 0; i < 50; i++) {
-                        setTimeout(function() {
-                            createCoin(curContainer);
-                        }, 10 * i);
-                    }
-            
-                    function createCoin(container) {
-                        let coin = document.createElement('div');
-                        coin.className = 'coinDiv';
-                    
-                        // Set random position
-                        let randomX = Math.random() * (window.innerWidth - 50);
-                        let randomY = Math.random() * (window.innerHeight - 50);
-                        coin.style.left = `${randomX}px`;
-                        coin.style.top = `${randomY}px`;
-                        // Append coin to container
-                       
-                        container.appendChild(coin);
-         
-                        
-                    
-                        // Remove coin after animation ends
-                        coin.addEventListener('animationend', () => {
-                            coin.remove();
-                        });
-                    }
+                    floatingCoins('mainContainer')
                 };
             };
         }, 5000);
