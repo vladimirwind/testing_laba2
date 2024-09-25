@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const dotSpan = `${dots.substring(0, count + 1)}`;
 
             loadingText.textContent = `Checking ${dotSpan}`;
-            coreX.style.filter = 'drop-shadow(0px 3px 2px #98FFAF)';
+            coreX.style.filter = 'drop-shadow(0px 10px 10px #98FFAF)';
         }, 300);
     
         // Optionally, stop the animation after some time (e.g., after 5 seconds)
