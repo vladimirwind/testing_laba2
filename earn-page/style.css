@@ -89,7 +89,7 @@ body {
     margin-top: 5%;
     justify-content: start;
     align-self: center;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .taskListItemTextsWr {
