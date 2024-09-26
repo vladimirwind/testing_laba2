@@ -171,7 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingText.style.color = '#98FFAF';
             count = (count + 1) % 3; // Cycle through 0 to 2
             let dotSpan = `${dots.substring(0, count + 1)}`;
-
             loadingText.textContent = `Checking ${dotSpan}`;
         }, 300);
     
@@ -193,7 +192,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     taskBody.style.display = 'none';
                 };
             };
-        }, 3000);
+        }, 30000);
+        window.location.href = link;
     };
 
     for (let i = 1; i < 100; i++) {
