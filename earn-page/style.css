@@ -69,11 +69,11 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     gap: 2%;
     padding-left: 1%;
     padding-right: 1%;
-    max-height: 50vh;
+    height: 50vh;
     gap: 2%;
 }
 
@@ -82,12 +82,11 @@ body {
     flex-direction: row;
     background-color: #0f161e;
     width: 100%;
-    height: auto;
+    height: 15vh;
     border-radius: 5px;
     margin-top: 5%;
     justify-content: start;
     align-self: center;
-    overflow: hidden;
 }
 
 .taskListItemTextsWr {
@@ -116,7 +115,6 @@ body {
     display: flex;
     flex-direction: row;
     gap: 3%;
-    margin-top: 1%;
 }
 
 .taskListItemTextsCoins span {

@@ -1,3 +1,4 @@
+import { CreateMyMap } from './partners.js';
 document.addEventListener('DOMContentLoaded', function() {
 
     var frensPopUP1 = document.getElementById('frens1Container');
@@ -15,23 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     menuBtn2.style.boxShadow = "none";
     menuBtn3.style.boxShadow = "none";
 
-    const AllPartners = new Map();
-    AllPartners.set(29, 
-        ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-        "Tap My Ass",
-        "3000",
-        "bot"]);
-    AllPartners.set(28, 
-        ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-        "Tap My Dick",
-        "3000",
-        "bot"]);
-
-    AllPartners.set(27, 
-        ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-        "Tap My Penios",
-        "3000",
-        "bot"]);
+    const AllPartners = CreateMyMap();
 
     var coreTasks =  document.getElementById('coreTasks');
 
