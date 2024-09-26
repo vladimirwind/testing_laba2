@@ -67,6 +67,11 @@ const CreateMyMap = () => {
         "3000",
         "bot"]);
 
+    AllPartners.set(21, 
+        ["https://t.me/CaptainsBayBot/aboard?startapp=6917022146",
+        "Play Captains Bay",
+        "3000",
+        "bot"]);
     AllPartners.set(35, 
         ["https://t.me/+k0-8MdPvXIcyYjVi",
         "Happy Farmer",

@@ -196,13 +196,15 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = link;
     };
 
-    for (let i = 1; i < 100; i++) {
+    for (let i = 19; i < 50; i++) {
         let taskElement = document.getElementById(`partnerTask_${i}`);
         if (taskElement) {
             taskElement.onclick = function() {
                 processPartnerTask(i, AllPartners.get(i)[0]);
                 console.log(AllPartners.get(i)[0])
             };
+        } else {
+            console.log(`HERE IS: ${i}`)
         }
     }
 

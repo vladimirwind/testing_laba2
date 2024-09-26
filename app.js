@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         walletBtn.onclick = function() {
             document.getElementById("popUPWallet").style.display = 'flex';
         };
+        window.location.href = 'https://t.me/$acyh0ddqsEuTEAAAZlNdLrRLl6M';
     };
     
     let popUPIncome = document.getElementById('popUPIncome');
