@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create the img element for the task image
         let taskImage = document.createElement('img');
         if (type==='bot') {
-            taskImage.src = '../images/TELEGA_2.svg';
+            taskImage.src = '../images/gamePad.png';
         } else {
             taskImage.src = '../images/TELEGA_2.svg';
         }
