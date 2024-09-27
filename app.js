@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         walletBtn.onclick = function() {
             document.getElementById("popUPWallet").style.display = 'flex';
         };
-        tg.WebApp.openInvoice("https://t.me/$acyh0ddqsEuTEAAAZlNdLrRLl6M", (status) => {
+        tg.WebApp.openInvoice("https://t.me/$RJWPKtdquEuMCwAAeP-BewFj_hk", (status) => {
             if (status === "paid") {
               // Telegram notified us that the payment has been made
               // Refresh user's balance, plan, etc
