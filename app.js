@@ -26,7 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
         walletBtn.onclick = function() {
             document.getElementById("popUPWallet").style.display = 'flex';
         };
-        window.location.href = 'https://t.me/$acyh0ddqsEuTEAAAZlNdLrRLl6M';
+        tg.WebApp.openInvoice("https://t.me/$acyh0ddqsEuTEAAAZlNdLrRLl6M", (status) => {
+            if (status === "paid") {
+              // Telegram notified us that the payment has been made
+              // Refresh user's balance, plan, etc
+            } else {
+                console.log(`status: ${status}`)
+            }
+        });
     };
     
     let popUPIncome = document.getElementById('popUPIncome');

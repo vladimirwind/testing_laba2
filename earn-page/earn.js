@@ -1,8 +1,21 @@
 import { CreateMyMap } from './partners.js';
+import { GetTranslation } from './partners.js';
 document.addEventListener('DOMContentLoaded', function() {
 
     var frensPopUP1 = document.getElementById('frens1Container');
     var frensPopUP2 = document.getElementById('frens2Container');
+
+
+    const TranslatedWords = new Map();
+    const WordsToTranslate = ["Play", "Start", "Follow"];
+    for (let iTr = 0; iTr < WordsToTranslate.length; iTr++) {
+        GetTranslation("uk", WordsToTranslate[iTr])
+        .then(newTranslatedWord => {
+            const capitalizedTranslatedWord = newTranslatedWord.charAt(0).toUpperCase() + newTranslatedWord.slice(1);
+            TranslatedWords.set(WordsToTranslate[iTr], capitalizedTranslatedWord)
+        })
+    }
+
 
     var mainContainer = document.getElementById('mainContainer');
     sessionStorage.setItem('earnInfo', `{"task_1": true, "task_2": false, "task_3": false, "task_21": false}`);
@@ -15,8 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     menuBtn2.style.boxShadow = "none";
     menuBtn3.style.boxShadow = "none";
-
-    const AllPartners = CreateMyMap();
 
     var coreTasks =  document.getElementById('coreTasks');
 
@@ -117,9 +128,17 @@ document.addEventListener('DOMContentLoaded', function() {
         frensTasksDiv.appendChild(taskListItem);
     };
 
-    AllPartners.forEach (function(value, key) {
-        appendTasks(key, value[1],value[2],value[3])
-    })
+    var AllPartners = null;
+
+    setTimeout(function() {
+        AllPartners = CreateMyMap(TranslatedWords);
+    }, 5000);
+
+    setTimeout(function() {
+        AllPartners.forEach (function(value, key) {
+            appendTasks(key, value[1],value[2],value[3])
+        })
+    }, 10000);
 
     let frensTasksDiv = document.getElementById('coreTasks');
     let brr = document.createElement('br');
@@ -201,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (taskElement) {
             taskElement.onclick = function() {
                 processPartnerTask(i, AllPartners.get(i)[0]);
-                console.log(AllPartners.get(i)[0])
+                console.log(TranslatedWords.get("Play"))
             };
         } else {
             console.log(`HERE IS: ${i}`)
