@@ -170,7 +170,12 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         let wheelIMG = document.getElementById('wheelIMG');
-
+        let buyTicketsBtn = document.getElementById('buyTicketsBtn');
+        let buyTicketsWindow = document.getElementById('buyTicketsWindow');
+        buyTicketsBtn.onclick = function() {
+            document.getElementById('gamesContainer').style.display = 'none';
+            buyTicketsWindow.style.display = 'flex';
+        };
         let getRandomNumber = function (min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
