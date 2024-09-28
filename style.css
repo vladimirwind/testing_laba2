@@ -2712,3 +2712,16 @@ to {
 .buyTicketsTableItemBottomImg img {
     width: 100%;
 }
+
+.topRightXTickets {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: end;
+}
+
+.topRightXTickets img {
+    width: 10vw;
+    align-self: flex-end;
+    margin-right: 8vw;
+}
