@@ -2725,3 +2725,153 @@ to {
     align-self: flex-end;
     margin-right: 8vw;
 }
+
+.newCard {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: auto;
+    align-self: center;
+    background-color: #15202B;
+    border-radius: 5px;
+    margin-top: 2vh;
+    justify-content: space-between;
+}
+
+.newCardImage {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    width: 22%;
+    position: relative;
+}
+
+.newCardImage img {
+    width: 100%;
+}
+
+.newCardImageLvl {
+    position: absolute; 
+    background-color: #98FFAF;
+    width: 50%; 
+    height: 50%; 
+    border-radius: 50%; 
+    top: 50%; 
+    right: -25%; 
+    transform: translateY(-50%);
+    display: flex; /* Add this */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    outline-style: solid;
+    outline-width: medium;
+    outline-color: #15202B;
+}
+
+.newCardImageLvl span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 700;
+    color: #15202B;
+    /* No need for align-self here, it's already centered by flexbox */
+}
+
+.newCardPrice {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-right: 1%;
+    width: 15%;
+    height: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+}
+
+.newCardPrice img {
+    width: 50%;
+}
+
+.newCardPrice span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 700;
+    color: white;
+}
+
+.newCardTexts {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 100%;
+    justify-content: space-evenly;
+    margin-left: 7%;
+}
+
+.newCardTextsHeader {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.newCardTextsHeader span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 700;
+    color: white;
+}
+
+.newCardTextsMiddle {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    align-items: center; /* Center items vertically */
+}
+
+.newCardTextsMiddleItem {
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    align-items: center; /* Center items vertically within each item */
+}
+
+.newCardTextsMiddleItem span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.8vh;
+    font-weight: 300;
+    color: #98FFAF;
+}
+
+.newCardTextsMiddleItem img {
+    width: 4vw;
+    height: auto; /* Maintain aspect ratio */
+}
+
+.newCardTextsBottomItem {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2vw;
+}
+
+.newCardTextsBottomItem span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 300;
+    color: #bfbfbf;
+}
+
+.newCardTextsBottomItem img {
+    width: 4vw;
+    height: auto; 
+}
+
+
+
+
