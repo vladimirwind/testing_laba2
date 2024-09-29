@@ -26,14 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         walletBtn.onclick = function() {
             document.getElementById("popUPWallet").style.display = 'flex';
         };
-        tg.WebApp.openInvoice("https://t.me/$RJWPKtdquEuMCwAAeP-BewFj_hk", (status) => {
-            if (status === "paid") {
-              // Telegram notified us that the payment has been made
-              // Refresh user's balance, plan, etc
-            } else {
-                console.log(`status: ${status}`)
-            }
-        });
     };
     
     let popUPIncome = document.getElementById('popUPIncome');
@@ -168,13 +160,24 @@ document.addEventListener('DOMContentLoaded', function() {
             chestMenu.style.display = 'flex';
             chestBG.style.display = 'flex';
         };
-
+        let jsonTickets = JSON.parse(`{\"link_1\":\"https://t.me/$iMVT0XW4yEtRCwAAVm9zkV1lnhw\",\"link_2\":\"https://t.me/$7bQksnW4yEtSCwAAQCN4DYyi78E\",\"link_3\":\"https://t.me/$hgMjaXW4yEtTCwAASJVCgDo7LpY\",\"link_4\":\"https://t.me/$fHvk5HW4yEtUCwAANz0T3NWacaw\"}`);
         let wheelIMG = document.getElementById('wheelIMG');
         let buyTicketsBtn = document.getElementById('buyTicketsBtn');
         let buyTicketsWindow = document.getElementById('buyTicketsWindow');
         buyTicketsBtn.onclick = function() {
             document.getElementById('gamesContainer').style.display = 'none';
             buyTicketsWindow.style.display = 'flex';
+            for (let iTicket = 1; iTicket < 5; iTicket ++) {
+                document.getElementById(`ticketLink_${iTicket}`).onclick = function() {
+                    tg.WebApp.openInvoice(jsonTickets[`link_${iTicket}`], (status) => {
+                        if (status === "paid") {
+                            tg.WebApp.showAlert(`payment is GOOD ${status}`);
+                        } else {
+                            tg.WebApp.showAlert(`payment is BAD ${status}`);
+                        }
+                    });
+                };
+            }
         };
         let getRandomNumber = function (min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;

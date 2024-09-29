@@ -2676,6 +2676,7 @@ to {
     height: auto;
     justify-content: start;
     margin-left: 5%;
+    gap: 2%;
 }
 
 .buyTicketsTableItemHeader span {
