@@ -166,9 +166,12 @@ document.addEventListener('DOMContentLoaded', function() {
         let buyTicketsWindow = document.getElementById('buyTicketsWindow');
         buyTicketsBtn.onclick = function() {
 
-            tg.WebApp.showConfirm("Are you sure?", function() {
+            let myFlag = tg.WebApp.showConfirm("Are you sure?", function() {
                 console.log("here we are frieds");
+                console.log(myFlag);
             });
+
+            console.log(myFlag);
 
             document.getElementById('gamesContainer').style.display = 'none';
             buyTicketsWindow.style.display = 'flex';
