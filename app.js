@@ -165,6 +165,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let buyTicketsBtn = document.getElementById('buyTicketsBtn');
         let buyTicketsWindow = document.getElementById('buyTicketsWindow');
         buyTicketsBtn.onclick = function() {
+
+            tg.WebApp.showConfirm("Are you sure?", function() {
+                console.log("here we are frieds");
+            });
+
             document.getElementById('gamesContainer').style.display = 'none';
             buyTicketsWindow.style.display = 'flex';
             for (let iTicket = 1; iTicket < 5; iTicket ++) {
