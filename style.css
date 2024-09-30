@@ -2614,6 +2614,7 @@ to {
     align-items: center;
     overflow-x: hidden;
     overflow-y: scroll;
+    z-index: 123122;
 }
 
 .buyTickets img {
