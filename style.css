@@ -2874,6 +2874,42 @@ to {
     height: auto; 
 }
 
+.preloaderContainer {
+    display: none;
+    flex-direction: column;
+    width: 100vw; 
+    height: 100vh; 
+    background-color: #15202B;
+    box-sizing: border-box; 
+    overflow: hidden;
+    z-index: 9999999999999999;
+    background-image: url('./images/loadingScreen.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    position: relative; /* Add this to position the progress bar */
+}
+
+.progress-bar-Preloader {
+    position: absolute; /* Position it at the bottom */
+    bottom: 10%;
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust for centering */
+    width: 80%; /* Set width */
+    height: 2vh; /* Set height */
+    border-radius: 5px; /* Optional: rounded corners */
+    overflow: hidden; /* Hide overflow */
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+}
+
+.fill-Preloader {
+    height: 100%; /* Full height of the progress bar */
+    width: 0; /* Start with width 0 */
+    background: linear-gradient(to right, #7ed992, #54cb6e, #98ffaf);
+    transition: width 0s; /* No transition for the fill */
+}
 
 
 

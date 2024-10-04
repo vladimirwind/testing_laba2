@@ -18,6 +18,31 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         
     };
+
+    let showPreloader = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('preloadContainer').style.display = 'flex';
+        
+        let progressBar = document.getElementById("progressBarPreloader");
+        let fill = document.createElement("div");
+        fill.classList.add("fill-Preloader");
+        
+        progressBar.appendChild(fill);
+        
+        let width = 0; // Initialize width
+        let interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval); // Stop when filled
+                document.getElementById('preloadContainer').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'block';
+            } else {
+                width += 1; // Increment width by 1%
+                fill.style.width = width + "%"; // Update fill width
+            }
+        }, 40);
+    };    
+
+    showPreloader();
     
     let settingsBtn = document.getElementById("settingsBtn");
     settingsBtn.onclick = function() {
@@ -164,14 +189,16 @@ document.addEventListener('DOMContentLoaded', function() {
         let wheelIMG = document.getElementById('wheelIMG');
         let buyTicketsBtn = document.getElementById('buyTicketsBtn');
         let buyTicketsWindow = document.getElementById('buyTicketsWindow');
+
         buyTicketsBtn.onclick = function() {
 
-            let myFlag = tg.WebApp.showConfirm("Are you sure?", function() {
-                console.log("here we are frieds");
-                console.log(myFlag);
-            });
+            document.getElementById('agreeTickText').style.color = 'white';
+            document.getElementById('agreeTickText').style.fontFamily = '"Open Sans", sans-serif';
+            document.getElementById('agreeTickText').style.fontSize = '2vh';
 
-            console.log(myFlag);
+            document.getElementById('agreeTick').onclick = function() {
+                document.getElementById('checkboxAgreement').style.display = 'none';
+            }
 
             document.getElementById('gamesContainer').style.display = 'none';
             buyTicketsWindow.style.display = 'flex';
