@@ -250,38 +250,23 @@ span {
     color: white;
 }
 
-.container {
-    display: block;
-    width: 100vw; /* adjust width percentage as needed */
-    height: 100vh; /* adjust height percentage as needed */
-    /* background: linear-gradient(to right, #202140, #2D2E48); */
+.containerMain {
+    display: flex;
+    flex-direction: column;
+    width: 100vw; 
+    height: 100vh; 
     background-color: #15202B;
-    box-sizing: border-box; /* Include padding in width and height */
+    box-sizing: border-box; 
     overflow-x: hidden;
-    overflow-y: auto;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    overflow-y: scroll;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+    justify-content: space-between;
 }
+
 .container::-webkit-scrollbar {
     display: none;
 }
-
-@keyframes rotation {
-from {@keyframes rotation {
-from {
-    transform: rotate(0deg);
-}
-to {
-    transform: rotate(359deg);
-}
-}
-    transform: rotate(0deg);
-}
-to {
-    transform: rotate(359deg);
-}
-}
-
 
 .progress2 {
     height: 15px;
@@ -949,6 +934,23 @@ to {
     font-family: 'unbounded';
     font-size: 18px;
     color: white;
+}
+
+.headerLittleSpan {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.headerLittleSpan span {
+    font-family: "Open Sans", sans-serif;
+    font-size: 3vh;
+    color: white;
+    align-self: center;
+    margin: auto;
+    width: 100%;
 }
 
 .boostText {
@@ -2908,8 +2910,158 @@ to {
     height: 100%; /* Full height of the progress bar */
     width: 0; /* Start with width 0 */
     background: linear-gradient(to right, #7ed992, #54cb6e, #98ffaf);
-    transition: width 0s; /* No transition for the fill */
 }
 
+.mainTOP {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.mainTOPprofile {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: 12vh;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5vw;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 3vw;
+    background-color: #0f161e;
+}
+
+.mainTOPprofilePic {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    height: auto;
+    justify-content: center;
+    align-items: center; 
+}
+
+.mainTOPprofilePic img {
+    width: 90%;
+}
+
+.mainTOPprofileText {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 70%;
+    height: 100%;
+    justify-content: start;
+    align-items: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.mainTOPprofileTextHeader {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: start;
+    align-items: center; 
+}
+
+.mainTOPprofileTextHeader span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.mainTOPprofileTextMiddle {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto; 
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 2vw; 
+}
+
+.mainTOPprofileTextMiddle img {
+    max-height: 2.5vh;
+}
+
+.mainTOPprofileTextMiddle span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.8vh;
+    font-weight: 300;
+}
+
+.mainTOPairdrop {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 12vh;
+    justify-content: space-around;
+    align-items: center;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 3vw;
+    background-color: #0f161e;
+}
+
+.mainTOPairdrop span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.mainTOPairdrop img {
+    width: 60%;
+}
+
+.mainThreeButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    height: 8vh;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.mainThreeButtonsItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mainThreeButtonsItem span {
+    color: #bfbfbf;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5vh;
+    font-weight: 600;
+}
+
+.mainThreeButtonsItem img {
+    height: 4vh;
+}
+
+.mainIsland {
+    display: flex;
+    width: 100%;
+    height: 30vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainIsland img {
+    width: 80%;
+}
 
 
