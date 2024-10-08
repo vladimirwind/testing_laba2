@@ -3093,7 +3093,7 @@ span {
 .mainIsland {
     display: flex;
     width: 100%;
-    height: 30vh;
+    height: auto;
     justify-content: center;
     align-items: center;
     position: relative;
@@ -3101,21 +3101,23 @@ span {
 
 .mainIslandChild {
     display: flex;
-    width: 40%;
+    width: 25%; /* Set to 25% */
     height: auto;
     position: absolute;
-    top: -50%;
-    left: 65%;
+    top: 0; /* Adjust as needed */
+    right: 0; /* Position it to the right */
     z-index: 999999;
 }
 
 .mainIslandChild img {
-    width: 40%;
+    width: 100%; /* Make the image take full width of its container */
 }
 
 .mainIsland img {
     width: 80%;
 }
+
+
 
 .mainBalance {
     display: flex;
