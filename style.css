@@ -2929,7 +2929,7 @@ span {
     height: 12vh;
     justify-content: space-around;
     align-items: center;
-    gap: 5vw;
+    gap: 1vw;
     outline-style: solid;
     outline-width: thin;
     outline-color: #98FFAF;
@@ -2944,6 +2944,7 @@ span {
     height: auto;
     justify-content: center;
     align-items: center; 
+    margin-left: 3%;
 }
 
 .mainTOPprofilePic img {
@@ -3036,15 +3037,53 @@ span {
 
 .mainThreeButtonsItem {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
+    border-radius: 3vw;
+    background-color: #0F161E;
+    gap: 5%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.mainThreeButtonsItemText {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
 }
 
-.mainThreeButtonsItem span {
-    color: #bfbfbf;
+.mainThreeButtonsItemTextTop {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.mainThreeButtonsItemTextBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2vw;
+}
+
+.mainThreeButtonsItemTextBottom img {
+    width: 15vw;
+}
+
+.mainThreeButtonsItemTextTop span {
+    color: white;
     font-family: "Open Sans", sans-serif;
-    font-size: 1.5vh;
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.mainThreeButtonsItemTextBottom span {
+    color: green;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
     font-weight: 600;
 }
 
