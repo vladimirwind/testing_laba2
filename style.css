@@ -3101,21 +3101,31 @@ span {
 
 .mainIslandChild {
     display: flex;
-    width: 25%; /* Set to 25% */
+    width: 100%; 
     height: auto;
-    position: absolute;
-    top: 0; /* Adjust as needed */
-    right: 0; /* Position it to the right */
-    z-index: 999999;
+    justify-content: right;
+    align-items: center;
 }
 
-.mainIslandChild img {
+.mainIslandChildItem {
+    display: flex;
+    width: 22%; 
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #0F161E;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 3vw 0 0 3vw;
+}
+
+.mainIslandChildItem img {
     width: 100%; /* Make the image take full width of its container */
-    animation-name: none;
 }
 
 .mainIsland img {
-    width: 80%;
+    width: 70%;
     animation-name: floatingIsland;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -3173,6 +3183,35 @@ span {
 
 @keyframes floatingIsland {
     0% { transform: translate(0, 0px); }
-    50% { transform: translate(0, 2vh); }
+    50% { transform: translate(0, 1vh); }
     100% { transform: translate(0, -0px); }    
+}
+
+.mainStartButton {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #98FFAF;
+    border-radius: 3vw;
+    align-self: center;
+}
+
+.mainStartButton span {
+    color: #15202B;
+    font-family: "Open Sans", sans-serif;
+    font-size: 3vh;
+    font-weight: 600;
+}
+
+.mainBottomMenu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 8.5vh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f161e;
 }
