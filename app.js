@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
     };
     document.getElementById('mainContainer').style.display = 'none';
+    let profPhoto = tg.WebApp.initDataUnsafe.user.photo_url
+    console.log(profPhoto)
     let showPreloader = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('preloadContainer').style.display = 'flex';
