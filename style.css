@@ -3051,9 +3051,9 @@ span {
     border-radius: 3vw;
     background-color: #0F161E;
     gap: 5%;
-    height: 80%;
-    padding-bottom: 5%;
-    padding-top: 5%;
+    height: 100%;
+    padding-bottom: 2%;
+    padding-top: 2%;
 }
 
 .mainThreeButtonsItemText {
