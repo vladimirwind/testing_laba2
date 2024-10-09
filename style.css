@@ -3111,33 +3111,68 @@ span {
 
 .mainIslandChild img {
     width: 100%; /* Make the image take full width of its container */
+    animation-name: none;
 }
 
 .mainIsland img {
     width: 80%;
+    animation-name: floatingIsland;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
-
-
 
 .mainBalance {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 8vh;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.mainBalanceCoins {
+    display: flex;
+    width: 50%;
+    height: 8vh;
     justify-content: center;
     align-items: center;
     gap: 2vw;
 }
 
-.mainBalance img {
-    width: 10%;
+.mainBalanceCoins img {
+    width: 15%;
 }
 
-.mainBalance span {
+.mainBalanceCoins span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 3vh; 
+    font-weight: 600;
+}
+
+.mainBalanceEssence {
+    display: flex;
+    width: 50%;
+    height: 8vh;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+
+.mainBalanceEssence img {
+    width: 9%;
+}
+
+.mainBalanceEssence span {
     color: white;
     font-family: "Open Sans", sans-serif;
     font-size: 3vh;
     font-weight: 600;
 }
 
-
+@keyframes floatingIsland {
+    0% { transform: translate(0, 0px); }
+    50% { transform: translate(0, 2vh); }
+    100% { transform: translate(0, -0px); }    
+}
