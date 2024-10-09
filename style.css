@@ -2927,7 +2927,7 @@ span {
     outline-style: solid;
     outline-width: thin;
     outline-color: #98FFAF;
-    border-radius: 3vw;
+    border-radius: 1vw;
     background-color: #0f161e;
     margin: 0; /* Reset margin */
     padding: 0; /* Reset padding */
@@ -2946,7 +2946,6 @@ span {
 
 .mainTOPprofilePic img {
     width: 95%;
-    height: auto; /* Maintain aspect ratio */
     max-height: 80%; /* Prevent overflow */
     margin: 0; /* Reset margin */
     padding: 0; /* Reset padding */
@@ -3010,7 +3009,7 @@ span {
     outline-style: solid;
     outline-width: thin;
     outline-color: #98FFAF;
-    border-radius: 3vw;
+    border-radius: 1vw;
     background-color: #0f161e;
 }
 
@@ -3133,7 +3132,8 @@ span {
     outline-width: thin;
     outline-color: #98FFAF;
     border-radius: 3vw 0 0 3vw;
-    position: relative; 
+    position: relative;
+    overflow: hidden;
 }
 
 .mainIslandChildItem img {
