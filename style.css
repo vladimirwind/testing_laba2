@@ -3201,7 +3201,7 @@ span {
 .mainStartButton {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 70%;
     height: 4vh;
     justify-content: center;
     align-items: center;
