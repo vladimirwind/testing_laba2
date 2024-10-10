@@ -3209,6 +3209,7 @@ span {
     border-radius: 1vw;
     align-self: center;
     margin-bottom: 5%;
+    box-shadow: 0 0.7vh #5FA86F;
 }
 
 .mainStartButton span {
