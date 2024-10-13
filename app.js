@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let appendContent = function (state) {
 
-        let potState = 1;
-        let mineState = 2;
+        let potState = 2;
+        let mineState = 1;
 
         const mainBtn = document.getElementById('mainButton');
 
@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', function() {
             rightTxt.textContent = '02:21:12';
             rightDiv.appendChild(rightTxt);
 
-            mainBtn.style.background = '#5D7462';
-            mainBtn.style.boxShadow = '0 0.7vh #4A5D4E';
+            mainBtn.style.background = '#8c8c8c';
+            mainBtn.style.boxShadow = '0 0.7vh #707070';
         }
 
         if (!state && potState === 2) {
@@ -124,8 +124,8 @@ document.addEventListener('DOMContentLoaded', function() {
             rightTxt.textContent = '02:21:12';
             rightDiv.appendChild(rightTxt);
 
-            mainBtn.style.background = '#5D7462';
-            mainBtn.style.boxShadow = '0 0.7vh #4A5D4E';
+            mainBtn.style.background = '#8c8c8c';
+            mainBtn.style.boxShadow = '0 0.7vh #707070';
         }
     };
 
