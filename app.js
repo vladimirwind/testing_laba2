@@ -2,10 +2,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
 
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
-        buttonRootId: 'ton-connects'
-    });
+    // const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    //     manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
+    //     buttonRootId: 'ton-connects'
+    // });
 
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
         tg.WebApp.ready();
@@ -21,6 +21,85 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('mainContainer').style.display = 'none';
     let profPhoto = tg.WebApp.initDataUnsafe.user
     console.log(profPhoto)
+    let dailyBtn = document.getElementById('dailyComboBtn');
+    let dailyWindow = document.getElementById('popUPDailyCombo');
+    dailyBtn.onclick = function() {
+        dailyWindow.style.display = 'flex';
+    }
+    var islandSwitchBtn = document.getElementById('islandSwitchBtn');
+    var IslandState = false;
+
+    sessionStorage.setItem('essenceBtnState', 1)
+    sessionStorage.setItem('mineBtnState', 1)
+
+    const islandMapping = new Map();
+
+    islandMapping.set(1, "./images/desertPot.png");
+    islandMapping.set(0, "./images/desertMine.png");
+
+    let appendContent = function (state) {
+
+        const leftDiv = document.getElementById('mainStartButtonTextLeft');
+        const rightDiv = document.getElementById('mainStartButtonTextRight');
+
+        const essenceImg = document.createElement('img');
+        essenceImg.src = './images/blackEssence.svg';
+        essenceImg.style.height = '2.5vh';
+        essenceImg.style.width = 'auto';
+
+        const coinImg = document.createElement('img');
+        coinImg.src = './images/blackCoin.svg';
+
+        leftDiv.innerHTML = '';
+        rightDiv.innerHTML = '';
+
+        if (state && true) {
+            let leftTxt = document.createElement('span');
+            leftTxt.textContent = 'MINE ';
+    
+            let leftTxt2 = document.createElement('span');
+            leftTxt2.textContent = '13000';
+    
+            leftDiv.appendChild(leftTxt);
+    
+            leftDiv.appendChild(coinImg);
+    
+            leftDiv.appendChild(leftTxt2);
+    
+            let rightTxt = document.createElement('span');
+            rightTxt.textContent = '- 400';
+    
+            rightDiv.appendChild(rightTxt);
+            rightDiv.appendChild(essenceImg);
+        }
+
+        if (!state && true) {
+            let leftTxt = document.createElement('span');
+            leftTxt.textContent = 'MINE ';
+    
+            let leftTxt2 = document.createElement('span');
+            leftTxt2.textContent = '13000';
+    
+            leftDiv.appendChild(leftTxt);
+            leftDiv.appendChild(essenceImg);
+            leftDiv.appendChild(leftTxt2);
+        }
+
+    };
+
+    appendContent(true);
+
+    let setUpIsland = function(state) {
+        document.getElementById('childIslandIMG').src = islandMapping.get(!state ? 1 : 0)
+        document.getElementById('mainIslandIMG').src = islandMapping.get(state ? 1 : 0)
+        appendContent(!state)
+    }
+
+    islandSwitchBtn.onclick = function() {
+        IslandState = !IslandState
+        setUpIsland(IslandState)
+    }
+    
     let showPreloader = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('preloadContainer').style.display = 'flex';
@@ -573,7 +652,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //         let allCardsSpecial = document.getElementById('allCardsSpecial');
 
     //         //added
-    //         let dailyBtn = document.getElementById('dailyComboBtn');
+
     //         let dailyWindow = document.getElementById('popUPDailyCombo');
     //         let closeDaily = document.getElementById('X_Daily');
     //         let checkComboBtn = document.getElementById('checkComboBtn');
