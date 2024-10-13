@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log(JSON.stringify(tg.WebApp.initDataUnsafe, null, 2)); 
 
-        tonConnectUI.uiOptions = {
-            language: tg.WebApp.initDataUnsafe.language_code,
-        };
+        // tonConnectUI.uiOptions = {
+        //     language: tg.WebApp.initDataUnsafe.language_code,
+        // };
         
     };
     document.getElementById('mainContainer').style.display = 'none';
