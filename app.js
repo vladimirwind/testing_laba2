@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const essenceImg = document.createElement('img');
         essenceImg.src = './images/blackEssence.svg';
-        essenceImg.style.height = '2.5vh';
+        essenceImg.style.height = '3vh';
         essenceImg.style.width = 'auto';
 
         const coinImg = document.createElement('img');
