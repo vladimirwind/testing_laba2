@@ -3203,8 +3203,8 @@ span {
     flex-direction: row;
     width: 75%;
     height: 6vh;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     background-color: #98FFAF;
     border-radius: 1vw;
     align-self: center;
@@ -3224,15 +3224,13 @@ span {
 
 .mainStartButtonItem img {
     width: 13%;
-    opacity: 0.9;
 }
 
 .mainStartButtonItem span {
     color: #15202B;
     font-family: "Open Sans", sans-serif;
-    font-size: 2vh;
+    font-size: 2.2vh;
     font-weight: 600;
-    opacity: 0.9;
 }
 
 .mainStartButtonItemLeft {
@@ -3244,6 +3242,7 @@ span {
     align-items: center;
     gap: 2vw;
     margin-left: 4%;
+    align-self: start;
 }
 
 .mainStartButtonItemLeft img {

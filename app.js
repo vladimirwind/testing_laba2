@@ -39,21 +39,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let appendContent = function (state) {
 
+        let potState = 1;
+        let mineState = 2;
+
+        const mainBtn = document.getElementById('mainButton');
+
         const leftDiv = document.getElementById('mainStartButtonTextLeft');
         const rightDiv = document.getElementById('mainStartButtonTextRight');
+
+        const coinImg = document.createElement('img');
+        coinImg.src = './images/blackCoin.svg';
+        coinImg.style.height = '3vh';
+        coinImg.style.width = 'auto';
 
         const essenceImg = document.createElement('img');
         essenceImg.src = './images/blackEssence.svg';
         essenceImg.style.height = '3vh';
         essenceImg.style.width = 'auto';
 
-        const coinImg = document.createElement('img');
-        coinImg.src = './images/blackCoin.svg';
-
         leftDiv.innerHTML = '';
         rightDiv.innerHTML = '';
 
-        if (state && true) {
+        if (state && mineState === 1) {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'MINE ';
     
@@ -71,9 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
             rightDiv.appendChild(rightTxt);
             rightDiv.appendChild(essenceImg);
+
+            mainBtn.style.background = '#98FFAF';
+            mainBtn.style.boxShadow = '0 0.7vh #5FA86F';
         }
 
-        if (!state && true) {
+        if (!state && potState === 1) {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'MINE ';
     
@@ -83,8 +93,40 @@ document.addEventListener('DOMContentLoaded', function() {
             leftDiv.appendChild(leftTxt);
             leftDiv.appendChild(essenceImg);
             leftDiv.appendChild(leftTxt2);
+
+            mainBtn.style.background = '#98FFAF';
+            mainBtn.style.boxShadow = '0 0.7vh #5FA86F';
         }
 
+        if (state && mineState === 2) {
+            let leftTxt = document.createElement('span');
+            leftTxt.textContent = 'Mining...';
+    
+            leftDiv.appendChild(leftTxt);
+            leftDiv.appendChild(coinImg);
+
+            let rightTxt = document.createElement('span');
+            rightTxt.textContent = '02:21:12';
+            rightDiv.appendChild(rightTxt);
+
+            mainBtn.style.background = '#5D7462';
+            mainBtn.style.boxShadow = '0 0.7vh #4A5D4E';
+        }
+
+        if (!state && potState === 2) {
+            let leftTxt = document.createElement('span');
+            leftTxt.textContent = 'Mining...';
+    
+            leftDiv.appendChild(leftTxt);
+            leftDiv.appendChild(essenceImg);
+
+            let rightTxt = document.createElement('span');
+            rightTxt.textContent = '02:21:12';
+            rightDiv.appendChild(rightTxt);
+
+            mainBtn.style.background = '#5D7462';
+            mainBtn.style.boxShadow = '0 0.7vh #4A5D4E';
+        }
     };
 
     appendContent(true);
