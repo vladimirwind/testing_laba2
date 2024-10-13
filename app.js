@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let appendContent = function (state) {
 
         let potState = 2;
-        let mineState = 1;
+        let mineState = 2;
 
         const mainBtn = document.getElementById('mainButton');
 
@@ -111,6 +111,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
             mainBtn.style.background = '#8c8c8c';
             mainBtn.style.boxShadow = '0 0.7vh #707070';
+
+            let minutes = 246
+
+            let totalSeconds = minutes * 60; 
+            const updateTimer = () => {
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+        
+                // Format time as HH:MM:SS
+                rightTxt.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        
+                if (totalSeconds > 0) {
+                    totalSeconds--; // Decrement the total seconds
+                } else {
+                    clearInterval(timerInterval); // Stop the timer
+                    // performAction(); // Call the action when timer hits zero
+                }
+            };
+        
+            // Update timer immediately and then every second
+            updateTimer();
+            const timerInterval = setInterval(updateTimer, 1000);
         }
 
         if (!state && potState === 2) {
