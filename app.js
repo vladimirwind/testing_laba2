@@ -40,9 +40,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var potState = 1;
     var mineState = 1;
 
+    localStorage.setItem("potState", 1)
+    localStorage.setItem("mineState", 1)
+
     let appendContent = function (state) {
 
-        //false = MINE
+        potState = parseInt(localStorage.getItem("potState"));
+        mineState = parseInt(localStorage.getItem("mineState"));
 
         const mainBtnMine = document.getElementById(`mainButton0`);
         const mainBtnPot = document.getElementById(`mainButton1`);
@@ -55,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (potState === 1) {
             mainBtnPot.onclick = function() {
-                potState = 2;
+                localStorage.setItem("potState", 2)
                 setTimeout(function(){
                     leftDiv1.innerHTML = '';
                     rightDiv1.innerHTML = '';
@@ -68,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (mineState === 1) {
             mainBtnMine.onclick = function() {
-                mineState = 2;
+                localStorage.setItem("mineState", 2)
                 setTimeout(function(){
                     leftDiv0.innerHTML = '';
                     rightDiv0.innerHTML = '';
@@ -133,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             mainBtnPot.style.background = '#98FFAF';
             mainBtnPot.style.boxShadow = '0 0.7vh #5FA86F';
+            rightDiv1.style.display = 'none';
         }
 
         if (!state && mineState === 2 && leftDiv0.innerHTML === '') {
@@ -149,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnMine.style.background = '#8c8c8c';
             mainBtnMine.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 246
+            let minutes = 1
 
             let totalSeconds = minutes * 60; 
             const updateTimer = () => {
@@ -180,6 +185,8 @@ document.addEventListener('DOMContentLoaded', function() {
             leftDiv1.appendChild(leftTxt);
             leftDiv1.appendChild(essenceImg);
 
+            rightDiv1.style.display = 'flex';
+
             let rightTxt = document.createElement('span');
             rightTxt.textContent = '01:00:00';
             rightDiv1.appendChild(rightTxt);
@@ -187,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnPot.style.background = '#8c8c8c';
             mainBtnPot.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 246
+            let minutes = 1
 
             let totalSeconds = minutes * 60; 
             const updateTimer = () => {
