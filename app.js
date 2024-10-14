@@ -37,15 +37,55 @@ document.addEventListener('DOMContentLoaded', function() {
     islandMapping.set(1, "./images/desertPot.png");
     islandMapping.set(0, "./images/desertMine.png");
 
+    var potState = 1;
+    var mineState = 1;
+
     let appendContent = function (state) {
 
-        let potState = 2;
-        let mineState = 2;
+        //false = MINE
 
-        const mainBtn = document.getElementById('mainButton');
+        const mainBtnMine = document.getElementById(`mainButton0`);
+        const mainBtnPot = document.getElementById(`mainButton1`);
 
-        const leftDiv = document.getElementById('mainStartButtonTextLeft');
-        const rightDiv = document.getElementById('mainStartButtonTextRight');
+        const leftDiv0 = document.getElementById('mainStartButtonTextLeft0');
+        const rightDiv0 = document.getElementById('mainStartButtonTextRight0');
+
+        const leftDiv1 = document.getElementById('mainStartButtonTextLeft1');
+        const rightDiv1 = document.getElementById('mainStartButtonTextRight1');
+
+        if (potState === 1) {
+            mainBtnPot.onclick = function() {
+                potState = 2;
+                setTimeout(function(){
+                    leftDiv1.innerHTML = '';
+                    rightDiv1.innerHTML = '';
+                    mainBtnPot.onclick = function() {}
+                    appendContent(state);
+                }, 10);
+                return
+            }
+        }
+
+        if (mineState === 1) {
+            mainBtnMine.onclick = function() {
+                mineState = 2;
+                setTimeout(function(){
+                    leftDiv0.innerHTML = '';
+                    rightDiv0.innerHTML = '';
+                    mainBtnMine.onclick = function() {}
+                    appendContent(state);
+                }, 10);
+                return
+            }
+        }
+
+        if (!state) {
+            mainBtnMine.style.display = 'flex';
+            mainBtnPot.style.display = 'none';
+        } else {
+            mainBtnMine.style.display = 'none';
+            mainBtnPot.style.display = 'flex';
+        }
 
         const coinImg = document.createElement('img');
         coinImg.src = './images/blackCoin.svg';
@@ -57,60 +97,57 @@ document.addEventListener('DOMContentLoaded', function() {
         essenceImg.style.height = '3vh';
         essenceImg.style.width = 'auto';
 
-        leftDiv.innerHTML = '';
-        rightDiv.innerHTML = '';
-
-        if (state && mineState === 1) {
+        if (!state && mineState === 1 && leftDiv0.innerHTML === '') {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'MINE ';
     
             let leftTxt2 = document.createElement('span');
             leftTxt2.textContent = '13000';
     
-            leftDiv.appendChild(leftTxt);
+            leftDiv0.appendChild(leftTxt);
     
-            leftDiv.appendChild(coinImg);
+            leftDiv0.appendChild(coinImg);
     
-            leftDiv.appendChild(leftTxt2);
+            leftDiv0.appendChild(leftTxt2);
     
             let rightTxt = document.createElement('span');
             rightTxt.textContent = '- 400';
     
-            rightDiv.appendChild(rightTxt);
-            rightDiv.appendChild(essenceImg);
+            rightDiv0.appendChild(rightTxt);
+            rightDiv0.appendChild(essenceImg);
 
-            mainBtn.style.background = '#98FFAF';
-            mainBtn.style.boxShadow = '0 0.7vh #5FA86F';
+            mainBtnMine.style.background = '#98FFAF';
+            mainBtnMine.style.boxShadow = '0 0.7vh #5FA86F';
         }
 
-        if (!state && potState === 1) {
+        if (state && potState === 1 && leftDiv1.innerHTML === '') {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'MINE ';
     
             let leftTxt2 = document.createElement('span');
             leftTxt2.textContent = '13000';
     
-            leftDiv.appendChild(leftTxt);
-            leftDiv.appendChild(essenceImg);
-            leftDiv.appendChild(leftTxt2);
+            leftDiv1.appendChild(leftTxt);
+            leftDiv1.appendChild(essenceImg);
+            leftDiv1.appendChild(leftTxt2);
 
-            mainBtn.style.background = '#98FFAF';
-            mainBtn.style.boxShadow = '0 0.7vh #5FA86F';
+            mainBtnPot.style.background = '#98FFAF';
+            mainBtnPot.style.boxShadow = '0 0.7vh #5FA86F';
         }
 
-        if (state && mineState === 2) {
+        if (!state && mineState === 2 && leftDiv0.innerHTML === '') {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'Mining...';
     
-            leftDiv.appendChild(leftTxt);
-            leftDiv.appendChild(coinImg);
+            leftDiv0.appendChild(leftTxt);
+            leftDiv0.appendChild(coinImg);
 
             let rightTxt = document.createElement('span');
-            rightTxt.textContent = '02:21:12';
-            rightDiv.appendChild(rightTxt);
+            rightTxt.textContent = '01:00:00';
+            rightDiv0.appendChild(rightTxt);
 
-            mainBtn.style.background = '#8c8c8c';
-            mainBtn.style.boxShadow = '0 0.7vh #707070';
+            mainBtnMine.style.background = '#8c8c8c';
+            mainBtnMine.style.boxShadow = '0 0.7vh #707070';
 
             let minutes = 246
 
@@ -136,28 +173,51 @@ document.addEventListener('DOMContentLoaded', function() {
             const timerInterval = setInterval(updateTimer, 1000);
         }
 
-        if (!state && potState === 2) {
+        if (state && potState === 2 && leftDiv1.innerHTML === '') {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'Mining...';
     
-            leftDiv.appendChild(leftTxt);
-            leftDiv.appendChild(essenceImg);
+            leftDiv1.appendChild(leftTxt);
+            leftDiv1.appendChild(essenceImg);
 
             let rightTxt = document.createElement('span');
-            rightTxt.textContent = '02:21:12';
-            rightDiv.appendChild(rightTxt);
+            rightTxt.textContent = '01:00:00';
+            rightDiv1.appendChild(rightTxt);
 
-            mainBtn.style.background = '#8c8c8c';
-            mainBtn.style.boxShadow = '0 0.7vh #707070';
+            mainBtnPot.style.background = '#8c8c8c';
+            mainBtnPot.style.boxShadow = '0 0.7vh #707070';
+
+            let minutes = 246
+
+            let totalSeconds = minutes * 60; 
+            const updateTimer = () => {
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+        
+                // Format time as HH:MM:SS
+                rightTxt.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        
+                if (totalSeconds > 0) {
+                    totalSeconds--; // Decrement the total seconds
+                } else {
+                    clearInterval(timerInterval); // Stop the timer
+                    // performAction(); // Call the action when timer hits zero
+                }
+            };
+        
+            // Update timer immediately and then every second
+            updateTimer();
+            const timerInterval = setInterval(updateTimer, 1000);
         }
     };
 
-    appendContent(true);
+    appendContent(false);
 
     let setUpIsland = function(state) {
         document.getElementById('childIslandIMG').src = islandMapping.get(!state ? 1 : 0)
         document.getElementById('mainIslandIMG').src = islandMapping.get(state ? 1 : 0)
-        appendContent(!state)
+        appendContent(state)
     }
 
     islandSwitchBtn.onclick = function() {

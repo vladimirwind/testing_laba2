@@ -3199,7 +3199,7 @@ span {
 }
 
 .mainStartButton {
-    display: flex;
+    display: none;
     flex-direction: row;
     width: 75%;
     height: 6vh;
