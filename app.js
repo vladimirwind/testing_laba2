@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var mainBtnMine = document.getElementById(`mainButton0`);
     var mainBtnPot = document.getElementById(`mainButton1`);
+    var globalIslandState = false;
 
     let appendContent = function (state) {
 
@@ -56,6 +57,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const leftDiv1 = document.getElementById('mainStartButtonTextLeft1');
         const rightDiv1 = document.getElementById('mainStartButtonTextRight1');
+
+
+        if (!globalIslandState) {
+            mainBtnMine.style.display = 'flex';
+            mainBtnPot.style.display = 'none';
+        } else {
+            mainBtnMine.style.display = 'none';
+            mainBtnPot.style.display = 'flex';
+        }
 
         if (potState === 1) {
             mainBtnPot.onclick = function() {
@@ -82,22 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 return
             }
         }
-
-        if (!state) {
-            setTimeout(function(){mainBtnMine.style.display = 'flex'}, 1)
-            mainBtnPot.style.display = 'none';
-        } else {
-            mainBtnMine.style.display = 'none';
-            setTimeout(function(){mainBtnPot.style.display = 'flex'}, 1)
-        }
-
-        // if (!state) {
-        //     mainBtnPot.style.opacity = '0';
-        //     mainBtnMine.style.opacity = '1';
-        // } else {
-        //     mainBtnMine.style.opacity = '0';
-        //     mainBtnPot.style.opacity = '1';
-        // }
 
         const coinImg = document.createElement('img');
         coinImg.src = './images/blackCoin.svg';
@@ -307,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     islandSwitchBtn.onclick = function() {
         IslandState = !IslandState
+        globalIslandState = !globalIslandState;
         setUpIsland(IslandState)
     }
     
