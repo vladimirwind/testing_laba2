@@ -84,11 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (!state) {
-            setTimeout(function(){mainBtnMine.style.display = 'flex'}, 100)
+            setTimeout(function(){mainBtnMine.style.display = 'flex'}, 1)
             mainBtnPot.style.display = 'none';
         } else {
             mainBtnMine.style.display = 'none';
-            setTimeout(function(){mainBtnPot.style.display = 'flex'}, 100)
+            setTimeout(function(){mainBtnPot.style.display = 'flex'}, 1)
         }
 
         // if (!state) {
@@ -153,10 +153,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return
         }
 
+        // Handle mining states and timer transitions
         if (!state && mineState === 2 && leftDiv0.innerHTML === '') {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'Mining...';
-    
             leftDiv0.appendChild(leftTxt);
             leftDiv0.appendChild(coinImg);
 
@@ -167,47 +167,44 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnMine.style.background = '#8c8c8c';
             mainBtnMine.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 0.1
+            let minutes = 0.1;
+            let totalSeconds = minutes * 60;
 
-            let totalSeconds = minutes * 60; 
-            const updateTimer = () => {
+            let updateTimer = () => {
                 const hours = Math.floor(totalSeconds / 3600);
                 const minutes = Math.floor((totalSeconds % 3600) / 60);
                 const seconds = totalSeconds % 60;
-        
-                // Format time as HH:MM:SS
                 rightTxt.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        
+            
                 if (totalSeconds > 0) {
                     totalSeconds--; // Decrement the total seconds
                 } else {
                     clearInterval(timerIntervalMine); // Stop the timer
-                    localStorage.setItem("mineState", 3)
+                    console.log('part 1')
+                    localStorage.setItem("mineState", 3);
                     setTimeout(function(){
                         leftDiv0.innerHTML = '';
                         rightDiv0.innerHTML = '';
 
                         mainBtnMine.style.background = '#98FFAF';
                         mainBtnMine.style.boxShadow = '0 0.7vh #5FA86F';
-
-                        appendContent(state);
-                        return
+                        console.log('part 1.5')
+                        appendContent(state); // Recurse after state change
+                        console.log('part 2')
                     }, 100);
                 }
             };
-        
+
             // Update timer immediately and then every second
             updateTimer();
             let timerIntervalMine = setInterval(updateTimer, 1000);
-
-
-            return
+            return;
         }
 
+        // Handle potState == 2 and similar for pot
         if (state && potState === 2 && leftDiv1.innerHTML === '') {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'Mining...';
-    
             leftDiv1.appendChild(leftTxt);
             leftDiv1.appendChild(essenceImg);
 
@@ -220,22 +217,20 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnPot.style.background = '#8c8c8c';
             mainBtnPot.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 0.1
+            let minutes = 0.1;
+            let totalSeconds = minutes * 60;
 
-            let totalSeconds = minutes * 60; 
-            const updateTimer = () => {
+            let updateTimer = () => {
                 const hours = Math.floor(totalSeconds / 3600);
                 const minutes = Math.floor((totalSeconds % 3600) / 60);
                 const seconds = totalSeconds % 60;
-        
-                // Format time as HH:MM:SS
                 rightTxt.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        
+            
                 if (totalSeconds > 0) {
                     totalSeconds--; // Decrement the total seconds
                 } else {
                     clearInterval(timerIntervalPot); // Stop the timer
-                    localStorage.setItem("potState", 3)
+                    localStorage.setItem("potState", 3);
                     setTimeout(function(){
                         leftDiv1.innerHTML = '';
                         rightDiv1.innerHTML = '';
@@ -243,21 +238,19 @@ document.addEventListener('DOMContentLoaded', function() {
                         mainBtnPot.style.background = '#98FFAF';
                         mainBtnPot.style.boxShadow = '0 0.7vh #5FA86F';
 
-                        appendContent(state);
-                        return
+                        appendContent(state); // Recurse after state change
                     }, 100);
                 }
             };
-        
+
             // Update timer immediately and then every second
             updateTimer();
             let timerIntervalPot = setInterval(updateTimer, 1000);
-
-
-            return
+            return;
         }
 
-        if (!state && mineState === 3 && leftDiv1.innerHTML === '') {
+        if (!state && mineState === 3 && leftDiv0.innerHTML === '') {
+            console.log('part 3')
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'CLAIM';
     
