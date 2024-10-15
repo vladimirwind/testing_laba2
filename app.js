@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem("potState", 1)
     localStorage.setItem("mineState", 1)
 
+    var mainBtnMine = document.getElementById(`mainButton0`);
+    var mainBtnPot = document.getElementById(`mainButton1`);
+
     let appendContent = function (state) {
 
         potState = parseInt(localStorage.getItem("potState"));
         mineState = parseInt(localStorage.getItem("mineState"));
-
-        const mainBtnMine = document.getElementById(`mainButton0`);
-        const mainBtnPot = document.getElementById(`mainButton1`);
 
         const leftDiv0 = document.getElementById('mainStartButtonTextLeft0');
         const rightDiv0 = document.getElementById('mainStartButtonTextRight0');
@@ -84,12 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (!state) {
-            mainBtnMine.style.display = 'flex';
+            setTimeout(function(){mainBtnMine.style.display = 'flex'}, 100)
             mainBtnPot.style.display = 'none';
         } else {
             mainBtnMine.style.display = 'none';
-            mainBtnPot.style.display = 'flex';
+            setTimeout(function(){mainBtnPot.style.display = 'flex'}, 100)
         }
+
+        // if (!state) {
+        //     mainBtnPot.style.opacity = '0';
+        //     mainBtnMine.style.opacity = '1';
+        // } else {
+        //     mainBtnMine.style.opacity = '0';
+        //     mainBtnPot.style.opacity = '1';
+        // }
 
         const coinImg = document.createElement('img');
         coinImg.src = './images/blackCoin.svg';
@@ -122,6 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             mainBtnMine.style.background = '#98FFAF';
             mainBtnMine.style.boxShadow = '0 0.7vh #5FA86F';
+
+            return
         }
 
         if (state && potState === 1 && leftDiv1.innerHTML === '') {
@@ -138,6 +148,9 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnPot.style.background = '#98FFAF';
             mainBtnPot.style.boxShadow = '0 0.7vh #5FA86F';
             rightDiv1.style.display = 'none';
+
+
+            return
         }
 
         if (!state && mineState === 2 && leftDiv0.innerHTML === '') {
@@ -154,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnMine.style.background = '#8c8c8c';
             mainBtnMine.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 1
+            let minutes = 0.1
 
             let totalSeconds = minutes * 60; 
             const updateTimer = () => {
@@ -168,14 +181,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (totalSeconds > 0) {
                     totalSeconds--; // Decrement the total seconds
                 } else {
-                    clearInterval(timerInterval); // Stop the timer
-                    // performAction(); // Call the action when timer hits zero
+                    clearInterval(timerIntervalMine); // Stop the timer
+                    localStorage.setItem("mineState", 3)
+                    setTimeout(function(){
+                        leftDiv0.innerHTML = '';
+                        rightDiv0.innerHTML = '';
+
+                        mainBtnMine.style.background = '#98FFAF';
+                        mainBtnMine.style.boxShadow = '0 0.7vh #5FA86F';
+
+                        appendContent(state);
+                        return
+                    }, 100);
                 }
             };
         
             // Update timer immediately and then every second
             updateTimer();
-            const timerInterval = setInterval(updateTimer, 1000);
+            let timerIntervalMine = setInterval(updateTimer, 1000);
+
+
+            return
         }
 
         if (state && potState === 2 && leftDiv1.innerHTML === '') {
@@ -194,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnPot.style.background = '#8c8c8c';
             mainBtnPot.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 1
+            let minutes = 0.1
 
             let totalSeconds = minutes * 60; 
             const updateTimer = () => {
@@ -208,15 +234,74 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (totalSeconds > 0) {
                     totalSeconds--; // Decrement the total seconds
                 } else {
-                    clearInterval(timerInterval); // Stop the timer
-                    // performAction(); // Call the action when timer hits zero
+                    clearInterval(timerIntervalPot); // Stop the timer
+                    localStorage.setItem("potState", 3)
+                    setTimeout(function(){
+                        leftDiv1.innerHTML = '';
+                        rightDiv1.innerHTML = '';
+
+                        mainBtnPot.style.background = '#98FFAF';
+                        mainBtnPot.style.boxShadow = '0 0.7vh #5FA86F';
+
+                        appendContent(state);
+                        return
+                    }, 100);
                 }
             };
         
             // Update timer immediately and then every second
             updateTimer();
-            const timerInterval = setInterval(updateTimer, 1000);
+            let timerIntervalPot = setInterval(updateTimer, 1000);
+
+
+            return
         }
+
+        if (!state && mineState === 3 && leftDiv1.innerHTML === '') {
+            let leftTxt = document.createElement('span');
+            leftTxt.textContent = 'CLAIM';
+    
+            leftDiv0.appendChild(leftTxt);
+            leftDiv0.appendChild(coinImg);
+
+            mainBtnMine.style.background = '#98FFAF';
+            mainBtnMine.style.boxShadow = '0 0.7vh #5FA86F';
+
+            rightDiv0.style.display = 'none';
+
+            mainBtnMine.onclick = function() {
+                leftDiv0.innerHTML = ''
+                rightDiv0.style.display = 'flex';
+                rightDiv0.innerHTML = ''
+                localStorage.setItem("mineState", 1)
+                appendContent(state);
+            }
+
+            return
+        };
+
+        if (state && potState === 3 && leftDiv1.innerHTML === '') {
+            let leftTxt = document.createElement('span');
+            leftTxt.textContent = 'CLAIM';
+    
+            leftDiv1.appendChild(leftTxt);
+            leftDiv1.appendChild(essenceImg);
+
+            mainBtnPot.style.background = '#98FFAF';
+            mainBtnPot.style.boxShadow = '0 0.7vh #5FA86F';
+            rightDiv1.style.display = 'none';
+
+            mainBtnPot.onclick = function() {
+                leftDiv1.innerHTML = ''
+                rightDiv1.style.display = 'flex';
+                rightDiv1.innerHTML = ''
+                localStorage.setItem("potState", 1)
+                appendContent(state);
+            }
+
+            return
+        };
+
     };
 
     appendContent(false);
