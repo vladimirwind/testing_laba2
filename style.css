@@ -3322,6 +3322,7 @@ span {
 }
 
 .percentTextLeagues {
+    display: flex;
     width:100%;
     color: white;
     font-family: 'unbounded';
@@ -3335,10 +3336,11 @@ span {
 }
 
 .progressBarLeagues {
-    width: 100%;
+    display: flex;
+    width: 90%;
     background-color: #e0e0e0;
     
-    border-radius: 20px;
+    border-radius: 3vw;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
 }
 
@@ -3395,9 +3397,10 @@ span {
 }
 
 .leagues-li {
-    width: 100%;
-    margin: 2% 0;
+    width: 95%;
+    margin: 2% auto;
     padding: 0;
+    align-self: center;
 }
 
 .leagues-ul {
@@ -3406,13 +3409,15 @@ span {
     padding: 0;
     margin: 0;
     list-style-type: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .leaguesItem {
     display: flex;
     flex-direction: row;
     width: 100%;
-    border-radius: 15px;
+    border-radius: 2vw;
     background: #0F161E;
     align-items: center;
     justify-content: start;
@@ -3467,4 +3472,14 @@ span {
     justify-content: center;
     line-height: 100%;
     vertical-align: top;
+}
+
+.myPlaceWr {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
 }

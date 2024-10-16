@@ -48,62 +48,194 @@ document.addEventListener('DOMContentLoaded', function() {
     var globalIslandState = false;
 
     var userProfile = document.getElementById(`userProfile`);
+    
+    let currentLeague = 'golden'; 
+
+    let currentUserInfo = {
+        "status": true,
+        "code": 200,
+        "data": "{\"league\":\"golden\",\"place\":1,\"mined\":74100,\"percent\":74,\"name\":\"🅰️🅱️🅱️🅾️💲 \"}"
+    };
+
+    function truncateName(name) {
+        return name.length > 16 ? name.slice(0, 16) + '...' : name;
+    }
+    
+    let userData = JSON.parse(currentUserInfo.data);
 
     userProfile.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
-        document.getElementById(`leaguesContainer`).style.display = 'flex';
+        document.getElementById('leaguesContainer').style.display = 'flex';
+
+
+        let BackButton = tg.WebApp.BackButton;
+        
+        BackButton.show();
+        BackButton.onClick(function() {
+            BackButton.hide();
+            document.getElementById('mainContainer').style.display = 'flex';
+            document.getElementById('leaguesContainer').style.display = 'none';
+        });
+    
         let jsonData = {
             "status": true,
             "code": 200,
-            "data": "{\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998},{\"place\":5,\"name\":\"Alek Sander\",\"mined\":4996},{\"place\":6,\"name\":\"Reza HH\",\"mined\":4995},{\"place\":7,\"name\":\"saeid\",\"mined\":4995},{\"place\":8,\"name\":\"Mihanik\",\"mined\":4990},{\"place\":9,\"name\":\"حسين رياض\",\"mined\":4989},{\"place\":10,\"name\":\"H.Gholipor\",\"mined\":4980},{\"place\":11,\"name\":\"Behzad Hesami$PRETO\",\"mined\":4980},{\"place\":12,\"name\":\"./bash\",\"mined\":4980},{\"place\":13,\"name\":\"RabbiMcDaniels $CFI\",\"mined\":4979},{\"place\":14,\"name\":\"Abdurrahman\",\"mined\":4979},{\"place\":15,\"name\":\"Ri Truong\",\"mined\":4979},{\"place\":16,\"name\":\"$PRETON Muhammad Al\",\"mined\":4979},{\"place\":17,\"name\":\"👤javad.birjandi👤\",\"mined\":4979},{\"place\":18,\"name\":\"فرزانه فضلی\",\"mined\":4978},{\"place\":19,\"name\":\"Abdul Matsu\",\"mined\":4976},{\"place\":20,\"name\":\"Nguyễn Hạnh\",\"mined\":4974},{\"place\":21,\"name\":\"Алийева Халида\",\"mined\":4974},{\"place\":22,\"name\":\"12229\",\"mined\":4973},{\"place\":23,\"name\":\"Bondon notbitcoin\",\"mined\":4964}]}"
-        };
-          
-          // Parse the data (it's currently a string)
-        let bronzeData = JSON.parse(jsonData.data).bronze;
-          
-          // Function to create the leaderboard
-        let updateLeaderboard = function () {
-            let leaderboard = document.getElementById('leaderboardLeaguesBronze'); // Get the leaderboard container
-          
-            // Loop through the bronze data to create <li> items
-            bronzeData.forEach(item => {
-                // Create a new <li> element
+            "data": "{\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"silver\":[{\"place\":1,\"name\":\"John Doe\",\"mined\":9000},{\"place\":2,\"name\":\"Jane Smith\",\"mined\":8500},{\"place\":3,\"name\":\"Albert\",\"mined\":8000}],\"golden\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}]}"}; 
+        
+        // Parse the data (it's currently a string)
+        let leaguesData = JSON.parse(jsonData.data); 
+        
+        // Function to create the leaderboard for a given league
+        let updateLeaderboard = function(league) {
+            let leaderboard = document.getElementById('leaderboardLeagues'); 
+            leaderboard.innerHTML = ''; 
+    
+            if (userData.league === league) {
+                // Create the list item for the current user
+                let currentUserLi = document.createElement('li');
+                currentUserLi.className = 'leagues-li';
+
+                currentUserLi.style.outlineStyle = 'solid';
+                currentUserLi.style.outlineWidth = 'thin';
+                currentUserLi.style.outlineColor = '#98FFAF';
+                currentUserLi.style.borderRadius = '2vw';
+        
+                // Determine the place image based on position
+                let placeHTML = '';
+                if (userData.place === 1) {
+                    placeHTML = `<img src="./images/1st.svg" width="60%" height="60%">`;
+                } else if (userData.place === 2) {
+                    placeHTML = `<img src="./images/2nd.svg" width="60%" height="60%">`;
+                } else if (userData.place === 3) {
+                    placeHTML = `<img src="./images/3rd.svg" width="60%" height="60%">`;
+                } else {
+                    placeHTML = `<text>${userData.place}</text>`; // For places beyond 3rd, show the place number
+                }
+        
+                // Create the structure for the user's list item
+                currentUserLi.innerHTML = `            
+                <div class="leaguesItem">
+                    <div class="leaguesItemPlace">
+                        ${placeHTML}
+                    </div>
+                    <img src="./images/${league}_avatar.png" width="13%" height="13%">
+                    <div class="leaguesItemNameAndBalance">
+                        <text id="name${league.charAt(0).toUpperCase() + league.slice(1)}_${userData.place}">${truncateName(userData.name)}</text>
+                        <div class="leaguesItemMinedBalance">
+                            <img src="./images/coin.svg">
+                            <text id="mined${league.charAt(0).toUpperCase() + league.slice(1)}_${userData.place}">${userData.mined}</text>
+                        </div>
+                    </div>
+                </div>`;
+        
+                // Prepend the user's info to the top of the leaderboard
+                leaderboard.appendChild(currentUserLi);
+            }
+
+            let leagueData = leaguesData[league]; 
+            
+            leagueData.forEach(item => {
+                // Create a new list item <li>
                 let myLi = document.createElement('li');
                 myLi.className = 'leagues-li';
-                
-                // Check if the place is 1st, 2nd, or 3rd
+    
+                // Determine the place image based on position
                 let placeHTML = '';
                 if (item.place === 1) {
-                    placeHTML = `<img src="../images/1st.svg" width="60%" height="60%">`;
+                    placeHTML = `<img src="./images/1st.svg" width="60%" height="60%">`;
                 } else if (item.place === 2) {
-                    placeHTML = `<img src="../images/2nd.svg" width="60%" height="60%">`;
+                    placeHTML = `<img src="./images/2nd.svg" width="60%" height="60%">`;
                 } else if (item.place === 3) {
-                    placeHTML = `<img src="../images/3rd.svg" width="60%" height="60%">`;
+                    placeHTML = `<img src="./images/3rd.svg" width="60%" height="60%">`;
                 } else {
                     placeHTML = `<text>${item.place}</text>`; // For places beyond 3rd, show the place number
                 }
-        
+    
                 // Create the structure for each list item
                 myLi.innerHTML = `            
                 <div class="leaguesItem">
                     <div class="leaguesItemPlace">
                         ${placeHTML}
                     </div>
-                    <img src="../images/bronze_avatar.png" width="13%" height="13%">
+                    <img src="./images/${league}_avatar.png" width="13%" height="13%">
                     <div class="leaguesItemNameAndBalance">
-                        <text id="nameBronze_${item.place}">${item.name}</text>
+                        <text id="name${league.charAt(0).toUpperCase() + league.slice(1)}_${item.place}">${item.name}</text>
                         <div class="leaguesItemMinedBalance">
-                            <img src="../images/coin.svg">
-                            <text id="minedBronze_${item.place}">${item.mined}</text>
+                            <img src="./images/coin.svg">
+                            <text id="mined${league.charAt(0).toUpperCase() + league.slice(1)}_${item.place}">${item.mined}</text>
                         </div>
                     </div>
-                </div>`
+                </div>`;
+                
                 // Append the new list item to the leaderboard 
                 leaderboard.appendChild(myLi);
             });
         };
-        updateLeaderboard();
+        
+        // Create initial HTML structure
+        let createLeagueHTML = function(league) {
+            let leagueContainer = document.getElementById('leaguesInside');
+            leagueContainer.innerHTML = `
+                <div class="threeItemsLeagues" id="th1">
+                    <text id="leftArrow">&lt;</text>
+                    <div class="myWrapImageLeagues">
+                        <img src="./images/${league.charAt(0).toUpperCase() + league.slice(1)}_League.png"></img>
+                    </div>
+                    <text id="rightArrow">></text>
+                </div>  
+                <div class="leagueType">
+                    <text>${league.charAt(0).toUpperCase() + league.slice(1)} league</text>
+                </div>
+                <div class="myPlaceWr">
+                    <div class="percentTextLeagues" id="usersStatMined">
+                        <text>Mined: &nbsp;</br></text>
+                        <text id="totalMined"> 0 / 5000</text>
+                    </div>
+                    <div class="progressBarLeagues" id="usersStatBar">
+                        <span class="progressBarLeagues0" style="width: 0%;" id="progressBar"></span>
+                    </div>
+                    </br>
+                </div>
+    
+                <ul class="leagues-ul" id="leaderboardLeagues">
+                    <!-- Leaderboard will be populated here -->
+                </ul>`;
+            
+            // Update the leaderboard for the initial league
+            updateLeaderboard(league);
+    
+            // Now we can safely add the event listeners for the arrows
+            document.getElementById('leftArrow').onclick = function() {
+                if (currentLeague === 'bronze') {
+                    currentLeague = 'golden'; // Wrap around to Gold
+                } else if (currentLeague === 'silver') {
+                    currentLeague = 'bronze';
+                } else if (currentLeague === 'golden') {
+                    currentLeague = 'silver';
+                }
+                
+                // Recreate the HTML for the new league
+                createLeagueHTML(currentLeague);
+            };
+        
+            document.getElementById('rightArrow').onclick = function() {
+                if (currentLeague === 'bronze') {
+                    currentLeague = 'silver';
+                } else if (currentLeague === 'silver') {
+                    currentLeague = 'golden';
+                } else if (currentLeague === 'golden') {
+                    currentLeague = 'bronze'; // Wrap around to Bronze
+                }
+        
+                // Recreate the HTML for the new league
+                createLeagueHTML(currentLeague);
+            };
+        };
+    
+        // Initially create the HTML for the Bronze league
+        createLeagueHTML(currentLeague);
     };
+    
 
     let appendContent = function (state) {
 
