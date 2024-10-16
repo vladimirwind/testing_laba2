@@ -2928,7 +2928,7 @@ span {
     outline-style: solid;
     outline-width: thin;
     outline-color: #98FFAF;
-    border-radius: 1vw;
+    border-radius: 1.5vw;
     background-color: #0f161e;
     margin: 0; /* Reset margin */
     padding: 0; /* Reset padding */
@@ -3010,7 +3010,7 @@ span {
     outline-style: solid;
     outline-width: thin;
     outline-color: #98FFAF;
-    border-radius: 1vw;
+    border-radius: 1.5vw;
     background-color: #0f161e;
 }
 

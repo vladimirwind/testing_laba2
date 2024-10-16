@@ -23,11 +23,18 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(profPhoto)
     let dailyBtn = document.getElementById('dailyComboBtn');
     let dailyWindow = document.getElementById('popUPDailyCombo');
-    dailyBtn.onclick = function() {
-        dailyWindow.style.display = 'flex';
-    }
+    let closeDailyBtn = document.getElementById('X_Daily');
     var islandSwitchBtn = document.getElementById('islandSwitchBtn');
     var IslandState = false;
+
+    dailyBtn.onclick = function() {
+        dailyWindow.style.display = 'flex';
+        islandSwitchBtn.style.display = 'none';
+        closeDailyBtn.onclick = function() {
+            dailyWindow.style.display = 'none';
+            islandSwitchBtn.style.display = 'flex';
+        }
+    }
 
     sessionStorage.setItem('essenceBtnState', 1)
     sessionStorage.setItem('mineBtnState', 1)
@@ -49,12 +56,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var userProfile = document.getElementById(`userProfile`);
     
-    let currentLeague = 'golden'; 
+    let currentLeague = 'gold'; 
 
     let currentUserInfo = {
         "status": true,
         "code": 200,
-        "data": "{\"league\":\"golden\",\"place\":1,\"mined\":74100,\"percent\":74,\"name\":\"🅰️🅱️🅱️🅾️💲 \"}"
+        "data": "{\"league\":\"gold\",\"place\":1,\"mined\":74100,\"percent\":19,\"name\":\"🅰️🅱️🅱️🅾️💲 \"}"
     };
 
     function truncateName(name) {
@@ -69,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         let BackButton = tg.WebApp.BackButton;
-        
+
         BackButton.show();
         BackButton.onClick(function() {
             BackButton.hide();
@@ -80,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let jsonData = {
             "status": true,
             "code": 200,
-            "data": "{\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"silver\":[{\"place\":1,\"name\":\"John Doe\",\"mined\":9000},{\"place\":2,\"name\":\"Jane Smith\",\"mined\":8500},{\"place\":3,\"name\":\"Albert\",\"mined\":8000}],\"golden\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}]}"}; 
+            "data": "{\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"silver\":[{\"place\":1,\"name\":\"John Doe\",\"mined\":9000},{\"place\":2,\"name\":\"Jane Smith\",\"mined\":8500},{\"place\":3,\"name\":\"Albert\",\"mined\":8000}],\"gold\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}],\"mythic\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}]}"}; 
         
         // Parse the data (it's currently a string)
         let leaguesData = JSON.parse(jsonData.data); 
@@ -92,6 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
             if (userData.league === league) {
                 // Create the list item for the current user
+                let myPercent = userData.percent
+                if (myPercent) {
+                    if (myPercent > 99) {
+                        myPercent = 100
+                    }
+                }
+                document.getElementById('progressBarLeagues').style.width = `${userData.percent}%`;
                 let currentUserLi = document.createElement('li');
                 currentUserLi.className = 'leagues-li';
 
@@ -175,7 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create initial HTML structure
         let createLeagueHTML = function(league) {
             let leagueContainer = document.getElementById('leaguesInside');
-            leagueContainer.innerHTML = `
+
+            if (userData.league === league) {
+                leagueContainer.innerHTML = `
                 <div class="threeItemsLeagues" id="th1">
                     <text id="leftArrow">&lt;</text>
                     <div class="myWrapImageLeagues">
@@ -192,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <text id="totalMined"> 0 / 5000</text>
                     </div>
                     <div class="progressBarLeagues" id="usersStatBar">
-                        <span class="progressBarLeagues0" style="width: 0%;" id="progressBar"></span>
+                        <span class="progressBarLeagues0" style="width: 0%;" id="progressBarLeagues"></span>
                     </div>
                     </br>
                 </div>
@@ -200,6 +216,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 <ul class="leagues-ul" id="leaderboardLeagues">
                     <!-- Leaderboard will be populated here -->
                 </ul>`;
+            } else {
+                leagueContainer.innerHTML = `
+                <div class="threeItemsLeagues" id="th1">
+                    <text id="leftArrow">&lt;</text>
+                    <div class="myWrapImageLeagues">
+                        <img src="./images/${league.charAt(0).toUpperCase() + league.slice(1)}_League.png"></img>
+                    </div>
+                    <text id="rightArrow">></text>
+                </div>  
+                <div class="leagueType">
+                    <text>${league.charAt(0).toUpperCase() + league.slice(1)} league</text>
+                </div>
+                <ul class="leagues-ul" id="leaderboardLeagues">
+                    <!-- Leaderboard will be populated here -->
+                </ul>`;
+            }
             
             // Update the leaderboard for the initial league
             updateLeaderboard(league);
@@ -207,11 +239,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Now we can safely add the event listeners for the arrows
             document.getElementById('leftArrow').onclick = function() {
                 if (currentLeague === 'bronze') {
-                    currentLeague = 'golden'; // Wrap around to Gold
+                    currentLeague = 'mythic'; 
                 } else if (currentLeague === 'silver') {
                     currentLeague = 'bronze';
-                } else if (currentLeague === 'golden') {
+                } else if (currentLeague === 'gold') {
                     currentLeague = 'silver';
+                } else if (currentLeague === 'mythic') {
+                    currentLeague = 'gold';
                 }
                 
                 // Recreate the HTML for the new league
@@ -222,9 +256,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentLeague === 'bronze') {
                     currentLeague = 'silver';
                 } else if (currentLeague === 'silver') {
-                    currentLeague = 'golden';
-                } else if (currentLeague === 'golden') {
-                    currentLeague = 'bronze'; // Wrap around to Bronze
+                    currentLeague = 'gold';
+                } else if (currentLeague === 'gold') {
+                    currentLeague = 'mythic'; 
+                }  else if (currentLeague === 'mythic') {
+                    currentLeague = 'bronze'; 
                 }
         
                 // Recreate the HTML for the new league
@@ -522,8 +558,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };    
 
     showPreloader();
-    
-    // let settingsBtn = document.getElementById("settingsBtn");
+   
+        // let settingsBtn = document.getElementById("settingsBtn");
     // settingsBtn.onclick = function() {
     //     document.getElementById("containerSettings").style.display = 'flex';
     //     let walletBtn = document.getElementById("walletBtn");
@@ -2124,5 +2160,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // earnTrigger.addEventListener('click', function() {
     //     window.location.href = './earn-page/earn.' + 'html';   
     // });
-   
 });
