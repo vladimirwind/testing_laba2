@@ -47,6 +47,64 @@ document.addEventListener('DOMContentLoaded', function() {
     var mainBtnPot = document.getElementById(`mainButton1`);
     var globalIslandState = false;
 
+    var userProfile = document.getElementById(`userProfile`);
+
+    userProfile.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById(`leaguesContainer`).style.display = 'flex';
+        let jsonData = {
+            "status": true,
+            "code": 200,
+            "data": "{\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998},{\"place\":5,\"name\":\"Alek Sander\",\"mined\":4996},{\"place\":6,\"name\":\"Reza HH\",\"mined\":4995},{\"place\":7,\"name\":\"saeid\",\"mined\":4995},{\"place\":8,\"name\":\"Mihanik\",\"mined\":4990},{\"place\":9,\"name\":\"حسين رياض\",\"mined\":4989},{\"place\":10,\"name\":\"H.Gholipor\",\"mined\":4980},{\"place\":11,\"name\":\"Behzad Hesami$PRETO\",\"mined\":4980},{\"place\":12,\"name\":\"./bash\",\"mined\":4980},{\"place\":13,\"name\":\"RabbiMcDaniels $CFI\",\"mined\":4979},{\"place\":14,\"name\":\"Abdurrahman\",\"mined\":4979},{\"place\":15,\"name\":\"Ri Truong\",\"mined\":4979},{\"place\":16,\"name\":\"$PRETON Muhammad Al\",\"mined\":4979},{\"place\":17,\"name\":\"👤javad.birjandi👤\",\"mined\":4979},{\"place\":18,\"name\":\"فرزانه فضلی\",\"mined\":4978},{\"place\":19,\"name\":\"Abdul Matsu\",\"mined\":4976},{\"place\":20,\"name\":\"Nguyễn Hạnh\",\"mined\":4974},{\"place\":21,\"name\":\"Алийева Халида\",\"mined\":4974},{\"place\":22,\"name\":\"12229\",\"mined\":4973},{\"place\":23,\"name\":\"Bondon notbitcoin\",\"mined\":4964}]}"
+        };
+          
+          // Parse the data (it's currently a string)
+        let bronzeData = JSON.parse(jsonData.data).bronze;
+          
+          // Function to create the leaderboard
+        let updateLeaderboard = function () {
+            let leaderboard = document.getElementById('leaderboardLeaguesBronze'); // Get the leaderboard container
+          
+            // Loop through the bronze data to create <li> items
+            bronzeData.forEach(item => {
+                // Create a new <li> element
+                let myLi = document.createElement('li');
+                myLi.className = 'leagues-li';
+                
+                // Check if the place is 1st, 2nd, or 3rd
+                let placeHTML = '';
+                if (item.place === 1) {
+                    placeHTML = `<img src="../images/1st.svg" width="60%" height="60%">`;
+                } else if (item.place === 2) {
+                    placeHTML = `<img src="../images/2nd.svg" width="60%" height="60%">`;
+                } else if (item.place === 3) {
+                    placeHTML = `<img src="../images/3rd.svg" width="60%" height="60%">`;
+                } else {
+                    placeHTML = `<text>${item.place}</text>`; // For places beyond 3rd, show the place number
+                }
+        
+                // Create the structure for each list item
+                myLi.innerHTML = `            
+                <div class="leaguesItem">
+                    <div class="leaguesItemPlace">
+                        ${placeHTML}
+                    </div>
+                    <img src="../images/bronze_avatar.png" width="13%" height="13%">
+                    <div class="leaguesItemNameAndBalance">
+                        <text id="nameBronze_${item.place}">${item.name}</text>
+                        <div class="leaguesItemMinedBalance">
+                            <img src="../images/coin.svg">
+                            <text id="minedBronze_${item.place}">${item.mined}</text>
+                        </div>
+                    </div>
+                </div>`
+                // Append the new list item to the leaderboard 
+                leaderboard.appendChild(myLi);
+            });
+        };
+        updateLeaderboard();
+    };
+
     let appendContent = function (state) {
 
         potState = parseInt(localStorage.getItem("potState"));

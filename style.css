@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @font-face {
     font-family: unbounded;
     src: url(./fonts/unbounded.woff);
@@ -3109,6 +3110,8 @@ span {
     animation-duration: 3s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
+
+    filter: drop-shadow(0 0 0.7rem rgba(197,234,255, 0.3));
 }
 
 .mainIslandChild {
@@ -3195,7 +3198,7 @@ span {
 @keyframes floatingIsland {
     0% { transform: translate(0, 0px); }
     50% { transform: translate(0, 1vh); }
-    100% { transform: translate(0, -0px); }    
+    100% { transform: translate(0, 0px); }    
 }
 
 .mainStartButtonWr {
@@ -3307,3 +3310,161 @@ span {
     font-weight: 600;
 }
 
+.leaguesContainer {
+    display: none;
+    flex-direction: column;
+    width: 100vw; 
+    height: 100vh; 
+    background-color: #15202B;
+    box-sizing: border-box; 
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.percentTextLeagues {
+    width:100%;
+    color: white;
+    font-family: 'unbounded';
+    font-size: 15px;
+    font-weight: 100;
+    letter-spacing: 7%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 3% 0;
+}
+
+.progressBarLeagues {
+    width: 100%;
+    background-color: #e0e0e0;
+    
+    border-radius: 20px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+.leaguesInside {
+    padding: 5% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.threeItemsLeagues {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    align-items: center;
+    padding: 0 0;
+}
+
+.leagueType {
+    font-family: 'unbounded';
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 8%;
+    letter-spacing: 1px;
+}
+
+.myWrapImageLeagues {   
+    filter: drop-shadow(#000000dd 0px 14px 9px);
+    width: 80%
+}
+
+.myWrapImageLeagues img{
+    width: 65%;
+    height: 65%;
+}
+
+.progressBarLeagues0 {
+    display: block;
+    height: 22px;
+    background-color: #bc6f03;
+    background-image: linear-gradient(315deg, #bc6f03 0%, #874000 74%);
+    border-radius: 20px;
+    transition: width 500ms ease-in-out;
+}
+
+.leagues-li {
+    width: 100%;
+    margin: 2% 0;
+    padding: 0;
+}
+
+.leagues-ul {
+    width: 100%;
+    gap: 5%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.leaguesItem {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 15px;
+    background: #0F161E;
+    align-items: center;
+    justify-content: start;
+    color:white;
+    font-size: 20px;
+    font-family: 'coco-L';
+    padding: 2%;
+    gap: 3%;
+}
+
+.leaguesItemPlace {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width:15%;
+    font-family: 'unbounded';
+    font-size: 15px;
+}
+
+.leaguesItemNameAndBalance {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    font-family: 'coco-L';
+    font-size: 20px;
+    margin-left: 2%;
+    width: 80%;
+}
+
+.leaguesItemMinedBalance {
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+    font-family: "Roboto Mono", monospace;
+    font-size: 21px;    
+    color: #98FFAF;
+    justify-content: start;
+}
+
+.leaguesItemMinedBalance img {
+    width: 10%;
+    height: 10%;
+    vertical-align: middle;
+    align-self: center;
+}
+
+.leaguesItemMinedBalance text {
+    position: relative;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+    line-height: 100%;
+    vertical-align: top;
+}
