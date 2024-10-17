@@ -3387,11 +3387,47 @@ span {
     height: 65%;
 }
 
-.progressBarLeagues0 {
+.progressBarFillLeagues_bronze {
     display: block;
     height: 22px;
     background-color: #bc6f03;
     background-image: linear-gradient(315deg, #bc6f03 0%, #874000 74%);
+    border-radius: 20px;
+    transition: width 500ms ease-in-out;
+}
+
+.progressBarFillLeagues_silver {
+    display: block;
+    height: 22px;
+    background-color: #5b6467;
+    background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
+    border-radius: 20px;
+    transition: width 500ms ease-in-out;
+}
+
+.progressBarFillLeagues_gold {
+    display: block;
+    height: 22px;
+    background-color: #5b6467;
+    background-image: linear-gradient(315deg, #FABC3C 0%, #FACC6B 74%);
+    border-radius: 20px;
+    transition: width 500ms ease-in-out;
+}
+
+.progressBarFillLeagues_diamond {
+    display: block;
+    height: 22px;
+    background-color: #5b6467;
+    background-image: linear-gradient(315deg, #80CED7 0%, #007EA7 74%);
+    border-radius: 20px;
+    transition: width 500ms ease-in-out;
+}
+
+.progressBarFillLeagues_mythic {
+    display: block;
+    height: 22px;
+    background-color: #5b6467;
+    background-image: linear-gradient(315deg, rgb(157, 75, 199) 0%, rgb(119, 81, 204) 74%);
     border-radius: 20px;
     transition: width 500ms ease-in-out;
 }

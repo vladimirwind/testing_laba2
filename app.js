@@ -16,8 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // tonConnectUI.uiOptions = {
         //     language: tg.WebApp.initDataUnsafe.language_code,
         // };
-        
+
+        document.getElementById('profileName').textContent = tg.WebApp.user.name;
     };
+
     document.getElementById('mainContainer').style.display = 'none';
     let profPhoto = tg.WebApp.initDataUnsafe.user
     console.log(profPhoto)
@@ -39,11 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     sessionStorage.setItem('essenceBtnState', 1)
     sessionStorage.setItem('mineBtnState', 1)
 
-    const islandMapping = new Map();
-
-    islandMapping.set(1, "./images/desertPot.png");
-    islandMapping.set(0, "./images/desertMine.png");
-
     var potState = 1;
     var mineState = 1;
 
@@ -54,21 +51,62 @@ document.addEventListener('DOMContentLoaded', function() {
     var mainBtnPot = document.getElementById(`mainButton1`);
     var globalIslandState = false;
 
+    let compressValues = function(num) {
+        let round = function round(value, precision) {
+            var multiplier = Math.pow(10, precision || 0);
+            return Math.round(value * multiplier) / multiplier;
+        }
+        if (num < 1000) {
+            return `${num}`
+        }
+        if (num >= 1000 && num < 1000000) {
+            return `${round(num / 1000, 1)}k`
+        }
+        if (num >= 1000000) {
+            return `${round(num / 1000000)}M`
+        }
+    }
+
     var userProfile = document.getElementById(`userProfile`);
-    
-    let currentLeague = 'gold'; 
 
     let currentUserInfo = {
         "status": true,
         "code": 200,
-        "data": "{\"league\":\"gold\",\"place\":1,\"mined\":74100,\"percent\":19,\"name\":\"🅰️🅱️🅱️🅾️💲 \"}"
+        "data": '{"income":5000,"combo_flag":true,"balance":12000,"essence_balance":2500000000,"unused_income":300,"unused_essence":1500,"unused_balance":200,"cauldron_level":3,"mine_level":5}'
+    };
+
+    let MainUserInfo = JSON.parse(currentUserInfo.data);
+
+    let setUpMainPage = function(userInfos) {
+        document.getElementById('profileIncome').textContent = compressValues(userInfos["income"]);
+        document.getElementById('blnc').textContent = userInfos["balance"];
+        document.getElementById('esnc').textContent = userInfos["essence_balance"];
+        document.getElementById('childIslandIMG').src = 
+        `./images/islands/cauldronIsland${userInfos["cauldron_level"]}.png`
+        document.getElementById('mainIslandIMG').src = 
+        `./images/islands/mineIsland${userInfos["mine_level"]}.png`
+    }
+
+    const islandMapping = new Map();
+
+    islandMapping.set(1, `./images/islands/cauldronIsland${MainUserInfo["cauldron_level"]}.png`);
+    islandMapping.set(0, `./images/islands/mineIsland${MainUserInfo["mine_level"]}.png`);
+
+    setUpMainPage(MainUserInfo)
+
+    let currentUserInfoLeague = {
+        "status": true,
+        "code": 200,
+        "data": "{\"league\":\"diamond\",\"place\":1,\"mined\":74100,\"percent\":19,\"name\":\"🅰️🅱️🅱️🅾️💲 \"}"
     };
 
     function truncateName(name) {
         return name.length > 16 ? name.slice(0, 16) + '...' : name;
     }
     
-    let userData = JSON.parse(currentUserInfo.data);
+    let userData = JSON.parse(currentUserInfoLeague.data);
+
+    let currentLeague = userData.league;
 
     userProfile.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
@@ -87,9 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let jsonData = {
             "status": true,
             "code": 200,
-            "data": "{\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"silver\":[{\"place\":1,\"name\":\"John Doe\",\"mined\":9000},{\"place\":2,\"name\":\"Jane Smith\",\"mined\":8500},{\"place\":3,\"name\":\"Albert\",\"mined\":8000}],\"gold\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}],\"mythic\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}]}"}; 
+            "data": "{\"diamond\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"silver\":[{\"place\":1,\"name\":\"John Doe\",\"mined\":9000},{\"place\":2,\"name\":\"Jane Smith\",\"mined\":8500},{\"place\":3,\"name\":\"Albert\",\"mined\":8000}],\"gold\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}],\"mythic\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}]}"}; 
         
-        // Parse the data (it's currently a string)
+        
         let leaguesData = JSON.parse(jsonData.data); 
         
         // Function to create the leaderboard for a given league
@@ -100,12 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
             if (userData.league === league) {
                 // Create the list item for the current user
                 let myPercent = userData.percent
+
                 if (myPercent) {
                     if (myPercent > 99) {
                         myPercent = 100
                     }
+                    document.getElementById('progressBarLeagues').style.width = `${userData.percent}%`;
                 }
-                document.getElementById('progressBarLeagues').style.width = `${userData.percent}%`;
+
                 let currentUserLi = document.createElement('li');
                 currentUserLi.className = 'leagues-li';
 
@@ -208,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <text id="totalMined"> 0 / 5000</text>
                     </div>
                     <div class="progressBarLeagues" id="usersStatBar">
-                        <span class="progressBarLeagues0" style="width: 0%;" id="progressBarLeagues"></span>
+                        <span class="progressBarFillLeagues_${league}" style="width: 0%;" id="progressBarLeagues"></span>
                     </div>
                     </br>
                 </div>
@@ -244,8 +284,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentLeague = 'bronze';
                 } else if (currentLeague === 'gold') {
                     currentLeague = 'silver';
-                } else if (currentLeague === 'mythic') {
+                } else if (currentLeague === 'diamond') {
                     currentLeague = 'gold';
+                } else if (currentLeague === 'mythic') {
+                    currentLeague = 'diamond';
                 }
                 
                 // Recreate the HTML for the new league
@@ -258,6 +300,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else if (currentLeague === 'silver') {
                     currentLeague = 'gold';
                 } else if (currentLeague === 'gold') {
+                    currentLeague = 'diamond';
+                } else if (currentLeague === 'diamond') {
                     currentLeague = 'mythic'; 
                 }  else if (currentLeague === 'mythic') {
                     currentLeague = 'bronze'; 
@@ -334,8 +378,8 @@ document.addEventListener('DOMContentLoaded', function() {
             leftTxt.textContent = 'MINE ';
     
             let leftTxt2 = document.createElement('span');
-            leftTxt2.textContent = '13000';
-    
+            leftTxt2.textContent = `${MainUserInfo["mine_level"] * 120 * Math.pow(MainUserInfo["mine_level"], 2)}`;
+
             leftDiv0.appendChild(leftTxt);
     
             leftDiv0.appendChild(coinImg);
@@ -359,7 +403,7 @@ document.addEventListener('DOMContentLoaded', function() {
             leftTxt.textContent = 'MINE ';
     
             let leftTxt2 = document.createElement('span');
-            leftTxt2.textContent = '13000';
+            leftTxt2.textContent = `${MainUserInfo["cauldron_level"] * 120 * Math.pow(MainUserInfo["cauldron_level"], 2)}`;
     
             leftDiv1.appendChild(leftTxt);
             leftDiv1.appendChild(essenceImg);
