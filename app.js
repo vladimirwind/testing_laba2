@@ -527,8 +527,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('part 3')
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'CLAIM';
+
+            let leftTxt2 = document.createElement('span');
+            leftTxt2.textContent = `${MainUserInfo["unused_balance"]}`;
     
             leftDiv0.appendChild(leftTxt);
+            leftDiv0.appendChild(leftTxt2);
             leftDiv0.appendChild(coinImg);
 
             mainBtnMine.style.background = '#98FFAF';
@@ -550,8 +554,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (state && potState === 3 && leftDiv1.innerHTML === '') {
             let leftTxt = document.createElement('span');
             leftTxt.textContent = 'CLAIM';
+
+            let leftTxt2 = document.createElement('span');
+            leftTxt2.textContent = `${MainUserInfo["unused_essence"]}`;
     
             leftDiv1.appendChild(leftTxt);
+            leftDiv1.appendChild(leftTxt2);
             leftDiv1.appendChild(essenceImg);
 
             mainBtnPot.style.background = '#98FFAF';
