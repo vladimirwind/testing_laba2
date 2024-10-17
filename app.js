@@ -44,6 +44,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var potState = 1;
     var mineState = 1;
 
+    var MiningTime = 0;
+    var EssenceTime = 0;
+
     localStorage.setItem("potState", 1)
     localStorage.setItem("mineState", 1)
 
@@ -72,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentUserInfo = {
         "status": true,
         "code": 200,
-        "data": '{"income":5000,"combo_flag":true,"balance":12000,"essence_balance":2500000000,"unused_income":300,"unused_essence":1500,"unused_balance":200,"cauldron_level":3,"mine_level":5}'
+        "data": '{"income":5000,"combo_flag":true,"balance":12000,"essence_balance":2500000000,"unused_income":300,"unused_essence":1500,"unused_balance":200,"cauldron_level":3,"mine_level":5,"mining_time":1, "essence_time": 245}'
     };
 
     let MainUserInfo = JSON.parse(currentUserInfo.data);
@@ -86,14 +89,26 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('mainIslandIMG').src = 
         `./images/islands/mineIsland${userInfos["mine_level"]}.png`
 
-        if (userInfos["unused_essence"] > 0) {
+        if (userInfos["unused_essence"] > 0 && userInfos["essence_time"] === 0) {
             potState = 3;
             localStorage.setItem('potState', 3)
         }
 
-        if (userInfos["unused_balance"] > 0) {
+        if (userInfos["unused_balance"] > 0 && userInfos["mining_time"] === 0) {
             mineState = 3;
             localStorage.setItem('mineState', 3)
+        }
+
+        if (userInfos["essence_time"] > 0) {
+            potState = 2;
+            localStorage.setItem('potState', 2)
+            EssenceTime = userInfos["essence_time"];
+        }
+
+        if (userInfos["mining_time"] > 0) {
+            mineState = 2;
+            localStorage.setItem('mineState', 2)
+            MiningTime = userInfos["mining_time"];
         }
 
     }
@@ -399,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
             leftDiv0.appendChild(leftTxt2);
     
             let rightTxt = document.createElement('span');
-            rightTxt.textContent = '- 400';
+            rightTxt.textContent = `- ${120 * MainUserInfo["mine_level"]}`;
     
             rightDiv0.appendChild(rightTxt);
             rightDiv0.appendChild(essenceImg);
@@ -443,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnMine.style.background = '#8c8c8c';
             mainBtnMine.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 0.1;
+            let minutes = MiningTime;
             let totalSeconds = minutes * 60;
 
             let updateTimer = () => {
@@ -493,7 +508,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mainBtnPot.style.background = '#8c8c8c';
             mainBtnPot.style.boxShadow = '0 0.7vh #707070';
 
-            let minutes = 0.1;
+            let minutes = EssenceTime;
             let totalSeconds = minutes * 60;
 
             let updateTimer = () => {
