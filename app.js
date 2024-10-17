@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //     language: tg.WebApp.initDataUnsafe.language_code,
         // };
 
-        document.getElementById('profileName').textContent = tg.WebApp.user.first_name;
+        document.getElementById('profileName').textContent = tg.WebApp.initData.user.first_name;
     };
 
     document.getElementById('mainContainer').style.display = 'none';
@@ -125,7 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let jsonData = {
             "status": true,
             "code": 200,
-            "data": "{\"diamond\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"silver\":[{\"place\":1,\"name\":\"John Doe\",\"mined\":9000},{\"place\":2,\"name\":\"Jane Smith\",\"mined\":8500},{\"place\":3,\"name\":\"Albert\",\"mined\":8000}],\"gold\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}],\"mythic\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}]}"}; 
+            "data": "{\"diamond\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"bronze\":[{\"place\":1,\"name\":\"Pham Quy Duong 🌱 SE\",\"mined\":7855},{\"place\":2,\"name\":\"Алекс\",\"mined\":5011},{\"place\":3,\"name\":\"Mohsen\",\"mined\":4998},{\"place\":4,\"name\":\"Ben Hadley\",\"mined\":4998}],\"silver\":[{\"place\":1,\"name\":\"John Doe\",\"mined\":9000},{\"place\":2,\"name\":\"Jane Smith\",\"mined\":8500},{\"place\":3,\"name\":\"Albert\",\"mined\":8000}],\"gold\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}],\"mythic\":[{\"place\":1,\"name\":\"Elon Musk\",\"mined\":10000},{\"place\":2,\"name\":\"Bill Gates\",\"mined\":9500},{\"place\":3,\"name\":\"Mark Zuckerberg\",\"mined\":9200}]}"
+        }; 
         
         
         let leaguesData = JSON.parse(jsonData.data); 
