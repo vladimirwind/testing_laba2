@@ -30,6 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
     var IslandState = false;
 
     dailyBtn.onclick = function() {
+
+        let balanceElement = document.getElementById('blnc');
+
+        balanceElement.classList.add('jelly');
+
+        // Remove the jelly class after the animation is done to reset it
+        setTimeout(() => {
+          balanceElement.classList.remove('jelly');
+        }, 600);  // Match the duration of the animation
+
+        return
         dailyWindow.style.display = 'flex';
         islandSwitchBtn.style.display = 'none';
         closeDailyBtn.onclick = function() {
