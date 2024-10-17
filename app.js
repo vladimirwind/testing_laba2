@@ -88,10 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (userInfos["unused_essence"] > 0) {
             potState = 3;
+            localStorage.setItem('potState', 3)
         }
 
         if (userInfos["unused_balance"] > 0) {
             mineState = 3;
+            localStorage.setItem('mineState', 3)
         }
 
     }
@@ -532,8 +534,8 @@ document.addEventListener('DOMContentLoaded', function() {
             leftTxt2.textContent = `${MainUserInfo["unused_balance"]}`;
     
             leftDiv0.appendChild(leftTxt);
-            leftDiv0.appendChild(leftTxt2);
             leftDiv0.appendChild(coinImg);
+            leftDiv0.appendChild(leftTxt2);
 
             mainBtnMine.style.background = '#98FFAF';
             mainBtnMine.style.boxShadow = '0 0.7vh #5FA86F';
@@ -559,8 +561,8 @@ document.addEventListener('DOMContentLoaded', function() {
             leftTxt2.textContent = `${MainUserInfo["unused_essence"]}`;
     
             leftDiv1.appendChild(leftTxt);
-            leftDiv1.appendChild(leftTxt2);
             leftDiv1.appendChild(essenceImg);
+            leftDiv1.appendChild(leftTxt2);
 
             mainBtnPot.style.background = '#98FFAF';
             mainBtnPot.style.boxShadow = '0 0.7vh #5FA86F';
