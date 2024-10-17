@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //     language: tg.WebApp.initDataUnsafe.language_code,
         // };
 
-        document.getElementById('profileName').textContent = tg.WebApp.initData.user.first_name;
+        document.getElementById('profileName').textContent = tg.WebApp.initDataUnsafe.user.first_name;
     };
 
     document.getElementById('mainContainer').style.display = 'none';
