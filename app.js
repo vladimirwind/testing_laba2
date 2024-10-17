@@ -85,6 +85,15 @@ document.addEventListener('DOMContentLoaded', function() {
         `./images/islands/cauldronIsland${userInfos["cauldron_level"]}.png`
         document.getElementById('mainIslandIMG').src = 
         `./images/islands/mineIsland${userInfos["mine_level"]}.png`
+
+        if (userInfos["unused_essence"] > 0) {
+            potState = 3;
+        }
+
+        if (userInfos["unused_balance"] > 0) {
+            mineState = 3;
+        }
+
     }
 
     const islandMapping = new Map();
