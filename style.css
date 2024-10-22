@@ -2128,6 +2128,7 @@ span {
     width: 90%;
     margin-top: 3%;
     align-self: center;
+    z-index: 142241;
 }
 
 .cardUpgrade {
@@ -2752,8 +2753,8 @@ span {
 .newCardImageLvl {
     position: absolute; 
     background-color: #98FFAF;
-    width: 50%; 
-    height: 50%; 
+    width: 40%; 
+    height: 40%; 
     border-radius: 50%; 
     top: 50%; 
     right: -25%; 
@@ -2768,7 +2769,7 @@ span {
 
 .newCardImageLvl span {
     font-family: "Open Sans", sans-serif;
-    font-size: 2vh;
+    font-size: 2.4vh;
     font-weight: 700;
     color: #15202B;
     /* No need for align-self here, it's already centered by flexbox */
@@ -2778,7 +2779,7 @@ span {
     display: flex;
     flex-direction: column;
     align-self: flex-end;
-    margin-right: 1%;
+    margin-right: 2%;
     width: 15%;
     height: 100%;
     position: relative;
@@ -2793,7 +2794,7 @@ span {
 
 .newCardPrice span {
     font-family: "Open Sans", sans-serif;
-    font-size: 2vh;
+    font-size: 1.6vh;
     font-weight: 700;
     color: white;
 }
@@ -2804,7 +2805,8 @@ span {
     width: auto;
     height: 100%;
     justify-content: space-evenly;
-    margin-left: 7%;
+    margin-left: 5%;
+    align-self: flex-start;
 }
 
 .newCardTextsHeader {
@@ -2826,7 +2828,8 @@ span {
     display: flex;
     flex-direction: row;
     gap: 5vw;
-    align-items: center; /* Center items vertically */
+    align-items: center;
+    justify-content: start;
 }
 
 .newCardTextsMiddleItem {

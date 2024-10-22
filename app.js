@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // tonConnectUI.uiOptions = {
         //     language: tg.WebApp.initDataUnsafe.language_code,
         // };
-
+        
         document.getElementById('profileName').textContent = tg.WebApp.initDataUnsafe.user.first_name;
     };
 
@@ -143,7 +143,162 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let userData = JSON.parse(currentUserInfoLeague.data);
 
+    let kingdomsBtn = document.getElementById('kingdoms-btn');
+
     let currentLeague = userData.league;
+
+    let orange = new Map();
+    orange.set(0, [0,0]);
+    orange.set(1, [320,1000]);
+    orange.set(2, [368,2120]);
+    orange.set(3, [423,4494]);
+    orange.set(4, [486,9527]);
+    orange.set(5, [559,20197]);
+    orange.set(6, [643,42818]);
+    orange.set(7, [739,90774]);
+    orange.set(8, [850,192441]);
+    orange.set(9, [978,407975]);
+    orange.set(10, [1125,864907]);
+
+    kingdomsBtn.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('kingdomsContainer').style.display = 'flex';
+
+        let btnCards = document.getElementById('btnCards');
+        btnCards.onclick = function() {
+            let upgradeWindow = document.getElementById('popUPKingdomsCards');
+            upgradeWindow.style.display = 'flex';
+            document.getElementById('allCardsEmpire').style.display = 'flex';
+        };
+
+        const AllCards = new Map([
+            ["king", ["orange", "Wizard lvl 5"]],
+            ["queen", ["orange", ""]]
+        ]);
+
+        function createCard(name, [type, rule]) {
+            // Get price and income from the `orange` map based on the type (could be generalized for other types)
+            let level = 1;  // Example level, can be dynamic
+            let price = 0;
+            let income = 0;
+        
+            if (type === "orange") {
+                income = orange.get(level)[0]; // Get income for the card level
+                price = orange.get(level)[1];  // Get price for the card level
+            }
+        
+            // Calculate power
+            const power = (income * 3); // Example power calculation
+        
+            // Create the main card div
+            const cardDiv = document.createElement("div");
+            cardDiv.classList.add("newCard");
+        
+            // Image Section
+            const imageDiv = document.createElement("div");
+            imageDiv.classList.add("newCardImage");
+        
+            const img = document.createElement("img");
+            img.src = `./images/cards/card_${name}.png`;
+            img.alt = `${name} card image`;
+        
+            const lvlDiv = document.createElement("div");
+            lvlDiv.classList.add("newCardImageLvl");
+            const lvlSpan = document.createElement("span");
+            lvlSpan.textContent = level; // Use dynamic level if needed
+        
+            lvlDiv.appendChild(lvlSpan);
+            imageDiv.appendChild(img);
+            imageDiv.appendChild(lvlDiv);
+        
+            // Text Section
+            const textDiv = document.createElement("div");
+            textDiv.classList.add("newCardTexts");
+        
+            const headerDiv = document.createElement("div");
+            headerDiv.classList.add("newCardTextsHeader");
+            const headerSpan = document.createElement("span");
+            headerSpan.textContent = name.charAt(0).toUpperCase() + name.slice(1); // Capitalize first letter of the card name
+            headerDiv.appendChild(headerSpan);
+        
+            const middleDiv = document.createElement("div");
+            middleDiv.classList.add("newCardTextsMiddle");
+        
+            // Income Section
+            const incomeItem = document.createElement("div");
+            incomeItem.classList.add("newCardTextsMiddleItem");
+            const incomeSpan = document.createElement("span");
+            incomeSpan.textContent = `+${income}`; // Display income
+            const coinImg = document.createElement("img");
+            coinImg.src = "./images/coin.svg";
+        
+            incomeItem.appendChild(incomeSpan);
+            incomeItem.appendChild(coinImg);
+        
+            // Power Section
+            const powerItem = document.createElement("div");
+            powerItem.classList.add("newCardTextsMiddleItem");
+            const powerSpan = document.createElement("span");
+            powerSpan.textContent = `+${power}`; // Display power
+            const powerImg = document.createElement("img");
+            powerImg.src = "./images/castle_power.svg";
+        
+            powerItem.appendChild(powerSpan);
+            powerItem.appendChild(powerImg);
+        
+            middleDiv.appendChild(incomeItem);
+            middleDiv.appendChild(powerItem);
+        
+            // Bottom Section with additional rules if present
+            const bottomItem = document.createElement("div");
+            bottomItem.classList.add("newCardTextsBottomItem");
+        
+            if (rule) {
+                const lockImg = document.createElement("img");
+                lockImg.src = "./images/lock.svg";
+                const bottomSpan = document.createElement("span");
+                bottomSpan.textContent = rule; // Show additional rule (e.g., "wizard lvl 5")
+        
+                bottomItem.appendChild(lockImg);
+                bottomItem.appendChild(bottomSpan);
+            }
+        
+            textDiv.appendChild(headerDiv);
+            textDiv.appendChild(middleDiv);
+            textDiv.appendChild(bottomItem);
+        
+            // Price Section
+            const priceDiv = document.createElement("div");
+            priceDiv.classList.add("newCardPrice");
+            const priceImg = document.createElement("img");
+            priceImg.src = "./images/coin.svg";
+            const priceSpan = document.createElement("span");
+            priceSpan.textContent = `${price}`;
+        
+            priceDiv.appendChild(priceImg);
+            priceDiv.appendChild(priceSpan);
+        
+            // Append all sections to the main card div
+            cardDiv.appendChild(imageDiv);
+            cardDiv.appendChild(textDiv);
+            cardDiv.appendChild(priceDiv);
+        
+            return cardDiv;
+        }
+        
+        // Function to generate all cards and insert them into a container
+        function generateCards() {
+            const container = document.getElementById("allCardsEmpire"); // Assuming there's a container with this ID
+        
+            AllCards.forEach((cardData, cardName) => {
+                const cardElement = createCard(cardName, cardData);
+                container.appendChild(cardElement);
+            });
+        }
+        
+        // Call the function to generate and display the cards
+        generateCards();
+    };
 
     userProfile.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
@@ -354,7 +509,6 @@ document.addEventListener('DOMContentLoaded', function() {
         createLeagueHTML(currentLeague);
     };
     
-
     let appendContent = function (state) {
 
         potState = parseInt(localStorage.getItem("potState"));
