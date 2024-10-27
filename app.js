@@ -171,9 +171,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('allCardsEmpire').style.display = 'flex';
         };
 
-        const AllCards = new Map([
+        const AllCardsEmpire = new Map([
             ["king", ["orange", "Wizard lvl 5"]],
-            ["queen", ["orange", ""]]
+            ["queen", ["orange", ""]],
+            ["princess", ["orange", "Wizard lvl 5"]],
+            ["prince", ["orange", "Wizard lvl 5"]],
         ]);
 
         function createCard(name, [type, rule]) {
@@ -290,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function generateCards() {
             const container = document.getElementById("allCardsEmpire"); // Assuming there's a container with this ID
         
-            AllCards.forEach((cardData, cardName) => {
+            AllCardsEmpire.forEach((cardData, cardName) => {
                 const cardElement = createCard(cardName, cardData);
                 container.appendChild(cardElement);
             });
