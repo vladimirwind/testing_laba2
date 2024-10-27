@@ -168,14 +168,35 @@ document.addEventListener('DOMContentLoaded', function() {
         btnCards.onclick = function() {
             let upgradeWindow = document.getElementById('popUPKingdomsCards');
             upgradeWindow.style.display = 'flex';
-            document.getElementById('allCardsEmpire').style.display = 'flex';
         };
+
+        let menuEmpire = document.getElementById('menuEmpire');
+        let menuArmy = document.getElementById('menuArmy');
+        let menuMagic = document.getElementById('menuMagic');
+        let menuSpecial = document.getElementById('menuSpecial');
 
         const AllCardsEmpire = new Map([
             ["king", ["orange", "Wizard lvl 5"]],
             ["queen", ["orange", ""]],
             ["princess", ["orange", "Wizard lvl 5"]],
             ["prince", ["orange", "Wizard lvl 5"]],
+            ["worker", ["orange", "Wizard lvl 5"]],
+            ["trader", ["orange", "Wizard lvl 5"]],
+        ]);
+
+        const AllCardsArmy = new Map([
+            ["soldier", ["orange", "Wizard lvl 5"]],
+            ["knight", ["orange", ""]],
+        ]);
+
+        const AllCardsMagic = new Map([
+            ["witch", ["orange", "Wizard lvl 5"]],
+            ["wizard", ["orange", ""]],
+            ["dragon", ["orange", "Wizard lvl 5"]],
+        ]);
+
+        const AllCardsSpecial = new Map([
+
         ]);
 
         function createCard(name, [type, rule]) {
@@ -287,19 +308,85 @@ document.addEventListener('DOMContentLoaded', function() {
         
             return cardDiv;
         }
+
+        const AllCardsTypes = ['Magic', 'Empire', 'Army', 'Special']
         
         // Function to generate all cards and insert them into a container
-        function generateCards() {
-            const container = document.getElementById("allCardsEmpire"); // Assuming there's a container with this ID
+        function generateCards(type) {
+
+            for (let iTer = 0; iTer < AllCardsTypes.length; iTer++) {
+                document.getElementById(`allCards${AllCardsTypes[iTer]}`).style.display = 'none';
+                document.getElementById(`allCards${AllCardsTypes[iTer]}`).innerHTML = '';
+            }
+
+            document.getElementById(`allCards${type}`).style.display = 'flex';
+
+            if (type === 'Empire') {
+                let container = document.getElementById(`allCards${type}`); 
         
-            AllCardsEmpire.forEach((cardData, cardName) => {
-                const cardElement = createCard(cardName, cardData);
-                container.appendChild(cardElement);
-            });
-        }
+                AllCardsEmpire.forEach((cardData, cardName) => {
+                    const cardElement = createCard(cardName, cardData);
+                    container.appendChild(cardElement);
+                });
+    
+                let brElement = document.createElement("br");
+                container.appendChild(brElement);
+            }
+
+            if (type === 'Magic') {
+                let container = document.getElementById(`allCards${type}`); 
         
-        // Call the function to generate and display the cards
-        generateCards();
+                AllCardsMagic.forEach((cardData, cardName) => {
+                    const cardElement = createCard(cardName, cardData);
+                    container.appendChild(cardElement);
+                });
+    
+                let brElement = document.createElement("br");
+                container.appendChild(brElement);
+            }
+
+            if (type === 'Army') {
+                let container = document.getElementById(`allCards${type}`); 
+        
+                AllCardsArmy.forEach((cardData, cardName) => {
+                    const cardElement = createCard(cardName, cardData);
+                    container.appendChild(cardElement);
+                });
+    
+                let brElement = document.createElement("br");
+                container.appendChild(brElement);
+            }
+
+            if (type === 'Special') {
+                let container = document.getElementById(`allCards${type}`); 
+        
+                AllCardsSpecial.forEach((cardData, cardName) => {
+                    const cardElement = createCard(cardName, cardData);
+                    container.appendChild(cardElement);
+                });
+    
+                let brElement = document.createElement("br");
+                container.appendChild(brElement);
+            }
+
+        };
+
+        menuEmpire.onclick = function() {
+            generateCards('Empire');
+        };
+
+        menuMagic.onclick = function() {
+            generateCards('Magic');
+        };
+        
+        menuArmy.onclick = function() {
+            generateCards('Army');
+        };
+
+        menuSpecial.onclick = function() {
+            generateCards('Special');
+        };
+
     };
 
     userProfile.onclick = function() {
