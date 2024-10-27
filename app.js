@@ -200,20 +200,23 @@ document.addEventListener('DOMContentLoaded', function() {
         ]);
 
         function createCard(name, [type, rule]) {
-            // Get price and income from the `orange` map based on the type (could be generalized for other types)
-            let level = 1;  // Example level, can be dynamic
+    
+            let level = 3;  
             let price = 0;
             let income = 0;
         
             if (type === "orange") {
                 income = orange.get(level)[0]; // Get income for the card level
-                price = orange.get(level)[1];  // Get price for the card level
+
+                if (level < 10) {
+                    price = orange.get(level + 1)[1];  // Get price for the card level
+                } else {
+                    price = 'max';
+                }
             }
         
-            // Calculate power
-            const power = (income * 3); // Example power calculation
+            let power = (income * 3); // Example power calculation
         
-            // Create the main card div
             const cardDiv = document.createElement("div");
             cardDiv.classList.add("newCard");
         
@@ -276,16 +279,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const bottomItem = document.createElement("div");
             bottomItem.classList.add("newCardTextsBottomItem");
         
-            if (rule) {
-                const lockImg = document.createElement("img");
-                lockImg.src = "./images/lock.svg";
-                const bottomSpan = document.createElement("span");
-                bottomSpan.textContent = rule; // Show additional rule (e.g., "wizard lvl 5")
-        
-                bottomItem.appendChild(lockImg);
-                bottomItem.appendChild(bottomSpan);
-            }
-        
             textDiv.appendChild(headerDiv);
             textDiv.appendChild(middleDiv);
             textDiv.appendChild(bottomItem);
@@ -305,6 +298,96 @@ document.addEventListener('DOMContentLoaded', function() {
             cardDiv.appendChild(imageDiv);
             cardDiv.appendChild(textDiv);
             cardDiv.appendChild(priceDiv);
+
+            if (level === 10) {
+                cardDiv.style.opacity = '0.5';
+            } else {
+
+                let curCardTimer = sessionStorage.getItem(`card_${name}_timer`);
+
+                if (curCardTimer) {
+
+                    let startTime = parseInt(curCardTimer, 10);
+                    let currentTime = Date.now();
+                    let timeRemaining = Math.max(0, Math.floor((currentTime - startTime) / 1000));
+                    const lockImg = document.createElement("img");
+                    lockImg.src = "./images/lock.svg";
+                    const bottomSpan = document.createElement("span");
+                
+                    let updateCountdownCard = () => {
+                        let minutes = Math.floor(timeRemaining / 60);
+                        let seconds = timeRemaining % 60;
+                        bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                        
+                        if (timeRemaining <= 0) {
+                            clearInterval(countdownIntervalCard);
+                            bottomSpan.style.display = 'none'; // Make the span disappear
+                        } else {
+                            timeRemaining--;
+                        }
+                    };
+                
+                    
+                    let countdownIntervalCard = setInterval(updateCountdownCard, 1000);
+                    updateCountdownCard(); // Initial call to set the text immediately
+
+                    bottomItem.appendChild(lockImg);
+                    bottomItem.appendChild(bottomSpan);
+                
+                    cardDiv.style.opacity = '0.5';
+                
+                    cardDiv.onclick = function() {}; 
+                    return cardDiv
+                };
+
+
+                // if (rule) {
+
+                //     const lockImg = document.createElement("img");
+                //     lockImg.src = "./images/lock.svg";
+                //     const bottomSpan = document.createElement("span");
+                //     bottomSpan.textContent = rule; 
+            
+                //     bottomItem.appendChild(lockImg);
+                //     bottomItem.appendChild(bottomSpan);
+
+                //     return
+                // }
+
+                cardDiv.onclick = function() {
+                    const lockImg = document.createElement("img");
+                    lockImg.src = "./images/lock.svg";
+                    const bottomSpan = document.createElement("span");
+                    
+                    let timeRemaining = 10 * 60; // 10 minutes in seconds
+                
+                    let updateCountdownCard = () => {
+                        let minutes = Math.floor(timeRemaining / 60);
+                        let seconds = timeRemaining % 60;
+                        bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                        
+                        if (timeRemaining <= 0) {
+                            clearInterval(countdownIntervalCard);
+                            bottomSpan.style.display = 'none'; // Make the span disappear
+                        } else {
+                            timeRemaining--;
+                        }
+                    };
+                
+                    // Start the countdown
+                    let countdownIntervalCard = setInterval(updateCountdownCard, 1000);
+                    updateCountdownCard(); // Initial call to set the text immediately
+
+                    sessionStorage.setItem(`card_${name}_timer`, Date.now() + (10 * 1000));
+
+                    bottomItem.appendChild(lockImg);
+                    bottomItem.appendChild(bottomSpan);
+                
+                    cardDiv.style.opacity = '0.5';
+                
+                    cardDiv.onclick = function() {}; // Disable further clicks
+                };
+            }
         
             return cardDiv;
         }
@@ -396,7 +479,6 @@ document.addEventListener('DOMContentLoaded', function() {
     userProfile.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('leaguesContainer').style.display = 'flex';
-
 
         let BackButton = tg.WebApp.BackButton;
 
