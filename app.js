@@ -317,9 +317,11 @@ document.addEventListener('DOMContentLoaded', function() {
             for (let iTer = 0; iTer < AllCardsTypes.length; iTer++) {
                 document.getElementById(`allCards${AllCardsTypes[iTer]}`).style.display = 'none';
                 document.getElementById(`allCards${AllCardsTypes[iTer]}`).innerHTML = '';
+                document.getElementById(`menu${AllCardsTypes[iTer]}`).style.boxShadow = 'none';
             }
 
             document.getElementById(`allCards${type}`).style.display = 'flex';
+            document.getElementById(`menu${type}`).style.boxShadow = 'inset #2A4864 0px 0px 40px -9px'
 
             if (type === 'Empire') {
                 let container = document.getElementById(`allCards${type}`); 
@@ -386,6 +388,8 @@ document.addEventListener('DOMContentLoaded', function() {
         menuSpecial.onclick = function() {
             generateCards('Special');
         };
+
+        generateCards('Empire');
 
     };
 
