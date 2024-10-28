@@ -199,6 +199,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
         ]);
 
+        let setClickForCard = function(cardDiv, countdownDuration, timerKey, bottomItem) {
+            cardDiv.onclick = function() {
+                const lockImg = document.createElement("img");
+                lockImg.src = "./images/lock.svg";
+                const bottomSpan = document.createElement("span");
+        
+                let endTime = Date.now() + countdownDuration; // Calculate end time
+                sessionStorage.setItem(timerKey, endTime); // Store the end time
+        
+                let timeRemaining = countdownDuration; // Set initial timeRemaining
+        
+                let updateCountdownCard = () => {
+                    let minutes = Math.floor(timeRemaining / 60000);
+                    let seconds = Math.floor((timeRemaining % 60000) / 1000);
+                    bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        
+                    if (timeRemaining <= 0) {
+                        clearInterval(countdownIntervalCard);
+                        bottomItem.style.display = 'none'; 
+                        bottomItem.innerHTML = '';
+                        sessionStorage.removeItem(timerKey); 
+                        cardDiv.style.opacity = '1';
+                    } else {
+                        timeRemaining -= 1000; // Decrease by 1 second
+                    }
+                };
+        
+                let countdownIntervalCard = setInterval(updateCountdownCard, 1000);
+                updateCountdownCard(); // Initial call to set the text immediately
+        
+                bottomItem.appendChild(lockImg);
+                bottomItem.appendChild(bottomSpan);
+                cardDiv.style.opacity = '0.5';
+        
+                // Disable further clicks
+                cardDiv.onclick = function() {};
+            };
+        };
+
         function createCard(name, [type, rule]) {
     
             let level = 3;  
@@ -303,91 +342,60 @@ document.addEventListener('DOMContentLoaded', function() {
                 cardDiv.style.opacity = '0.5';
             } else {
 
-                let curCardTimer = sessionStorage.getItem(`card_${name}_timer`);
-
+                const timerKey = `card_${name}_timer`;
+                const countdownDuration = 1 * 60 * 1000; 
+                let curCardTimer = sessionStorage.getItem(timerKey);
+                
                 if (curCardTimer) {
-
-                    let startTime = parseInt(curCardTimer, 10);
+                    // Calculate remaining time
+                    let endTime = parseInt(curCardTimer, 10);
                     let currentTime = Date.now();
-                    let timeRemaining = Math.max(0, Math.floor((currentTime - startTime) / 1000));
+                    let timeRemaining = Math.max(0, endTime - currentTime); // Ensure timeRemaining is not negative
+                
                     const lockImg = document.createElement("img");
                     lockImg.src = "./images/lock.svg";
                     const bottomSpan = document.createElement("span");
                 
                     let updateCountdownCard = () => {
-                        let minutes = Math.floor(timeRemaining / 60);
-                        let seconds = timeRemaining % 60;
+                        let minutes = Math.floor(timeRemaining / 60000);
+                        let seconds = Math.floor((timeRemaining % 60000) / 1000);
                         bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                        
+                
                         if (timeRemaining <= 0) {
                             clearInterval(countdownIntervalCard);
-                            bottomSpan.style.display = 'none'; // Make the span disappear
+                            bottomItem.style.display = 'none'; 
+                            bottomItem.innerHTML = '';
+                            sessionStorage.removeItem(timerKey); 
+                            cardDiv.style.opacity = '1';
                         } else {
-                            timeRemaining--;
+                            timeRemaining -= 1000; // Decrease by 1 second
                         }
                     };
                 
-                    
                     let countdownIntervalCard = setInterval(updateCountdownCard, 1000);
                     updateCountdownCard(); // Initial call to set the text immediately
-
+                
                     bottomItem.appendChild(lockImg);
                     bottomItem.appendChild(bottomSpan);
-                
                     cardDiv.style.opacity = '0.5';
                 
-                    cardDiv.onclick = function() {}; 
-                    return cardDiv
+                } else {
+                    // if (rule) {
+
+                    //     const lockImg = document.createElement("img");
+                    //     lockImg.src = "./images/lock.svg";
+                    //     const bottomSpan = document.createElement("span");
+                    //     bottomSpan.textContent = rule; 
+                
+                    //     bottomItem.appendChild(lockImg);
+                    //     bottomItem.appendChild(bottomSpan);
+
+                    //     return
+                    // }
+
+                    setClickForCard(cardDiv, countdownDuration, timerKey, bottomItem)
                 };
-
-
-                // if (rule) {
-
-                //     const lockImg = document.createElement("img");
-                //     lockImg.src = "./images/lock.svg";
-                //     const bottomSpan = document.createElement("span");
-                //     bottomSpan.textContent = rule; 
-            
-                //     bottomItem.appendChild(lockImg);
-                //     bottomItem.appendChild(bottomSpan);
-
-                //     return
-                // }
-
-                cardDiv.onclick = function() {
-                    const lockImg = document.createElement("img");
-                    lockImg.src = "./images/lock.svg";
-                    const bottomSpan = document.createElement("span");
-                    
-                    let timeRemaining = 10 * 60; // 10 minutes in seconds
-                
-                    let updateCountdownCard = () => {
-                        let minutes = Math.floor(timeRemaining / 60);
-                        let seconds = timeRemaining % 60;
-                        bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                        
-                        if (timeRemaining <= 0) {
-                            clearInterval(countdownIntervalCard);
-                            bottomSpan.style.display = 'none'; // Make the span disappear
-                        } else {
-                            timeRemaining--;
-                        }
-                    };
-                
-                    // Start the countdown
-                    let countdownIntervalCard = setInterval(updateCountdownCard, 1000);
-                    updateCountdownCard(); // Initial call to set the text immediately
-
-                    sessionStorage.setItem(`card_${name}_timer`, Date.now() + (10 * 1000));
-
-                    bottomItem.appendChild(lockImg);
-                    bottomItem.appendChild(bottomSpan);
-                
-                    cardDiv.style.opacity = '0.5';
-                
-                    cardDiv.onclick = function() {}; // Disable further clicks
-                };
-            }
+            };
         
             return cardDiv;
         }
