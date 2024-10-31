@@ -221,6 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         bottomItem.innerHTML = '';
                         sessionStorage.removeItem(timerKey); 
                         cardDiv.style.opacity = '1';
+
+                        setClickForCard(cardDiv, countdownDuration, timerKey, bottomItem, cardKey);
                     } else {
                         timeRemaining -= 1000; // Decrease by 1 second
                     }
