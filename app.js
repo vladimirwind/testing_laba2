@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         ]);
 
-        let setClickForCard = function(cardDiv, countdownDuration, timerKey, bottomItem) {
+        let setClickForCard = function(cardDiv, countdownDuration, timerKey, bottomItem, cardKey) {
             cardDiv.onclick = function() {
                 const lockImg = document.createElement("img");
                 lockImg.src = "./images/lock.svg";
@@ -232,15 +232,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 bottomItem.appendChild(lockImg);
                 bottomItem.appendChild(bottomSpan);
                 cardDiv.style.opacity = '0.5';
+
+                let cardsJSON = JSON.parse(sessionStorage.getItem('cardsData'))
         
+                cardsJSON[cardKey] = cardsJSON[cardKey] + 1;
+
+                sessionStorage.setItem('cardsData', JSON.stringify(cardsJSON))
+
                 // Disable further clicks
                 cardDiv.onclick = function() {};
             };
         };
 
-        function createCard(name, [type, rule]) {
-    
-            let level = 3;  
+        function createCard(name, [type, rule], cardsJSON) {
+
+            let cardKey = `card_${name}`;
+            let level = cardsJSON[cardKey];  
             let price = 0;
             let income = 0;
         
@@ -340,10 +347,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (level === 10) {
                 cardDiv.style.opacity = '0.5';
+                cardDiv.onclick = function(){};
             } else {
 
                 const timerKey = `card_${name}_timer`;
-                const countdownDuration = 1 * 60 * 1000; 
+                const countdownDuration = (level * 3 + 2) * 60 * 1000; 
                 let curCardTimer = sessionStorage.getItem(timerKey);
                 
                 if (curCardTimer) {
@@ -393,7 +401,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     //     return
                     // }
 
-                    setClickForCard(cardDiv, countdownDuration, timerKey, bottomItem)
+
+                    setClickForCard(cardDiv, countdownDuration, timerKey, bottomItem, cardKey);
                 };
             };
         
@@ -404,6 +413,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Function to generate all cards and insert them into a container
         function generateCards(type) {
+            let checker = sessionStorage.getItem('cardsData')
+            let cardsJSON;
+            if (checker === undefined || checker === null) {
+                cardsJSON = JSON.parse(`{\"friends\":0,\"combo_flag\":false,\"power\":4380,\"income\":1460,\"balance\":473411,\"essence_balance\":2918,\"card_king\":9,\"card_queen\":2,\"card_prince\":10,\"card_princess\":4,\"card_dragon\":2,\"card_wizard\":5,\"card_witch\":6,\"card_soldier\":8,\"card_knight\":1,\"card_worker\":3,\"card_trader\":0}`)
+                sessionStorage.setItem('cardsData', JSON.stringify(cardsJSON))
+            } else {
+                cardsJSON = JSON.parse(sessionStorage.getItem('cardsData'));
+            }
 
             for (let iTer = 0; iTer < AllCardsTypes.length; iTer++) {
                 document.getElementById(`allCards${AllCardsTypes[iTer]}`).style.display = 'none';
@@ -418,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let container = document.getElementById(`allCards${type}`); 
         
                 AllCardsEmpire.forEach((cardData, cardName) => {
-                    const cardElement = createCard(cardName, cardData);
+                    const cardElement = createCard(cardName, cardData, cardsJSON);
                     container.appendChild(cardElement);
                 });
     
@@ -430,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let container = document.getElementById(`allCards${type}`); 
         
                 AllCardsMagic.forEach((cardData, cardName) => {
-                    const cardElement = createCard(cardName, cardData);
+                    const cardElement = createCard(cardName, cardData, cardsJSON);
                     container.appendChild(cardElement);
                 });
     
@@ -442,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let container = document.getElementById(`allCards${type}`); 
         
                 AllCardsArmy.forEach((cardData, cardName) => {
-                    const cardElement = createCard(cardName, cardData);
+                    const cardElement = createCard(cardName, cardData, cardsJSON);
                     container.appendChild(cardElement);
                 });
     
@@ -454,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 let container = document.getElementById(`allCards${type}`); 
         
                 AllCardsSpecial.forEach((cardData, cardName) => {
-                    const cardElement = createCard(cardName, cardData);
+                    const cardElement = createCard(cardName, cardData, cardsJSON);
                     container.appendChild(cardElement);
                 });
     
