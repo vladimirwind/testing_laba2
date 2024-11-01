@@ -181,11 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
             ["princess", ["orange", "Wizard lvl 5"]],
             ["prince", ["orange", "Wizard lvl 5"]],
             ["worker", ["orange", "Wizard lvl 5"]],
-            ["trader", ["orange", "Wizard lvl 5"]],
+            ["trader", ["orange", "Invite 5 friends"]],
         ]);
 
         const AllCardsArmy = new Map([
-            ["soldier", ["orange", "Wizard lvl 5"]],
+            ["soldier", ["orange", "Invite 2 friends"]],
             ["knight", ["orange", ""]],
         ]);
 
@@ -401,15 +401,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
 
                     if (rule) {
-                        const lockImg = document.createElement("img");
-                        lockImg.src = "./images/lock.svg";
-                        const bottomSpan = document.createElement("span");
-                        bottomSpan.textContent = rule; 
-                        bottomItem.appendChild(lockImg);
-                        bottomItem.appendChild(bottomSpan);
-                        cardDiv.onclick = function(){};
-                        cardDiv.style.opacity = '0.5';
-                        return cardDiv
+                        let ruleFlag = false;
+                        const isNumeric = (string) => /^[+-]?\d+(\.\d+)?$/.test(string)
+                        const words = rule.split(' ');
+                        if (isNumeric(words[2])) { //card level
+                            console.log(1)
+                        } else { //friends
+                            let numFriends = cardsJSON["friends"];
+                            let needFriends = parseInt(words[1]);
+
+                            if (numFriends >= needFriends) {
+                                ruleFlag = true;
+                            }
+                        }
+
+                        if (!ruleFlag) {
+                            const lockImg = document.createElement("img");
+                            lockImg.src = "./images/lock.svg";
+                            const bottomSpan = document.createElement("span");
+                            bottomSpan.textContent = rule; 
+                            bottomItem.appendChild(lockImg);
+                            bottomItem.appendChild(bottomSpan);
+                            cardDiv.onclick = function(){};
+                            cardDiv.style.opacity = '0.5';
+                            return cardDiv
+                        } else {
+                            setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
+                        };
+
                     } else {
                         setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
                     };
@@ -427,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let checker = sessionStorage.getItem('cardsData')
             let cardsJSON;
             if (checker === undefined || checker === null) {
-                cardsJSON = JSON.parse(`{\"friends\":0,\"combo_flag\":false,\"power\":4380,\"income\":1460,\"balance\":473411,\"essence_balance\":2918,\"card_king\":9,\"card_queen\":2,\"card_prince\":10,\"card_princess\":4,\"card_dragon\":2,\"card_wizard\":5,\"card_witch\":6,\"card_soldier\":8,\"card_knight\":1,\"card_worker\":3,\"card_trader\":0}`)
+                cardsJSON = JSON.parse(`{\"friends\":5,\"combo_flag\":false,\"power\":4380,\"income\":1460,\"balance\":473411,\"essence_balance\":2918,\"card_king\":9,\"card_queen\":2,\"card_prince\":10,\"card_princess\":4,\"card_dragon\":2,\"card_wizard\":5,\"card_witch\":6,\"card_soldier\":8,\"card_knight\":1,\"card_worker\":3,\"card_trader\":0}`)
                 sessionStorage.setItem('cardsData', JSON.stringify(cardsJSON))
             } else {
                 cardsJSON = JSON.parse(sessionStorage.getItem('cardsData'));
