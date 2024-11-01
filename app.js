@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const bottomSpan = document.createElement("span");
         
                 let endTime = Date.now() + countdownDuration; // Calculate end time
-                sessionStorage.setItem(timerKey, endTime); // Store the end time
+                localStorage.setItem(timerKey, endTime); // Store the end time
         
                 let timeRemaining = countdownDuration; // Set initial timeRemaining
         
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         clearInterval(countdownIntervalCard);
                         bottomItem.style.display = 'none'; 
                         bottomItem.innerHTML = '';
-                        sessionStorage.removeItem(timerKey); 
+                        localStorage.removeItem(timerKey); 
                         cardDiv.style.opacity = '1';
 
                         setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
@@ -359,9 +359,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 cardDiv.onclick = function(){};
             } else {
 
-                const timerKey = `card_${name}_timer`;
+                const timerKey = `card_${name}_timing`;
                 const countdownDuration = (level * 3 + 0.5) * 60 * 1000; 
-                let curCardTimer = sessionStorage.getItem(timerKey);
+                let curCardTimer = localStorage.getItem(timerKey);
                 
                 if (curCardTimer) {
                     // Calculate remaining time
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             clearInterval(countdownIntervalCard);
                             bottomItem.style.display = 'none'; 
                             bottomItem.innerHTML = '';
-                            sessionStorage.removeItem(timerKey); 
+                            localStorage.removeItem(timerKey); 
                             cardDiv.style.opacity = '1';
                             
                             setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
@@ -399,21 +399,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     cardDiv.style.opacity = '0.5';
                 
                 } else {
-                    // if (rule) {
 
-                    //     const lockImg = document.createElement("img");
-                    //     lockImg.src = "./images/lock.svg";
-                    //     const bottomSpan = document.createElement("span");
-                    //     bottomSpan.textContent = rule; 
-                
-                    //     bottomItem.appendChild(lockImg);
-                    //     bottomItem.appendChild(bottomSpan);
+                    if (rule) {
+                        const lockImg = document.createElement("img");
+                        lockImg.src = "./images/lock.svg";
+                        const bottomSpan = document.createElement("span");
+                        bottomSpan.textContent = rule; 
+                        bottomItem.appendChild(lockImg);
+                        bottomItem.appendChild(bottomSpan);
+                        cardDiv.onclick = function(){};
+                        cardDiv.style.opacity = '0.5';
+                        return cardDiv
+                    } else {
+                        setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
+                    };
 
-                    //     return
-                    // }
-
-
-                    setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
                 };
             };
         
