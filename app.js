@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ]);
 
         const AllCardsMagic = new Map([
-            ["witch", ["orange", "Wizard lvl 5"]],
+            ["witch", ["orange", "Wizard lvl 6"]],
             ["wizard", ["orange", ""]],
             ["dragon", ["orange", "Wizard lvl 5"]],
         ]);
@@ -260,9 +260,12 @@ document.addEventListener('DOMContentLoaded', function() {
             let price = 0;
             let income = 0;
         
-            if (type === "orange") {
-                income = orange.get(level)[0]; // Get income for the card level
-
+            if (type === "orange"){
+                if (level < 10) {
+                    income = orange.get(level + 1)[0]; // Get income for the card level
+                } else {
+                    income = orange.get(level)[0];
+                }
                 if (level < 10) {
                     price = orange.get(level + 1)[1];  // Get price for the card level
                 } else {
@@ -404,8 +407,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         let ruleFlag = false;
                         const isNumeric = (string) => /^[+-]?\d+(\.\d+)?$/.test(string)
                         const words = rule.split(' ');
-                        if (isNumeric(words[2])) { //card level
-                            console.log(1)
+                        if (isNumeric(words[2])) {
+                            let lowerName = words[0].toLowerCase();
+                            let needLevel = parseInt(words[2]);
+                            let checkLevelKey = `card_${lowerName}`;
+                            if (cardsJSON[checkLevelKey] >= needLevel) {
+                                ruleFlag = true;
+                            }
                         } else { //friends
                             let numFriends = cardsJSON["friends"];
                             let needFriends = parseInt(words[1]);
@@ -443,10 +451,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Function to generate all cards and insert them into a container
         function generateCards(type) {
-            let checker = sessionStorage.getItem('cardsData')
-            let cardsJSON;
+            let checker = sessionStorage.getItem('cardsData');
+            let cardsJSON;  
             if (checker === undefined || checker === null) {
-                cardsJSON = JSON.parse(`{\"friends\":5,\"combo_flag\":false,\"power\":4380,\"income\":1460,\"balance\":473411,\"essence_balance\":2918,\"card_king\":9,\"card_queen\":2,\"card_prince\":10,\"card_princess\":4,\"card_dragon\":2,\"card_wizard\":5,\"card_witch\":6,\"card_soldier\":8,\"card_knight\":1,\"card_worker\":3,\"card_trader\":0}`)
+                cardsJSON = JSON.parse(`{\"friends\":1,\"combo_flag\":false,\"power\":4380,\"income\":1460,\"balance\":473411,\"essence_balance\":2918,\"card_king\":9,\"card_queen\":2,\"card_prince\":10,\"card_princess\":4,\"card_dragon\":2,\"card_wizard\":5,\"card_witch\":6,\"card_soldier\":8,\"card_knight\":1,\"card_worker\":3,\"card_trader\":0}`)
                 sessionStorage.setItem('cardsData', JSON.stringify(cardsJSON))
             } else {
                 cardsJSON = JSON.parse(sessionStorage.getItem('cardsData'));
