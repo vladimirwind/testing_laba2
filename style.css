@@ -3634,7 +3634,7 @@ span {
 }
 
 .bonusGridItem img {
-    width: 50%;
+    width: 40%;
 }
 
 .bonusGridItem span {
@@ -3671,4 +3671,16 @@ span {
     color: #15202B;
     text-align: center; 
     font-weight: 500;
+}
+
+.battlePass {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: start;
+    margin-left: 20%;
+}
+
+.battlePass img {
+    width: 20%;
 }
