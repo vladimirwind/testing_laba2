@@ -24,10 +24,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let profPhoto = tg.WebApp.initDataUnsafe.user
     console.log(profPhoto)
     let dailyBtn = document.getElementById('dailyComboBtn');
+    let dailyBonusBtn = document.getElementById('dailyBonusBtn');
     let dailyWindow = document.getElementById('popUPDailyCombo');
     let closeDailyBtn = document.getElementById('X_Daily');
     var islandSwitchBtn = document.getElementById('islandSwitchBtn');
     var IslandState = false;
+
+    dailyBonusBtn.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('dailyBonusContainer').style.display = 'flex';
+    }
 
     dailyBtn.onclick = function() {
 
@@ -129,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     islandMapping.set(1, `./images/islands/cauldronIsland${MainUserInfo["cauldron_level"]}.png`);
     islandMapping.set(0, `./images/islands/mineIsland${MainUserInfo["mine_level"]}.png`);
 
-    setUpMainPage(MainUserInfo)
+    setUpMainPage(MainUserInfo);
 
     let currentUserInfoLeague = {
         "status": true,
@@ -147,23 +153,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let currentLeague = userData.league;
 
-    let orange = new Map();
-    orange.set(0, [0,0]);
-    orange.set(1, [320,1000]);
-    orange.set(2, [368,2120]);
-    orange.set(3, [423,4494]);
-    orange.set(4, [486,9527]);
-    orange.set(5, [559,20197]);
-    orange.set(6, [643,42818]);
-    orange.set(7, [739,90774]);
-    orange.set(8, [850,192441]);
-    orange.set(9, [978,407975]);
-    orange.set(10, [1125,864907]);
+    let GreenCards = new Map();
+    GreenCards.set(0, [0,0]);
+    GreenCards.set(1, [50,500]);
+    GreenCards.set(2, [60,850]);
+    GreenCards.set(3, [70,1445]);
+    GreenCards.set(4, [90,2457]);
+    GreenCards.set(5, [110,4177]);
+    GreenCards.set(6, [130,7101]);
+    GreenCards.set(7, [170,12072]);
+    GreenCards.set(8, [210,20522]);
+    GreenCards.set(9, [250,34887]);
+    GreenCards.set(10, [290,59308]);
+
+    let YellowCards = new Map();
+    YellowCards.set(0, [0,0]);
+    YellowCards.set(1, [150,1000]);
+    YellowCards.set(2, [180,1850]);
+    YellowCards.set(3, [216,3423]);
+    YellowCards.set(4, [259,6333]);
+    YellowCards.set(5, [311,11716]);
+    YellowCards.set(6, [373,21675]);
+    YellowCards.set(7, [448,40099]);
+    YellowCards.set(8, [538,74183]);
+    YellowCards.set(9, [646,137239]);
+    YellowCards.set(10, [775,253892]);
+
+    let OrangeCards = new Map();
+    OrangeCards.set(0, [0,0]);
+    OrangeCards.set(1, [320,1000]);
+    OrangeCards.set(2, [368,2120]);
+    OrangeCards.set(3, [423,4494]);
+    OrangeCards.set(4, [486,9527]);
+    OrangeCards.set(5, [559,20197]);
+    OrangeCards.set(6, [643,42818]);
+    OrangeCards.set(7, [739,90774]);
+    OrangeCards.set(8, [850,192441]);
+    OrangeCards.set(9, [978,407975]);
+    OrangeCards.set(10, [1125,864907]);
+
+    let RedCards = new Map();
+    RedCards.set(0, [0,0]);
+    RedCards.set(1, [500,2000]);
+    RedCards.set(2, [600,4800]);
+    RedCards.set(3, [720,11520]);
+    RedCards.set(4, [864,27648]);
+    RedCards.set(5, [1037,66355]);
+    RedCards.set(6, [1244,159252]);
+    RedCards.set(7, [1493,382205]);
+    RedCards.set(8, [1792,917292]);
+    RedCards.set(9, [2150,1501501]);
+    RedCards.set(10, [2580,2283602]);
 
     kingdomsBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('kingdomsContainer').style.display = 'flex';
-
+        
         let btnCards = document.getElementById('btnCards');
         btnCards.onclick = function() {
             let upgradeWindow = document.getElementById('popUPKingdomsCards');
@@ -176,23 +221,23 @@ document.addEventListener('DOMContentLoaded', function() {
         let menuSpecial = document.getElementById('menuSpecial');
 
         const AllCardsEmpire = new Map([
-            ["king", ["orange", "Wizard lvl 5"]],
+            ["king", ["yellow", ""]],
             ["queen", ["orange", ""]],
-            ["princess", ["orange", "Wizard lvl 5"]],
-            ["prince", ["orange", "Wizard lvl 5"]],
-            ["worker", ["orange", "Wizard lvl 5"]],
-            ["trader", ["orange", "Invite 5 friends"]],
+            ["princess", ["green", "Invite 3 friends"]],
+            ["prince", ["orange", ""]],
+            ["worker", ["orange", ""]],
+            ["trader", ["red", ""]],
         ]);
 
         const AllCardsArmy = new Map([
-            ["soldier", ["orange", "Invite 2 friends"]],
-            ["knight", ["orange", ""]],
+            ["soldier", ["red", ""]],
+            ["knight", ["yellow", ""]],
         ]);
 
         const AllCardsMagic = new Map([
-            ["witch", ["orange", "Wizard lvl 6"]],
-            ["wizard", ["orange", ""]],
-            ["dragon", ["orange", "Wizard lvl 5"]],
+            ["witch", ["yellow", ""]],
+            ["wizard", ["green", "Invite 5 friends"]],
+            ["dragon", ["yellow", ""]],
         ]);
 
         const AllCardsSpecial = new Map([
@@ -203,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const bottomItem = document.createElement("div");
             bottomItem.classList.add("newCardTextsBottomItem");
-
+            let cardName = cardKey.replace('card_', '');
             cardDiv.onclick = function() {
                 const lockImg = document.createElement("img");
                 lockImg.src = "./images/lock.svg";
@@ -218,22 +263,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     let minutes = Math.floor(timeRemaining / 60000);
                     let seconds = Math.floor((timeRemaining % 60000) / 1000);
                     bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        
+                    document.getElementById(`card_${cardName}_IMG`).src = `./images/cards/card_${cardName}_locked.png`;
+                    
                     if (timeRemaining <= 0) {
                         clearInterval(countdownIntervalCard);
                         bottomItem.style.display = 'none'; 
                         bottomItem.innerHTML = '';
                         localStorage.removeItem(timerKey); 
                         cardDiv.style.opacity = '1';
-
+                        document.getElementById(`card_${cardName}_IMG`).src = `./images/cards/card_${cardName}.png`
                         setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
                     } else {
-                        timeRemaining -= 1000; // Decrease by 1 second
+                        timeRemaining -= 1000; 
                     }
                 };
         
                 let countdownIntervalCard = setInterval(updateCountdownCard, 1000);
-                updateCountdownCard(); // Initial call to set the text immediately
+                updateCountdownCard(); 
         
                 bottomItem.appendChild(lockImg);
                 bottomItem.appendChild(bottomSpan);
@@ -253,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         };
 
-        function createCard(name, [type, rule], cardsJSON, cardsBlock) {
+        let createCard = function(name, [type, rule], cardsJSON, cardsBlock) {
 
             let cardKey = `card_${name}`;
             let level = cardsJSON[cardKey];  
@@ -262,69 +308,106 @@ document.addEventListener('DOMContentLoaded', function() {
         
             if (type === "orange"){
                 if (level < 10) {
-                    income = orange.get(level + 1)[0]; // Get income for the card level
+                    income = OrangeCards.get(level + 1)[0]; 
                 } else {
-                    income = orange.get(level)[0];
+                    income = OrangeCards.get(level)[0];
                 }
                 if (level < 10) {
-                    price = orange.get(level + 1)[1];  // Get price for the card level
+                    price = compressValues(OrangeCards.get(level + 1)[1]);  
                 } else {
                     price = 'max';
                 }
-            }
+            };
+
+            if (type === "green"){
+                if (level < 10) {
+                    income = GreenCards.get(level + 1)[0]; 
+                } else {
+                    income = GreenCards.get(level)[0];
+                }
+                if (level < 10) {
+                    price = compressValues(GreenCards.get(level + 1)[1]);  
+                } else {
+                    price = 'max';
+                }
+            };
+
+            if (type === "red"){
+                if (level < 10) {
+                    income = RedCards.get(level + 1)[0]; 
+                } else {
+                    income = RedCards.get(level)[0];
+                }
+                if (level < 10) {
+                    price = compressValues(RedCards.get(level + 1)[1]);  
+                } else {
+                    price = 'max';
+                }
+            };
+
+            if (type === "yellow"){
+                if (level < 10) {
+                    income = YellowCards.get(level + 1)[0]; 
+                } else {
+                    income = YellowCards.get(level)[0];
+                }
+                if (level < 10) {
+                    price = compressValues(YellowCards.get(level + 1)[1]); 
+                } else {
+                    price = 'max';
+                }
+            };
         
-            let power = (income * 3); // Example power calculation
+            let power = (income * 3); 
         
-            const cardDiv = document.createElement("div");
+            let cardDiv = document.createElement("div");
             cardDiv.classList.add("newCard");
         
             // Image Section
-            const imageDiv = document.createElement("div");
+            let imageDiv = document.createElement("div");
             imageDiv.classList.add("newCardImage");
         
-            const img = document.createElement("img");
+            let img = document.createElement("img");
             img.src = `./images/cards/card_${name}.png`;
-            img.alt = `${name} card image`;
+            img.id = `card_${name}_IMG`;
         
-            const lvlDiv = document.createElement("div");
+            let lvlDiv = document.createElement("div");
             lvlDiv.classList.add("newCardImageLvl");
-            const lvlSpan = document.createElement("span");
-            lvlSpan.textContent = level; // Use dynamic level if needed
+            let lvlSpan = document.createElement("span");
+            lvlSpan.textContent = level; 
         
             lvlDiv.appendChild(lvlSpan);
             imageDiv.appendChild(img);
             imageDiv.appendChild(lvlDiv);
         
-            // Text Section
-            const textDiv = document.createElement("div");
+          
+            let textDiv = document.createElement("div");
             textDiv.classList.add("newCardTexts");
         
-            const headerDiv = document.createElement("div");
+            let headerDiv = document.createElement("div");
             headerDiv.classList.add("newCardTextsHeader");
-            const headerSpan = document.createElement("span");
-            headerSpan.textContent = name.charAt(0).toUpperCase() + name.slice(1); // Capitalize first letter of the card name
+            let headerSpan = document.createElement("span");
+            headerSpan.textContent = name.charAt(0).toUpperCase() + name.slice(1);
             headerDiv.appendChild(headerSpan);
         
-            const middleDiv = document.createElement("div");
+            let middleDiv = document.createElement("div");
             middleDiv.classList.add("newCardTextsMiddle");
         
-            // Income Section
-            const incomeItem = document.createElement("div");
+            let incomeItem = document.createElement("div");
             incomeItem.classList.add("newCardTextsMiddleItem");
-            const incomeSpan = document.createElement("span");
-            incomeSpan.textContent = `+${income}`; // Display income
-            const coinImg = document.createElement("img");
+            let incomeSpan = document.createElement("span");
+            incomeSpan.textContent = `+${income}`;
+            let coinImg = document.createElement("img");
             coinImg.src = "./images/coin.svg";
         
             incomeItem.appendChild(incomeSpan);
             incomeItem.appendChild(coinImg);
         
-            // Power Section
-            const powerItem = document.createElement("div");
+            let powerItem = document.createElement("div");
             powerItem.classList.add("newCardTextsMiddleItem");
-            const powerSpan = document.createElement("span");
+            let powerSpan = document.createElement("span");
             powerSpan.textContent = `+${power}`; // Display power
-            const powerImg = document.createElement("img");
+            let powerImg = document.createElement("img");
             powerImg.src = "./images/castle_power.svg";
         
             powerItem.appendChild(powerSpan);
@@ -334,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
             middleDiv.appendChild(powerItem);
         
             // Bottom Section with additional rules if present
-            const bottomItem = document.createElement("div");
+            let bottomItem = document.createElement("div");
             bottomItem.classList.add("newCardTextsBottomItem");
         
             textDiv.appendChild(headerDiv);
@@ -342,11 +425,11 @@ document.addEventListener('DOMContentLoaded', function() {
             textDiv.appendChild(bottomItem);
         
             // Price Section
-            const priceDiv = document.createElement("div");
+            let priceDiv = document.createElement("div");
             priceDiv.classList.add("newCardPrice");
-            const priceImg = document.createElement("img");
+            let priceImg = document.createElement("img");
             priceImg.src = "./images/coin.svg";
-            const priceSpan = document.createElement("span");
+            let priceSpan = document.createElement("span");
             priceSpan.textContent = `${price}`;
         
             priceDiv.appendChild(priceImg);
@@ -359,11 +442,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (level === 10) {
                 cardDiv.style.opacity = '0.5';
+                localStorage.removeItem(`card_${name}_timing`);
                 cardDiv.onclick = function(){};
             } else {
 
-                const timerKey = `card_${name}_timing`;
-                const countdownDuration = (level * 3 + 0.5) * 60 * 1000; 
+                let timerKey = `card_${name}_timing`;
+                let countdownDuration = (2 + (level+1)*3) * 60 * 1000; 
                 let curCardTimer = localStorage.getItem(timerKey);
                 
                 if (curCardTimer) {
@@ -372,22 +456,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     let currentTime = Date.now();
                     let timeRemaining = Math.max(0, endTime - currentTime); // Ensure timeRemaining is not negative
                 
-                    const lockImg = document.createElement("img");
+                    let lockImg = document.createElement("img");
                     lockImg.src = "./images/lock.svg";
-                    const bottomSpan = document.createElement("span");
+                    let bottomSpan = document.createElement("span");
                 
                     let updateCountdownCard = () => {
                         let minutes = Math.floor(timeRemaining / 60000);
                         let seconds = Math.floor((timeRemaining % 60000) / 1000);
                         bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-                
+                        bottomSpan.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                        img.src = `./images/cards/card_${name}_locked.png`;
                         if (timeRemaining <= 0) {
                             clearInterval(countdownIntervalCard);
                             bottomItem.style.display = 'none'; 
                             bottomItem.innerHTML = '';
-                            localStorage.removeItem(timerKey); 
+                            localStorage.removeItem(timerKey);
                             cardDiv.style.opacity = '1';
-                            
+                            img.src = `./images/cards/card_${name}.png`;
                             setClickForCard(cardDiv, countdownDuration, timerKey, cardKey, textDiv, cardsBlock);
                         } else {
                             timeRemaining -= 1000; // Decrease by 1 second
@@ -405,8 +490,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     if (rule) {
                         let ruleFlag = false;
-                        const isNumeric = (string) => /^[+-]?\d+(\.\d+)?$/.test(string)
-                        const words = rule.split(' ');
+                        let isNumeric = (string) => /^[+-]?\d+(\.\d+)?$/.test(string)
+                        let words = rule.split(' ');
                         if (isNumeric(words[2])) {
                             let lowerName = words[0].toLowerCase();
                             let needLevel = parseInt(words[2]);
@@ -424,9 +509,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
 
                         if (!ruleFlag) {
-                            const lockImg = document.createElement("img");
+                            let lockImg = document.createElement("img");
                             lockImg.src = "./images/lock.svg";
-                            const bottomSpan = document.createElement("span");
+                            let bottomSpan = document.createElement("span");
                             bottomSpan.textContent = rule; 
                             bottomItem.appendChild(lockImg);
                             bottomItem.appendChild(bottomSpan);
@@ -445,7 +530,7 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         
             return cardDiv;
-        }
+        };
 
         const AllCardsTypes = ['Magic', 'Empire', 'Army', 'Special']
         
@@ -1854,58 +1939,6 @@ document.addEventListener('DOMContentLoaded', function() {
     //             allCardsMagic.style.display = 'none';
     //             allCardsSpecial.style.display = 'flex';
     //         };
-
-    //         let green = new Map();
-    //         green.set(0, [0,0]);
-    //         green.set(1, [50,500]);
-    //         green.set(2, [60,850]);
-    //         green.set(3, [70,1445]);
-    //         green.set(4, [90,2457]);
-    //         green.set(5, [110,4177]);
-    //         green.set(6, [130,7101]);
-    //         green.set(7, [170,12072]);
-    //         green.set(8, [210,20522]);
-    //         green.set(9, [250,34887]);
-    //         green.set(10, [290,59308]);
-
-    //         let yellow = new Map();
-    //         yellow.set(0, [0,0]);
-    //         yellow.set(1, [150,1000]);
-    //         yellow.set(2, [180,1850]);
-    //         yellow.set(3, [216,3423]);
-    //         yellow.set(4, [259,6333]);
-    //         yellow.set(5, [311,11716]);
-    //         yellow.set(6, [373,21675]);
-    //         yellow.set(7, [448,40099]);
-    //         yellow.set(8, [538,74183]);
-    //         yellow.set(9, [646,137239]);
-    //         yellow.set(10, [775,253892]);
-
-    //         let orange = new Map();
-    //         orange.set(0, [0,0]);
-    //         orange.set(1, [320,1000]);
-    //         orange.set(2, [368,2120]);
-    //         orange.set(3, [423,4494]);
-    //         orange.set(4, [486,9527]);
-    //         orange.set(5, [559,20197]);
-    //         orange.set(6, [643,42818]);
-    //         orange.set(7, [739,90774]);
-    //         orange.set(8, [850,192441]);
-    //         orange.set(9, [978,407975]);
-    //         orange.set(10, [1125,864907]);
-
-    //         let red = new Map();
-    //         red.set(0, [0,0]);
-    //         red.set(1, [500,2000]);
-    //         red.set(2, [600,4800]);
-    //         red.set(3, [720,11520]);
-    //         red.set(4, [864,27648]);
-    //         red.set(5, [1037,66355]);
-    //         red.set(6, [1244,159252]);
-    //         red.set(7, [1493,382205]);
-    //         red.set(8, [1792,917292]);
-    //         red.set(9, [2150,1501501]);
-    //         red.set(10, [2580,2283602]);
 
     //         let getValues = function(type, level) {
 

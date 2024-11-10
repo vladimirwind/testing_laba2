@@ -3544,3 +3544,131 @@ span {
 .jelly {
     animation: jelly 0.6s ease-in-out;
 }
+
+.dailyBonusContainer {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: #15202B;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.dailyBonus {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.dailyBonusPhoto {
+    width: 20vw;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.dailyBonusPhoto img {
+    width: 100%;
+}
+
+.dailyBonusHeader {
+    width: 100%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.dailyBonusHeader span {
+    font-family: 'unbounded';
+    font-size: 4vh;
+    color: white;
+    text-align: center; 
+    font-weight: 300;
+}
+
+.dailyBonusDesc {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.dailyBonusDesc span {
+    font-size: 2.1vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+.bonusGridWr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: auto;
+    gap: 2vh;
+}
+
+.bonusGrid {
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.bonusGridItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #0F161E;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    gap: 1vh;
+}
+
+.bonusGridItem img {
+    width: 50%;
+}
+
+.bonusGridItem span {
+    font-size: 2vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+
+.bonusGridItem text {
+    font-size: 1.8vh;
+    color: #bfbfbf;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+.bonusClaimBtn {
+    display: flex;
+    width: 50%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: #98FFAF;
+    border-radius: 1vw;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+.bonusClaimBtn span {
+    font-family: 'unbounded';
+    font-size: 2.5vh;
+    color: #15202B;
+    text-align: center; 
+    font-weight: 500;
+}
