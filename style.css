@@ -3580,6 +3580,7 @@ span {
     display: flex; 
     justify-content: center; 
     align-items: center; 
+    margin-top: 5%;
 }
 
 .dailyBonusHeader span {
@@ -3595,7 +3596,7 @@ span {
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    align-items: center; 
+    align-items: center;
 }
 
 .dailyBonusDesc span {
@@ -3638,7 +3639,7 @@ span {
 }
 
 .bonusGridItem span {
-    font-size: 2vh;
+    font-size: 1.8vh;
     color: white;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -3646,7 +3647,7 @@ span {
 }
 
 .bonusGridItem text {
-    font-size: 1.8vh;
+    font-size: 1.6vh;
     color: #bfbfbf;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -3673,14 +3674,15 @@ span {
     font-weight: 500;
 }
 
-.battlePass {
+.gemseePass {
     display: flex;
     width: 100%;
-    justify-content: start;
-    align-items: start;
-    margin-left: 20%;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 20%;
 }
 
-.battlePass img {
-    width: 20%;
+.gemseePass img {
+    width: 25%;
+    animation: tilt-shaking 2s infinite;
 }
