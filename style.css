@@ -1648,7 +1648,7 @@ span {
     50% { transform: rotate(0eg); }
     75% { transform: rotate(-2deg); }
     100% { transform: rotate(0deg); }
-  }
+}
 
 
 .keyAmntWr {
@@ -3685,5 +3685,22 @@ span {
 
 .gemseePass img {
     width: 30%;
-    animation: tilt-shaking 2s infinite;
+    animation: gemseePassShake 2s infinite;
+}
+
+@keyframes gemseePassShake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    4% { transform: translate(0, 0) rotate(-5deg); }
+    12% { transform: translate(0, 0) rotate(5deg); }
+    20% { transform: translate(0, 0) rotate(-5deg); }
+    28% { transform: translate(0, 0) rotate(5deg); }
+    36% { transform: translate(0, 0) rotate(-5deg); }
+    44% { transform: translate(0, 0) rotate(5deg); }
+    48% { transform: translate(0, 0) rotate(0deg); }
+    60% { transform: translate(0, 0) rotate(0deg); }
+    64% { transform: scale(105%) translate(0, 0) rotate(0deg); }
+    68% { transform: scale(100%) translate(0, 0) rotate(0deg); }
+    72% { transform: scale(105%) translate(0, 0) rotate(0deg); }
+    76% { transform: scale(100%) translate(0, 0) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
 }
