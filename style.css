@@ -3632,6 +3632,7 @@ span {
     padding-top: 8%;
     padding-bottom: 8%;
     gap: 1vh;
+    border-radius: 1vw;
 }
 
 .bonusGridItem img {
@@ -3679,10 +3680,10 @@ span {
     width: 100%;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 20%;
+    margin-right: 10%;
 }
 
 .gemseePass img {
-    width: 25%;
+    width: 30%;
     animation: tilt-shaking 2s infinite;
 }

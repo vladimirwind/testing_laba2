@@ -33,6 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
     dailyBonusBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('dailyBonusContainer').style.display = 'flex';
+
+        let curDay = document.getElementById('bonusDay_1');
+
+        curDay.style.outlineStyle = 'solid';
+        curDay.style.outlineWidth = 'thin';
+        curDay.style.outlineColor = '#98FFAF';
     }
 
     dailyBtn.onclick = function() {
