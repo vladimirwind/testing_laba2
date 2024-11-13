@@ -3665,6 +3665,7 @@ span {
     border-radius: 1vw;
     padding-bottom: 1%;
     padding-top: 1%;
+    z-index: 13131;
 }
 
 .bonusClaimBtn span {
