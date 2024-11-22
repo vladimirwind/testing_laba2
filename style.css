@@ -3707,3 +3707,140 @@ span {
     64% { transform: scale(100%) translate(0, 0) rotate(0deg); }
     100% { transform: translate(0, 0) rotate(0deg); }
 }
+
+.dailyCipherContainer {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: #15202B;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.dailyCipher {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.dailyCipherTopImage {
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.dailyCipherTopImage img {
+    width: 100%;
+}
+
+.dailyCipherDesc {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: 100%;
+    height: auto;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.dailyCipherDesc span {
+    font-size: 2vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+}
+
+.dailyCipherInput {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 45vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dailyCipherInputGrid {
+    display: grid;
+    grid-gap: 10vw;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.dailyCipherInputGridItem {
+    display: flex;
+    height: 9vh; 
+    width: auto;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #0F161E;
+}
+
+.dailyCipherInputGridItem img {
+    width: auto; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.dailyCipherBoard {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: 15vh;
+    background-color: #0F161E;
+    border-radius: 3vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.dailyCipherBoardGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dailyCipherBoardGridItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 0 0 #98ffaf;
+}
+
+.dailyCipherBoardGridItemFirst {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.dailyCipherBoardGridItemFirst span {
+    color: #98ffaf;
+    font-family: 'unbounded';
+    font-size: 7vh;
+    font-weight: 500;
+}
+
+.dailyCipherBoardGridItem span {
+    color: #98ffaf;
+    font-family: 'unbounded';
+    font-size: 7vh;
+    font-weight: 500;
+}

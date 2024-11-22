@@ -25,10 +25,16 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(profPhoto)
     let dailyBtn = document.getElementById('dailyComboBtn');
     let dailyBonusBtn = document.getElementById('dailyBonusBtn');
+    let dailyCipherBtn = document.getElementById('dailyCipherBtn');
     let dailyWindow = document.getElementById('popUPDailyCombo');
     let closeDailyBtn = document.getElementById('X_Daily');
     var islandSwitchBtn = document.getElementById('islandSwitchBtn');
     var IslandState = false;
+
+    dailyCipherBtn.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('dailyCipherContainer').style.display = 'flex';
+    }
 
     dailyBonusBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
