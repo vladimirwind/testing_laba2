@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.style.display = 'none';
 
             for (let i = 0; i < 4; i++) {
-                document.getElementById(`cipherBoard_${i}`).style.animation = 'badCipher 2s infinite'; 
+                document.getElementById(`cipherBoard_${i}`).style.animation = 'badCipher 2s ease-in-out'; 
             }
 
             setTimeout(() => {
