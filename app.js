@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 curBtn.onclick = function() {};
 
                 curBtn.style.backgroundColor = '#0F161E';
-                curBtn.style.animation = 'pressing 0.4s infinite';
+                curBtn.style.animation = 'pressing 0.25s infinite';
 
                 setTimeout(() => {
                     curBtn.style.backgroundColor = '';
                     curBtn.style.animation = '';
                     curBtn.onclick = btnFunc;
-                }, 400); 
+                }, 250); 
             }
 
             curBtn.onclick = btnFunc;
