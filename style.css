@@ -3863,12 +3863,12 @@ span {
 }
 
 @keyframes badCipher {
-    0% { transform: scale(100%) rotate(0deg); }
-    5% { transform: scale(104%) rotate(4deg); }
-    15% { transform: scale(104%) rotate(-4deg); }
-    25% { transform: scale(104%) rotate(4deg); }
-    35% { transform: scale(104%) rotate(-3deg); }
-    45% { transform: scale(100%) rotate(3deg); }
-    51% { transform: scale(100%) rotate(0deg); }
-    100% { transform: scale(100%) rotate(0deg); }
+    0% { transform: rotate(0deg); }
+    5% { transform: rotate(4deg); }
+    15% { transform: rotate(-4deg); }
+    25% { transform: rotate(4deg); }
+    35% { transform: rotate(-3deg); }
+    45% { transform: rotate(3deg); }
+    51% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
 }
