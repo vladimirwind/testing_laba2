@@ -3729,7 +3729,7 @@ span {
 
 .dailyCipherTopImage {
     display: flex;
-    width: 20%;
+    width: 25%;
     justify-content: center;
     align-items: center;
     align-self: center;
@@ -3748,6 +3748,7 @@ span {
     align-self: center;
     justify-content: center;
     align-items: center;
+    margin-bottom: 5%;
 }
 
 .dailyCipherDesc span {
@@ -3765,6 +3766,7 @@ span {
     height: 45vh;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 5%;
 }
 
 .dailyCipherInputGrid {
@@ -3781,7 +3783,7 @@ span {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: #0F161E;
+    /* background-color: #0F161E; */
 }
 
 .dailyCipherInputGridItem img {
@@ -3796,9 +3798,10 @@ span {
     width: 90%;
     height: 15vh;
     background-color: #0F161E;
-    border-radius: 3vw;
+    border-radius: 4vw;
     justify-content: center;
     align-items: center;
+    margin-bottom: 5%;
 }
 
 .dailyCipherBoardGrid {
@@ -3843,4 +3846,18 @@ span {
     font-family: 'unbounded';
     font-size: 7vh;
     font-weight: 500;
+}
+
+@keyframes pressing {
+    0% { transform: scale(99%) }
+    10% { transform: scale(89%) }
+    20% { transform: scale(79%) }
+    30% { transform: scale(69%) }
+    40% { transform: scale(59%) }
+    50% { transform: scale(49%) }
+    60% { transform: scale(59%) }
+    70% { transform: scale(69%) }
+    80% { transform: scale(79%) }
+    90% { transform: scale(89%) }
+    100% { transform: scale(100%) }
 }

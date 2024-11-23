@@ -34,6 +34,25 @@ document.addEventListener('DOMContentLoaded', function() {
     dailyCipherBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('dailyCipherContainer').style.display = 'flex';
+
+        for (let i = 0; i < 10; i++) {
+            let curBtn = document.getElementById(`cipherBtn_${i}`);
+
+            let btnFunc = function() {
+                curBtn.onclick = function() {};
+
+                curBtn.style.backgroundColor = '#0F161E';
+                curBtn.style.animation = 'pressing 1s infinite';
+
+                setTimeout(() => {
+                    curBtn.style.backgroundColor = '';
+                    curBtn.style.animation = '';
+                    curBtn.onclick = btnFunc;
+                }, 1000); 
+            }
+
+            curBtn.onclick = btnFunc;
+        }
     }
 
     dailyBonusBtn.onclick = function() {
