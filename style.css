@@ -3849,15 +3849,15 @@ span {
 }
 
 @keyframes pressing {
-    0% { transform: scale(99%) }
-    10% { transform: scale(89%) }
-    20% { transform: scale(79%) }
-    30% { transform: scale(69%) }
-    40% { transform: scale(59%) }
-    50% { transform: scale(49%) }
-    60% { transform: scale(59%) }
-    70% { transform: scale(69%) }
-    80% { transform: scale(79%) }
-    90% { transform: scale(89%) }
+    0% { transform: scale(100%) }
+    10% { transform: scale(97%) }
+    20% { transform: scale(94%) }
+    30% { transform: scale(91%) }
+    40% { transform: scale(88%) }
+    50% { transform: scale(85%) }
+    60% { transform: scale(88%) }
+    70% { transform: scale(91%) }
+    80% { transform: scale(94%) }
+    90% { transform: scale(97%) }
     100% { transform: scale(100%) }
 }
