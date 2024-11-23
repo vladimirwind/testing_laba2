@@ -7,6 +7,26 @@ document.addEventListener('DOMContentLoaded', function() {
     //     buttonRootId: 'ton-connects'
     // });
 
+    let CipherRequest = async function(code) {
+        try {
+        let myResponse = await fetch(baza + `/user/dailycipher/${code}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json',
+                'Accept': '*/*',
+                'Authorization': tknBearer
+            },
+        });
+        if (!myResponse.ok) {
+        throw new Error(`Error! status: ${myResponse.status}`);
+        }
+        let myCipherRes = await myResponse.json();
+        return myCipherRes;
+        } catch (err) {
+           console.log(err)
+        }
+    };
+
     if(tg.WebApp.initData != undefined && tg.WebApp.initData != "") {
         tg.WebApp.ready();
         tg.WebApp.expand();
@@ -71,19 +91,27 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.onclick = function() {};
             submitBtn.style.display = 'none';
 
-            for (let i = 0; i < 4; i++) {
-                document.getElementById(`cipherBoard_${i}`).style.animation = 'badCipher 2s ease-in-out'; 
-            }
+            CipherRequest(currentCode).then(myCipherRes => {
+                if (myCipherRes.code === 200) {
+                    //animation
+                    //update balance
+                    //update JSON
+                } else {
+                    for (let i = 0; i < 4; i++) {
+                        document.getElementById(`cipherBoard_${i}`).style.animation = 'badCipher 2s ease-in-out'; 
+                    }
 
-            setTimeout(() => {
-                submitBtn.style.display = 'flex';
-                submitBtn.onclick = sendCode;
-
-                for (let i = 0; i < 4; i++) {
-                    document.getElementById(`cipherBoard_${i}`).style.animation = ''; 
+                    setTimeout(() => {
+                        submitBtn.style.display = 'flex';
+                        submitBtn.onclick = sendCode;
+        
+                        for (let i = 0; i < 4; i++) {
+                            document.getElementById(`cipherBoard_${i}`).style.animation = ''; 
+                        };
+        
+                    }, 2000);
                 }
-
-            }, 2000);
+            }); 
         };
 
         submitBtn.onclick = sendCode;
