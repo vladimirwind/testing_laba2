@@ -35,6 +35,59 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('dailyCipherContainer').style.display = 'flex';
 
+        let currentCode = "";
+
+        let updateCode = function(val) {
+
+            let curLen = currentCode.length;
+            if (curLen >= 4) {return};
+
+            document.getElementById(`cipherBoard_${curLen}`).textContent = val;
+            
+            currentCode += val
+        };
+
+        let eraseCode = function() {
+
+            let curLen = currentCode.length;
+
+            if (curLen === 0) {return};
+
+            if (document.getElementById(`cipherBoard_${curLen - 1}`).innerHTML !== '&nbsp;') {
+                document.getElementById(`cipherBoard_${curLen - 1}`).innerHTML = '&nbsp;';
+            };
+
+            currentCode = currentCode.slice(0, -1);
+        };
+
+        let submitBtn = document.getElementById(`cipherSubmitBtn`);
+
+        let sendCode = function() {
+
+            let curLen = currentCode.length;
+
+            if (curLen !== 4) {return};
+
+            submitBtn.onclick = function() {};
+            submitBtn.style.display = 'none';
+
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(`cipherBoard_${i}`).style.animation = 'badCipher 2s infinite'; 
+            }
+
+            setTimeout(() => {
+                submitBtn.style.display = 'flex';
+                submitBtn.onclick = sendCode;
+
+                for (let i = 0; i < 4; i++) {
+                    document.getElementById(`cipherBoard_${i}`).style.animation = ''; 
+                }
+
+            }, 2000);
+        };
+
+        submitBtn.onclick = sendCode;
+
         for (let i = 0; i < 10; i++) {
             let curBtn = document.getElementById(`cipherBtn_${i}`);
 
@@ -43,6 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 curBtn.style.backgroundColor = '#0F161E';
                 curBtn.style.animation = 'pressing 0.25s infinite';
+
+                updateCode(`${i}`);
 
                 setTimeout(() => {
                     curBtn.style.backgroundColor = '';
@@ -53,6 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             curBtn.onclick = btnFunc;
         }
+
+        let eraseBtn = document.getElementById(`cipherEraseBtn`);
+
+        eraseBtn.onclick = eraseCode;
     }
 
     dailyBonusBtn.onclick = function() {
