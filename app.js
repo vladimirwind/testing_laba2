@@ -42,8 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('mainContainer').style.display = 'none';
     let profPhoto = tg.WebApp.initDataUnsafe.user.photo_url;
-    console.log("profile_photo:")
-    console.log(profPhoto)
+    document.getElementById('profilePhoto').src = profPhoto;
     let dailyBtn = document.getElementById('dailyComboBtn');
     let dailyBonusBtn = document.getElementById('dailyBonusBtn');
     let dailyCipherBtn = document.getElementById('dailyCipherBtn');
