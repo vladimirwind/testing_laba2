@@ -2946,6 +2946,7 @@ span {
     justify-content: center;
     align-items: center; 
     margin-left: 1%;
+    border-radius: 50%;
 }
 
 .mainTOPprofilePic img {
