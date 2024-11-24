@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     document.getElementById('mainContainer').style.display = 'none';
-    let profPhoto = tg.WebApp.initDataUnsafe.user
+    let profPhoto = tg.WebApp.initDataUnsafe.user.photo_url;
+    console.log("profile_photo:")
     console.log(profPhoto)
     let dailyBtn = document.getElementById('dailyComboBtn');
     let dailyBonusBtn = document.getElementById('dailyBonusBtn');
