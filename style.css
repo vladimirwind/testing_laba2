@@ -2947,13 +2947,13 @@ span {
     align-items: center; 
     margin-left: 1%;
     border-radius: 50%;
+    overflow: hidden;
 }
 
 .mainTOPprofilePic img {
-    width: 95%;
-    max-height: 80%; /* Prevent overflow */
-    margin: 0; /* Reset margin */
-    padding: 0; /* Reset padding */
+    width: 100%;
+    margin: 0; 
+    padding: 0; 
 }
 
 .mainTOPprofileText {
