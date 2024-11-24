@@ -2943,6 +2943,7 @@ span {
     flex-direction: row;
     width: 25%;
     height: auto;
+    max-height: 80%;
     justify-content: center;
     align-items: center; 
     margin-left: 1%;
@@ -2953,7 +2954,7 @@ span {
 .mainTOPprofilePic img {
     width: 100%;
     margin: 0; 
-    padding: 0; 
+    padding: 0;
 }
 
 .mainTOPprofileText {
