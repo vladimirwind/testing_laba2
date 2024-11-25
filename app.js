@@ -43,11 +43,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('mainContainer').style.display = 'none';
 
     
-    let profPhoto = tg.WebApp.initDataUnsafe.user.photo_url;
-    if (profPhoto) {
-        document.getElementById('profilePhoto').src = profPhoto;
+    // let profPhoto = tg.WebApp.initDataUnsafe.user.photo_url;
+    // if (profPhoto) {
+    //     document.getElementById('profilePhoto').src = profPhoto;
+    // };
+
+    let airdropBtn = document.getElementById('airdropBtn');
+    airdropBtn.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('airdropContainer').style.display = 'flex';
     };
-    
 
     let dailyBtn = document.getElementById('dailyComboBtn');
     let dailyBonusBtn = document.getElementById('dailyBonusBtn');

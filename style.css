@@ -2941,8 +2941,7 @@ span {
 .mainTOPprofilePic {
     display: flex;
     flex-direction: row;
-    width: 25%;
-    height: auto;
+    aspect-ratio : 1 / 1;
     max-height: 80%;
     justify-content: center;
     align-items: center; 
@@ -3873,4 +3872,102 @@ span {
     45% { transform: scale(100%) rotate(3deg); }
     51% { transform: scale(100%) rotate(0deg); }
     100% { transform: scale(100%) rotate(0deg); }
+}
+
+.airdropContainer {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: #15202B;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.airdropWr {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.airdropHeader {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.airdropHeader span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 7vh;
+    font-weight: 500;
+}
+
+.airdropSection {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: auto;
+    background-color: #0F161E;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 3vw 3vw 0 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.airdropConnect {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1vh;
+}
+
+.airdropConnectHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 3vw;
+}
+
+.airdropConnectHeader span {
+    font-size: 2.5vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+
+.airdropConnectHeader img {
+    width: 6%;
+}
+
+.airdropConnectBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: auto;
+}
+
+.airdropConnectBtn img {
+    width: 100%;
+}
+
+.airdropConnectBottom img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: auto;
 }
