@@ -85,7 +85,16 @@ document.addEventListener('DOMContentLoaded', function() {
             ...tonConnectUI.walletInfo 
         }))
 
-        console.log("HERE BRO: ", tonConnectUI.toUserFriendlyAddress(currentAccount.address));
+        console.log("HERE BRO: ", JSON.stringify(tonConnectUI.getWallets()));
+    }
+
+    let sliceAddress = function(raw) {
+        let start = raw.slice(4)
+        let end = raw.slice(-4)
+
+        let newAddr = `${start}...${end}`
+
+        return newAddr
     }
 
     connectTONbtn.onclick = function() {
