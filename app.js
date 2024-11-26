@@ -75,36 +75,20 @@ document.addEventListener('DOMContentLoaded', function() {
         return newAddr
     }
 
-    connectTONbtn.onclick = function() {
-        if (window.TONConnect) {
-            const tonConnect = new TONConnect({
-            network: 'mainnet',
-            });
-          
-            // Trigger the wallet connection process
-            const connectToWallet = async () => {
-            try {
-                // Open TON Connect modal
-                const result = await tonConnect.connect();
-                console.log('Connected to wallet:', result);
-          
-                // Handle successful connection
-                // You will get the wallet address and other info here
-                const walletAddress = result.address;  // wallet address (e.g., Tonkeeper address)
-                console.log("Connected wallet address:", walletAddress);
-          
-                // You can now send transactions or interact with the wallet here
-          
-              } catch (error) {
-                console.error("Error connecting to wallet:", error);
-              }
-            };
-          
-            // Call the connect function when you're ready to connect
-            connectToWallet();
-        } else {
-            console.error("TON Connect SDK is not available.");
-        }
+    connectTONbtn.onclick = async function() {
+        const connector = new TonConnectSDK.TonConnect({
+            manifestUrl: './tonconnect-manifest.json'
+        });
+        connector.restoreConnection();
+
+        const unsubscribe = connector.onStatusChange(walletInfo => {
+            console.log("Wallet connection status updated:", walletInfo);
+        });
+
+        const walletsList = await connector.getWallets();
+
+        console.log("Available wallets:", walletsList);
+
     };
 
     dailyCipherBtn.onclick = function() {
