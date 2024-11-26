@@ -74,9 +74,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let connectTONbtn = document.getElementById('ton-connect');
 
+    let checkF = async function() {
+        const currentWallet = tonConnectUI.wallet;
+        const currentWalletInfo = tonConnectUI.walletInfo;
+        const currentAccount = tonConnectUI.account;
+        const currentIsConnectedStatus = tonConnectUI.connected;
+
+        console.log("cur wallet ", currentWallet)
+        console.log("cur wallet info", currentWalletInfo)
+        console.log("cur account", currentAccount)
+        console.log("cur state", currentIsConnectedStatus)
+    }
+
     connectTONbtn.onclick = function() {
         connectToWallet().catch(error => {
-            console.error("Error connecting to wallet:", error);
+            checkF();
         });
     };
 
