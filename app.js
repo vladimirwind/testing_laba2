@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
 
@@ -12,10 +11,22 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonRootId: 'ton-connect'
     });
 
+    const connector = new TonConnectSDK.TonConnect();
+
     async function connectToWallet() {
         const connectedWallet = await tonConnectUI.connectWallet();
         console.log("user's wallet data: ",connectedWallet);
     }
+
+    let Test = function() {
+        const rawAddress = connector.wallet.account.address; // like '0:abcdef123456789...'
+        const bouncableUserFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
+        const testnetOnlyBouncableUserFriendlyAddress = toUserFriendlyAddress(rawAddress, true);
+
+        console.log("here we go ", bouncableUserFriendlyAddress)
+    }
+
+    Test();
 
     let CipherRequest = async function(code) {
         try {
@@ -80,10 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentAccount = tonConnectUI.account;
         const currentIsConnectedStatus = tonConnectUI.connected;
 
-        console.log(JSON.stringify({
-            ...tonConnectUI.wallet,
-            ...tonConnectUI.walletInfo 
-        }))
+        let ex = tonConnectUI.connector.wallet.account.address;
+        let toFr = 
 
         console.log("HERE BRO: ", JSON.stringify(tonConnectUI.getWallets()));
     }
