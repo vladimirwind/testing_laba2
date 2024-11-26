@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonRootId: 'ton-connect'
     });
 
-    const connector = new TonConnectSDK.TonConnect();
+    const connector = new TonConnect({
+        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json'
+    });
 
     async function connectToWallet() {
         const connectedWallet = await tonConnectUI.connectWallet();
