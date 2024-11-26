@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let connectTONbtn = document.getElementById('ton-connect');
 
     let sliceAddress = function(raw) {
-        let start = raw.slice(4)
+        let start = raw.slice(0, 4)
         let end = raw.slice(-4)
 
         let newAddr = `${start}...${end}`
