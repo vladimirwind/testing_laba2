@@ -18,7 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("user's wallet data: ",connectedWallet);
     }
 
-    let Test = function() {
+    let Test = async function() {
+        const walletsList = await TonConnect.getWallets();
+        console.log(JSON.stringify(walletsList))
         const rawAddress = connector.wallet.account.address; // like '0:abcdef123456789...'
         const bouncableUserFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
         const testnetOnlyBouncableUserFriendlyAddress = toUserFriendlyAddress(rawAddress, true);
