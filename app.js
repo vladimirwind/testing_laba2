@@ -122,19 +122,25 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Error connecting to Telegram Wallet:", error);
         }
         }
-    
+        // Listen for connection status changes
+        connector.onStatusChange(walletInfo => {
+            if (walletInfo) {
+            console.log("Connected to wallet:", walletInfo);
+        
+            // Check if the wallet is connected and log the raw address and user-friendly address
+            if (connector.wallet && connector.wallet.account && connector.wallet.account.address) {
+                const rawAddress = connector.wallet.account.address;
+                const userFriendlyAddress = convertToUserFriendlyAddress(rawAddress);
+        
+                // Log both raw address and user-friendly address
+                console.log("Raw Address:", rawAddress);
+                console.log("User-Friendly Address:", userFriendlyAddress);
+            }
+            }
+        });
         // Call the function to initiate the connection
         connectToTelegramWallet();
-
-        // Check if the wallet is connected and log the raw address and user-friendly address
-        if (connector.wallet && connector.wallet.account && connector.wallet.account.address) {
-            const rawAddress = connector.wallet.account.address;
-            const userFriendlyAddress = convertToUserFriendlyAddress(rawAddress);
-    
-            // Log both raw address and user-friendly address
-            console.log("Raw Address:", rawAddress);
-            console.log("User-Friendly Address:", userFriendlyAddress);
-        }
+        
     };
 
     dailyCipherBtn.onclick = function() {
