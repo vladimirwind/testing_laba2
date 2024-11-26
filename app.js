@@ -80,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create TonConnectUI instance (UI for wallet connection)
             const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
                 manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
-                buttonRootId: 'ton-connect'
             });
         
             // Listen for changes in the modal state (opened/closed)
