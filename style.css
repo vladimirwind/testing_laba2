@@ -3889,7 +3889,7 @@ span {
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -3919,6 +3919,7 @@ span {
     border-radius: 3vw 3vw 0 0;
     padding-top: 5%;
     padding-bottom: 5%;
+    gap: 3vh;
 }
 
 .airdropConnect {
@@ -3926,13 +3927,13 @@ span {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap: 1vh;
+    gap: 3vh;
 }
 
 .airdropConnectHeader {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 100%;
     gap: 3vw;
@@ -3944,10 +3945,12 @@ span {
     text-align: center; 
     font-family: "Open Sans", sans-serif;
     font-weight: 500;
+    margin-left: 5%;
 }
 
 .airdropConnectHeader img {
     width: 6%;
+    margin-top: 0.5vh;
 }
 
 .airdropConnectBtn {
@@ -3963,11 +3966,124 @@ span {
     width: 100%;
 }
 
-.airdropConnectBottom img {
+.airdropConnectBottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 90%;
     height: auto;
+    gap: 3vw;
+}
+
+.airdropConnectBottomLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    aspect-ratio : 1 / 1;
+    background-color: #15202B;
+    border-radius: 2vw;
+}
+
+.airdropConnectBottomLeft img {
+    width: 60%;
+}
+
+.airdropConnectBottomRight {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+    width:100%;
+    background-color: #15202B;
+    border-radius: 2vw;
+}
+
+.airdropConnectBottomRight img {
+    width: 10%;
+}
+
+.airdropConnectBottomRight span {
+    font-size: 2vh;
+    color: #bfbfbf;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+}
+
+.airdropSendTransaction {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 3vh;
+}
+
+.airdropSendTransactionHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    gap: 3vw;
+}
+
+.airdropSendTransactionHeader span {
+    font-size: 2.5vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+}
+
+.airdropSendTransactionHeader img {
+    width: 5%;
+    margin-top: 0.5vh;
+}
+
+.airdropSendTransaction img {
+    width: 90%;
+    height: auto;
+}
+
+.airdropHowTo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: auto;
+    outline: #98FFAF;
+    outline-style: solid;
+    outline-width: thin;
+    border-radius: 0.5vw;
+}
+
+.airdropHowTo span {
+    font-size: 2.2vh;
+    color: #98FFAF;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+.airdropAbout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: auto;
+    text-align: left;
+}
+
+.airdropAbout span {
+    font-size: 2.2vh;
+    color: #bcbcbc;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+    text-align: left;
 }
