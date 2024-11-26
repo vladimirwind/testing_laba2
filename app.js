@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const walletsList = await connector.getWallets();
         console.log(JSON.stringify(walletsList))
         if (!connector.connected) {
-            alert('Please connect wallet to send the transaction!');
+            console.log('Please connect wallet to send the transaction!');
         }
 
         const walletConnectionSource = {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         const universalLink = connector.connect(walletConnectionSource);
-   
+        window.location.href = universalLink;
         
         const rawAddress = connector.wallet.account.address; // like '0:abcdef123456789...'
         const bouncableUserFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
