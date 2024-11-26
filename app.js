@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const walletsList = await connector.getWallets();
         console.log(JSON.stringify(walletsList))
         const embeddedWallet = walletsList.find(isWalletInfoCurrentlyEmbedded);
-
+        if (!connector.connected) {
+            alert('Please connect wallet to send the transaction!');
+        }
         if (embeddedWallet) {
             connector.connect({ jsBridgeKey: embeddedWallet.jsBridgeKey });
             return;
