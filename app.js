@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // unsubscribeModal();  // Uncomment this when you no longer want to listen to modal state changes
             // unsubscribeStatus(); // Uncomment this when you no longer want to listen to connection status changes
         }
+        initTonConnect();
     };
 
     dailyCipherBtn.onclick = function() {
