@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const walletsList = await connector.getWallets();
 
-        console.log("Available wallets:", walletsList);
+        console.log("Available wallets:", JSON.stringify(walletsList));
 
     };
 
