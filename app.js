@@ -118,6 +118,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("No wallet connected yet.");
               }
             });
+
+            let deleteWalletBtn = document.getElementById('deleteWalletBtn');
+
+            deleteWalletBtn.onclick = async function() {
+                try {
+                    await tonConnectUI.closeModal();
+                } catch (error) {
+                    console.error("Error opening connection modal:", error);
+                }
+            }
         
             // Optionally, you can unsubscribe when no longer needed
             // unsubscribeModal();  // Uncomment this when you no longer want to listen to modal state changes
