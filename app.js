@@ -6,11 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     //     buttonRootId: 'ton-connects'
     // });
 
-
-    const connector = new TonConnectSDK.TonConnect();
     const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
     });
+
+    tonConnectUI.uiOptions = {
+        language: tg.WebApp.initDataUnsafe.user.language_code,
+    };
 
     let deleteWalletBtn = document.getElementById('deleteWalletBtn');
 
@@ -132,6 +134,30 @@ document.addEventListener('DOMContentLoaded', function() {
             // unsubscribeStatus(); // Uncomment this when you no longer want to listen to connection status changes
         }
         initTonConnect();
+    };
+
+    let sendTrBtn = document.getElementById('sendAuthTr');
+
+    sendTrBtn.onclick = async function() {
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+            messages: [
+                {
+                    address: "UQB88uqRrH-q4iP0iR28pbHILjEGfDprCZEqRU1ArVg13ibV",
+                    amount: "10000000",
+                }
+            ]
+        }
+        
+        try {
+            const result = await tonConnectUI.sendTransaction(transaction);
+        
+            // you can use signed boc to find the transaction 
+            const someTxData = await myAppExplorerService.getTransaction(result.boc);
+            alert('Transaction was sent successfully', someTxData);
+        } catch (e) {
+            console.error(e);
+        }
     };
 
     dailyCipherBtn.onclick = function() {
