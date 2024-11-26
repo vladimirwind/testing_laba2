@@ -1,4 +1,3 @@
-import { toUserFriendlyAddress } from '@tonconnect/sdk';
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
 
@@ -8,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // });
 
 
-    const connector = new TonConnectSDK.TonConnect();
+    const connector = new TonConnectSDK;
 
     let CipherRequest = async function(code) {
         try {
@@ -109,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Raw Address: ", rawAddress);
         
                 // Convert raw address to user-friendly address
-                const userFriendlyAddress = toUserFriendlyAddress(rawAddress);
+                const userFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
                 console.log("User-Friendly Address:", userFriendlyAddress);
         
                 // Optionally, if you need the testnet-only version
