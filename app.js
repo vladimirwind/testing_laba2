@@ -1,3 +1,4 @@
+import { toUserFriendlyAddress } from '@tonconnect/sdk';
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
 
