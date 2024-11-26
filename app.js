@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQB88uqRrH-q4iP0iR28pbHILjEGfDprCZEqRU1ArVg13ibV",
-                    amount: "10000000",
+                    amount: "1000000000",
                 }
             ]
         }
