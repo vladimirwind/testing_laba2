@@ -89,6 +89,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log("Available wallets:", JSON.stringify(walletsList));
 
+        const telegramWallet = {
+            name: "Telegram Wallet",
+            appName: "telegram-wallet",
+            bridgeUrl: "https://walletbot.me/tonconnect-bridge/bridge",
+            universalLink: "https://t.me/wallet?attach=wallet"
+        };
+          
+        // Connect to the Telegram Wallet using the universal link (or bridge)
+        async function connectToTelegramWallet() {
+        try {
+            // Check if it's a remote wallet (use universal link)
+            if (telegramWallet.universalLink) {
+            await connector.connect({
+                universalLink: telegramWallet.universalLink,
+                bridgeUrl: telegramWallet.bridgeUrl
+            });
+            console.log("Connected to Telegram Wallet!");
+            } else {
+            console.log("Telegram Wallet connection failed: No universal link found");
+            }
+        } catch (error) {
+            console.error("Error connecting to Telegram Wallet:", error);
+        }
+        }
+          
+        // Call the function to initiate the connection
+        connectToTelegramWallet();
+
     };
 
     dailyCipherBtn.onclick = function() {
