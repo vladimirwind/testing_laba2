@@ -66,11 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let connectTONbtn = document.getElementById('ton-connect');
 
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: './tonconnect-manifest.json',
-        buttonRootId: 'ton-connect'
-    });
-
     let sliceAddress = function(raw) {
         let start = raw.slice(4)
         let end = raw.slice(-4)
@@ -81,11 +76,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     connectTONbtn.onclick = async function() {
-        const wallets = await tonConnectUI.openModal();
-        const unsubscribe = wallets.onStateChange(state => { console.log("state: ", state) });
-        unsubscribe();
-        const currentAccount = tonConnectUI.account;
-        console.log(currentAccount)
+        async function initTonConnect() {
+            // Create TonConnectUI instance (UI for wallet connection)
+            const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+                manifestUrl: './tonconnect-manifest.json',
+                buttonRootId: 'ton-connect'
+            });
+        
+            // Listen for changes in the modal state (opened/closed)
+            const unsubscribeModal = tonConnectUI.onModalStateChange(state => {
+              console.log("Modal State: ", state);
+              // Optionally, you can check for specific state transitions
+              if (state.status === 'opened') {
+                console.log("Modal opened, ready to connect!");
+              }
+              if (state.status === 'closed') {
+                console.log("Modal closed!");
+              }
+            });
+        
+            // Open the connection modal
+            try {
+              await tonConnectUI.openModal();  // This will open the modal
+            } catch (error) {
+              console.error("Error opening connection modal:", error);
+            }
+        
+            // Listen for wallet connection status change
+            const unsubscribeStatus = tonConnectUI.onStatusChange(walletInfo => {
+              if (walletInfo && walletInfo.account) {
+                const rawAddress = walletInfo.account.address;
+                console.log("Raw Address: ", rawAddress);
+        
+                // Convert raw address to user-friendly address
+                const userFriendlyAddress = toUserFriendlyAddress(rawAddress);
+                console.log("User-Friendly Address:", userFriendlyAddress);
+        
+                // Optionally, if you need the testnet-only version
+                const testnetUserFriendlyAddress = toUserFriendlyAddress(rawAddress, true);
+                console.log("Testnet-Only User-Friendly Address:", testnetUserFriendlyAddress);
+              } else {
+                console.log("No wallet connected yet.");
+              }
+            });
+        
+            // Optionally, you can unsubscribe when no longer needed
+            // unsubscribeModal();  // Uncomment this when you no longer want to listen to modal state changes
+            // unsubscribeStatus(); // Uncomment this when you no longer want to listen to connection status changes
+        }
     };
 
     dailyCipherBtn.onclick = function() {
