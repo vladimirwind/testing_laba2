@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentAccount = tonConnectUI.account;
         const currentIsConnectedStatus = tonConnectUI.connected;
 
-        console.log("cur wallet ", currentWallet)
-        console.log("cur wallet info", currentWalletInfo)
-        console.log("cur account", currentAccount)
-        console.log("cur state", currentIsConnectedStatus)
+        console.log(JSON.stringify({
+            ...tonConnectUI.wallet,
+            ...tonConnectUI.walletInfo 
+        }))
     }
 
     connectTONbtn.onclick = function() {
