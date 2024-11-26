@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Raw Address: ", rawAddress);
         
                 // Convert raw address to user-friendly address
-                const userFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
+                const userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
                 console.log("User-Friendly Address:", userFriendlyAddress);
         
               } else {
