@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 universalLink: telegramWallet.universalLink,
                 bridgeUrl: telegramWallet.bridgeUrl
             });
-            console.log("Connected to Telegram Wallet!");
+            console.log("Connected to Telegram Wallet!", connector.wallet);
             } else {
             console.log("Telegram Wallet connection failed: No universal link found");
             }
