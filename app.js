@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function connectToWallet() {
         const connectedWallet = await tonConnectUI.connectWallet();
-        console.log(connectedWallet);
+        console.log("user's wallet data: ",connectedWallet);
     }
 
     let CipherRequest = async function(code) {
