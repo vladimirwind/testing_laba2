@@ -8,6 +8,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     const connector = new TonConnectSDK.TonConnect();
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
+    });
+
+    let deleteWalletBtn = document.getElementById('deleteWalletBtn');
+
+    deleteWalletBtn.onclick = async function() {
+        try {
+            await tonConnectUI.disconnect();
+        } catch (error) {
+            console.error("Error closing conn:", error);
+        }
+    }
 
     let CipherRequest = async function(code) {
         try {
@@ -94,10 +107,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     connectTONbtn.onclick = async function() {
         async function initTonConnect() {
-            // Create TonConnectUI instance (UI for wallet connection)
-            const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-                manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
-            });
         
             // Listen for changes in the modal state (opened/closed)
             const unsubscribeModal = tonConnectUI.onModalStateChange(state => {
@@ -116,16 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
               await tonConnectUI.openModal();  // This will open the modal
             } catch (error) {
               console.error("Error opening connection modal:", error);
-            }
-
-            let deleteWalletBtn = document.getElementById('deleteWalletBtn');
-
-            deleteWalletBtn.onclick = async function() {
-                try {
-                    await tonConnectUI.disconnect();
-                } catch (error) {
-                    console.error("Error closing conn:", error);
-                }
             }
         
             // Optionally, you can unsubscribe when no longer needed
