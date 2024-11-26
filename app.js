@@ -111,9 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const userFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
                 console.log("User-Friendly Address:", userFriendlyAddress);
         
-                // Optionally, if you need the testnet-only version
-                const testnetUserFriendlyAddress = toUserFriendlyAddress(rawAddress, true);
-                console.log("Testnet-Only User-Friendly Address:", testnetUserFriendlyAddress);
               } else {
                 console.log("No wallet connected yet.");
               }
