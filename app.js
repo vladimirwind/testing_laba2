@@ -107,37 +107,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         // Connect to the Telegram Wallet using the universal link (or bridge)
         async function connectToTelegramWallet() {
-        try {
-            // Check if it's a remote wallet (use universal link)
-            if (telegramWallet.universalLink) {
-            await connector.connect({
-                universalLink: telegramWallet.universalLink,
-                bridgeUrl: telegramWallet.bridgeUrl
-            });
-            console.log("Connected to Telegram Wallet!", connector.wallet);
-            } else {
-            console.log("Telegram Wallet connection failed: No universal link found");
+            try {
+              const telegramWallet = {
+                name: "Telegram Wallet",
+                appName: "telegram-wallet",
+                bridgeUrl: "https://walletbot.me/tonconnect-bridge/bridge",
+                universalLink: "https://t.me/wallet?attach=wallet"
+              };
+          
+              if (telegramWallet.universalLink) {
+                // Use the universal link for connection
+                await connector.connect({
+                  universalLink: telegramWallet.universalLink,
+                  bridgeUrl: telegramWallet.bridgeUrl
+                });
+          
+                console.log("Attempting to connect to Telegram Wallet...");
+              } else {
+                console.log("Telegram Wallet connection failed: No universal link found.");
+              }
+            } catch (error) {
+              console.error("Error connecting to Telegram Wallet:", error);
             }
-        } catch (error) {
-            console.error("Error connecting to Telegram Wallet:", error);
-        }
         }
         // Listen for connection status changes
         connector.onStatusChange(walletInfo => {
-            if (walletInfo) {
-            console.log("Connected to wallet:", walletInfo);
-        
-            // Check if the wallet is connected and log the raw address and user-friendly address
-            if (connector.wallet && connector.wallet.account && connector.wallet.account.address) {
-                const rawAddress = connector.wallet.account.address;
-                const userFriendlyAddress = convertToUserFriendlyAddress(rawAddress);
-        
-                // Log both raw address and user-friendly address
-                console.log("Raw Address:", rawAddress);
-                console.log("User-Friendly Address:", userFriendlyAddress);
-            }
+            console.log("Wallet status changed:", walletInfo);
+          
+            // Check if the wallet is connected
+            if (walletInfo && connector.wallet && connector.wallet.account && connector.wallet.account.address) {
+              const rawAddress = connector.wallet.account.address;
+              const userFriendlyAddress = convertToUserFriendlyAddress(rawAddress);
+          
+              console.log("Raw Address:", rawAddress);
+              console.log("User-Friendly Address:", userFriendlyAddress);
+            } else {
+              console.log("No wallet connected yet.");
             }
         });
+        
         // Call the function to initiate the connection
         connectToTelegramWallet();
         
