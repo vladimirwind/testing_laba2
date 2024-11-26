@@ -21,14 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let Test = async function() {
         const walletsList = await connector.getWallets();
         console.log(JSON.stringify(walletsList))
-        const embeddedWallet = walletsList.find(isWalletInfoCurrentlyEmbedded);
         if (!connector.connected) {
             alert('Please connect wallet to send the transaction!');
         }
-        if (embeddedWallet) {
-            connector.connect({ jsBridgeKey: embeddedWallet.jsBridgeKey });
-            return;
+        const walletConnectionSource = {
+            jsBridgeKey: 'tgwallet'
         }
+    
+        connector.connect(walletConnectionSource);
+   
         
         const rawAddress = connector.wallet.account.address; // like '0:abcdef123456789...'
         const bouncableUserFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
