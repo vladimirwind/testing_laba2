@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         async function initTonConnect() {
             // Create TonConnectUI instance (UI for wallet connection)
             const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-                manifestUrl: './tonconnect-manifest.json',
+                manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
                 buttonRootId: 'ton-connect'
             });
         
