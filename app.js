@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // });
 
 
-    const connector = new TonConnectSDK;
+    const connector = new TonConnectSDK.TonConnect();
 
     let CipherRequest = async function(code) {
         try {
