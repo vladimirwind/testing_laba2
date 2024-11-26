@@ -24,11 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!connector.connected) {
             alert('Please connect wallet to send the transaction!');
         }
+
         const walletConnectionSource = {
-            jsBridgeKey: 'tgwallet'
+            universalLink: 'https://t.me/wallet?attach=wallet',
+            bridgeUrl: 'https://walletbot.me/tonconnect-bridge/bridge'
         }
-    
-        connector.connect(walletConnectionSource);
+        
+        const universalLink = connector.connect(walletConnectionSource);
    
         
         const rawAddress = connector.wallet.account.address; // like '0:abcdef123456789...'
