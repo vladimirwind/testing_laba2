@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     connectTONbtn.onclick = async function() {
-        const wallets = await TonConnectUI.openModal();
-        const unsubscribe = modal.onStateChange(state => { console.log("state: ", state) });
+        const wallets = await tonConnectUI.openModal();
+        const unsubscribe = wallets.onStateChange(state => { console.log("state: ", state) });
         unsubscribe();
         const currentAccount = tonConnectUI.account;
         console.log(currentAccount)
