@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             deleteWalletBtn.onclick = async function() {
                 try {
-                    await tonConnectUI.closeModal();
+                    await tonConnectUI.disconnect();
                 } catch (error) {
-                    console.error("Error opening connection modal:", error);
+                    console.error("Error closing conn:", error);
                 }
             }
         
