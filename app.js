@@ -66,6 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let connectTONbtn = document.getElementById('ton-connect');
 
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: './tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+
     let sliceAddress = function(raw) {
         let start = raw.slice(4)
         let end = raw.slice(-4)
@@ -76,79 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     connectTONbtn.onclick = async function() {
-        const connector = new TonConnectSDK.TonConnect({
-            manifestUrl: './tonconnect-manifest.json'
-        });
-        connector.restoreConnection();
-
-        const unsubscribe = connector.onStatusChange(walletInfo => {
-            console.log("Wallet connection status updated:", walletInfo);
-        });
-
-        const walletsList = await connector.getWallets();
-
-        console.log("Available wallets:", JSON.stringify(walletsList));
-
-        const telegramWallet = {
-            name: "Telegram Wallet",
-            appName: "telegram-wallet",
-            bridgeUrl: "https://walletbot.me/tonconnect-bridge/bridge",
-            universalLink: "https://t.me/wallet?attach=wallet"
-        };
-
-        function convertToUserFriendlyAddress(rawAddress) {
-            try {
-              const userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
-              return userFriendlyAddress;
-            } catch (error) {
-              console.error("Error converting address:", error);
-              return null;
-            }
-        }
-        // Connect to the Telegram Wallet using the universal link (or bridge)
-        async function connectToTelegramWallet() {
-            try {
-              const telegramWallet = {
-                name: "Telegram Wallet",
-                appName: "telegram-wallet",
-                bridgeUrl: "https://walletbot.me/tonconnect-bridge/bridge",
-                universalLink: "https://t.me/wallet?attach=wallet"
-              };
-          
-              if (telegramWallet.universalLink) {
-                // Use the universal link for connection
-                await connector.connect({
-                  universalLink: telegramWallet.universalLink,
-                  bridgeUrl: telegramWallet.bridgeUrl
-                });
-          
-                console.log("Attempting to connect to Telegram Wallet...");
-              } else {
-                console.log("Telegram Wallet connection failed: No universal link found.");
-              }
-            } catch (error) {
-              console.error("Error connecting to Telegram Wallet:", error);
-            }
-        }
-        // Listen for connection status changes
-        connector.onStatusChange(walletInfo => {
-            console.log("Wallet status changed:", walletInfo);
-          
-            // Check if the wallet is connected
-            if (walletInfo && connector.wallet && connector.wallet.account && connector.wallet.account.address) {
-              const rawAddress = connector.wallet.account.address;
-              const userFriendlyAddress = convertToUserFriendlyAddress(rawAddress);
-          
-              console.log("Raw Address:", rawAddress);
-              console.log("User-Friendly Address:", userFriendlyAddress);
-            } else {
-              console.log("No wallet connected yet.");
-            }
-        });
-        
-        // Call the function to initiate the connection
-        connectToTelegramWallet();
-        
+        const wallets = await TonConnectUI.openModal();
+        const unsubscribe = modal.onStateChange(state => { console.log("state: ", state) });
+        unsubscribe();
+        const currentAccount = tonConnectUI.account;
+        console.log(currentAccount)
     };
 
     dailyCipherBtn.onclick = function() {
