@@ -98,12 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
           
           let slicedAddr = sliceAddress(userFriendlyAddress);
 
-          document.getElementById('userWalletAddr') = slicedAddr;
+          document.getElementById('userWalletAddr').textContent = slicedAddr;
   
         } else {
           console.log("No wallet connected yet.");
         }
-      });
+    });
 
     connectTONbtn.onclick = async function() {
         async function initTonConnect() {
