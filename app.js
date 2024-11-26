@@ -6,43 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     //     buttonRootId: 'ton-connects'
     // });
 
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
-        buttonRootId: 'ton-connect'
-    });
 
     const connector = new TonConnectSDK.TonConnect();
-
-    async function connectToWallet() {
-        const connectedWallet = await tonConnectUI.connectWallet();
-        console.log("user's wallet data: ",connectedWallet);
-    }
-
-    let Test = async function() {
-        const walletsList = await connector.getWallets();
-        console.log(JSON.stringify(walletsList))
-        if (!connector.connected) {
-            console.log('Please connect wallet to send the transaction!');
-        }
-
-        const walletConnectionSource = {
-            universalLink: 'https://t.me/wallet?attach=wallet',
-            bridgeUrl: 'https://walletbot.me/tonconnect-bridge/bridge'
-        }
-        
-        const universalLink = connector.connect(walletConnectionSource);
-        window.location.href = universalLink;
-        
-        const rawAddress = connector.wallet.account.address; // like '0:abcdef123456789...'
-        const bouncableUserFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
-        const testnetOnlyBouncableUserFriendlyAddress = toUserFriendlyAddress(rawAddress, true);
-
-        console.log("here we go ", bouncableUserFriendlyAddress)
-    }
-
-    connector.restoreConnection();
-
-    Test();
 
     let CipherRequest = async function(code) {
         try {
@@ -101,18 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let connectTONbtn = document.getElementById('ton-connect');
 
-    let checkF = async function() {
-        const currentWallet = tonConnectUI.wallet;
-        const currentWalletInfo = tonConnectUI.walletInfo;
-        const currentAccount = tonConnectUI.account;
-        const currentIsConnectedStatus = tonConnectUI.connected;
-
-        let ex = tonConnectUI.connector.wallet.account.address;
-        let toFr = 
-
-        console.log("HERE BRO: ", JSON.stringify(tonConnectUI.getWallets()));
-    }
-
     let sliceAddress = function(raw) {
         let start = raw.slice(4)
         let end = raw.slice(-4)
@@ -123,9 +76,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     connectTONbtn.onclick = function() {
-        connectToWallet().catch(error => {
-            checkF();
-        });
+        if (window.TONConnect) {
+            const tonConnect = new TONConnect({
+            network: 'mainnet',
+            });
+          
+            // Trigger the wallet connection process
+            const connectToWallet = async () => {
+            try {
+                // Open TON Connect modal
+                const result = await tonConnect.connect();
+                console.log('Connected to wallet:', result);
+          
+                // Handle successful connection
+                // You will get the wallet address and other info here
+                const walletAddress = result.address;  // wallet address (e.g., Tonkeeper address)
+                console.log("Connected wallet address:", walletAddress);
+          
+                // You can now send transactions or interact with the wallet here
+          
+              } catch (error) {
+                console.error("Error connecting to wallet:", error);
+              }
+            };
+          
+            // Call the connect function when you're ready to connect
+            connectToWallet();
+        } else {
+            console.error("TON Connect SDK is not available.");
+        }
     };
 
     dailyCipherBtn.onclick = function() {
