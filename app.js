@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', function() {
     //     buttonRootId: 'ton-connects'
     // });
 
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+
+    async function connectToWallet() {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        console.log(connectedWallet);
+    }
+
     let CipherRequest = async function(code) {
         try {
         let myResponse = await fetch(baza + `/user/dailycipher/${code}`, {
@@ -61,6 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let closeDailyBtn = document.getElementById('X_Daily');
     var islandSwitchBtn = document.getElementById('islandSwitchBtn');
     var IslandState = false;
+
+    let connectTONbtn = document.getElementById('ton-connect');
+
+    connectTONbtn.onclick = function() {
+        connectToWallet().catch(error => {
+            console.error("Error connecting to wallet:", error);
+        });
+    };
 
     dailyCipherBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
