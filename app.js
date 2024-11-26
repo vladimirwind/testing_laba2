@@ -75,6 +75,23 @@ document.addEventListener('DOMContentLoaded', function() {
         return newAddr
     }
 
+    const unsubscribeStatus = tonConnectUI.onStatusChange(walletInfo => {
+        if (walletInfo && walletInfo.account) {
+          const rawAddress = walletInfo.account.address;
+          console.log("Raw Address: ", rawAddress);
+  
+          // Convert raw address to user-friendly address
+          const userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
+          
+          let slicedAddr = sliceAddress(userFriendlyAddress);
+
+          document.getElementById('userWalletAddr') = slicedAddr;
+  
+        } else {
+          console.log("No wallet connected yet.");
+        }
+      });
+
     connectTONbtn.onclick = async function() {
         async function initTonConnect() {
             // Create TonConnectUI instance (UI for wallet connection)
@@ -100,21 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
               console.error("Error opening connection modal:", error);
             }
-        
-            // Listen for wallet connection status change
-            const unsubscribeStatus = tonConnectUI.onStatusChange(walletInfo => {
-              if (walletInfo && walletInfo.account) {
-                const rawAddress = walletInfo.account.address;
-                console.log("Raw Address: ", rawAddress);
-        
-                // Convert raw address to user-friendly address
-                const userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
-                console.log("User-Friendly Address:", userFriendlyAddress);
-        
-              } else {
-                console.log("No wallet connected yet.");
-              }
-            });
 
             let deleteWalletBtn = document.getElementById('deleteWalletBtn');
 
