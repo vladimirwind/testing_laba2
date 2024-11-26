@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let Test = async function() {
         const walletsList = await connector.getWallets();
         console.log(JSON.stringify(walletsList))
+        connector.connectWallet();
         const rawAddress = connector.wallet.account.address; // like '0:abcdef123456789...'
         const bouncableUserFriendlyAddress = connector.toUserFriendlyAddress(rawAddress);
         const testnetOnlyBouncableUserFriendlyAddress = toUserFriendlyAddress(rawAddress, true);
