@@ -14,17 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
         language: tg.WebApp.initDataUnsafe.user.language_code,
     };
 
-    let deleteWalletBtn = document.getElementById('deleteWalletBtn');
-
-    deleteWalletBtn.onclick = async function() {
-        try {
-            await tonConnectUI.disconnect();
-            document.getElementById('userWalletAddr').innerHTML = '&nbsp;';
-        } catch (error) {
-            console.error("Error closing conn:", error);
-        }
-    }
-
     let CipherRequest = async function(code) {
         try {
         let myResponse = await fetch(baza + `/user/dailycipher/${code}`, {
@@ -91,6 +80,18 @@ document.addEventListener('DOMContentLoaded', function() {
         return newAddr
     }
 
+    let deleteWalletBtn = document.getElementById('deleteWalletBtn');
+
+    deleteWalletBtn.onclick = async function() {
+        try {
+            await tonConnectUI.disconnect();
+            document.getElementById('userWalletAddr').innerHTML = '&nbsp;';
+            connectTONbtn.style.display = 'flex';
+        } catch (error) {
+            console.error("Error closing conn:", error);
+        }
+    }
+
     const unsubscribeStatus = tonConnectUI.onStatusChange(walletInfo => {
         if (walletInfo && walletInfo.account) {
           const rawAddress = walletInfo.account.address;
@@ -102,6 +103,8 @@ document.addEventListener('DOMContentLoaded', function() {
           let slicedAddr = sliceAddress(userFriendlyAddress);
 
           document.getElementById('userWalletAddr').textContent = slicedAddr;
+
+          connectTONbtn.style.display = 'none';
   
         } else {
           console.log("No wallet connected yet.");
