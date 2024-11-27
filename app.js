@@ -140,11 +140,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     sendTrBtn.onclick = async function() {
         const transaction = {
-            validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+            validUntil: Math.floor(Date.now() / 1000) + 120, // 120 sec
             messages: [
                 {
                     address: "UQB88uqRrH-q4iP0iR28pbHILjEGfDprCZEqRU1ArVg13ibV",
-                    amount: "2000000000",
+                    amount: "1000000000",
                 }
             ]
         }
