@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteWalletBtn.onclick = async function() {
         try {
             await tonConnectUI.disconnect();
+            document.getElementById('userWalletAddr').innerHTML = '&nbsp;';
         } catch (error) {
             console.error("Error closing conn:", error);
         }
