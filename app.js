@@ -144,11 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     sendTrBtn.onclick = async function() {
         const transaction = {
-            validUntil: Math.floor(Date.now() / 1000) + 120, // 120 sec
+            validUntil: Math.floor(Date.now() / 1000) + 120,
             messages: [
                 {
-                    address: "UQB88uqRrH-q4iP0iR28pbHILjEGfDprCZEqRU1ArVg13ibV",
-                    amount: "1000000000",
+                    address: "UQAJtRXS8tpmPFw821L-bSAfY0heLXQCAKpjUkk6kbaL_rZC",
+                    amount: "10000000",
                 }
             ]
         }
@@ -156,9 +156,8 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const result = await tonConnectUI.sendTransaction(transaction);
         
-            // you can use signed boc to find the transaction 
             const someTxData = await myAppExplorerService.getTransaction(result.boc);
-            alert('Transaction was sent successfully', someTxData);
+            console.log('Transaction was sent successfully:', someTxData);
         } catch (e) {
             console.error(e);
         }
