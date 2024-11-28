@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     address: "UQAJtRXS8tpmPFw821L-bSAfY0heLXQCAKpjUkk6kbaL_rZC",
                     amount: "10000000",
+                    payload: "tgid_4121"
                 }
             ]
         }
@@ -156,8 +157,17 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             const result = await tonConnectUI.sendTransaction(transaction);
         
-            const someTxData = await myAppExplorerService.getTransaction(result.boc);
-            console.log('Transaction was sent successfully:', someTxData);
+            console.log('Transaction was sent successfully:', result);
+
+            const bocCellBytes = TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(result.boc)).hash();
+            
+            const hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
+            
+            // hashBase64: vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
+            
+            // https://tonscan.org/tx/by-msg-hash/vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
+    
+            console.log('here it is boy: ', bocCellBytes, hashBase64)
         } catch (e) {
             console.error(e);
         }
@@ -165,20 +175,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const TonWeb = new window.TonWeb();
 
-    let testSmth = async function() {
-        let boc = 'te6cckEBAgEAqQAB4YgB9sbdet9bDH2gVpDDPNDndAjkMkV93m…vFroBAFUxqSSdSNtF/xzEtAAAAAAAAAAAAAAAAAAAN9ElvA=='
-       
-        const bocCellBytes = TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(boc)).hash();
-        
-        const hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
-        
-        // hashBase64: vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
-        
-        // https://tonscan.org/tx/by-msg-hash/vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
-
-        console.log('here is is boy: ', bocCellBytes, hashBase64)
-    }
-    testSmth()
     dailyCipherBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('dailyCipherContainer').style.display = 'flex';
