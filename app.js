@@ -167,10 +167,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let testSmth = async function() {
         let boc = 'te6cckEBAgEAqQAB4YgB9sbdet9bDH2gVpDDPNDndAjkMkV93m…vFroBAFUxqSSdSNtF/xzEtAAAAAAAAAAAAAAAAAAAN9ElvA=='
-        const bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(boc)).hash();
+       
+        const bocCellBytes = TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(boc)).hash();
+        
         const hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
+        
+        // hashBase64: vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
+        
+        // https://tonscan.org/tx/by-msg-hash/vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
 
-        console.log('here is is boy: ', hashBase64)
+        console.log('here is is boy: ', bocCellBytes, hashBase64)
     }
     testSmth()
     dailyCipherBtn.onclick = function() {
