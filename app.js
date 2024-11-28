@@ -144,17 +144,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     sendTrBtn.onclick = async function() {
         const transaction = {
-            validUntil: Math.floor(Date.now() / 1000) + 120,
+            validUntil: Math.floor(Date.now() / 1000) + 360,
             messages: [
                 {
                     address: "UQAJtRXS8tpmPFw821L-bSAfY0heLXQCAKpjUkk6kbaL_rZC",
                     amount: "10000000",
                  // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
-                },
-                {
-                    address: "UQAJtRXS8tpmPFw821L-bSAfY0heLXQCAKpjUkk6kbaL_rZC",
-                    amount: "20000000",
-                 // payload: "base64bocblahblahblah==" // just for instance. Replace with your transaction payload or remove
                 }
             ]
         }
