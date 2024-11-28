@@ -163,6 +163,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    const TonWeb = new window.TonWeb();
+
+    let testSmth = async function() {
+        let boc = 'te6cckEBAgEAqQAB4YgB9sbdet9bDH2gVpDDPNDndAjkMkV93m…vFroBAFUxqSSdSNtF/xzEtAAAAAAAAAAAAAAAAAAAN9ElvA=='
+        const bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(boc)).hash();
+        const hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
+
+        console.log('here is is boy: ', hashBase64)
+    }
+    testSmth()
     dailyCipherBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('dailyCipherContainer').style.display = 'flex';
