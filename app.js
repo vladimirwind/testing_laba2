@@ -159,15 +159,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
             console.log('Transaction was sent successfully:', result);
 
-            const bocCellBytes = TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(result.boc)).hash();
+            const bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(result.boc)).hash();
             
+            console.log('here it is boy 1: ', bocCellBytes)
+
             const hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
             
             // hashBase64: vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
             
             // https://tonscan.org/tx/by-msg-hash/vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
     
-            console.log('here it is boy: ', bocCellBytes, hashBase64)
+            console.log('here it is boy 2: ', hashBase64)
         } catch (e) {
             console.error(e);
         }
