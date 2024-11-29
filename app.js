@@ -105,6 +105,12 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     let InitialCheckWallet = function() {
+
+        let tmp = async function() {
+            await tonConnectUI.openModal();
+            return
+        }
+        tmp()
         let rawAddress = tonConnectUI.account.address;
         if (rawAddress) {
    
