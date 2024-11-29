@@ -80,66 +80,64 @@ document.addEventListener('DOMContentLoaded', function() {
         return newAddr
     }
 
+    let IntervalSubscribeWallet;
+
+    let SubscribeWallet = function() {
+        let rawAddress = tonConnectUI.account.address;
+    
+        if (rawAddress) {
+            console.log("Raw Address: ", rawAddress);
+    
+            // Convert raw address to user-friendly address
+            const userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
+            
+            let slicedAddr = sliceAddress(userFriendlyAddress);
+    
+            document.getElementById('userWalletAddr').textContent = slicedAddr;
+    
+            connectTONbtn.src = './images/ConnectOffBTN.svg';
+            connectTONbtn.onclick = function() {};
+    
+            if (IntervalSubscribeWallet) {
+                clearInterval(IntervalSubscribeWallet);
+            }
+        }
+    };
+
+    let connectionFunc = function() {
+        async function initTonConnect() {
+            try {
+                await tonConnectUI.openModal();
+    
+                if (IntervalSubscribeWallet) {
+                    clearInterval(IntervalSubscribeWallet);
+                }
+
+                SubscribeWallet();
+
+                IntervalSubscribeWallet = setInterval(SubscribeWallet, 1000);
+            } catch (error) {
+                console.error("Error opening connection modal:", error);
+            }
+        }
+        initTonConnect();
+    };
+    
+    connectTONbtn.onclick = connectionFunc;
+
     let deleteWalletBtn = document.getElementById('deleteWalletBtn');
 
     deleteWalletBtn.onclick = async function() {
         try {
             await tonConnectUI.disconnect();
             document.getElementById('userWalletAddr').innerHTML = '&nbsp;';
-            connectTONbtn.style.display = 'flex';
+            connectTONbtn.src = './images/ConnectActiveBTN.svg';
+            connectTONbtn.onclick = connectionFunc;
         } catch (error) {
             console.error("Error closing conn:", error);
         }
     }
-
-    const unsubscribeStatus = tonConnectUI.onStatusChange(walletInfo => {
-        if (walletInfo && walletInfo.account) {
-          const rawAddress = walletInfo.account.address;
-          console.log("Raw Address: ", rawAddress);
-  
-          // Convert raw address to user-friendly address
-          const userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
-          
-          let slicedAddr = sliceAddress(userFriendlyAddress);
-
-          document.getElementById('userWalletAddr').textContent = slicedAddr;
-
-          connectTONbtn.style.display = 'none';
-  
-        } else {
-          console.log("No wallet connected yet.");
-        }
-    });
-
-    connectTONbtn.onclick = async function() {
-        async function initTonConnect() {
-        
-            // Listen for changes in the modal state (opened/closed)
-            const unsubscribeModal = tonConnectUI.onModalStateChange(state => {
-              console.log("Modal State: ", state);
-              // Optionally, you can check for specific state transitions
-              if (state.status === 'opened') {
-                console.log("Modal opened, ready to connect!");
-              }
-              if (state.status === 'closed') {
-                console.log("Modal closed!");
-              }
-            });
-        
-            // Open the connection modal
-            try {
-              await tonConnectUI.openModal();  // This will open the modal
-            } catch (error) {
-              console.error("Error opening connection modal:", error);
-            }
-        
-            // Optionally, you can unsubscribe when no longer needed
-            // unsubscribeModal();  // Uncomment this when you no longer want to listen to modal state changes
-            // unsubscribeStatus(); // Uncomment this when you no longer want to listen to connection status changes
-        }
-        initTonConnect();
-    };
-
+    
     let sendTrBtn = document.getElementById('sendAuthTr');
 
     sendTrBtn.onclick = async function() {
@@ -147,29 +145,22 @@ document.addEventListener('DOMContentLoaded', function() {
             validUntil: Math.floor(Date.now() / 1000) + 360,
             messages: [
                 {
-                    address: "UQAJtRXS8tpmPFw821L-bSAfY0heLXQCAKpjUkk6kbaL_rZC",
+                    address: atob("VVFBSnRSWFM4dHBtUEZ3ODIxTC1iU0FmWTBoZUxYUUNBS3BqVWtrNmtiYUxfclpD"),
                     amount: "10000000",
-                 // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
                 }
             ]
         }
         
         try {
-            const result = await tonConnectUI.sendTransaction(transaction);
-        
-            console.log('Transaction was sent successfully:', result);
 
-            const bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(result.boc)).hash();
-            
-            console.log('here it is boy 1: ', bocCellBytes)
+            let result = await tonConnectUI.sendTransaction(transaction);
 
-            const hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
+            let bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(result.boc)).hash();
             
-            // hashBase64: vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
+            let hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
             
-            // https://tonscan.org/tx/by-msg-hash/vgDP5GJPUKL-Cv_wkUnurlgRF4P8brhSf5zhAGUtosM=
-    
-            console.log('here it is boy 2: ', hashBase64)
+            SendCheckTransaction(hashBase64)
+
         } catch (e) {
             console.error(e);
         }
