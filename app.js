@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
             // Convert raw address to user-friendly address
             let userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
+
+            localStorage.setItem('connectedWallet', userFriendlyAddress);
             
             let slicedAddr = sliceAddress(userFriendlyAddress);
     
@@ -106,27 +108,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let InitialCheckWallet = function() {
 
-        let tmp = async function() {
-            await tonConnectUI.openModal();
-            return
-        }
-        tmp()
-        let rawAddress = tonConnectUI.account.address;
-        if (rawAddress) {
-   
-            let userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
+        let tmpFlag = localStorage.getItem('connectedWallet');
         
-            let slicedAddr = sliceAddress(userFriendlyAddress);
+        if (tmpFlag) {
+        
+            let slicedAddr = sliceAddress(tmpFlag);
     
             document.getElementById('userWalletAddr').textContent = slicedAddr;
     
             connectTONbtn.src = './images/ConnectOffBTN.svg';
             connectTONbtn.onclick = function() {};
-   
+
         } else {
             return
         }
-
     }
 
     let connectionFunc = function() {
@@ -157,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
             await tonConnectUI.disconnect();
             document.getElementById('userWalletAddr').innerHTML = '&nbsp;';
             connectTONbtn.src = './images/ConnectActiveBTN.svg';
+            localStorage.removeItem('connectedWallet');
             connectTONbtn.onclick = connectionFunc;
         } catch (error) {
             console.error("Error closing conn:", error);
