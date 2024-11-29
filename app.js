@@ -105,23 +105,18 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     let InitialCheckWallet = function() {
-        let rawAcc = tonConnectUI.account;
-        if (rawAcc) {
-            if (rawAcc.address) {
-
-                let rawAddress = rawAcc.address;
-
-                let userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
-            
-                let slicedAddr = sliceAddress(userFriendlyAddress);
+        let rawAddress = tonConnectUI.account.address;
+        if (rawAddress) {
+   
+            let userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
         
-                document.getElementById('userWalletAddr').textContent = slicedAddr;
-        
-                connectTONbtn.src = './images/ConnectOffBTN.svg';
-                connectTONbtn.onclick = function() {};
-            } else {
-                return
-            }
+            let slicedAddr = sliceAddress(userFriendlyAddress);
+    
+            document.getElementById('userWalletAddr').textContent = slicedAddr;
+    
+            connectTONbtn.src = './images/ConnectOffBTN.svg';
+            connectTONbtn.onclick = function() {};
+   
         } else {
             return
         }
