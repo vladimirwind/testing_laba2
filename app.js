@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Raw Address: ", rawAddress);
     
             // Convert raw address to user-friendly address
-            const userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
+            let userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
             
             let slicedAddr = sliceAddress(userFriendlyAddress);
     
@@ -103,6 +103,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     };
+
+    let InitialCheckWallet = function() {
+        let rawAcc = tonConnectUI.account;
+        if (rawAcc) {
+            if (rawAcc.address) {
+
+                let rawAddress = rawAcc.address;
+
+                let userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
+            
+                let slicedAddr = sliceAddress(userFriendlyAddress);
+        
+                document.getElementById('userWalletAddr').textContent = slicedAddr;
+        
+                connectTONbtn.src = './images/ConnectOffBTN.svg';
+                connectTONbtn.onclick = function() {};
+            } else {
+                return
+            }
+        } else {
+            return
+        }
+
+    }
 
     let connectionFunc = function() {
         async function initTonConnect() {
@@ -167,6 +191,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const TonWeb = new window.TonWeb();
+
+    InitialCheckWallet();
 
     dailyCipherBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
