@@ -181,7 +181,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (walletText && walletText !== "") {
 
             let tmpFunc = async function() {
-                await navigator.clipboard.writeText(walletText);
+                try {
+                    await navigator.clipboard.writeText(text);
+                } catch (err) {
+                    console.log('Failed to copy: ', err);
+                };
             };
 
             tmpFunc();
