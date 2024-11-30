@@ -166,8 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // SendCheckTransaction(hashBase64)
 
             if (true) {
-                sendTrBtn.onclick = function(){};
+
                 sendTrBtn.src = './images/sendTrOffBtn.svg'
+                sendTrBtn.onclick = function(){};
 
                 let tickImg = document.getElementById('sendTransactionTick');
                 tickImg.src = './images/V-Mark-Wallet.svg';
