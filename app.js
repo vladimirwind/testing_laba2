@@ -171,6 +171,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    copyWalletBtn = document.getElementById('copyWalletBtn');
+
+    copyWalletBtn.onclick = function() {
+
+
+        let walletText = localStorage.getItem('connectedWallet');
+        
+        if (walletText && walletText !== "") {
+
+            let tmpFunc = async function() {
+                await navigator.clipboard.writeText(walletText);
+            };
+
+            tmpFunc();
+        };
+    };
+
     const TonWeb = new window.TonWeb();
 
     let InitialCheckWallet = function() {
