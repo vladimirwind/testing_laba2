@@ -168,11 +168,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (true) {
                 sendTrBtn.onclick = function(){};
                 sendTrBtn.src = './images/sendTrOffBtn.svg'
-                
+
                 let tickImg = document.getElementById('sendTransactionTick');
                 tickImg.src = './images/V-Mark-Wallet.svg';
 
-                console.log("HASH: ", hashBase64)
+                console.log("HASH: ", hashBase64);
             }
 
         } catch (e) {
