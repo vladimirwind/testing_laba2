@@ -99,30 +99,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
             connectTONbtn.src = './images/ConnectOffBTN.svg';
             connectTONbtn.onclick = function() {};
+
+            let tickImg = document.getElementById('connectWalletTick');
+            tickImg.src = './images/V-Mark-Wallet.svg';
     
             if (IntervalSubscribeWallet) {
                 clearInterval(IntervalSubscribeWallet);
             }
         }
     };
-
-    let InitialCheckWallet = function() {
-
-        let tmpFlag = localStorage.getItem('connectedWallet');
-        
-        if (tmpFlag) {
-        
-            let slicedAddr = sliceAddress(tmpFlag);
-    
-            document.getElementById('userWalletAddr').textContent = slicedAddr;
-    
-            connectTONbtn.src = './images/ConnectOffBTN.svg';
-            connectTONbtn.onclick = function() {};
-
-        } else {
-            return
-        }
-    }
 
     let connectionFunc = function() {
         async function initTonConnect() {
@@ -187,6 +172,24 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const TonWeb = new window.TonWeb();
+
+    let InitialCheckWallet = function() {
+
+        let tmpFlag = localStorage.getItem('connectedWallet');
+        
+        if (tmpFlag) {
+        
+            let slicedAddr = sliceAddress(tmpFlag);
+    
+            document.getElementById('userWalletAddr').textContent = slicedAddr;
+    
+            connectTONbtn.src = './images/ConnectOffBTN.svg';
+            connectTONbtn.onclick = function() {};
+
+            let tickImg = document.getElementById('connectWalletTick');
+            tickImg.src = './images/V-Mark-Wallet.svg';
+        };
+    };
 
     InitialCheckWallet();
 
