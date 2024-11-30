@@ -175,14 +175,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     copyWalletBtn.onclick = function() {
 
-
         let walletText = localStorage.getItem('connectedWallet');
         
         if (walletText && walletText !== "") {
 
             let tmpFunc = async function() {
                 try {
-                    await navigator.clipboard.writeText(text);
+                    await navigator.clipboard.writeText(walletText);
                 } catch (err) {
                     console.log('Failed to copy: ', err);
                 };
