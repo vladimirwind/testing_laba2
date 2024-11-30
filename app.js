@@ -88,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (rawAddress) {
             console.log("Raw Address: ", rawAddress);
     
-            // Convert raw address to user-friendly address
             let userFriendlyAddress = TonConnectSDK.toUserFriendlyAddress(rawAddress);
 
             localStorage.setItem('connectedWallet', userFriendlyAddress);
@@ -164,7 +163,17 @@ document.addEventListener('DOMContentLoaded', function() {
             
             let hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
             
-            SendCheckTransaction(hashBase64)
+            // SendCheckTransaction(hashBase64)
+
+            if (true) {
+                sendTrBtn.onclick = function(){};
+                sendTrBtn.src = './images/sendTrOffBtn.svg'
+                
+                let tickImg = document.getElementById('sendTransactionTick');
+                tickImg.src = './images/V-Mark-Wallet.svg';
+
+                console.log("HASH: ", hashBase64)
+            }
 
         } catch (e) {
             console.error(e);
