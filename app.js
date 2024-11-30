@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    copyWalletBtn = document.getElementById('copyWalletBtn');
+    let copyWalletBtn = document.getElementById('copyWalletBtn');
 
     copyWalletBtn.onclick = function() {
 
