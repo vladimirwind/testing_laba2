@@ -10,9 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
         manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
     });
 
-    tonConnectUI.uiOptions = {
-        language: tg.WebApp.initDataUnsafe.user.language_code,
+    try {
+        tonConnectUI.uiOptions = {
+            language: tg.WebApp.initDataUnsafe.user.language_code,
+        };
+    } catch (err) {
+        console.log(err)
     };
+
 
     let CipherRequest = async function(code) {
         try {
