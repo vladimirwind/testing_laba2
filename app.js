@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     clearInterval(IntervalSubscribeWallet);
                 }
 
-                IntervalSubscribeWallet = setInterval(SubscribeWallet, 100);
+                IntervalSubscribeWallet = setInterval(SubscribeWallet, 500);
 
             } catch (error) {
                 console.error("Error opening connection modal:", error);
