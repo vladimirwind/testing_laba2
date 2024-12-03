@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 IntervalSubscribeWallet = setInterval(SubscribeWallet, 500);
 
             } catch (error) {
-                console.error("Error opening connection modal:", error);
+                console.log("Error opening connection modal:", error);
             }
         }
         initTonConnect();
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.removeItem('connectedWallet');
             connectTONbtn.onclick = connectionFunc;
         } catch (error) {
-            console.error("Error closing conn:", error);
+            console.log("Error closing conn:", error);
         }
     }
     
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
         } catch (e) {
-            console.error(e);
+            console.log(e);
         }
     };
 
@@ -1399,6 +1399,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById('mainContainer').style.display = 'flex';
         document.getElementById('preloadContainer').style.display = 'none';
+
+        
         return
         let progressBar = document.getElementById("progressBarPreloader");
         let fill = document.createElement("div");
@@ -1420,7 +1422,34 @@ document.addEventListener('DOMContentLoaded', function() {
     };    
 
     showPreloader();
-   
+
+    document.getElementById('mainContainer').style.display = 'none';
+
+    let storiesPage = document.getElementById('storiesContainer');
+
+    storiesPage.style.display = 'flex';
+
+    var curStory = 0;
+
+    storiesPage.style.backgroundImage = `url('./images/stories_${curStory}.jpeg')`;
+    storiesPage.style.backgroundRepeat = 'no-repeat';
+    storiesPage.style.backgroundSize = 'cover';
+    storiesPage.style.backgroundPosition = 'center';
+    
+    storiesPage.onclick = function() {
+        if (curStory === 2) {
+            storiesPage.style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'flex';
+            storiesPage.onclick = function() {};
+        }
+        if (curStory === 0) {
+            curStory++;
+        }
+        if (curStory === 1) {
+            storiesPage.style.backgroundImage = `url('./images/stories_${curStory}.jpeg')`;
+            curStory++;
+        }
+    };
         // let settingsBtn = document.getElementById("settingsBtn");
     // settingsBtn.onclick = function() {
     //     document.getElementById("containerSettings").style.display = 'flex';

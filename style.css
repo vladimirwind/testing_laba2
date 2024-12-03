@@ -4087,3 +4087,13 @@ span {
     font-weight: 200;
     text-align: left;
 }
+
+.storiesContainer {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 123456789;
+}
