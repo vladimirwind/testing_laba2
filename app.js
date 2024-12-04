@@ -1429,28 +1429,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     storiesPage.style.display = 'flex';
 
-    var curStory = 0;
+    var curStory = 1;
 
-    storiesPage.style.backgroundImage = `url('./images/stories_${curStory}.jpeg')`;
+    storiesPage.style.backgroundImage = `url('./images/Stories-${curStory}.png')`;
     storiesPage.style.backgroundRepeat = 'no-repeat';
     storiesPage.style.backgroundSize = 'cover';
     storiesPage.style.backgroundPosition = 'center';
     
     storiesPage.onclick = function() {
-        if (curStory === 2) {
+        if (curStory === 3) {
             storiesPage.style.display = 'none';
             document.getElementById('mainContainer').style.display = 'flex';
             storiesPage.onclick = function() {};
         }
-        if (curStory === 0) {
+        if (curStory === 1) {
             curStory++;
         }
-        if (curStory === 1) {
-            storiesPage.style.backgroundImage = `url('./images/stories_${curStory}.jpeg')`;
+        if (curStory === 2) {
+            storiesPage.style.backgroundImage = `url('./images/Stories-${curStory}.png')`;
             curStory++;
         }
     };
-        // let settingsBtn = document.getElementById("settingsBtn");
+    
+    // let settingsBtn = document.getElementById("settingsBtn");
     // settingsBtn.onclick = function() {
     //     document.getElementById("containerSettings").style.display = 'flex';
     //     let walletBtn = document.getElementById("walletBtn");
