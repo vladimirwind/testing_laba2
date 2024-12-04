@@ -1430,13 +1430,15 @@ document.addEventListener('DOMContentLoaded', function() {
     storiesPage.style.display = 'flex';
 
     let storiesIMG = document.getElementById('storiesImage');
-
+    storiesIMG.style.backgroundRepeat = 'no-repeat';
+    storiesIMG.style.backgroundSize = 'cover';
     var curStory = 1;
 
     // storiesPage.style.backgroundImage = `url('./images/Stories-${curStory}.png')`;
     // storiesPage.style.backgroundRepeat = 'no-repeat';
     // storiesPage.style.backgroundSize = 'cover';
     // storiesPage.style.backgroundPosition = 'center';
+    storiesIMG.style.backgroundImage = `url("./images/Stories-${curStory}.png")`;
     
     storiesPage.onclick = function() {
         if (curStory === 3) {
@@ -1448,7 +1450,7 @@ document.addEventListener('DOMContentLoaded', function() {
             curStory++;
         }
         if (curStory === 2) {
-            storiesIMG.src = `./images/Stories-${curStory}.png`;
+            storiesIMG.style.backgroundImage = `url("./images/Stories-${curStory}.png")`;
             curStory++;
         }
     };
