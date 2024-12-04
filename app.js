@@ -1434,7 +1434,7 @@ document.addEventListener('DOMContentLoaded', function() {
     storiesPage.style.backgroundImage = `url('./images/Stories-${curStory}.png')`;
     storiesPage.style.backgroundRepeat = 'no-repeat';
     storiesPage.style.backgroundSize = 'cover';
-    storiesPage.style.backgroundPosition = 'center';
+    // storiesPage.style.backgroundPosition = 'center';
     
     storiesPage.onclick = function() {
         if (curStory === 3) {
