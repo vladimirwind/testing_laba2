@@ -4115,3 +4115,144 @@ span {
     width: 100%;
     height: auto;
 }
+
+.withdrawContainer {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.withdrawWr {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.withdrawHeader {
+    display: flex;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawHeader span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 5vh;
+    font-weight: 200;
+}
+
+.withdrawDescBig {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawDescBig span {
+    font-size: 2vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+}
+
+.withdrawDescSmall {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawDescSmall span {
+    font-size: 2vh;
+    color: #bcbcbc;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+}
+
+.withdrawAmntWr {
+    display: flex;
+    flex-direction: row;
+    gap: 10vw;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawAmnt {
+    display: flex;
+    width: 40%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 1vw;
+    overflow: hidden;
+}
+
+.withdrawAmnt span {
+    font-size: 2vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+
+.withdrawAmnt text {
+    font-size: 2vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+}
+
+.withdrawAmnt img {
+    width: 11%;
+}
+
+.withdrawBtnWr {
+    display: flex;
+    flex-direction: row;
+    gap: 10vw;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawBtn {
+    display: flex;
+    width: 40%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1vw;
+    background-color: #98FFAF;
+}
+
+.withdrawBtn span {
+    font-size: 2vh;
+    color: #15202B;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+}
+

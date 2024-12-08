@@ -1538,190 +1538,197 @@ document.addEventListener('DOMContentLoaded', function() {
     //     }
     // };
 
-    // document.getElementById('gamesBtn').onclick = function() {
-    //     document.getElementById('mainContainer').style.display = 'none';
-    //     document.getElementById('gamesContainer').style.display = 'flex';
+    document.getElementById('gamesBtn').onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('gamesContainer').style.display = 'flex';
         
-    //     let gamesOutline = document.getElementById('gamesOutline');
-    //     let chestGame = document.getElementById('chestGame');
-    //     let wheelGame = document.getElementById('wheelGame');
-    //     let headerText = document.getElementById('gamesHeader');
-    //     let chestBG = document.getElementById('chestBG');
-    //     let wheelBG = document.getElementById('wheelBG');
-    //     let chestBG2 = document.getElementById('chestBG2');
-    //     let chestMenu = document.getElementById('chestMenu');
+        let gamesOutline = document.getElementById('gamesOutline');
+        let chestGame = document.getElementById('chestGame');
+        let wheelGame = document.getElementById('wheelGame');
+        let headerText = document.getElementById('gamesHeader');
+        let chestBG = document.getElementById('chestBG');
+        let wheelBG = document.getElementById('wheelBG');
+        let chestBG2 = document.getElementById('chestBG2');
+        let chestMenu = document.getElementById('chestMenu');
 
-    //     let goldenChestMenu = document.getElementById('goldenChestMenu');
-    //     let mythicChestMenu = document.getElementById('mythicChestMenu');
+        let goldenChestMenu = document.getElementById('goldenChestMenu');
+        let mythicChestMenu = document.getElementById('mythicChestMenu');
 
-    //     let goldenChestIMG = document.getElementById('goldenChestIMG');
-    //     let goldenChestClass = document.getElementById('goldenChestClass');
+        let goldenChestIMG = document.getElementById('goldenChestIMG');
+        let goldenChestClass = document.getElementById('goldenChestClass');
 
-    //     let goldenPopUP = document.getElementById('popUPGoldenChest');
-    //     let mythicPopUP = document.getElementById('popUPMythicChest');
-    //     let goldenOpenBtn = document.getElementById('openGoldenChest');
-    //     let goldenGetBtn = document.getElementById('getGoldenChest');
-    //     let mythicGetBtn = document.getElementById('getMythicChest');
+        let goldenPopUP = document.getElementById('popUPGoldenChest');
+        let mythicPopUP = document.getElementById('popUPMythicChest');
+        let goldenOpenBtn = document.getElementById('openGoldenChest');
+        let goldenGetBtn = document.getElementById('getGoldenChest');
+        let mythicGetBtn = document.getElementById('getMythicChest');
 
-    //     chestBG2.style.display = 'none';
-    //     mythicChestMenu.style.boxShadow = 'none';
+        chestBG2.style.display = 'none';
+        mythicChestMenu.style.boxShadow = 'none';
 
-    //     mythicGetBtn.onclick = function() {
-    //         mythicPopUP.style.display = 'flex';
-    //     }
+        mythicGetBtn.onclick = function() {
+            mythicPopUP.style.display = 'flex';
+        }
 
-    //     mythicChestMenu.onclick = function() {
-    //         goldenChestMenu.style.boxShadow = 'none';
-    //         chestBG.style.display = 'none';
-    //         chestBG2.style.display = 'flex';
-    //     }
+        mythicChestMenu.onclick = function() {
+            goldenChestMenu.style.boxShadow = 'none';
+            chestBG.style.display = 'none';
+            chestBG2.style.display = 'flex';
+        }
 
-    //     goldenOpenBtn.onclick = function() {
-    //         goldenChestClass.className = 'mainChest2';
-    //         goldenOpenBtn.style.display = 'none';
-    //         goldenGetBtn.style.display = 'none';
+        goldenOpenBtn.onclick = function() {
+            goldenChestClass.className = 'mainChest2';
+            goldenOpenBtn.style.display = 'none';
+            goldenGetBtn.style.display = 'none';
 
-    //         setTimeout(function() {
-    //             goldenChestClass.className = 'mainChest';
-    //             goldenChestIMG.src = './images/Chest-G-Opened.png'; 
-    //             goldenPopUP.style.display = 'flex';
-    //             goldenOpenBtn.style.display = 'flex';
-    //             goldenGetBtn.style.display = 'flex';}
-    //         ,1000);
-    //     };
+            setTimeout(function() {
+                goldenChestClass.className = 'mainChest';
+                goldenChestIMG.src = './images/Chest-G-Opened.png'; 
+                goldenPopUP.style.display = 'flex';
+                goldenOpenBtn.style.display = 'flex';
+                goldenGetBtn.style.display = 'flex';}
+            ,1000);
+        };
 
-    //     chestGame.onclick = function() {
-    //         gamesOutline.style.display = 'none';
-    //         headerText.textContent = `Lucky Chest`;
-    //         chestMenu.style.display = 'flex';
-    //         chestBG.style.display = 'flex';
-    //     };
-    //     let jsonTickets = JSON.parse(`{\"link_1\":\"https://t.me/$iMVT0XW4yEtRCwAAVm9zkV1lnhw\",\"link_2\":\"https://t.me/$7bQksnW4yEtSCwAAQCN4DYyi78E\",\"link_3\":\"https://t.me/$hgMjaXW4yEtTCwAASJVCgDo7LpY\",\"link_4\":\"https://t.me/$fHvk5HW4yEtUCwAANz0T3NWacaw\"}`);
-    //     let wheelIMG = document.getElementById('wheelIMG');
-    //     let buyTicketsBtn = document.getElementById('buyTicketsBtn');
-    //     let buyTicketsWindow = document.getElementById('buyTicketsWindow');
+        chestGame.onclick = function() {
+            gamesOutline.style.display = 'none';
+            headerText.textContent = `Lucky Chest`;
+            chestMenu.style.display = 'flex';
+            chestBG.style.display = 'flex';
+        };
+        let jsonTickets = JSON.parse(`{\"link_1\":\"https://t.me/$iMVT0XW4yEtRCwAAVm9zkV1lnhw\",\"link_2\":\"https://t.me/$7bQksnW4yEtSCwAAQCN4DYyi78E\",\"link_3\":\"https://t.me/$hgMjaXW4yEtTCwAASJVCgDo7LpY\",\"link_4\":\"https://t.me/$fHvk5HW4yEtUCwAANz0T3NWacaw\"}`);
+        let wheelIMG = document.getElementById('wheelIMG');
+        let buyTicketsBtn = document.getElementById('buyTicketsBtn');
+        let buyTicketsWindow = document.getElementById('buyTicketsWindow');
 
-    //     buyTicketsBtn.onclick = function() {
+        buyTicketsBtn.onclick = function() {
 
-    //         document.getElementById('agreeTickText').style.color = 'white';
-    //         document.getElementById('agreeTickText').style.fontFamily = '"Open Sans", sans-serif';
-    //         document.getElementById('agreeTickText').style.fontSize = '2vh';
+            document.getElementById('agreeTickText').style.color = 'white';
+            document.getElementById('agreeTickText').style.fontFamily = '"Open Sans", sans-serif';
+            document.getElementById('agreeTickText').style.fontSize = '2vh';
 
-    //         document.getElementById('agreeTick').onclick = function() {
-    //             document.getElementById('checkboxAgreement').style.display = 'none';
-    //         }
+            document.getElementById('agreeTick').onclick = function() {
+                document.getElementById('checkboxAgreement').style.display = 'none';
+            }
 
-    //         document.getElementById('gamesContainer').style.display = 'none';
-    //         buyTicketsWindow.style.display = 'flex';
-    //         for (let iTicket = 1; iTicket < 5; iTicket ++) {
-    //             document.getElementById(`ticketLink_${iTicket}`).onclick = function() {
-    //                 tg.WebApp.openInvoice(jsonTickets[`link_${iTicket}`], (status) => {
-    //                     if (status === "paid") {
-    //                         tg.WebApp.showAlert(`payment is GOOD ${status}`);
-    //                     } else {
-    //                         tg.WebApp.showAlert(`payment is BAD ${status}`);
-    //                     }
-    //                 });
-    //             };
-    //         }
-    //     };
-    //     let getRandomNumber = function (min, max) {
-    //         return Math.floor(Math.random() * (max - min + 1)) + min;
-    //     }
+            document.getElementById('gamesContainer').style.display = 'none';
+            buyTicketsWindow.style.display = 'flex';
+            for (let iTicket = 1; iTicket < 5; iTicket ++) {
+                document.getElementById(`ticketLink_${iTicket}`).onclick = function() {
+                    tg.WebApp.openInvoice(jsonTickets[`link_${iTicket}`], (status) => {
+                        if (status === "paid") {
+                            tg.WebApp.showAlert(`payment is GOOD ${status}`);
+                        } else {
+                            tg.WebApp.showAlert(`payment is BAD ${status}`);
+                        }
+                    });
+                };
+            }
+        };
+
+        let withdrawBtn = document.getElementById('withdrawBTN');
+        withdrawBtn.onclick = function() {
+            document.getElementById('gamesContainer').style.display = 'none';
+            document.getElementById('withdrawContainer').style.display = 'flex';
+        }
+
+        let getRandomNumber = function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
         
-    //     let smoothSpin = function() {
+        let smoothSpin = function() {
         
-    //         let randomNumber = getRandomNumber(-14, 14);
+            let randomNumber = getRandomNumber(-14, 14);
            
-    //         let totalRotations = 1080 + 90 + randomNumber; // Total degrees to spin
-    //         let duration = 3000; // Total duration of the spin in milliseconds
-    //         let frames = 1000; // Number of frames for the animation
-    //         let interval = duration / frames; // Time between each frame
+            let totalRotations = 1080 + 90 + randomNumber; // Total degrees to spin
+            let duration = 3000; // Total duration of the spin in milliseconds
+            let frames = 1000; // Number of frames for the animation
+            let interval = duration / frames; // Time between each frame
 
-    //         // Spin the wheels
-    //         for (let i = 0; i <= frames; i++) {
-    //             setTimeout(function() {
+            // Spin the wheels
+            for (let i = 0; i <= frames; i++) {
+                setTimeout(function() {
 
-    //                 let currentRotation = (totalRotations * (i / frames)) % 360; // Calculate current rotation
+                    let currentRotation = (totalRotations * (i / frames)) % 360; // Calculate current rotation
                   
-    //                 wheelIMG.style.transform = `rotate(${currentRotation}deg)`; // Apply the rotation
+                    wheelIMG.style.transform = `rotate(${currentRotation}deg)`; // Apply the rotation
               
-    //             }, i * interval);
-    //         }
-    //     };
-    //     let ISspinning = false;
+                }, i * interval);
+            }
+        };
+        let ISspinning = false;
 
-    //     let spinnerWr = function() {
-    //         if (ISspinning) return; // Prevent spinning if already in progress
+        let spinnerWr = function() {
+            if (ISspinning) return; // Prevent spinning if already in progress
         
-    //         ISspinning = true; // Set spinning flag to true
+            ISspinning = true; // Set spinning flag to true
           
-    //         // Reset rotation before spinning
-    //         wheelIMG.style.transition = 'none'; // Disable transition for reset
-    //         wheelIMG.style.transform = `rotate(0deg)`;
+            // Reset rotation before spinning
+            wheelIMG.style.transition = 'none'; // Disable transition for reset
+            wheelIMG.style.transform = `rotate(0deg)`;
         
-    //         // Allow some time for the reset before starting the spin
-    //         setTimeout(function() {
-    //             smoothSpin();
-    //         }, 1000);
+            // Allow some time for the reset before starting the spin
+            setTimeout(function() {
+                smoothSpin();
+            }, 1000);
         
-    //         // Re-enable button after spin is complete
-    //         setTimeout(function() {
-    //             ISspinning = false; // Reset spinning flag
-    //         }, 5000); // Adjust this time as needed based on spin duration
-    //     };
+            // Re-enable button after spin is complete
+            setTimeout(function() {
+                ISspinning = false; // Reset spinning flag
+            }, 5000); // Adjust this time as needed based on spin duration
+        };
         
-    //     // Add event listener to the button
-    //     wheelIMG.addEventListener("click", spinnerWr);
+        // Add event listener to the button
+        wheelIMG.addEventListener("click", spinnerWr);
 
-    //     wheelGame.onclick = function() {
-    //         gamesOutline.style.display = 'none';
-    //         headerText.textContent = `Lucky Wheel`;
-    //         wheelBG.style.display = 'flex';
+        wheelGame.onclick = function() {
+            gamesOutline.style.display = 'none';
+            headerText.textContent = `Lucky Wheel`;
+            wheelBG.style.display = 'flex';
 
-    //         let wheelData = {
-    //             "winners": [
-    //                 "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi", 
-    //                 "Ivan" 
-    //                  // Add more items up to 100
-    //             ]
-    //         };
+            let wheelData = {
+                "winners": [
+                    "Alice", "Bob", "Charlie", "David", "Eve", "Frank", "Grace", "Heidi", 
+                    "Ivan" 
+                     // Add more items up to 100
+                ]
+            };
             
-    //         // Get the span and button elements
-    //         let winnersText = document.getElementById("winnersText");
+            // Get the span and button elements
+            let winnersText = document.getElementById("winnersText");
           
             
-    //         let index = 0;
+            let index = 0;
            
-    //         // Function to change the text content of the span
-    //         function changeWinner() {
-    //             // Add fall class to trigger animation
-    //             winnersText.classList.add('fall');
+            // Function to change the text content of the span
+            function changeWinner() {
+                // Add fall class to trigger animation
+                winnersText.classList.add('fall');
             
-    //             // Wait for the animation to complete
-    //             setTimeout(() => {
-    //                 // Change text after animation starts
-    //                 winnersText.textContent = `${wheelData.winners[index]} just won 0.01 TON`;
+                // Wait for the animation to complete
+                setTimeout(() => {
+                    // Change text after animation starts
+                    winnersText.textContent = `${wheelData.winners[index]} just won 0.01 TON`;
                     
-    //                 // Remove fall class to reset for next animation
-    //                 winnersText.classList.remove('fall');
+                    // Remove fall class to reset for next animation
+                    winnersText.classList.remove('fall');
                     
-    //                 index = (index + 1) % wheelData.winners.length; // Loop back to 0 after reaching the end
-    //             }, 1000); // Match this duration with the CSS transition duration
-    //         }
+                    index = (index + 1) % wheelData.winners.length; // Loop back to 0 after reaching the end
+                }, 1000); // Match this duration with the CSS transition duration
+            }
 
-    //         setInterval(changeWinner, 5000);
-    //     };
+            setInterval(changeWinner, 5000);
+        };
 
-    //     const AdController = window.Adsgram.init({ blockId: "785", debug: true});
-    //     goldenGetBtn.onclick = function() {
-    //         AdController.show().then((result) => {
-    //             goldenChestIMG.src = './images/Chest-G-Closed.png';
-    //         }).catch((result) => {
-    //             goldenChestIMG.src = './images/Chest-G-Opened.png';
-    //         })
-    //     }
-    // }
+        const AdController = window.Adsgram.init({ blockId: "785", debug: true});
+        goldenGetBtn.onclick = function() {
+            AdController.show().then((result) => {
+                goldenChestIMG.src = './images/Chest-G-Closed.png';
+            }).catch((result) => {
+                goldenChestIMG.src = './images/Chest-G-Opened.png';
+            })
+        }
+    }
 
     // document.getElementById('boostsBtn').onclick = function() {
     //     let BoostMinePopUp = document.getElementById('popUPBoostMine');
