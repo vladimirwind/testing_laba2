@@ -4160,7 +4160,7 @@ span {
 }
 
 .withdrawDescBig span {
-    font-size: 2vh;
+    font-size: 2.1vh;
     color: white;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -4209,7 +4209,7 @@ span {
 }
 
 .withdrawAmnt span {
-    font-size: 2vh;
+    font-size: 2.2vh;
     color: white;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -4217,7 +4217,7 @@ span {
 }
 
 .withdrawAmnt text {
-    font-size: 2vh;
+    font-size: 2.2vh;
     color: white;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -4236,6 +4236,7 @@ span {
     height: auto;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20%;
 }
 
 .withdrawBtn {
@@ -4254,5 +4255,17 @@ span {
     text-align: center; 
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
+}
+
+.withdrawImg {
+    display: flex;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawImg img {
+    width: 70%;
 }
 
