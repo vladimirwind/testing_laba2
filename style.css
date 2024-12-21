@@ -3122,7 +3122,7 @@ span {
     display: flex;
     width: 100%; 
     height: auto;
-    justify-content: right;
+    justify-content: space-between;
     align-items: center;
     position: absolute;
     top: 20%;
@@ -3142,6 +3142,27 @@ span {
     border-radius: 3vw 0 0 3vw;
     position: relative;
     overflow: hidden;
+}
+
+.mainNFTItem {
+    display: flex;
+    width: 18%; 
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    background-color: #0F161E;
+    outline-style: solid;
+    outline-width: thin;
+    outline-color: #98FFAF;
+    border-radius: 0 3vw 3vw 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.mainNFTItem img {
+    width: 100%;
+    height: auto;
+    animation-name: justhere;
 }
 
 .mainIslandChildItem img {
@@ -4160,7 +4181,7 @@ span {
 }
 
 .withdrawDescBig span {
-    font-size: 2.1vh;
+    font-size: 2.3vh;
     color: white;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -4178,7 +4199,25 @@ span {
 }
 
 .withdrawDescSmall span {
-    font-size: 2vh;
+    font-size: 2.2vh;
+    color: #bcbcbc;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+}
+
+.withdrawDescSmall2 {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.withdrawDescSmall2 span {
+    font-size: 2.2vh;
     color: #bcbcbc;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -4198,6 +4237,7 @@ span {
 .withdrawAmnt {
     display: flex;
     width: 40%;
+    height: 5vh;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
@@ -4225,7 +4265,7 @@ span {
 }
 
 .withdrawAmnt img {
-    width: 11%;
+    width: 18%;
 }
 
 .withdrawBtnWr {
@@ -4236,12 +4276,12 @@ span {
     height: auto;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20%;
 }
 
 .withdrawBtn {
     display: flex;
     width: 40%;
+    height: 5vh;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -4250,7 +4290,7 @@ span {
 }
 
 .withdrawBtn span {
-    font-size: 2vh;
+    font-size: 2.2vh;
     color: #15202B;
     text-align: center; 
     font-family: "Open Sans", sans-serif;
@@ -4269,3 +4309,221 @@ span {
     width: 70%;
 }
 
+.giftsContainer {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.giftsWr {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.giftsHeader {
+    display: flex;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.giftsHeader span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 5vh;
+    font-weight: 200;
+}
+
+.giftsDescBig {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.giftsDescBig span {
+    font-size: 2.3vh;
+    color: white;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+}
+
+.giftsImg {
+    display: flex;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.giftsImg img {
+    width: 50%;
+}
+
+.withdrawDescSmallTable {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    width: 90%;
+    height: 5vh;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.withdrawDescSmallTable span {
+    font-size: 2.2vh;
+    color: #bcbcbc;
+    text-align: center; 
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+}
+
+.nftContainer {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: #15202B;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.nftWindow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.nftImage {
+    display: flex;
+    width: 40%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.nftImage img {
+    width: 100%;
+}
+
+.nftHeader {
+    display: flex;
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.nftHeader span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 5vh;
+    font-weight: 200;
+}
+
+.nftBG {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 55vh;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 2vw;
+    background-color: #0F161E;
+}
+
+
+.nftBuyBtns {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nftBuyBtns img {
+    width: 42%;
+    height: auto;
+}
+
+.nftDescHeader {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: start;
+    align-items: center;
+}
+
+.nftDescHeader span {
+    color: white;
+    font-family: 'unbounded';
+    font-size: 3vh;
+    font-weight: 500;
+    margin-left: 5%;
+}
+
+.nftDesc {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
+    width: 90%;
+    height: auto;
+    justify-content: start;
+    align-items: center;
+    align-self: center;
+}
+
+.nftDesc img {
+    width: 2%;
+}
+
+.nftDesc span {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 200;
+}
+
+.nftDesc text {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.nftLineWr {
+    display: flex;
+    width: 50%;
+    height: 0.3vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #98ffaf;
+}
+
+.nftDot {
+    display: flex;
+    width: 5vw;
+    height: auto;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: #98ffaf;
+}

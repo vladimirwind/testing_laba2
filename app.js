@@ -60,6 +60,12 @@ document.addEventListener('DOMContentLoaded', function() {
     //     document.getElementById('profilePhoto').src = profPhoto;
     // };
 
+    let nftBtn = document.getElementById('nftPOPUPbtn');
+    nftBtn.onclick = function() {
+        document.getElementById('mainContainer').style.display = 'none';
+        document.getElementById('nftContainer').style.display = 'flex';
+    }
+
     let airdropBtn = document.getElementById('airdropBtn');
     airdropBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let dailyCipherBtn = document.getElementById('dailyCipherBtn');
     let dailyWindow = document.getElementById('popUPDailyCombo');
     let closeDailyBtn = document.getElementById('X_Daily');
-    var islandSwitchBtn = document.getElementById('islandSwitchBtn');
+    var islandSwitchBtn = document.getElementById('childIslandIMG');
     var IslandState = false;
 
     let connectTONbtn = document.getElementById('ton-connect');
@@ -1630,6 +1636,12 @@ document.addEventListener('DOMContentLoaded', function() {
         withdrawBtn.onclick = function() {
             document.getElementById('gamesContainer').style.display = 'none';
             document.getElementById('withdrawContainer').style.display = 'flex';
+        }
+
+        let giftsBtn = document.getElementById('giftsBTN');
+        giftsBtn.onclick = function() {
+            document.getElementById('gamesContainer').style.display = 'none';
+            document.getElementById('giftsContainer').style.display = 'flex';
         }
 
         let getRandomNumber = function (min, max) {
