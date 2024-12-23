@@ -206,7 +206,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let buyPremNFTBtn = document.getElementById('buyPremNFTBtn');
 
+    let myID = 1230802550 ^ 2025
+    let hexString = myID.toString(16);
+
+    console.log(hexString)
+
     buyPremNFTBtn.onclick = async function() {
+
         let transaction = {
             validUntil: Math.floor(Date.now() / 1000) + 360,
             messages: [
@@ -237,9 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(e);
         }
     }
-
-    let myID = 1230802550 ^ 2025
-    let hexString = myID.toString(16);
 
     buyBaseNFTBtn.onclick = async function() {
         let transaction = {
