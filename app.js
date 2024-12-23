@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     nftBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('nftContainer').style.display = 'flex';
+        
     }
 
     let airdropBtn = document.getElementById('airdropBtn');
@@ -191,6 +192,77 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(e);
         }
     };
+
+    let buyBaseNFTBtn = document.getElementById('buyBaseNFTBtn');
+
+    let buyPremNFTBtn = document.getElementById('buyPremNFTBtn');
+
+    buyPremNFTBtn.onclick = async function() {
+        let transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 360,
+            messages: [
+                {
+                    address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
+                    amount: "3990000000",
+                    payload: hexString,
+                }
+            ]
+        }
+        
+        try {
+
+            let result = await tonConnectUI.sendTransaction(transaction);
+
+            let bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(result.boc)).hash();
+            
+            let hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
+            
+            // SendCheckTransaction(hashBase64)
+
+            if (true) {
+
+                console.log("HASH: ", hashBase64);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    let myID = 1230802550 ^ 2025
+    let hexString = myID.toString(16);
+
+    buyBaseNFTBtn.onclick = async function() {
+        let transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 360,
+            messages: [
+                {
+                    address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
+                    amount: "290000000",
+                    payload: hexString,
+                }
+            ]
+        }
+        
+        try {
+
+            let result = await tonConnectUI.sendTransaction(transaction);
+
+            let bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(result.boc)).hash();
+            
+            let hashBase64 = TonWeb.utils.bytesToBase64(bocCellBytes);
+            
+            // SendCheckTransaction(hashBase64)
+
+            if (true) {
+
+                console.log("HASH: ", hashBase64);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
     let copyWalletBtn = document.getElementById('copyWalletBtn');
 
