@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
-                    amount: "299000000",
+                    amount: "290000000",
                     payload: base64Boc
                 }
             ]
