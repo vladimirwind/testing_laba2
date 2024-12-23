@@ -218,15 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
     cell.bits.writeString(hexString);
     const myBocBytes = cell.toBoc();
 
-    let myHashBase64;
-
-    let myAsyncF = async function() {
-        let myBocCellBytes = await TonWeb.boc.Cell.oneFromBoc(myBocBytes);
-            
-        myHashBase64 = TonWeb.utils.bytesToBase64(myBocCellBytes);
-    }
-
-    myAsyncF()
+    let myHashBase64 = TonWeb.utils.bytesToBase64(cell);
+ 
 
     console.log(hexString)
 
