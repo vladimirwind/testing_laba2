@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
                     amount: "3990000000",
-                    payload: hexString,
+                    comment: hexString,
                 }
             ]
         }
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
                     amount: "290000000",
-                    payload: hexString,
+                    comment: hexString,
                 }
             ]
         }
