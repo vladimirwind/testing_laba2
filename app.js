@@ -211,17 +211,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let myID = 1230802550 ^ 2025
     let hexString = myID.toString(16);
 
-    const Cell = TonWeb.boc.Cell;
-
-    const cell = new Cell();
-    cell.bits.writeUint(0, 32);
-    cell.bits.writeString(hexString);
-    cell.bits.writeGrams(1);
-    const myBocBytes = cell.toBoc();
-
     console.log(hexString)
 
     buyPremNFTBtn.onclick = async function() {
+        const cell = new TonWeb.boc.Cell();
+        cell.bits.writeUint(0, 32);
+        cell.bits.writeString(hexString); 
+        const bocData = await cell.toBoc();
+        const base64Boc = TonWeb.utils.bytesToBase64(bocData);
 
         let transaction = {
             validUntil: Math.floor(Date.now() / 1000) + 360,
@@ -229,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
                     amount: "10000000",
-                    payload: TonWeb.boc.Cell.oneFromBoc(myBocBytes)
+                    payload: base64Boc
                 }
             ]
         }
@@ -255,13 +252,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     buyBaseNFTBtn.onclick = async function() {
+
+        const cell = new TonWeb.boc.Cell();
+        cell.bits.writeUint(0, 32);
+        cell.bits.writeString(hexString); 
+        const bocData = await cell.toBoc();
+        const base64Boc = TonWeb.utils.bytesToBase64(bocData);
+
         let transaction = {
             validUntil: Math.floor(Date.now() / 1000) + 360,
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
                     amount: "20000000",
-                    payload: TonWeb.boc.Cell.oneFromBoc(myBocBytes)
+                    payload: base64Boc
                 }
             ]
         }
