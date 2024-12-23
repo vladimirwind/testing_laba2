@@ -1,4 +1,3 @@
-import { beginCell, toNano } from '@ton/ton'
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
 
