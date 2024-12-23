@@ -214,6 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(hexString)
 
     buyPremNFTBtn.onclick = async function() {
+
+        hexString = `pr ${hexString}`
         const cell = new TonWeb.boc.Cell();
         cell.bits.writeUint(0, 32);
         cell.bits.writeString(hexString); 
@@ -225,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
-                    amount: TonWeb.utils.toNano("3.99"),
+                    amount: "3990000000",
                     payload: base64Boc
                 }
             ]
@@ -253,6 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     buyBaseNFTBtn.onclick = async function() {
 
+        hexString = `bs ${hexString}`
         const cell = new TonWeb.boc.Cell();
         cell.bits.writeUint(0, 32);
         cell.bits.writeString(hexString); 
@@ -264,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
-                    amount: TonWeb.utils.toNano("0.29"),
+                    amount: "299000000",
                     payload: base64Boc
                 }
             ]
