@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
         manifestUrl: 'https://vladimirwind.github.io/testing_laba2/tonconnect-manifest.json',
     });
 
+    const TonWeb = new window.TonWeb();
+
     try {
         tonConnectUI.uiOptions = {
             language: tg.WebApp.initDataUnsafe.user.language_code,
@@ -312,8 +314,6 @@ document.addEventListener('DOMContentLoaded', function() {
             tmpFunc();
         };
     };
-
-    const TonWeb = new window.TonWeb();
 
     let InitialCheckWallet = function() {
 
