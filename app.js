@@ -218,8 +218,6 @@ document.addEventListener('DOMContentLoaded', function() {
     cell.bits.writeString(hexString);
     const myBocBytes = cell.toBoc();
 
-    let myHashBase64 = TonWeb.utils.bytesToBase64(myBocBytes);
- 
     console.log(hexString)
 
     buyPremNFTBtn.onclick = async function() {
@@ -230,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
                     amount: "10000000",
-                    payload: myHashBase64
+                    payload: TonWeb.boc.Cell.oneFromBoc(myBocBytes)
                 }
             ]
         }
@@ -262,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
                     amount: "20000000",
-                    payload: myHashBase64
+                    payload: TonWeb.boc.Cell.oneFromBoc(myBocBytes)
                 }
             ]
         }
