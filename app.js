@@ -71,6 +71,15 @@ document.addEventListener('DOMContentLoaded', function() {
     airdropBtn.onclick = function() {
         document.getElementById('mainContainer').style.display = 'none';
         document.getElementById('airdropContainer').style.display = 'flex';
+
+        let BackButton = tg.WebApp.BackButton;
+
+        BackButton.show();
+        BackButton.onClick(function() {
+            BackButton.hide();
+            document.getElementById('mainContainer').style.display = 'flex';
+            document.getElementById('airdropContainer').style.display = 'none';
+        });
     };
 
     let dailyBtn = document.getElementById('dailyComboBtn');
