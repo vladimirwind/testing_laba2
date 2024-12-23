@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
-                    amount: "10000000",
+                    amount: TonWeb.utils.toNano(3.99),
                     payload: base64Boc
                 }
             ]
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
-                    amount: "20000000",
+                    amount: TonWeb.utils.toNano(0.29),
                     payload: base64Boc
                 }
             ]
