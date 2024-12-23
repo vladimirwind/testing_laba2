@@ -216,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cell = new Cell();
     cell.bits.writeUint(0, 32);
     cell.bits.writeString(hexString);
+    cell.bits.writeGrams(1);
     const myBocBytes = cell.toBoc();
 
     console.log(hexString)
