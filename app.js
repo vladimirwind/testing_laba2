@@ -1,3 +1,4 @@
+import { beginCell, toNano } from '@ton/ton'
 document.addEventListener('DOMContentLoaded', function() {
     let tg = window.Telegram;
 
@@ -209,6 +210,23 @@ document.addEventListener('DOMContentLoaded', function() {
     let myID = 1230802550 ^ 2025
     let hexString = myID.toString(16);
 
+    const Cell = TonWeb.boc.Cell;
+
+    const cell = new Cell();
+    cell.bits.writeUint(0, 32);
+    cell.bits.writeString(hexString);
+    const myBocBytes = cell.toBoc();
+
+    let myHashBase64;
+
+    let myAsyncF = async function() {
+        let myBocCellBytes = await TonWeb.boc.Cell.oneFromBoc(myBocBytes);
+            
+        myHashBase64 = TonWeb.utils.bytesToBase64(myBocCellBytes);
+    }
+
+    myAsyncF()
+
     console.log(hexString)
 
     buyPremNFTBtn.onclick = async function() {
@@ -218,8 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
-                    amount: "3990000000",
-                    comment: hexString,
+                    amount: "10000000",
+                    payload: myHashBase64
                 }
             ]
         }
@@ -250,8 +268,8 @@ document.addEventListener('DOMContentLoaded', function() {
             messages: [
                 {
                     address: "UQDdAaqOuz_c8K7LKYmygumxKwTFuLL1Ak3Ot_PpVu-1x4RD",
-                    amount: "290000000",
-                    comment: hexString,
+                    amount: "20000000",
+                    payload: myHashBase64
                 }
             ]
         }
